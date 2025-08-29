@@ -43,12 +43,12 @@ Thumbs.db
 # VSCode ayarları
 .vscode/
 
-# Ortam değişkenleri (gizli anahtarlar)
+# Ortam değişkenleri 
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# Firebase özel dosyaları (eğer hassas bilgilerin varsa)
+# Firebase özel dosyaları 
 firebase.js
