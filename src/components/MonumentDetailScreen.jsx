@@ -111,23 +111,23 @@ const MonumentDetailScreen = ({ monument, language, setLanguage }) => {
 
   const synthRef = useRef(window.speechSynthesis);
   const utteranceRef = useRef(null);
+
   const handleVolumeChange = (e) => {
     const newVol = parseFloat(e.target.value);
     setVolume(newVol);
 
     if (isSpeaking) {
-      // Önceki zamanlayıcıyı temizle
       if (volumeChangeTimeout.current) {
         clearTimeout(volumeChangeTimeout.current);
       }
 
-      // 300ms sonra sesi yeni volume ile yeniden başlat
       volumeChangeTimeout.current = setTimeout(() => {
         synthRef.current.cancel();
-        speakFrom(currentCharIndex); // aynı yerden devam et
+        speakFrom(currentCharIndex);
       }, 300);
     }
   };
+
   useEffect(() => {
     if (isSpeaking) {
       speakFrom(currentCharIndex);
@@ -151,6 +151,13 @@ const MonumentDetailScreen = ({ monument, language, setLanguage }) => {
     utterance.lang = langCode;
     utterance.rate = 0.8;
     utterance.volume = volume;
+
+    const voices = synthRef.current.getVoices();
+    const selectedVoice = voices.find((v) => v.lang === langCode);
+    if (selectedVoice) {
+      utterance.voice = selectedVoice;
+    }
+
     utterance.onboundary = (event) => {
       if (event.name === "word") {
         setCurrentCharIndex(charIndex + event.charIndex);
@@ -229,7 +236,6 @@ const MonumentDetailScreen = ({ monument, language, setLanguage }) => {
   };
 
   const styles = {
-    
     container: {
       display: "flex",
       flexDirection: "row",
