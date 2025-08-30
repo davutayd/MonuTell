@@ -108,6 +108,8 @@ function App() {
         <MapScreen
           language={language}
           onSelectMonument={handleSelectMonument}
+          isPanelOpen={isPanelOpen}
+          isMobile={isMobile}
         />
       </div>
     </div>
