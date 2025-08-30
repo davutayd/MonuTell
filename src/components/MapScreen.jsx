@@ -12,6 +12,7 @@ import L from "leaflet";
 import { MdMyLocation } from "react-icons/md";
 import monuments from "../data/monuments";
 
+
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl:
@@ -22,12 +23,14 @@ L.Icon.Default.mergeOptions({
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
+
 const userLocationIcon = new L.Icon({
   iconUrl: "https://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png",
   iconSize: [30, 30],
   iconAnchor: [15, 30],
   popupAnchor: [0, -30],
 });
+
 
 function RecenterOnDemand({ position, trigger }) {
   const map = useMap();
@@ -43,12 +46,15 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
   const defaultCenter = [47.4979, 19.0402];
   const [position, setPosition] = useState(null);
   const [accuracy, setAccuracy] = useState(null);
-  const [lastUpdate, setLastUpdate] = useState(null);
   const [recenterTrigger, setRecenterTrigger] = useState(0);
-
-  const [isSafari, setIsSafari] = useState(false);
-  const [showModal, setShowModal] = useState(false);
   const [watchId, setWatchId] = useState(null);
+  const [showBanner, setShowBanner] = useState(false);
+
+  const isSafari =
+    typeof navigator !== "undefined" &&
+    navigator.userAgent.toLowerCase().includes("safari") &&
+    !navigator.userAgent.toLowerCase().includes("chrome");
+
 
   const startWatchingLocation = useCallback(() => {
     if (!navigator.geolocation) {
@@ -65,39 +71,28 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
         const { latitude, longitude, accuracy } = pos.coords;
         setPosition([latitude, longitude]);
         setAccuracy(accuracy);
-        setLastUpdate(new Date());
       },
-      (err) => {
-        console.error("Konum hatası:", err);
-      },
-      {
-        enableHighAccuracy: true,
-        maximumAge: 0,
-        timeout: 20000,
-      }
+      (err) => console.error("Konum hatası:", err),
+      { enableHighAccuracy: true, maximumAge: 0, timeout: 20000 }
     );
 
     setWatchId(id);
   }, [watchId]);
 
   useEffect(() => {
-    const ua = navigator.userAgent.toLowerCase();
-    const safari = ua.includes("safari") && !ua.includes("chrome");
-    setIsSafari(safari);
-
-    if (!safari) {
-      startWatchingLocation();
+    if (!isSafari) {
+      startWatchingLocation(); 
     } else {
-      setShowModal(true);
+      setShowBanner(true); 
     }
 
     return () => {
       if (watchId != null) navigator.geolocation.clearWatch(watchId);
     };
-  }, [startWatchingLocation, watchId]);
+  }, [isSafari, startWatchingLocation, watchId]);
 
   const handleAllowLocation = () => {
-    setShowModal(false);
+    setShowBanner(false);
     startWatchingLocation();
   };
 
@@ -108,52 +103,36 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
 
   return (
     <div style={{ width: "100%", height: "100vh", position: "relative" }}>
-      {showModal && (
+      {showBanner && (
         <div
           style={{
             position: "absolute",
             top: 0,
             left: 0,
             width: "100%",
-            height: "100%",
-            background: "rgba(0,0,0,0.5)",
+            background: "#fff8e1",
+            padding: "12px 16px",
             display: "flex",
+            justifyContent: "space-between",
             alignItems: "center",
-            justifyContent: "center",
             zIndex: 2000,
+            boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
           }}
         >
-          <div
+          <span>📍 Konum izni gerekiyor. Başlatmak için tıkla.</span>
+          <button
+            onClick={handleAllowLocation}
             style={{
-              background: "white",
-              padding: "20px",
-              borderRadius: "12px",
-              textAlign: "center",
-              width: "80%",
-              maxWidth: "300px",
-              boxShadow: "0 6px 16px rgba(0,0,0,0.3)",
+              padding: "6px 12px",
+              background: "#2a7",
+              color: "#fff",
+              border: "none",
+              borderRadius: "6px",
+              cursor: "pointer",
             }}
           >
-            <h3>📍 Konum İzni</h3>
-            <p>
-              Konumunu gösterebilmem için izin vermelisin. "Konumumu Göster"
-              butonuna bas.
-            </p>
-            <button
-              onClick={handleAllowLocation}
-              style={{
-                marginTop: "12px",
-                padding: "10px 20px",
-                background: "#2a7",
-                color: "white",
-                border: "none",
-                borderRadius: "8px",
-                cursor: "pointer",
-              }}
-            >
-              Konumumu Göster
-            </button>
-          </div>
+            Konumumu Göster
+          </button>
         </div>
       )}
 
@@ -180,7 +159,6 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
                 )}
               </Popup>
             </Marker>
-
             {accuracy != null && (
               <Circle
                 center={position}
