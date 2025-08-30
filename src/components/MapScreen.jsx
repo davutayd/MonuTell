@@ -103,6 +103,12 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
     );
   };
 
+  useEffect(() => {
+    if (position) {
+      setShowBanner(false);
+    }
+  }, [position]);
+
   const handleGoToLocation = () => {
     if (!position) return;
     setRecenterTrigger((n) => n + 1);
@@ -158,14 +164,7 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
 
         {position && (
           <>
-            <Marker position={position} icon={userLocationIcon}>
-              <Popup>
-                Şu anki konumunuz
-                {accuracy != null && (
-                  <div>Doğruluk: ~{Math.round(accuracy)} m</div>
-                )}
-              </Popup>
-            </Marker>
+            <Marker position={position} icon={userLocationIcon}></Marker>
             {accuracy != null && (
               <Circle
                 center={position}
