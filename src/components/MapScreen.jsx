@@ -88,18 +88,19 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
   }, [isSafari, startWatchingLocation, watchId]);
 
   const handleAllowLocation = () => {
-    setShowBanner(false);
-
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         const { latitude, longitude, accuracy } = pos.coords;
         setPosition([latitude, longitude]);
         setAccuracy(accuracy);
 
+        setShowBanner(false);
+
         startWatchingLocation();
       },
       (err) => {
         console.error("Konum hatası:", err);
+
         setShowBanner(true);
       },
       { enableHighAccuracy: true }
