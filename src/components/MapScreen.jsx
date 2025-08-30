@@ -12,7 +12,6 @@ import L from "leaflet";
 import { MdMyLocation } from "react-icons/md";
 import monuments from "../data/monuments";
 
-
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl:
@@ -23,14 +22,12 @@ L.Icon.Default.mergeOptions({
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
-
 const userLocationIcon = new L.Icon({
   iconUrl: "https://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png",
   iconSize: [30, 30],
   iconAnchor: [15, 30],
   popupAnchor: [0, -30],
 });
-
 
 function RecenterOnDemand({ position, trigger }) {
   const map = useMap();
@@ -54,7 +51,6 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
     typeof navigator !== "undefined" &&
     navigator.userAgent.toLowerCase().includes("safari") &&
     !navigator.userAgent.toLowerCase().includes("chrome");
-
 
   const startWatchingLocation = useCallback(() => {
     if (!navigator.geolocation) {
@@ -81,9 +77,9 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
 
   useEffect(() => {
     if (!isSafari) {
-      startWatchingLocation(); 
+      startWatchingLocation();
     } else {
-      setShowBanner(true); 
+      setShowBanner(true);
     }
 
     return () => {
@@ -93,7 +89,21 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
 
   const handleAllowLocation = () => {
     setShowBanner(false);
-    startWatchingLocation();
+
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const { latitude, longitude, accuracy } = pos.coords;
+        setPosition([latitude, longitude]);
+        setAccuracy(accuracy);
+
+        startWatchingLocation();
+      },
+      (err) => {
+        console.error("Konum hatası:", err);
+        setShowBanner(true);
+      },
+      { enableHighAccuracy: true }
+    );
   };
 
   const handleGoToLocation = () => {
