@@ -12,6 +12,7 @@ import L from "leaflet";
 import { MdMyLocation } from "react-icons/md";
 import monuments from "../data/monuments";
 
+// Leaflet marker fix
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl:
@@ -22,6 +23,7 @@ L.Icon.Default.mergeOptions({
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
+// Kullanıcı konumu ikonu
 const userLocationIcon = new L.Icon({
   iconUrl: "https://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png",
   iconSize: [30, 30],
@@ -39,7 +41,12 @@ function RecenterOnDemand({ position, trigger }) {
   return null;
 }
 
-const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
+const MapScreen = ({
+  language = "tr",
+  onSelectMonument = () => {},
+  isPanelOpen = false,
+  isMobile = false,
+}) => {
   const defaultCenter = [47.4979, 19.0402];
   const [position, setPosition] = useState(null);
   const [accuracy, setAccuracy] = useState(null);
@@ -112,23 +119,26 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
     setRecenterTrigger((n) => n + 1);
   };
 
-  const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
-
+  // Buton stilini panel durumuna göre ayarla
+  const panelHeight = isMobile
+    ? isPanelOpen
+      ? window.innerHeight * 0.6
+      : 0
+    : 0;
   const goToLocationButtonStyle = {
     position: "absolute",
-    bottom: isMobile ? 120 : 30, 
+    bottom: isMobile ? panelHeight + 20 : 30, // panel üstüne 20px boşluk bırak
     right: 20,
     padding: "14px",
     background: "white",
     border: "none",
     borderRadius: "50%",
     cursor: "pointer",
-    zIndex: 3000,
+    zIndex: 4000,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
-    touchAction: "manipulation",
   };
 
   return (
