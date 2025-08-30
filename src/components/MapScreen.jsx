@@ -82,13 +82,14 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
 
   useEffect(() => {
     const ua = navigator.userAgent.toLowerCase();
-    if (ua.includes("safari") && !ua.includes("chrome")) {
-      setIsSafari(true);
-      setShowModal(true); 
-    } else {
-      startWatchingLocation();
-    }
+    const safari = ua.includes("safari") && !ua.includes("chrome");
+    setIsSafari(safari);
 
+    if (!safari) {
+      startWatchingLocation();
+    } else {
+      setShowModal(true);
+    }
 
     return () => {
       if (watchId != null) navigator.geolocation.clearWatch(watchId);
