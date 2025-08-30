@@ -91,12 +91,10 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
         setAccuracy(accuracy);
 
         setShowBanner(false);
-
         startWatchingLocation();
       },
       (err) => {
         console.error("Konum hatası:", err);
-
         setShowBanner(true);
       },
       { enableHighAccuracy: true }
@@ -112,6 +110,25 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
   const handleGoToLocation = () => {
     if (!position) return;
     setRecenterTrigger((n) => n + 1);
+  };
+
+  const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+
+  const goToLocationButtonStyle = {
+    position: "absolute",
+    bottom: isMobile ? 120 : 30, 
+    right: 20,
+    padding: "14px",
+    background: "white",
+    border: "none",
+    borderRadius: "50%",
+    cursor: "pointer",
+    zIndex: 3000,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
+    touchAction: "manipulation",
   };
 
   return (
@@ -164,7 +181,7 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
 
         {position && (
           <>
-            <Marker position={position} icon={userLocationIcon}></Marker>
+            <Marker position={position} icon={userLocationIcon} />
             {accuracy != null && (
               <Circle
                 center={position}
@@ -192,25 +209,8 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
         ))}
       </MapContainer>
 
-      <button
-        onClick={handleGoToLocation}
-        style={{
-          position: "absolute",
-          bottom: 20,
-          right: 20,
-          padding: "12px",
-          background: "white",
-          border: "none",
-          borderRadius: "50%",
-          cursor: "pointer",
-          zIndex: 1000,
-          boxShadow: "0 6px 16px rgba(0,0,0,0.2)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <MdMyLocation size={24} color="#333" />
+      <button onClick={handleGoToLocation} style={goToLocationButtonStyle}>
+        <MdMyLocation size={28} color="#333" />
       </button>
     </div>
   );
