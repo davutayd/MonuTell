@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -48,23 +48,19 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
 
   const [isSafari, setIsSafari] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [watchId, setWatchId] = useState(null);
 
-  useEffect(() => {
-    const ua = navigator.userAgent.toLowerCase();
-    if (ua.includes("safari") && !ua.includes("chrome")) {
-      setIsSafari(true);
-      setShowModal(true);
-    } else {
-      startWatchingLocation();
-    }
-  }, []);
-
-  const startWatchingLocation = () => {
+  const startWatchingLocation = useCallback(() => {
     if (!navigator.geolocation) {
       alert("Tarayıcınız konum hizmetlerini desteklemiyor.");
       return;
     }
-    const watchId = navigator.geolocation.watchPosition(
+
+    if (watchId != null) {
+      navigator.geolocation.clearWatch(watchId);
+    }
+
+    const id = navigator.geolocation.watchPosition(
       (pos) => {
         const { latitude, longitude, accuracy } = pos.coords;
         setPosition([latitude, longitude]);
@@ -80,8 +76,24 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
         timeout: 20000,
       }
     );
-    return () => navigator.geolocation.clearWatch(watchId);
-  };
+
+    setWatchId(id);
+  }, [watchId]);
+
+  useEffect(() => {
+    const ua = navigator.userAgent.toLowerCase();
+    if (ua.includes("safari") && !ua.includes("chrome")) {
+      setIsSafari(true);
+      setShowModal(true); 
+    } else {
+      startWatchingLocation();
+    }
+
+
+    return () => {
+      if (watchId != null) navigator.geolocation.clearWatch(watchId);
+    };
+  }, [startWatchingLocation, watchId]);
 
   const handleAllowLocation = () => {
     setShowModal(false);
