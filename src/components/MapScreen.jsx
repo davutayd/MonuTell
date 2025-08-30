@@ -9,10 +9,9 @@ import {
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import { MdMyLocation } from "react-icons/md"; // 📌 Konuma git ikonu
+import { MdMyLocation } from "react-icons/md";
 import monuments from "../data/monuments";
 
-// Leaflet default marker ikon fix
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl:
@@ -23,7 +22,6 @@ L.Icon.Default.mergeOptions({
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
-// Kullanıcı ikon ayarı
 const userLocationIcon = new L.Icon({
   iconUrl: "https://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png",
   iconSize: [30, 30],
@@ -31,7 +29,6 @@ const userLocationIcon = new L.Icon({
   popupAnchor: [0, -30],
 });
 
-// Butona basıldığında konuma uç
 function RecenterOnDemand({ position, trigger }) {
   const map = useMap();
   useEffect(() => {
@@ -49,12 +46,24 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
   const [lastUpdate, setLastUpdate] = useState(null);
   const [recenterTrigger, setRecenterTrigger] = useState(0);
 
+  const [isSafari, setIsSafari] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
   useEffect(() => {
+    const ua = navigator.userAgent.toLowerCase();
+    if (ua.includes("safari") && !ua.includes("chrome")) {
+      setIsSafari(true);
+      setShowModal(true);
+    } else {
+      startWatchingLocation();
+    }
+  }, []);
+
+  const startWatchingLocation = () => {
     if (!navigator.geolocation) {
       alert("Tarayıcınız konum hizmetlerini desteklemiyor.");
       return;
     }
-
     const watchId = navigator.geolocation.watchPosition(
       (pos) => {
         const { latitude, longitude, accuracy } = pos.coords;
@@ -71,9 +80,13 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
         timeout: 20000,
       }
     );
-
     return () => navigator.geolocation.clearWatch(watchId);
-  }, []);
+  };
+
+  const handleAllowLocation = () => {
+    setShowModal(false);
+    startWatchingLocation();
+  };
 
   const handleGoToLocation = () => {
     if (!position) return;
@@ -82,6 +95,55 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
 
   return (
     <div style={{ width: "100%", height: "100vh", position: "relative" }}>
+      {showModal && (
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: "rgba(0,0,0,0.5)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 2000,
+          }}
+        >
+          <div
+            style={{
+              background: "white",
+              padding: "20px",
+              borderRadius: "12px",
+              textAlign: "center",
+              width: "80%",
+              maxWidth: "300px",
+              boxShadow: "0 6px 16px rgba(0,0,0,0.3)",
+            }}
+          >
+            <h3>📍 Konum İzni</h3>
+            <p>
+              Konumunu gösterebilmem için izin vermelisin. "Konumumu Göster"
+              butonuna bas.
+            </p>
+            <button
+              onClick={handleAllowLocation}
+              style={{
+                marginTop: "12px",
+                padding: "10px 20px",
+                background: "#2a7",
+                color: "white",
+                border: "none",
+                borderRadius: "8px",
+                cursor: "pointer",
+              }}
+            >
+              Konumumu Göster
+            </button>
+          </div>
+        </div>
+      )}
+
       <MapContainer
         key={position ? position.join(",") : "default"}
         center={position || defaultCenter}
@@ -133,7 +195,6 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
         ))}
       </MapContainer>
 
-      {/* Konuma git butonu (ikonlu) */}
       <button
         onClick={handleGoToLocation}
         style={{
