@@ -53,20 +53,14 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
     !navigator.userAgent.toLowerCase().includes("chrome");
 
   const startWatchingLocation = useCallback(() => {
-    if (!navigator.geolocation) {
-      alert("Tarayıcınız konum hizmetlerini desteklemiyor.");
-      return;
-    }
+    if (!navigator.geolocation) return;
 
-    if (watchId != null) {
-      navigator.geolocation.clearWatch(watchId);
-    }
+    if (watchId != null) navigator.geolocation.clearWatch(watchId);
 
     const id = navigator.geolocation.watchPosition(
-      (pos) => {
-        const { latitude, longitude, accuracy } = pos.coords;
-        setPosition([latitude, longitude]);
-        setAccuracy(accuracy);
+      (p) => {
+        setPosition([p.coords.latitude, p.coords.longitude]);
+        setAccuracy(p.coords.accuracy);
       },
       (err) => console.error("Konum hatası:", err),
       { enableHighAccuracy: true, maximumAge: 0, timeout: 20000 }
@@ -88,6 +82,8 @@ const MapScreen = ({ language = "tr", onSelectMonument = () => {} }) => {
   }, [isSafari, startWatchingLocation, watchId]);
 
   const handleAllowLocation = () => {
+    if (!navigator.geolocation) return;
+
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         const { latitude, longitude, accuracy } = pos.coords;
