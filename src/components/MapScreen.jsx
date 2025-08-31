@@ -119,22 +119,21 @@ const MapScreen = ({
     setRecenterTrigger((n) => n + 1);
   };
 
-  // Buton stilini panel durumuna göre ayarla
   const panelHeight = isMobile
     ? isPanelOpen
       ? window.innerHeight * 0.6
       : 0
     : 0;
   const goToLocationButtonStyle = {
-    position: "absolute",
-    bottom: isMobile ? panelHeight + 20 : 30, // panel üstüne 20px boşluk bırak
+    position: "fixed",
+    bottom: isMobile ? panelHeight + 20 : 30,
     right: 20,
     padding: "14px",
     background: "white",
     border: "none",
     borderRadius: "50%",
     cursor: "pointer",
-    zIndex: 4000,
+    zIndex: 9999,
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
