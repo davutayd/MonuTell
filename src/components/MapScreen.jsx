@@ -119,11 +119,13 @@ const MapScreen = ({
     setRecenterTrigger((n) => n + 1);
   };
 
-  const panelHeight = isMobile
-    ? isPanelOpen
-      ? window.innerHeight * 0.6
-      : 0
-    : 0;
+  const viewportHeight =
+    typeof window !== "undefined" && window.visualViewport
+      ? window.visualViewport.height
+      : window.innerHeight;
+
+  const panelHeight = isMobile ? (isPanelOpen ? viewportHeight * 0.6 : 0) : 0;
+
   const goToLocationButtonStyle = {
     position: "fixed",
     bottom: isMobile ? panelHeight + 10 : 20,
