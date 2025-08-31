@@ -178,7 +178,6 @@ const MapScreen = ({
       )}
 
       <MapContainer
-        key={position ? position.join(",") : "default"}
         center={position || defaultCenter}
         zoom={12}
         style={{ height: "100%", width: "100%" }}
