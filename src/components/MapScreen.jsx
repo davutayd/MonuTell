@@ -126,8 +126,8 @@ const MapScreen = ({
     : 0;
   const goToLocationButtonStyle = {
     position: "fixed",
-    bottom: isMobile ? panelHeight + 20 : 30,
-    right: 20,
+    bottom: isMobile ? panelHeight + 10 : 20,
+    right: 10,
     padding: "14px",
     background: "white",
     border: "none",
