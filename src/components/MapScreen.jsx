@@ -29,8 +29,27 @@ const userLocationIcon = new L.Icon({
   popupAnchor: [0, -30],
 });
 
-function GoToMyLocationButton({ position, panelHeight, isMobile }) {
+function GoToMyLocationButton({ position, isMobile, isPanelOpen }) {
   const map = useMap();
+  const [panelHeight, setPanelHeight] = useState(0);
+
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const updateHeight = () => {
+      const vh = window.visualViewport
+        ? window.visualViewport.height
+        : window.innerHeight;
+      setPanelHeight(isPanelOpen ? vh * 0.6 : 0);
+    };
+
+    updateHeight();
+    window.visualViewport?.addEventListener("resize", updateHeight);
+
+    return () => {
+      window.visualViewport?.removeEventListener("resize", updateHeight);
+    };
+  }, [isPanelOpen, isMobile]);
 
   const handleClick = () => {
     if (position) {
@@ -41,7 +60,7 @@ function GoToMyLocationButton({ position, panelHeight, isMobile }) {
   const style = {
     position: "fixed",
     bottom: isMobile
-      ? `calc(${panelHeight}px + env(safe-area-inset-bottom) + 10px)`
+      ? `calc(${panelHeight}px + env(safe-area-inset-bottom, 0px) + 10px)`
       : 20,
     right: 10,
     padding: "14px",
@@ -54,7 +73,6 @@ function GoToMyLocationButton({ position, panelHeight, isMobile }) {
     alignItems: "center",
     justifyContent: "center",
     boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
-    paddingBottom: "env(safe-area-inset-bottom)", 
   };
 
   return (
