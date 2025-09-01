@@ -54,6 +54,7 @@ function GoToMyLocationButton({ position, panelHeight, isMobile }) {
     alignItems: "center",
     justifyContent: "center",
     boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
+    paddingBottom: "env(safe-area-inset-bottom)", 
   };
 
   return (
