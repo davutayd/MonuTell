@@ -29,12 +29,7 @@ const userLocationIcon = new L.Icon({
   popupAnchor: [0, -30],
 });
 
-function GoToMyLocationButton({
-  position,
-  isMobile,
-  isPanelOpen,
-  panelHeight,
-}) {
+function GoToMyLocationButton({ position, panelHeight, isMobile }) {
   const map = useMap();
 
   const handleClick = () => {
@@ -45,12 +40,8 @@ function GoToMyLocationButton({
 
   const style = {
     position: "fixed",
+    bottom: isMobile ? panelHeight + 10 : 20,
     right: 10,
-    bottom: isMobile
-      ? isPanelOpen
-        ? `calc(${panelHeight}px + env(safe-area-inset-bottom, 10px))`
-        : `calc(20px + env(safe-area-inset-bottom, 0px))`
-      : 20,
     padding: "14px",
     background: "white",
     border: "none",
