@@ -89,7 +89,7 @@ const MapScreen = ({
         setAccuracy(p.coords.accuracy);
       },
       (err) => console.error("Konum hatası:", err),
-      { enableHighAccuracy: true, maximumAge: 10000, timeout: 20000 } 
+      { enableHighAccuracy: true, maximumAge: 10000, timeout: 20000 }
     );
 
     setWatchId(id);
@@ -105,7 +105,7 @@ const MapScreen = ({
     return () => {
       if (watchId != null) navigator.geolocation.clearWatch(watchId);
     };
-  }, [isSafari, startWatchingLocation]); 
+  }, [isSafari, startWatchingLocation]);
 
   const handleAllowLocation = () => {
     if (!navigator.geolocation) return;
@@ -113,17 +113,24 @@ const MapScreen = ({
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         const { latitude, longitude, accuracy } = pos.coords;
-        setPosition([latitude, longitude]);
+        const newPosition = [latitude, longitude];
+
+        setPosition(newPosition);
         setAccuracy(accuracy);
 
         setShowBanner(false);
+
+        const map =
+          document.querySelector(".leaflet-container")?._leaflet_map_instance;
+        if (map) map.flyTo(newPosition, 16, { duration: 1.2 });
+
         startWatchingLocation();
       },
       (err) => {
         console.error("Konum hatası:", err);
         setShowBanner(true);
       },
-      { enableHighAccuracy: true, timeout: 20000 } // 20 saniye
+      { enableHighAccuracy: true, timeout: 20000 }
     );
   };
 
