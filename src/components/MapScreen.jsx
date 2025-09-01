@@ -94,8 +94,11 @@ const MapScreen = ({
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         const { latitude, longitude, accuracy } = pos.coords;
-        setPosition([latitude, longitude]);
+        const newPosition = [latitude, longitude];
+        setPosition(newPosition);
         setAccuracy(accuracy);
+
+        setRecenterTrigger((n) => n + 1);
 
         setShowBanner(false);
         startWatchingLocation();
