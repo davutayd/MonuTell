@@ -1,12 +1,5 @@
-import React, { useEffect, useState, useCallback } from "react";
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-  Circle,
-  useMap,
-} from "react-leaflet";
+import React, { useEffect, useState, useCallback, useRef } from "react";
+import { MapContainer, TileLayer, Marker, Popup, Circle } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { MdMyLocation } from "react-icons/md";
@@ -29,12 +22,10 @@ const userLocationIcon = new L.Icon({
   popupAnchor: [0, -30],
 });
 
-function GoToMyLocationButton({ position, panelHeight, isMobile }) {
-  const map = useMap();
-
+function GoToMyLocationButton({ position, panelHeight, isMobile, mapRef }) {
   const handleClick = () => {
-    if (position) {
-      map.flyTo(position, 16, { duration: 1.2 });
+    if (position && mapRef.current) {
+      mapRef.current.flyTo(position, 16, { duration: 1.2 });
     }
   };
 
@@ -72,6 +63,8 @@ const MapScreen = ({
   const [accuracy, setAccuracy] = useState(null);
   const [watchId, setWatchId] = useState(null);
   const [showBanner, setShowBanner] = useState(false);
+
+  const mapRef = useRef(null);
 
   const isSafari =
     typeof navigator !== "undefined" &&
@@ -113,8 +106,14 @@ const MapScreen = ({
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         const { latitude, longitude, accuracy } = pos.coords;
-        setPosition([latitude, longitude]);
+        const newPos = [latitude, longitude];
+        setPosition(newPos);
         setAccuracy(accuracy);
+
+        // 📍 Safari için haritayı konuma uçur
+        if (mapRef.current) {
+          mapRef.current.flyTo(newPos, 16, { duration: 1.2 });
+        }
 
         setShowBanner(false);
         startWatchingLocation();
@@ -123,7 +122,7 @@ const MapScreen = ({
         console.error("Konum hatası:", err);
         setShowBanner(true);
       },
-      { enableHighAccuracy: true }
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 1000 }
     );
   };
 
@@ -179,6 +178,9 @@ const MapScreen = ({
         center={position || defaultCenter}
         zoom={12}
         style={{ height: "100%", width: "100%" }}
+        whenCreated={(mapInstance) => {
+          mapRef.current = mapInstance;
+        }}
       >
         <TileLayer
           attribution='&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -218,6 +220,7 @@ const MapScreen = ({
           position={position}
           panelHeight={panelHeight}
           isMobile={isMobile}
+          mapRef={mapRef}
         />
       </MapContainer>
     </div>
