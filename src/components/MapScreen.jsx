@@ -40,7 +40,9 @@ function GoToMyLocationButton({ position, panelHeight, isMobile }) {
 
   const style = {
     position: "fixed",
-    bottom: isMobile ? panelHeight + 10 : 20,
+    bottom: isMobile
+      ? `calc(${panelHeight}px + env(safe-area-inset-bottom) + 10px)`
+      : 20,
     right: 10,
     padding: "14px",
     background: "white",
