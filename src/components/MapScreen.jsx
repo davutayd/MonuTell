@@ -12,7 +12,6 @@ import L from "leaflet";
 import { MdMyLocation } from "react-icons/md";
 import monuments from "../data/monuments";
 
-// Leaflet marker fix
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl:
@@ -23,7 +22,6 @@ L.Icon.Default.mergeOptions({
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
-// Kullanıcı konumu ikonu
 const userLocationIcon = new L.Icon({
   iconUrl: "https://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png",
   iconSize: [30, 30],
@@ -31,14 +29,36 @@ const userLocationIcon = new L.Icon({
   popupAnchor: [0, -30],
 });
 
-function RecenterOnDemand({ position, trigger }) {
+function GoToMyLocationButton({ position, panelHeight, isMobile }) {
   const map = useMap();
-  useEffect(() => {
-    if (position && trigger > 0) {
+
+  const handleClick = () => {
+    if (position) {
       map.flyTo(position, 16, { duration: 1.2 });
     }
-  }, [trigger, position, map]);
-  return null;
+  };
+
+  const style = {
+    position: "fixed",
+    bottom: isMobile ? panelHeight + 10 : 20,
+    right: 10,
+    padding: "14px",
+    background: "white",
+    border: "none",
+    borderRadius: "50%",
+    cursor: "pointer",
+    zIndex: 9999,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
+  };
+
+  return (
+    <button onClick={handleClick} style={style}>
+      <MdMyLocation size={28} color="#333" />
+    </button>
+  );
 }
 
 const MapScreen = ({
@@ -50,7 +70,6 @@ const MapScreen = ({
   const defaultCenter = [47.4979, 19.0402];
   const [position, setPosition] = useState(null);
   const [accuracy, setAccuracy] = useState(null);
-  const [recenterTrigger, setRecenterTrigger] = useState(0);
   const [watchId, setWatchId] = useState(null);
   const [showBanner, setShowBanner] = useState(false);
 
@@ -70,7 +89,7 @@ const MapScreen = ({
         setAccuracy(p.coords.accuracy);
       },
       (err) => console.error("Konum hatası:", err),
-      { enableHighAccuracy: true, maximumAge: 0, timeout: 20000 }
+      { enableHighAccuracy: true, maximumAge: 10000, timeout: 5000 }
     );
 
     setWatchId(id);
@@ -94,11 +113,8 @@ const MapScreen = ({
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         const { latitude, longitude, accuracy } = pos.coords;
-        const newPosition = [latitude, longitude];
-        setPosition(newPosition);
+        setPosition([latitude, longitude]);
         setAccuracy(accuracy);
-
-        setRecenterTrigger((n) => n + 1);
 
         setShowBanner(false);
         startWatchingLocation();
@@ -117,33 +133,12 @@ const MapScreen = ({
     }
   }, [position]);
 
-  const handleGoToLocation = () => {
-    if (!position) return;
-    setRecenterTrigger((n) => n + 1);
-  };
-
   const viewportHeight =
     typeof window !== "undefined" && window.visualViewport
       ? window.visualViewport.height
       : window.innerHeight;
 
   const panelHeight = isMobile ? (isPanelOpen ? viewportHeight * 0.6 : 0) : 0;
-
-  const goToLocationButtonStyle = {
-    position: "fixed",
-    bottom: isMobile ? panelHeight + 10 : 20,
-    right: 10,
-    padding: "14px",
-    background: "white",
-    border: "none",
-    borderRadius: "50%",
-    cursor: "pointer",
-    zIndex: 9999,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
-  };
 
   return (
     <div style={{ width: "100%", height: "100vh", position: "relative" }}>
@@ -190,8 +185,6 @@ const MapScreen = ({
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        <RecenterOnDemand position={position} trigger={recenterTrigger} />
-
         {position && (
           <>
             <Marker position={position} icon={userLocationIcon} />
@@ -220,11 +213,13 @@ const MapScreen = ({
             </Popup>
           </Marker>
         ))}
-      </MapContainer>
 
-      <button onClick={handleGoToLocation} style={goToLocationButtonStyle}>
-        <MdMyLocation size={28} color="#333" />
-      </button>
+        <GoToMyLocationButton
+          position={position}
+          panelHeight={panelHeight}
+          isMobile={isMobile}
+        />
+      </MapContainer>
     </div>
   );
 };
