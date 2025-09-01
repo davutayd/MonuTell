@@ -29,7 +29,6 @@ const userLocationIcon = new L.Icon({
   popupAnchor: [0, -30],
 });
 
-
 function GoToMyLocationButton({ position, panelHeight, isMobile }) {
   const map = useMap();
 
@@ -61,7 +60,6 @@ function GoToMyLocationButton({ position, panelHeight, isMobile }) {
     </button>
   );
 }
-
 
 function AllowLocationBanner({ onAllow }) {
   return (
@@ -98,6 +96,18 @@ function AllowLocationBanner({ onAllow }) {
   );
 }
 
+function LocationHandler({ position, shouldFly }) {
+  const map = useMap();
+
+  useEffect(() => {
+    if (position && shouldFly) {
+      map.flyTo(position, 16, { duration: 1.2 });
+    }
+  }, [position, shouldFly, map]);
+
+  return null;
+}
+
 const MapScreen = ({
   language = "tr",
   onSelectMonument = () => {},
@@ -108,12 +118,12 @@ const MapScreen = ({
   const [position, setPosition] = useState(null);
   const [accuracy, setAccuracy] = useState(null);
   const [showBanner, setShowBanner] = useState(false);
+  const [shouldFly, setShouldFly] = useState(false);
 
   const isSafari =
     typeof navigator !== "undefined" &&
     navigator.userAgent.toLowerCase().includes("safari") &&
     !navigator.userAgent.toLowerCase().includes("chrome");
-
 
   const handleAllowLocation = () => {
     if (!navigator.geolocation) return;
@@ -127,6 +137,7 @@ const MapScreen = ({
         setAccuracy(accuracy);
 
         setShowBanner(false);
+        setShouldFly(true);
       },
       (err) => {
         console.error("Konum hatası:", err);
@@ -189,7 +200,8 @@ const MapScreen = ({
           </>
         )}
 
-  
+        <LocationHandler position={position} shouldFly={shouldFly} />
+
         {monuments.map((monument) => (
           <Marker
             key={monument.id}
