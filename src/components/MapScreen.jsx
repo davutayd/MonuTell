@@ -96,14 +96,15 @@ function AllowLocationBanner({ onAllow }) {
   );
 }
 
-function LocationHandler({ position, shouldFly }) {
+function LocationHandler({ position, shouldFly, setShouldFly }) {
   const map = useMap();
 
   useEffect(() => {
     if (position && shouldFly) {
       map.flyTo(position, 16, { duration: 1.2 });
+      setShouldFly(false); // ✅ bir kere uçunca tekrar uçmaz
     }
-  }, [position, shouldFly, map]);
+  }, [position, shouldFly, map, setShouldFly]);
 
   return null;
 }
@@ -137,7 +138,7 @@ const MapScreen = ({
         setAccuracy(accuracy);
 
         setShowBanner(false);
-        setShouldFly(true);
+        setShouldFly(true); // ✅ ilk odaklama için
       },
       (err) => {
         console.error("Konum hatası:", err);
@@ -153,6 +154,7 @@ const MapScreen = ({
         (pos) => {
           setPosition([pos.coords.latitude, pos.coords.longitude]);
           setAccuracy(pos.coords.accuracy);
+          setShouldFly(true); // ✅ sayfa açıldığında bir kez odakla
         },
         () => setShowBanner(true),
         { enableHighAccuracy: true, timeout: 20000 }
@@ -200,7 +202,11 @@ const MapScreen = ({
           </>
         )}
 
-        <LocationHandler position={position} shouldFly={shouldFly} />
+        <LocationHandler
+          position={position}
+          shouldFly={shouldFly}
+          setShouldFly={setShouldFly}
+        />
 
         {monuments.map((monument) => (
           <Marker
