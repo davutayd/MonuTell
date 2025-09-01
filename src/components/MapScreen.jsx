@@ -1,5 +1,12 @@
-import React, { useEffect, useState, useCallback, useRef } from "react";
-import { MapContainer, TileLayer, Marker, Popup, Circle } from "react-leaflet";
+import React, { useEffect, useState, useCallback } from "react";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  Circle,
+  useMap,
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { MdMyLocation } from "react-icons/md";
@@ -22,10 +29,12 @@ const userLocationIcon = new L.Icon({
   popupAnchor: [0, -30],
 });
 
-function GoToMyLocationButton({ position, panelHeight, isMobile, mapRef }) {
+function GoToMyLocationButton({ position, panelHeight, isMobile }) {
+  const map = useMap();
+
   const handleClick = () => {
-    if (position && mapRef.current) {
-      mapRef.current.flyTo(position, 16, { duration: 1.2 });
+    if (position) {
+      map.flyTo(position, 16, { duration: 1.2 });
     }
   };
 
@@ -64,8 +73,6 @@ const MapScreen = ({
   const [watchId, setWatchId] = useState(null);
   const [showBanner, setShowBanner] = useState(false);
 
-  const mapRef = useRef(null);
-
   const isSafari =
     typeof navigator !== "undefined" &&
     navigator.userAgent.toLowerCase().includes("safari") &&
@@ -82,7 +89,7 @@ const MapScreen = ({
         setAccuracy(p.coords.accuracy);
       },
       (err) => console.error("Konum hatası:", err),
-      { enableHighAccuracy: true, maximumAge: 10000, timeout: 5000 }
+      { enableHighAccuracy: true, maximumAge: 10000, timeout: 20000 } 
     );
 
     setWatchId(id);
@@ -98,7 +105,7 @@ const MapScreen = ({
     return () => {
       if (watchId != null) navigator.geolocation.clearWatch(watchId);
     };
-  }, [isSafari, startWatchingLocation, watchId]);
+  }, [isSafari, startWatchingLocation]); 
 
   const handleAllowLocation = () => {
     if (!navigator.geolocation) return;
@@ -106,14 +113,8 @@ const MapScreen = ({
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         const { latitude, longitude, accuracy } = pos.coords;
-        const newPos = [latitude, longitude];
-        setPosition(newPos);
+        setPosition([latitude, longitude]);
         setAccuracy(accuracy);
-
-        // 📍 Safari için haritayı konuma uçur
-        if (mapRef.current) {
-          mapRef.current.flyTo(newPos, 16, { duration: 1.2 });
-        }
 
         setShowBanner(false);
         startWatchingLocation();
@@ -122,15 +123,9 @@ const MapScreen = ({
         console.error("Konum hatası:", err);
         setShowBanner(true);
       },
-      { enableHighAccuracy: true, timeout: 10000, maximumAge: 1000 }
+      { enableHighAccuracy: true, timeout: 20000 } // 20 saniye
     );
   };
-
-  useEffect(() => {
-    if (position) {
-      setShowBanner(false);
-    }
-  }, [position]);
 
   const viewportHeight =
     typeof window !== "undefined" && window.visualViewport
@@ -178,9 +173,6 @@ const MapScreen = ({
         center={position || defaultCenter}
         zoom={12}
         style={{ height: "100%", width: "100%" }}
-        whenCreated={(mapInstance) => {
-          mapRef.current = mapInstance;
-        }}
       >
         <TileLayer
           attribution='&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -220,7 +212,6 @@ const MapScreen = ({
           position={position}
           panelHeight={panelHeight}
           isMobile={isMobile}
-          mapRef={mapRef}
         />
       </MapContainer>
     </div>
