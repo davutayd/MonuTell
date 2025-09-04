@@ -102,7 +102,7 @@ function LocationHandler({ position, shouldFly, setShouldFly }) {
   useEffect(() => {
     if (position && shouldFly) {
       map.flyTo(position, 16, { duration: 1.2 });
-      setShouldFly(false); // ✅ bir kere uçunca tekrar uçmaz
+      setShouldFly(false);
     }
   }, [position, shouldFly, map, setShouldFly]);
 
@@ -126,19 +126,31 @@ const MapScreen = ({
     navigator.userAgent.toLowerCase().includes("safari") &&
     !navigator.userAgent.toLowerCase().includes("chrome");
 
+  const startWatchingLocation = () => {
+    if (!navigator.geolocation) return;
+
+    navigator.geolocation.watchPosition(
+      (pos) => {
+        const newPosition = [pos.coords.latitude, pos.coords.longitude];
+        setPosition(newPosition);
+        setAccuracy(pos.coords.accuracy);
+      },
+      (err) => console.error("Konum hatası:", err),
+      { enableHighAccuracy: true, maximumAge: 10000, timeout: 20000 }
+    );
+  };
+
   const handleAllowLocation = () => {
     if (!navigator.geolocation) return;
 
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        const { latitude, longitude, accuracy } = pos.coords;
-        const newPosition = [latitude, longitude];
-
+        const newPosition = [pos.coords.latitude, pos.coords.longitude];
         setPosition(newPosition);
-        setAccuracy(accuracy);
-
+        setAccuracy(pos.coords.accuracy);
         setShowBanner(false);
-        setShouldFly(true); // ✅ ilk odaklama için
+        setShouldFly(true);
+        startWatchingLocation(); 
       },
       (err) => {
         console.error("Konum hatası:", err);
@@ -154,7 +166,8 @@ const MapScreen = ({
         (pos) => {
           setPosition([pos.coords.latitude, pos.coords.longitude]);
           setAccuracy(pos.coords.accuracy);
-          setShouldFly(true); // ✅ sayfa açıldığında bir kez odakla
+          setShouldFly(true);
+          startWatchingLocation();
         },
         () => setShowBanner(true),
         { enableHighAccuracy: true, timeout: 20000 }
