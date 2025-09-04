@@ -12,7 +12,6 @@ import L from "leaflet";
 import { MdMyLocation } from "react-icons/md";
 import monuments from "../data/monuments";
 
-
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl:
@@ -29,7 +28,6 @@ const userLocationIcon = new L.Icon({
   iconAnchor: [15, 30],
   popupAnchor: [0, -30],
 });
-
 
 function GoToMyLocationButton({ position, panelHeight, isMobile }) {
   const map = useMap();
@@ -62,7 +60,6 @@ function GoToMyLocationButton({ position, panelHeight, isMobile }) {
     </button>
   );
 }
-
 
 function AllowLocationBanner({ onAllow }) {
   return (
@@ -101,7 +98,6 @@ function AllowLocationBanner({ onAllow }) {
 
 function UserPulse({ position }) {
   const [radius, setRadius] = useState(20);
-  const map = useMap();
 
   useEffect(() => {
     if (!position) return;
@@ -216,6 +212,8 @@ const MapScreen = ({
 
   const panelHeight = isMobile ? (isPanelOpen ? viewportHeight * 0.6 : 0) : 0;
 
+  const showMarker = accuracy != null && accuracy <= 100;
+
   return (
     <div style={{ width: "100%", height: "100vh", position: "relative" }}>
       {showBanner && <AllowLocationBanner onAllow={handleAllowLocation} />}
@@ -232,11 +230,15 @@ const MapScreen = ({
 
         {position && (
           <>
-            <Marker position={position} icon={userLocationIcon} />
-            {accuracy != null && (
+            {showMarker ? (
+              <>
+                <Marker position={position} icon={userLocationIcon} />
+                <UserPulse position={position} />
+              </>
+            ) : (
               <Circle
                 center={position}
-                radius={Math.min(accuracy || 2000, 2000)}
+                radius={Math.min(accuracy || 1000, 1000)}
                 pathOptions={{
                   color: "#2a7",
                   fillColor: "#2a7",
@@ -244,7 +246,6 @@ const MapScreen = ({
                 }}
               />
             )}
-            <UserPulse position={position} />
           </>
         )}
 
