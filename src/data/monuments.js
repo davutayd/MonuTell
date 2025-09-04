@@ -360,7 +360,7 @@ Today, the Ronald Reagan Statue stands in Budapest not only as a memorial to an 
   {
     id: "17",
     name_tr: "Balta",
-    name_en: "Axe in Stone",
+    name_en: "Axe",
     latitude: 47.50503140617883,
     longitude: 19.04999312533616,
     story_tr: `Budapeşte’nin ikon heykelleri arasında fark edilmeyip gizli kalabilen, ama anlamı büyük bir eser var: The Axe adlı bu küçük bronz heykel, Szabadság tér’de Parlamento binası yakınlarında yer alıyor. Ukraynalı-Macar heykeltıraş Mihály Kolodko tarafından tasarlanan bu eser, 2017 yılı civarında yerleştirildi ve günümüzde bu meydanın anlamını genişleten sürpriz bir sanat parçası haline geldi 
@@ -505,13 +505,104 @@ Despite its placement near dramatic national monuments, the statue's simplicity 
   },
   {
     id: "25",
-    name_tr: "",
-    name_en: "",
-    latitude: 47.47759250179005,
-    longitude: 19.047755431886333,
-    story_tr: ``,
-    story_en: ``,
-    image: "",
+    name_tr: "Aziz Stefan Bazilikası",
+    name_en: "St. Stephen’s Basilica",
+    latitude: 47.500766998746485,
+    longitude: 19.054396398397174,
+    story_tr: `Budapeşte’nin kalbinde, şehrin siluetini göğe doğru yükselen iki kulesiyle süsleyen yapı: Aziz Stefan Bazilikası, yalnızca bir ibadet yeri değil; Macar halkının inancı, tarihî mirası ve mimari ihtişamının simgesidir. 1851 yılında inşasına başlanmış olan bazilika, tam 54 yıl süren bir çalışmanın ardından 1905 yılında tamamlanmıştır. Yapım süresince farklı mimarlar görev almış ve her biri, dönemin estetik anlayışını yapı üzerinde bırakmıştır 
+Bazilika, Neo-Rönesans tarzının en güzel örneklerinden biri olarak kabul edilir. Dış cephesindeki sütunlar, kabartmalar ve mozaikler, yalnızca bir dini yapıyı değil; aynı zamanda Macar halkının inanç ve sanat anlayışını yansıtır. İç mekânda ise 8 bin kişiyi ağırlayabilen genişlik, altın işlemeler, vitraylar ve Aziz Stefan’ın kutsal kalıntısını barındıran kutsal emanetler ziyaretçileri büyüler. Aziz Stefan’ın sağ eli, bazilikanın en kıymetli hazinesi olarak kabul edilir ve her yıl binlerce kişi tarafından ziyaret edilir
+Bazilika, sadece bir ibadet alanı değil; aynı zamanda Macaristan tarihinin izlerini taşır. 19. yüzyılın sonları ve 20. yüzyılın başında yaşanan sosyal ve politik değişimlere tanıklık etmiş, savaşlar ve restorasyonlarla bugünkü ihtişamına kavuşmuştur. Kubbesinden şehri izlemek, ziyaretçilere hem Budapeşte’nin panoramik güzelliğini hem de tarihî sürekliliğini sunar. Her adımda hissedilen bu tarih ve estetik, ziyaretçiye şu mesajı verir:
+“İnanç ve azimle yükselen her taş, bir milletin ruhunu taşır.”`,
+    story_en: `Rising prominently in the heart of Budapest, flanked by its twin towers, St. Stephen’s Basilica is more than a place of worship; it is a symbol of Hungarian faith, history, and architectural grandeur. Construction began in 1851 and continued for fifty-four years, finally completing in 1905. Over this period, multiple architects contributed, each leaving a mark of their era’s stylistic vision
+The basilica is considered a prime example of Neo-Renaissance architecture. Its exterior columns, reliefs, and mosaics reflect not only religious devotion but also the Hungarian appreciation for art and craftsmanship. Inside, the basilica can accommodate up to 8,000 people, showcasing gilded decorations, stained glass windows, and sacred relics, including the mummified right hand of St. Stephen, Hungary’s first king, which remains its most treasured relic and attracts thousands of visitors annually 
+Beyond its spiritual role, the basilica is a witness to Hungarian history. It has endured social and political changes of the late 19th and early 20th centuries, survived wars, and undergone restorations that shaped its current grandeur. Viewing the city from the basilica’s dome offers a panoramic glimpse of Budapest, blending the beauty of the present with echoes of the past. Every step inside conveys the enduring message:
+"Every stone raised with faith and perseverance carries the spirit of a nation."`,
+    image:
+      "https://www.interbustur.com/wp-content/uploads/2017/11/aziz-stefan-bazilikas%C4%B1.jpg",
+  },
+  {
+    id: "26",
+    name_tr: "Buda Kalesi",
+    name_en: "Buda Castle",
+    latitude: 47.49600986564456,
+    longitude: 19.03980123664667,
+    story_tr: `Budapeşte’nin tarihi siluetinde, Tuna Nehri’nin kıyısına hâkim bir tepe üzerinde yükselen Buda Kalesi, yalnızca bir yapı değil; Macar tarihinin, kültürünün ve kraliyet görkeminin yaşayan bir simgesidir. İlk kez 13. yüzyılda inşa edilen kale, o dönemde Macar krallarının ikametgahı ve yönetim merkezi olarak tasarlanmıştı. Ancak yıllar boyunca Osmanlı işgalleri, Habsburg yönetimleri, savaşlar ve yeniden inşa süreçleri kaleyi sürekli olarak şekillendirdi. Her taşında geçmişin izlerini taşıyan kale, Macar halkının direncini, hayal gücünü ve ulusal kimliğini simgeler
+Buda Kalesi, Gotik, Barok ve Rönesans etkilerini bir araya getiren mimarisiyle göz alıcı bir görünüme sahiptir. Kale kompleksinde kraliyet sarayları, kuleler, geniş avlular ve güçlü surlar bulunur. Her bir yapı, sadece bir savunma amacı taşımakla kalmaz; aynı zamanda kraliyet gücünün ve estetik anlayışının bir ifadesidir. Tarih boyunca buradan yönetilen devlet, Macar halkının zaferlerini, savaşlarını ve sosyal değişimlerini gözlemlemiş, kalenin her köşesi bu süreçlerin sessiz tanığı olmuştur.
+Zaman içinde kale, sadece bir kraliyet merkezi değil; kültürel ve sanatsal bir mekân haline gelmiştir. İçinde barındırdığı Macar Ulusal Galerisi, Budapeşte Tarih Müzesi ve geçici sergilerle, ziyaretçilere tarihî bir yolculuk sunar. Ziyaretçiler, kaleye adım attıkları anda hem 13. yüzyıldan günümüze uzanan bir tarih zincirine tanık olur hem de Tuna Nehri’nin ve Budapeşte’nin muhteşem panoramik manzarasını seyreder. Kale, taş ve duvarlarıyla bir zaman kapsülü gibi geçmişi bugüne taşır.
+Buda Kalesi’nin çevresindeki avlular, yürüyüş yolları ve merdivenler, ziyaretçilere şehrin tarihine dokunma hissi verir. Her taş, savaşların ve barışın, zaferlerin ve kayıpların bir hatırlatıcısıdır. Özellikle gün batımında kalenin silueti, nehrin üzerinde altın bir ışıkla yansır ve Budapeşte’nin tarihî ve estetik ruhunu gözler önüne serer. Buda Kalesi, ziyaretçilerine sadece bir tarih dersi sunmakla kalmaz; aynı zamanda bir ulusun geçmişiyle bağ kurmasını sağlar.
+Her adımda hissedilen bu tarih, kale boyunca dolaşan insanlara şu mesajı verir: “Geçmişini onurlandıran bir ulus, geleceğini güvenle inşa eder.” Buda Kalesi, sadece taş ve tuğladan ibaret bir yapı değildir; binlerce yıllık hikâyeyi sessizce anlatan, Macar halkının ruhunu yansıtan bir simgedir.`,
+    story_en: `Rising majestically above Budapest, overlooking the Danube River, Buda Castle is more than just a structure; it is a living symbol of Hungarian history, culture, and royal grandeur. Originally built in the 13th century, the castle served as the residence and administrative center for Hungarian kings. Over the centuries, it has been shaped by Ottoman occupations, Habsburg rule, wars, and successive reconstructions. Every stone of the castle carries the traces of the past, reflecting the resilience, creativity, and identity of the Hungarian people 
+The castle’s architecture is a stunning blend of Gothic, Baroque, and Renaissance styles. The complex includes royal palaces, towers, expansive courtyards, and fortified walls. Each building not only served a defensive purpose but also symbolized royal power and aesthetic vision. Throughout history, the castle has witnessed the triumphs, struggles, and social changes of the Hungarian nation, standing as a silent observer to centuries of history.
+Over time, Buda Castle evolved into a cultural and artistic hub. Housing the Hungarian National Gallery, the Budapest History Museum, and temporary exhibitions, it offers visitors a journey through time. Stepping into the castle, visitors witness a historical continuum stretching from the 13th century to the present, while enjoying breathtaking panoramic views of the Danube and Budapest. The castle acts as a time capsule, bringing the past to life for all who enter.
+The surrounding courtyards, walkways, and stairways allow visitors to physically connect with the city’s history. Every stone serves as a reminder of wars and peace, victories and losses. At sunset, the castle’s silhouette glows golden over the river, revealing Budapest’s historical and aesthetic essence. Buda Castle not only offers a history lesson but also connects a nation to its past.
+With every step, the castle conveys this enduring message: "A nation that honors its past builds its future with confidence." Buda Castle is more than stone and brick; it is a living testament to centuries of history and the spirit of the Hungarian people.`,
+    image: "https://yoldaolmak.com/wp-content/uploads/2022/10/Buda-kalesi.jpg",
+  },
+  {
+    id: "27",
+    name_tr: "Sándor Károlyi de Nagykároly Heykeli",
+    name_en: "Statue of Sándor Károlyi de Nagykároly",
+    latitude: 47.515320776559946,
+    longitude: 19.08204838540402,
+    story_tr: `Budapeşte’nin büyüleyici Vajdahunyad Kalesi avlusunda, Sándor Károlyi de Nagykároly’nin bronz heykeli, Macar tarihinin önemli bir figürünü onurlandırıyor. 3 Ekim 1928’de açılışı yapılan bu heykel, ünlü heykeltıraş György Móna tarafından tasarlanmış ve geleneksel klasik tarzda işlenmiştir. 4 metre yüksekliğindeki heykel, Károlyi ailesinin soylu armasıyla süslenmiş ve zeytin dallarıyla çevrelenmiştir.
+Sándor Károlyi de Nagykároly, 1669 doğumlu Macar aristokratı ve devlet adamıdır. Genç yaşta, dönemin en önemli askeri liderlerinden biri haline gelmiştir. 1703’teki Rákóczi’nin Bağımsızlık Savaşı sırasında, Macar halkının Habsburglara karşı mücadelesinde önemli bir rol oynamıştır.
+Savaşın sona ermesinin ardından, 1711’deki Szatmár Antlaşması’nın müzakerelerine katılarak, Macar soylularının özerkliklerini garanti altına almış ve Macaristan’ın Habsburg İmparatorluğu ile ilişkilerini yeniden şekillendirmiştir.
+Heykelin bulunduğu Vajdahunyad Kalesi, Macaristan’ın tarihini yansıtan çeşitli yapıları bir araya getirir. Burada, Károlyi’nin heykeli, sadece bir soylunun değil, aynı zamanda Macar halkının bağımsızlık mücadelesinin simgesidir. Ziyaretçiler, bu heykelin önünde durarak, Macar tarihinin derinliklerine bir yolculuğa çıkarlar.`,
+    story_en: `In the enchanting courtyard of Budapest’s Vajdahunyad Castle, the bronze statue of Sándor Károlyi de Nagykároly honors a pivotal figure in Hungarian history. Unveiled on October 3, 1928, this statue was crafted by renowned sculptor György Móna in a traditional classical style. Standing at 4 meters tall, it is adorned with the noble coat of arms of the Károlyi family and surrounded by garlands of oak leaves.
+Born in 1669, Sándor Károlyi de Nagykároly was a Hungarian aristocrat and statesman who rose to prominence at a young age. He became one of the leading military commanders during the War of Independence led by Francis II Rákóczi in 1703, playing a crucial role in the Hungarian resistance against the Habsburgs.
+Following the war, he participated in negotiating the Treaty of Szatmár in 1711, which secured autonomy for Hungarian nobles and redefined Hungary’s relationship with the Habsburg Empire.
+The Vajdahunyad Castle, where the statue is located, houses various architectural styles that reflect Hungary’s rich history. Here, Károlyi’s statue stands not only as a tribute to a nobleman but also as a symbol of the Hungarian people’s struggle for independence. Visitors pausing before this statue embark on a journey through the depths of Hungarian history.`,
+    image:
+      "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noi_CRNejIVZcjUATUpy0awSIR7G_Pdw83p3gIklNb4lvEq_1a0XqCmHZ65DlpumO0Dq-1-wrpX44ff51Z9MNkEXl-OX4LmrbVBDcg0H1HrSY2PCMyLsXnSAs_k-DOfY89iOFwJ=w408-h306-k-no",
+  },
+  {
+    id: "28",
+    name_tr: "Mini Dracula Heykeli",
+    name_en: "Mini Dracula Statue",
+    latitude: 47.51469454206161,
+    longitude: 19.08244766137861,
+    story_tr: `Budapeşte'nin Városliget (Şehir Parkı) bölgesinde, Vajdahunyad Kalesi'nin hemen yanında, gizemli bir havaya sahip küçük bir heykel bulunur. Bu minyatür heykel, ünlü Macar asıllı Amerikalı aktör Béla Lugosi’yi, 1931 yapımı klasik korku filmi Dracula’daki unutulmaz performansıyla hatırlatır. Ancak heykelin anlamı sadece sinemaya dair değildir; bu figür, Bram Stoker’in yarattığı efsanevi Kont Dracula karakterinin ardındaki tarihî ve kültürel hikâyeyi de taşır.
+Dracula, 15. yüzyılın sonlarında yaşamış Vlad Tepes, nam-ı diğer Kazıklı Voyvoda’nın efsanelerinden esinlenilmiştir. Vlad Tepes, Osmanlı işgallerine karşı gösterdiği sert direnişi ve adaletiyle tanınır; halk arasında hem korkulan hem de saygı duyulan bir figür olmuştur. Bram Stoker, bu tarihî kişiliği alıp Avrupa folkloruna özgü vampir mitleriyle birleştirerek modern korku edebiyatının en ikonik karakterlerinden birini yaratmıştır.
+Kolodko’nun yaptığı bu mini heykel, ziyaretçilerine yalnızca bir aktörü değil, bir dönemin ruhunu ve Macar tarihinin gizemli bir yönünü de gösterir. Vajdahunyad Kalesi’nin tarihi duvarları ve çevredeki doğa, heykelin mistik atmosferini tamamlar. Küçük bir figür olmasına rağmen, Dracula Mini Heykeli hem görsel bir sürpriz sunar hem de ziyaretçiyi Macar folklorunun ve sinema tarihinin büyüleyici dünyasına taşır.`,
+    story_en: `In Budapest's  City Park, right beside the enchanting Vajdahunyad Castle, a small yet captivating statue awaits discovery. This miniature sculpture commemorates the Hungarian-American actor Béla Lugosi for his iconic portrayal in the 1931 classic horror film Dracula. But its significance goes beyond cinema; it represents the historical and cultural roots behind the legendary Count Dracula.
+Dracula was inspired by the real-life 15th-century prince Vlad Tepes, also known as Vlad the Impaler. Vlad Tepes was both feared and respected for his firm resistance against Ottoman invasions and his strict sense of justice. Bram Stoker transformed this historical figure into a timeless literary icon, blending Eastern European vampire folklore with Gothic horror, giving birth to one of the most famous characters in modern literature.
+Kolodko’s miniature statue conveys not only the legacy of an actor but also the mysterious spirit of a historical era. Set against the historic walls of Vajdahunyad Castle and the surrounding park, the statue’s magical atmosphere is undeniable. Small in size yet rich in narrative, the Dracula Mini Statue offers visitors a glimpse into both Hungarian folklore and the cinematic history that immortalized this legendary vampire.`,
+    image:
+      "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqPH__04BHvJolmuIJTs5ABPXkHWNjGPnGalF1CmKK7HJSHCq87WaNfu8xqLmreS52_7Ngf6Wcak_JSD1bDmGm5EKvB49YIDhySTtCTyX7Rs4PmXOYXpYBPI13FCimIf5iiPHqY=w408-h305-k-no",
+  },
+  {
+    id: "29",
+    name_tr: "Vajdahunyad Kalesi",
+    name_en: "Vajdahunyad Castle",
+    latitude: 47.51489974817524,
+    longitude: 19.083050510280167,
+    story_tr: `Budapeşte’nin kalbinde, şehrin yeşil akciğeri Şehir Parkı içinde yer alan Vajdahunyad Kalesi, tarihî bir yolculuğa davet eden görkemli bir yapıdır. Göz alıcı kuleleri, taş duvarları ve detaylı oymalarıyla, ziyaretçiyi adeta yüzyıllar öncesine taşır. Bu kale, yalnızca bir mimari eser değil; Macaristan’ın farklı dönemlerinden esinlenen, bir ulusun tarihine saygı duruşu niteliğinde bir anıttır.
+Kalenin inşası 1896 yılında, Macaristan’ın bininci kuruluş yılı şerefine başlamıştır. O dönemde mimar Ignác Alpár, ülkenin farklı bölgelerinden ve tarihî dönemlerinden esinlenerek kale tasarımını oluşturmuştur. Romanesk, Gotik, Barok ve Rönesans etkilerini bir araya getiren kale, adeta Macaristan’ın mimari çeşitliliğinin bir müzesidir. Her bir kule, her bir cephe, ülkenin farklı bir tarihî hikâyesini ve kültürel mirasını anlatır.
+Vajdahunyad Kalesi’nin merkez avlusu, geçmişle bugünü birleştiren bir sahne gibidir. Ziyaretçiler burada sadece fotoğraf çekmekle kalmaz; taşların, kulelerin ve heykellerin anlattığı tarihî öyküye tanık olur. Kale, bir zamanlar Transilvanya’daki Hunyad Kalesi’nden esinlenerek yapılmış olsa da, Budapeşte’ye taşınan bu versiyonu, şehirdeki kültürel ve sanatsal yaşamın da merkezi hâline gelmiştir.
+Bugün kale, özellikle yaz aylarında düzenlenen festivaller, konserler ve sergilerle Budapeşte’nin kültürel nabzını tutar. Her adımda ziyaretçi, taşların arasındaki gizli detayları keşfeder, kulelerden yükselen manzaraya hayran kalır ve Macar tarihinin farklı dönemlerine dair sessiz bir ders alır. Vajdahunyad Kalesi, sadece bir yapı değil; geçmişin, sanatın ve kültürün birleştiği bir semboldür. Her taşında, Macar halkının yaratıcı ruhu ve tarihî hafızası yaşar.`,
+    story_en: `In the heart of Budapest, within the city’s green lung, City Park, stands the magnificent Vajdahunyad Castle, inviting visitors on a journey through history. Its striking towers, stone walls, and intricate carvings transport guests centuries back in time. The castle is not merely an architectural marvel; it is a tribute to Hungary’s rich history, inspired by different eras and regions of the nation.
+Construction of the castle began in 1896, in celebration of Hungary’s thousandth anniversary. Architect Ignác Alpár designed it drawing inspiration from historical buildings across the country. Combining Romanesque, Gothic, Baroque, and Renaissance styles, the castle serves as a living museum of Hungarian architectural diversity. Each tower and facade tells a story of the country’s past and cultural heritage.
+The central courtyard of Vajdahunyad Castle acts as a stage where past and present converge. Visitors do more than take photographs—they witness the historical narratives told by the stones, towers, and statues. Although modeled after the Hunyad Castle in Transylvania, this Budapest version has become a focal point of the city’s cultural and artistic life.
+Today, the castle hosts festivals, concerts, and exhibitions, particularly during summer, keeping Budapest’s cultural pulse alive. Every step invites exploration of hidden details, admiration of panoramic views from the towers, and a quiet lesson in Hungary’s history. Vajdahunyad Castle is not just a structure—it is a symbol where history, art, and culture unite. In every stone resides the creative spirit and historical memory of the Hungarian people.`,
+    image:
+      "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrw-e6pJ9J2k1GtLcv95m3B35JwO6sU_1U1hDWrUdiCKFsIQ2DvAIbKY8My3jqDjRFG9Au9eAMYfvUwDS6IV6kwfNBmcEtsus53KK5DmR-lXAe2CiSKjxKd_HVNHM31Q3G1V8U=w408-h544-k-no",
+  },
+  {
+    id: "30",
+    name_tr: "János Hunyadi Heykeli",
+    name_en: "Statue of Janos Hunyadi",
+    latitude: 47.51459652003611,
+    longitude: 19.08295322909703,
+    story_tr: `Budapeşte’nin tarihi meydanlarından birinde yer alan János Hunyadi Heykeli, Macaristan’ın en efsanevi komutanlarından birini anmak için yükselir. 15. yüzyılın ortalarında Osmanlı İmparatorluğu’nun Avrupa’ya doğru ilerleyişine karşı verdiği mücadeleyle tanınan Hunyadi, sadece bir asker değil; halkının güvenliğini ve özgürlüğünü koruyan bir liderdi. Bu heykel, onun cesaretini, kararlılığını ve Macar halkına olan bağlılığını somutlaştırır.
+Heykelin duruşu ve detayları, Hunyadi’nin stratejik dehasını ve savaş meydanlarındaki kararlılığını yansıtır. Atının üzerinde, zırhıyla dimdik duruşu, izleyenlere onun kararlılığını ve liderliğini hatırlatır. Arka planda, savaşın ve kahramanlığın sembolleriyle çevrili bu anıt, tarihî bir öyküyü gözler önüne serer.
+János Hunyadi, özellikle 1456’da Belgrad Kuşatması’nda Osmanlı ordusunu durdurmasıyla Avrupa tarihine de adını yazdırmıştır. Bu zafer, yalnızca Macaristan’ı değil, tüm kıtayı büyük bir tehdide karşı korumuş, halkın özgüvenini ve moralini artırmıştır. Heykel, ziyaretçilere bu büyük liderin verdiği mücadeleyi ve özgürlük için gösterdiği cesareti hatırlatır.
+Bugün, Hunyadi Heykeli, yalnızca bir tarihî anıt değil; cesaretin, stratejinin ve vatan sevgisinin simgesi olarak Budapeşte’nin kültürel dokusuna katkıda bulunur. Her geçen kişi, taşta ve bronzda yaşam bulan bu kahraman sayesinde, geçmişin öyküsünü ve ulusun onurunu hisseder.`,
+    story_en: `In one of Budapest’s historic squares stands the Statue of János Hunyadi, commemorating one of Hungary’s most legendary military leaders. In the mid-15th century, Hunyadi became renowned for his resistance against the advancing Ottoman Empire. He was not only a soldier but also a protector of his people’s safety and freedom. This statue embodies his courage, determination, and enduring commitment to the Hungarian nation.
+The posture and details of the statue reflect Hunyadi’s strategic genius and unwavering resolve on the battlefield. Mounted on his horse, clad in armor, he stands tall, reminding onlookers of his leadership and steadfastness. Surrounded by symbols of war and heroism, the monument brings history vividly to life.
+Hunyadi is especially remembered for his victory at the 1456 Siege of Belgrade, where he halted the Ottoman advance. This triumph protected not only Hungary but all of Europe, boosting the morale and confidence of his people. The statue serves as a reminder of the great leader’s struggle and his courage in defending freedom.
+Today, the János Hunyadi Statue is not just a historical monument; it is a symbol of bravery, strategy, and patriotism, enriching the cultural fabric of Budapest. Every visitor who gazes upon this bronze and stone hero feels the story of the past and the pride of a nation come alive.`,
+    image:
+      "https://lh3.googleusercontent.com/gps-cs-s/AC9h4np2_3zbR6Q1dEQsqP3ZWtaJWNdvYhjX50WagPMtzXKFN-TBWe6CTP_XfdB12bW11woMh9vFNjDJeQGM0q4Y_DK0nC483mXpKU0T82aJ_a1pA1qairVnfL-i4ZCxYvvihg0iJXH-=w408-h544-k-no",
   },
 ];
 
