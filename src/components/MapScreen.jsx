@@ -12,6 +12,7 @@ import L from "leaflet";
 import { MdMyLocation } from "react-icons/md";
 import monuments from "../data/monuments";
 
+
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl:
@@ -28,6 +29,7 @@ const userLocationIcon = new L.Icon({
   iconAnchor: [15, 30],
   popupAnchor: [0, -30],
 });
+
 
 function GoToMyLocationButton({ position, panelHeight, isMobile }) {
   const map = useMap();
@@ -61,6 +63,7 @@ function GoToMyLocationButton({ position, panelHeight, isMobile }) {
   );
 }
 
+
 function AllowLocationBanner({ onAllow }) {
   return (
     <div
@@ -93,6 +96,35 @@ function AllowLocationBanner({ onAllow }) {
         Konumumu Göster
       </button>
     </div>
+  );
+}
+
+function UserPulse({ position }) {
+  const [radius, setRadius] = useState(20);
+  const map = useMap();
+
+  useEffect(() => {
+    if (!position) return;
+    let growing = true;
+    const interval = setInterval(() => {
+      setRadius((r) => {
+        if (r >= 60) growing = false;
+        if (r <= 20) growing = true;
+        return growing ? r + 2 : r - 2;
+      });
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, [position]);
+
+  if (!position) return null;
+
+  return (
+    <Circle
+      center={position}
+      radius={radius}
+      pathOptions={{ color: "#2a7", fillColor: "#2a7", fillOpacity: 0.2 }}
+    />
   );
 }
 
@@ -150,7 +182,7 @@ const MapScreen = ({
         setAccuracy(pos.coords.accuracy);
         setShowBanner(false);
         setShouldFly(true);
-        startWatchingLocation(); 
+        startWatchingLocation();
       },
       (err) => {
         console.error("Konum hatası:", err);
@@ -204,7 +236,7 @@ const MapScreen = ({
             {accuracy != null && (
               <Circle
                 center={position}
-                radius={Math.min(accuracy, 2000)}
+                radius={Math.min(accuracy || 2000, 2000)}
                 pathOptions={{
                   color: "#2a7",
                   fillColor: "#2a7",
@@ -212,6 +244,7 @@ const MapScreen = ({
                 }}
               />
             )}
+            <UserPulse position={position} />
           </>
         )}
 
