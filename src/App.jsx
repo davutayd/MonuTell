@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import MapScreen from "./components/MapScreen";
-import MonumentDetailScreen from "./components/MonumentDetailScreen";
+import MapScreen from "./components/Map/MapScreen";
+import MonumentDetailScreen from "./components/Detail/MonumentDetailScreen";
 
 function App() {
   const [selectedMonument, setSelectedMonument] = useState(null);
