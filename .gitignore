@@ -1,0 +1,54 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+# Node.js bağımlılıkları
+node_modules/
+
+# Derleme çıktıları
+dist/
+build/
+
+# Geçici dosyalar
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Sistem dosyaları
+.DS_Store
+Thumbs.db
+
+# VSCode ayarları
+.vscode/
+
+# Ortam değişkenleri 
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Firebase özel dosyaları 
+firebase.js
