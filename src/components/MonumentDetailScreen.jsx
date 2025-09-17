@@ -1,0 +1,374 @@
+import React, { useEffect, useState, useRef } from "react";
+
+const CustomProgressBar = ({ length, currentIndex, onChange }) => {
+  const progressBarRef = useRef(null);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const getNewIndexFromPosition = (clientX) => {
+    const bar = progressBarRef.current;
+    if (!bar) return currentIndex;
+
+    const rect = bar.getBoundingClientRect();
+    let relativeX = clientX - rect.left;
+    relativeX = Math.max(0, Math.min(relativeX, rect.width));
+    const percentage = relativeX / rect.width;
+
+    return Math.round(percentage * (length - 1));
+  };
+
+  const handleClick = (e) => {
+    const newIndex = getNewIndexFromPosition(e.clientX);
+    onChange(newIndex);
+  };
+
+  const handleMouseMove = (e) => {
+    if (isDragging) {
+      const newIndex = getNewIndexFromPosition(e.clientX);
+      onChange(newIndex);
+    }
+  };
+
+  const handleMouseUp = () => setIsDragging(false);
+
+  const handleMouseDown = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  useEffect(() => {
+    if (isDragging) {
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mouseup", handleMouseUp);
+    }
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [isDragging]);
+
+  return (
+    <div
+      ref={progressBarRef}
+      onClick={handleClick}
+      style={{
+        position: "relative",
+        height: 8,
+        backgroundColor: "#e0e0e0",
+        borderRadius: 4,
+        cursor: "pointer",
+        margin: "0 16px",
+        flexGrow: 1,
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          height: "100%",
+          width: `${(currentIndex / (length - 1)) * 100}%`,
+          backgroundColor: "#4a6fa5",
+          borderRadius: 4,
+          transition: isDragging ? "none" : "width 0.2s ease",
+        }}
+      />
+      <div
+        onMouseDown={handleMouseDown}
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: `${(currentIndex / (length - 1)) * 100}%`,
+          transform: "translate(-50%, -50%)",
+          width: 16,
+          height: 16,
+          backgroundColor: "#4a6fa5",
+          borderRadius: "50%",
+          cursor: "grab",
+          transition: isDragging ? "none" : "left 0.2s ease",
+          boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
+        }}
+      />
+    </div>
+  );
+};
+
+const MonumentDetailScreen = ({ monument, language, setLanguage }) => {
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [currentCharIndex, setCurrentCharIndex] = useState(0);
+  const [volume, setVolume] = useState(1);
+  const [voices, setVoices] = useState([]);
+  const volumeChangeTimeout = useRef(null);
+
+  const synthRef = useRef(window.speechSynthesis);
+  const utteranceRef = useRef(null);
+
+  const langCode = language === "tr" ? "tr-TR" : "en-US";
+  const title = language === "tr" ? monument.name_tr : monument.name_en;
+  const story = language === "tr" ? monument.story_tr : monument.story_en;
+
+  useEffect(() => {
+    const loadVoices = () => setVoices(synthRef.current.getVoices());
+    synthRef.current.addEventListener("voiceschanged", loadVoices);
+    loadVoices();
+    return () => {
+      synthRef.current.removeEventListener("voiceschanged", loadVoices);
+    };
+  }, []);
+
+  const handleVolumeChange = (e) => {
+    const newVol = parseFloat(e.target.value);
+    setVolume(newVol);
+
+    if (isSpeaking) {
+      if (volumeChangeTimeout.current) {
+        clearTimeout(volumeChangeTimeout.current);
+      }
+      volumeChangeTimeout.current = setTimeout(() => {
+        synthRef.current.cancel();
+        speakFrom(currentCharIndex);
+      }, 300);
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      synthRef.current.cancel();
+      if (volumeChangeTimeout.current)
+        clearTimeout(volumeChangeTimeout.current);
+    };
+  }, []);
+
+  const handleLanguageChange = (newLang) => {
+    setLanguage(newLang);
+    setCurrentCharIndex(0);
+    setIsSpeaking(false);
+    synthRef.current.cancel();
+  };
+
+  const speakFrom = (charIndex) => {
+    synthRef.current.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(story.slice(charIndex));
+    utterance.lang = langCode;
+    utterance.rate = 0.9;
+    utterance.volume = volume;
+
+    const selectedVoice = voices.find((v) => v.lang === langCode);
+    if (selectedVoice) utterance.voice = selectedVoice;
+
+    utterance.onboundary = (event) => {
+      if (event.name === "word") {
+        setCurrentCharIndex(charIndex + event.charIndex);
+      }
+    };
+
+    utterance.onend = () => {
+      setIsSpeaking(false);
+      setCurrentCharIndex(story.length);
+    };
+
+    utteranceRef.current = utterance;
+    synthRef.current.speak(utterance);
+  };
+
+  const handlePlayPause = () => {
+    if (isSpeaking) {
+      synthRef.current.cancel();
+      setIsSpeaking(false);
+    } else {
+      speakFrom(currentCharIndex);
+      setIsSpeaking(true);
+    }
+  };
+
+  const handleStop = () => {
+    synthRef.current.cancel();
+    setIsSpeaking(false);
+    setCurrentCharIndex(0);
+  };
+
+  const handleProgressBarChange = (newIndex) => {
+    setCurrentCharIndex(newIndex);
+    if (isSpeaking) {
+      synthRef.current.cancel();
+      setTimeout(() => speakFrom(newIndex), 100);
+    }
+  };
+
+  const renderStory = () => {
+    const before = story.slice(0, currentCharIndex);
+    const after = story.slice(currentCharIndex);
+    const match = after.match(/^(\S+)/);
+    const activeWord = match ? match[0] : "";
+    const afterRest = after.slice(activeWord.length);
+
+    return (
+      <div
+        style={{
+          fontSize: "1.1rem",
+          lineHeight: "1.8",
+          color: "#333",
+          whiteSpace: "pre-wrap",
+          backgroundColor: "#fff",
+          padding: "24px",
+          borderRadius: "12px",
+          boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+        }}
+      >
+        {before}
+        <span
+          style={{
+            backgroundColor: "#ffecb3",
+            padding: "2px 0",
+            borderRadius: "3px",
+          }}
+        >
+          {activeWord}
+        </span>
+        {afterRest}
+      </div>
+    );
+  };
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        flexWrap: "wrap",
+        color:"#333",
+        justifyContent: "center",
+        padding: "0 16px",
+        backgroundColor: "#f8f9fa",
+        minHeight: "100vh",
+        fontFamily: "'Segoe UI', 'Roboto', sans-serif",
+      }}
+    >
+      <div style={{ padding: "16px", maxWidth: "500px" }}>
+        {monument.image && (
+          <img
+            src={monument.image}
+            alt={title}
+            style={{
+              width: "100%",
+              borderRadius: "12px",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+              objectFit: "cover",
+              aspectRatio: "4/3",
+            }}
+            loading="lazy"
+          />
+        )}
+      </div>
+
+      <div style={{ flex: 1, maxWidth: "800px", padding: "0 16px" }}>
+        <div
+          style={{
+            position: "fixed",
+            top: 16,
+            right: 16,
+            display: "flex",
+            gap: "12px",
+            backgroundColor: "#fff",
+            padding: "8px",
+            borderRadius: "8px",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+          }}
+        >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg"
+            alt="Türkçe"
+            style={{
+              width: 32,
+              height: 20,
+              borderRadius: 4,
+              cursor: "pointer",
+              opacity: language === "tr" ? 1 : 0.6,
+              boxShadow: language === "tr" ? "0 0 0 2px #4a6fa5" : "none",
+            }}
+            onClick={() => handleLanguageChange("tr")}
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg/250px-Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg.png"
+            alt="English"
+            style={{
+              width: 32,
+              height: 20,
+              borderRadius: 4,
+              cursor: "pointer",
+              opacity: language === "en" ? 1 : 0.6,
+              boxShadow: language === "en" ? "0 0 0 2px #4a6fa5" : "none",
+            }}
+            onClick={() => handleLanguageChange("en")}
+          />
+        </div>
+
+        <h1 style={{ fontSize: "2.2rem", fontWeight: "700", marginBottom: 24 }}>
+          {title}
+        </h1>
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px",
+            marginBottom: 24,
+            backgroundColor: "#fff",
+            padding: "16px",
+            borderRadius: "12px",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+          }}
+        >
+          <CustomProgressBar
+            length={story.length}
+            currentIndex={currentCharIndex}
+            onChange={handleProgressBarChange}
+          />
+
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <button
+              onClick={handlePlayPause}
+              style={{
+                backgroundColor: "#4a6fa5",
+                border: "none",
+                padding: "8px 12px",
+                borderRadius: "8px",
+                color: "#fff",
+                cursor: "pointer",
+              }}
+            >
+              {isSpeaking ? "⏸️" : "▶️"}
+            </button>
+            <button
+              onClick={handleStop}
+              style={{
+                backgroundColor: "#4a6fa5",
+                border: "none",
+                padding: "8px 12px",
+                borderRadius: "8px",
+                color: "#fff",
+                cursor: "pointer",
+              }}
+            >
+              ⏹️
+            </button>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.01"
+              value={volume}
+              onChange={handleVolumeChange}
+              style={{ width: 100, cursor: "pointer" }}
+            />
+            <span>{Math.round(volume * 100)}%</span>
+          </div>
+        </div>
+
+        {renderStory()}
+      </div>
+    </div>
+  );
+};
+
+export default MonumentDetailScreen;
