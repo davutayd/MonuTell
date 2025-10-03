@@ -30,12 +30,7 @@ const MonumentDetailScreen = ({ monument, language, setLanguage }) => {
   };
 
   const renderStory = () => {
-    const before = story.slice(0, currentCharIndex);
-    const after = story.slice(currentCharIndex);
-    const match = after.match(/^(\S+)/);
-    const activeWord = match ? match[0] : "";
-    const afterRest = after.slice(activeWord.length);
-
+    const words = story.split(/\s+/);
     return (
       <div
         style={{
@@ -49,17 +44,19 @@ const MonumentDetailScreen = ({ monument, language, setLanguage }) => {
           boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
         }}
       >
-        {before}
-        <span
-          style={{
-            backgroundColor: "#ffecb3",
-            padding: "2px 0",
-            borderRadius: "3px",
-          }}
-        >
-          {activeWord}
-        </span>
-        {afterRest}
+        {words.map((word, index) => (
+          <span
+            key={index}
+            style={{
+              backgroundColor:
+                index === currentCharIndex ? "#ffecb3" : "transparent",
+              padding: "2px 0",
+              borderRadius: "3px",
+            }}
+          >
+            {word + " "}
+          </span>
+        ))}
       </div>
     );
   };
@@ -142,6 +139,7 @@ const MonumentDetailScreen = ({ monument, language, setLanguage }) => {
         </h1>
 
         <AudioControls
+          monument={monument}
           story={story}
           currentCharIndex={currentCharIndex}
           setCurrentCharIndex={setCurrentCharIndex}

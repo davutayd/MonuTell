@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 const CustomProgressBar = ({ length, currentIndex, onChange }) => {
   const progressBarRef = useRef(null);
@@ -65,6 +65,7 @@ const CustomProgressBar = ({ length, currentIndex, onChange }) => {
 };
 
 const AudioControls = ({
+  monument,
   story,
   currentCharIndex,
   setCurrentCharIndex,
@@ -75,61 +76,113 @@ const AudioControls = ({
   voices,
   langCode,
 }) => {
-  const synthRef = useRef(window.speechSynthesis);
+  const audioRef = useRef(null);
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
 
-  const speakFrom = (charIndex) => {
-    synthRef.current.cancel();
+  const audioKey = langCode.startsWith("tr") ? "tr" : "en";
 
-    const utterance = new SpeechSynthesisUtterance(story.slice(charIndex));
-    utterance.lang = langCode;
-    utterance.rate = 0.9;
-    utterance.volume = volume;
+  useEffect(() => {
+    if (!monument?.audio) return;
+    const audioKey = langCode.startsWith("tr") ? "tr" : "en";
+    const url = monument.audio[audioKey];
+    if (!url) return;
 
-    const selectedVoice = voices.find((v) => v.lang === langCode);
-    if (selectedVoice) utterance.voice = selectedVoice;
+    const audio = new Audio(url);
+    audioRef.current = audio;
+    audio.volume = volume;
 
-    utterance.onboundary = (event) => {
-      if (event.name === "word") {
-        setCurrentCharIndex(charIndex + event.charIndex);
-      }
+    const words = story.split(/\s+/);
+    const totalWords = words.length;
+
+    const onTimeUpdate = () => {
+      setCurrentTime(audio.currentTime || 0);
+      if (!audio.duration) return;
+      const progress = audio.currentTime / audio.duration;
+      const wordIndex = Math.floor(progress * totalWords);
+      setCurrentCharIndex(wordIndex); // kelime bazlı
     };
 
-    utterance.onend = () => {
+    const onLoaded = () => setDuration(audio.duration || 0);
+    const onEnded = () => {
       setIsSpeaking(false);
-      setCurrentCharIndex(story.length);
+      setCurrentTime(0);
+      setCurrentCharIndex(0);
     };
 
-    synthRef.current.speak(utterance);
-  };
+    audio.addEventListener("timeupdate", onTimeUpdate);
+    audio.addEventListener("loadedmetadata", onLoaded);
+    audio.addEventListener("ended", onEnded);
 
-  const handlePlayPause = () => {
-    if (isSpeaking) {
-      synthRef.current.cancel();
+    setIsSpeaking(false);
+    setCurrentTime(0);
+    setCurrentCharIndex(0);
+
+    try {
+      audio.load();
+    } catch {}
+
+    return () => {
+      audio.pause();
+      audio.removeEventListener("timeupdate", onTimeUpdate);
+      audio.removeEventListener("loadedmetadata", onLoaded);
+      audio.removeEventListener("ended", onEnded);
+    };
+  }, [monument, langCode, story]);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = typeof volume === "number" ? volume : 1;
+    }
+  }, [volume]);
+
+  const handlePlayPause = async () => {
+    const audio = audioRef.current;
+    if (!audio || !audio.src) return;
+
+    if (!audio.paused) {
+      audio.pause();
       setIsSpeaking(false);
-    } else {
-      speakFrom(currentCharIndex);
+      return;
+    }
+
+    try {
+      const playPromise = audio.play();
+      if (playPromise !== undefined) await playPromise;
       setIsSpeaking(true);
+    } catch (err) {
+      console.error("Audio play error:", err);
     }
   };
 
   const handleStop = () => {
-    synthRef.current.cancel();
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.pause();
+    audio.currentTime = 0;
+    setCurrentTime(0);
     setIsSpeaking(false);
-    setCurrentCharIndex(0);
   };
 
   const handleVolumeChange = (e) => {
     const newVol = parseFloat(e.target.value);
     setVolume(newVol);
+    if (audioRef.current) audioRef.current.volume = newVol;
   };
 
   const handleProgressBarChange = (newIndex) => {
-    setCurrentCharIndex(newIndex);
-    if (isSpeaking) {
-      synthRef.current.cancel();
-      setTimeout(() => speakFrom(newIndex), 100);
-    }
+    if (!audioRef.current) return;
+    const seekTime = Math.min(Math.max(newIndex, 0), Math.floor(duration || 0));
+    audioRef.current.currentTime = seekTime;
+    setCurrentTime(seekTime);
+    if (!audioRef.current.paused) audioRef.current.play().catch(() => {});
   };
+
+  const progressLength = Math.max(2, Math.ceil(duration || 2));
+  const progressIndex = Math.min(
+    Math.floor(currentTime || 0),
+    progressLength - 1
+  );
 
   return (
     <div
@@ -145,8 +198,8 @@ const AudioControls = ({
       }}
     >
       <CustomProgressBar
-        length={story.length}
-        currentIndex={currentCharIndex}
+        length={progressLength}
+        currentIndex={progressIndex}
         onChange={handleProgressBarChange}
       />
 
@@ -162,7 +215,7 @@ const AudioControls = ({
             cursor: "pointer",
           }}
         >
-          {isSpeaking ? "⏸️" : "▶️"}
+          {!isSpeaking ? "▶️" : "⏸️"}
         </button>
         <button
           onClick={handleStop}
@@ -186,7 +239,7 @@ const AudioControls = ({
           onChange={handleVolumeChange}
           style={{ width: 100, cursor: "pointer" }}
         />
-        <span>{Math.round(volume * 100)}%</span>
+        <span>{Math.round((volume || 0) * 100)}%</span>
       </div>
     </div>
   );

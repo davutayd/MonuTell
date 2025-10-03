@@ -15,6 +15,10 @@ At sunset, visitors witness a magical view as the city lights sparkle beneath th
 The Liberty Statue remains one of the most powerful symbols etched into the heart of Budapest.`,
     image:
       "https://www.interbustur.com/wp-content/uploads/2017/11/budape%C5%9Fte-%C3%B6zg%C3%BCrl%C3%BCk-heykeli.jpg",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_001_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_001_en.mp3",
+    },
   },
   {
     id: "2",
@@ -32,6 +36,10 @@ For today’s visitors, the square is a must for photography, but also a central
 Heroes’ Square is not just stone and bronze; it is an open-air museum telling the story of a nation.`,
     image:
       "https://budappest.com/wp-content/uploads/2024/03/Heroes-Square-Budapest.jpg",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_002_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_002_en.mp3",
+    },
   },
   {
     id: "3",
@@ -49,7 +57,12 @@ Its name comes from the guild of fishermen who defended this part of the city wa
 The Fisherman’s Bastion is a must-visit for anyone exploring Budapest, offering both history and fairytale beauty in one unforgettable spot.`,
     image:
       "https://justbudapest.com/wp-content/uploads/Fishermens-Bastion-Budapest-min.webp",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_003_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_003_en.mp3",
+    },
   },
+
   {
     id: "4",
     name_tr: "Parlamento Binası",
@@ -66,6 +79,10 @@ Standing before the Parliament today, you are gazing not merely at a building bu
 The Parliament Building is more than a symbol of Budapest; it is a bridge between Hungary’s past and future, deeply etched into the heart of the nation.`,
     image:
       "https://www.budapest.org/en/wp-content/uploads/sites/101/parliament-budapest-hungary-hd.jpg",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_004_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_004_en.mp3",
+    },
   },
   {
     id: "5",
@@ -89,6 +106,10 @@ The Parliament Building is more than a symbol of Budapest; it is a bridge betwee
         And so, the Millennium Monument transcends stone and bronze. It becomes the spirit of a nation. It continues to tell a thousand-year story without uttering a word. For some stories are not told with voices—but with presence, with patience. The Millennium Monument does exactly that. `,
     image:
       "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/e7/c5/77/beautiful-monument.jpg?w=1200&h=-1&s=1",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_005_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_005_en.mp3",
+    },
   },
   {
     id: "6",
@@ -113,6 +134,10 @@ The Parliament Building is more than a symbol of Budapest; it is a bridge betwee
 `,
     image:
       "https://media.istockphoto.com/id/992465762/tr/foto%C4%9Fraf/macar-kabile-kabile-reisi-arpad-kahramanlar-meydan%C4%B1-budape%C5%9Fteheykeli.jpg?s=170667a&w=0&k=20&c=GVJ51RazlA5-Cl4TPQdJCaObMLPpvmWG215V_W5DJJM= ",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_006_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_006_en.mp3",
+    },
   },
   {
     id: "7",
@@ -144,6 +169,10 @@ The Parliament Building is more than a symbol of Budapest; it is a bridge betwee
 
     image:
       "https://c8.alamy.com/comp/MJRN2J/statues-of-seven-kings-of-hungary-stand-in-the-left-colonnade-of-the-millennium-monument-in-heroess-square-budapest-MJRN2J.jpg",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_007_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_007_en.mp3",
+    },
   },
   {
     id: "8",
@@ -175,6 +204,10 @@ The Parliament Building is more than a symbol of Budapest; it is a bridge betwee
     `,
     image:
       "https://yoldaolmak.com/wp-content/uploads/2022/11/Kahramanlar-Meydani-Budapeste.jpg",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_008_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_008_en.mp3",
+    },
   },
 
   {
@@ -193,6 +226,10 @@ For today’s visitors, this is not merely a historical spot but a place of sile
 The Saint Emeric Statue is a resting place for the soul.” Saint Emeric lives not only in history books but also in the spirit of every new day.`,
     image:
       "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrXdBe7dF1C1cj7hpuhJKwf0SGErs0ZPWevzA94d_3vivchNlKEuQFdZ2cOtdpKkFPh6WIRxIoApUZv6S0NP4BAUy8LzSdKsfxHUPAtlulwL7n3Yqkq9f8Bb0UY2HhB4PnnYEc=w408-h306-k-no",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_009_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_009_en.mp3",
+    },
   },
   {
     id: "10",
@@ -213,6 +250,10 @@ The Saint Emeric Statue is a resting place for the soul.” Saint Emeric lives n
       `,
     image:
       "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr6dzccWPbFEtBrAK_Oofr9mFrQzT4EGbMPoGizqQ4RQ6Leoc1xr4fcs1gPrZjwQyd1ylgR-lK_oPfGVVE75UyyAJnvyIWvbaoZNfiWFrtJXeq8UosJ90ofX4m9IHcLp3cjJV2J=w408-h306-k-no",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_010_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_010_en.mp3",
+    },
   },
   {
     id: "11",
@@ -244,6 +285,10 @@ The Saint Emeric Statue is a resting place for the soul.” Saint Emeric lives n
       It’s the living story of all who still fight for freedom and justice today.`,
     image:
       "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqKGaQ1CrSEYM1oZ_ToHaExsDIyiC2a9xUaQ4H6HYyK5DtC18fNSY7caCfr0lllkJu0HjkYx4VUg4iHOpYS3vlwvXnEYjoD6pZM3SQzMdTlY_zfkaierX9Ikx0TkJJCaCqB4o1j=w408-h544-k-no",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_011_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_011_en.mp3",
+    },
   },
   {
     id: "12",
@@ -251,18 +296,22 @@ The Saint Emeric Statue is a resting place for the soul.” Saint Emeric lives n
     name_en: "Statue of Ignác Alpár",
     latitude: 47.51618820717966,
     longitude: 19.081373085851393,
-    story_tr: `Budapeşte’nin huzur dolu Városliget (Şehir Parkı) içinde, ünlü Vajdahunyad Kalesi’nin hemen yakınında, kent mimarisine adını yazdırmış büyük bir ustanın heykeli yükselir: Alpár Ignác. Onu bir taş figür olarak görmek kolay olsa da; gerçekten durduğu yer ona yakışır hâlde—çünkü hem fizikî konumu hem de sembolik anlamı ile Budapeşte’nin çeşm-i bâlidir.
+    story_tr: `Budapeşte’nin huzur dolu Şehir Parkı içinde, ünlü Vajdahunyad Kalesi’nin hemen yakınında, kent mimarisine adını yazdırmış büyük bir ustanın heykeli yükselir: Alpár Ignác. Onu bir taş figür olarak görmek kolay olsa da; gerçekten durduğu yer ona yakışır hâlde—çünkü hem fizikî konumu hem de sembolik anlamı ile Budapeşte’nin çeşm-i bâlidir.
 İgnác Alpár, 19. yüzyılın sonu ile 20. yüzyılın başlarında Macaristan’ın ulusal mimarisine yön veren mimarlardan biriydi. Kendisi önce taş ustası olarak işe başlamış, Berlin’de eğitim aldıktan sonra tekrar Budapeşte'ye dönmüş ve Alajos Hauszmann ile Imre Steindl gibi dönemin önemli mimarlarının yanında çalışmıştır; ardından kendi ofisini kurarak Kale Vajdahunyad başta olmak üzere birçok kamu projesini tasarlamıştır 
 Heykel, Ede Telcs tarafından yapılmış bronz bir portre heykelidir. Alpár, taş ustası ruhuyla hayranlık uyandıran bir mimar olarak, geleneksel ortaçağ üstatlarının cübbeleri içinde betimlenmiştir. Heykelin önünde durduğunuzda ister istemez sanatın hangi temeller üzerine inşa edildiğini hissedersiniz 
 Burada yazan çizgiler, yüzündeki kararlılık ve duruşundaki sükûnet; onun yalnızca bir mimar olmadığını; aynı zamanda Macar mimarlık geleneğini yeniden inşa eden bir düşünür olduğunu anlatır. Belirlenen bu konumda heykelin kalesine ve çevreye bakışı; geçmişin izlerini geleceğe taşıyan bir ışık gibidir.
 Alpár Ignác Heykeli, Budapeşte’ye gelen herkese sadece bir mimarlık tarihi dersinden çok daha fazlasını sunar. Çünkü bu heykel; bir milletin mimari kimliğinin nasıl şekillendiğini aktaran, taş ve bronzdan bir yolculuktur. Her adımınızda onun fısıltısını duyarsınız: “İlham aldığın toprakları inşa et; çünkü sanat, zamanla değil, ruhla yaşar.”`,
-    story_en: `Nestled within Budapest’s tranquil City Park (Városliget), just steps from the architectural marvel of Vajdahunyad Castle, stands the statue of Ignác Alpár—a master architect whose vision shaped the face of Hungarian design. Though he is captured in bronze, his legacy looms as grand as any skyline.
+    story_en: `Nestled within Budapest’s tranquil City Park , just steps from the architectural marvel of Vajdahunyad Castle, stands the statue of Ignác Alpár—a master architect whose vision shaped the face of Hungarian design. Though he is captured in bronze, his legacy looms as grand as any skyline.
 Ignác Alpár began as a stonemason before studying in Berlin. Upon returning to Budapest, he worked with notable architects such as Alajos Hauszmann and Imre Steindl, later founding his own practice. His most celebrated work, Vajdahunyad Castle, was created for the Millennial Exhibition of 1896, blending architectural styles from Hungary’s medieval to baroque periods 
 The bronze statue, crafted by Ede Telcs, portrays Alpár in the robes of a master architect, replete with the dignity of a medieval chalmers. His expression and calm poise speak not only of a creator but of a thinker who rebuilt architectural tradition in stone and mortar .
 Positioned overlooking his masterpiece, the castle, the statue’s gaze is almost poetic—a silent messenger bridging past and present. He stands as both steward and storyteller of Hungarian architecture, casting a long shadow of inspiration for every visitor.
 For those who stumble upon it, the statue provides more than a lesson in architectural history—it offers a journey through a nation’s evolving identity in form and style. In its silence lies a whisper: “Build upon the land that inspires you—art lives not by time, but by spirit.”`,
     image:
       "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqUsk5fkrUAWjqcbkb1c-_gDmiWYdl9s3nTs1QIOdhOOrx3tHMTIh235gc2mcZDuYey6XUN29peXYu6bg4nYut7lyu4h4POYT92xAXHcJxHeZP82S6wiLLx6xtauqrNLfvWDa9dyg=w408-h544-k-no",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_012_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_012_en.mp3",
+    },
   },
   {
     id: "13",
@@ -284,6 +333,10 @@ This monument is not merely a backdrop for tourist photos. It is a silent yet po
 Every day, as thousands pass by the Parliament, their glances are met by the quiet presence of this bronze figure. History is not only found in books—it lives in the corners of streets, in public squares, and in statues. Andrássy’s story, carved in bronze, continues to live on the banks of the Danube as a timeless reminder of courage, diplomacy, and national pride.`,
     image:
       "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npap_PT0fhs77LYxYMchce6vBVaJ8vY8bfLRACboLya8H3nmZX1n1ICWrlK7h2JwTQ22q-cj7DdEvsfLCErgWUKTc0ZI6njMB4lf4hbFfToLWOirhoj4azexgSshEys-mBtPdHDPZwFTFi7=w408-h306-k-no",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_013_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_013_en.mp3",
+    },
   },
   {
     id: "14",
@@ -302,6 +355,10 @@ Those who come here today experience more than just a monument; they step into a
 The Attila József Statue is one of Budapest’s most special spots where literature meets landscape.`,
     image:
       "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2d/29/fe/8e/caption.jpg?w=1200&h=-1&s=1",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_014_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_014_en.mp3",
+    },
   },
   {
     id: "15",
@@ -309,7 +366,7 @@ The Attila József Statue is one of Budapest’s most special spots where litera
     name_en: "Soviet War Memorial",
     latitude: 47.50459120837618,
     longitude: 19.05033562434569,
-    story_tr: `Budapeşte’nin kalbindeki Szabadság Meydanı’nda, tarihi boyunca birçok çatışma ve değişime tanıklık etmiş binaların arasında sessizce yükselir Sovyet Savaş Anıtı. Yüzeyi sade, hatta bazen soğuk bir taş gibi görünse de, bu anıtın ardında yatan hikâye; savaşın yıkıcılığı, zaferin ağırlığı ve tarihin karmaşık belleğiyle örülüdür.
+    story_tr: `Budapeşte’nin kalbindeki Özgürlük Meydanı’nda, tarihi boyunca birçok çatışma ve değişime tanıklık etmiş binaların arasında sessizce yükselir Sovyet Savaş Anıtı. Yüzeyi sade, hatta bazen soğuk bir taş gibi görünse de, bu anıtın ardında yatan hikâye; savaşın yıkıcılığı, zaferin ağırlığı ve tarihin karmaşık belleğiyle örülüdür.
 Anıt, II. Dünya Savaşı’nın ardından, 1945 yılında Budapeşte’yi Nazi işgalinden kurtaran Sovyet askerleri anısına dikildi. Kızıl Ordu’nun kente girişi, Macaristan tarihinin dönüm noktalarından biri oldu. Her ne kadar bu kurtuluş, Nazi boyunduruğunun sona ermesi anlamına gelse de; beraberinde uzun yıllar sürecek sosyalist yönetimi ve Sovyet etkisini getirdi. Bu yüzden, anıt sadece bir askeri zaferin değil, aynı zamanda karmaşık ve çok katmanlı bir geçmişin de sembolü hâline geldi.
 Yüksek taş bloğun üzerinde, Sovyet yıldızını taşıyan altın renkli bir amblem yer alır. Bu sade ama çarpıcı simge, göğe doğru yükselerek, ideolojinin ve fedakârlığın anısını yüceltir. Anıtın çevresindeki yazıtlar ise, Kızıl Ordu’nun Budapeşte’de hayatını kaybeden binlerce askerine ithaf edilmiştir. Her satır, bir ailenin yitirdiği evladın, bir toprağa düşen gencin sessiz çığlığı gibidir.
 Ancak Sovyet Savaş Anıtı’nın önemi yalnızca geçmişte değil, günümüzde de sürmektedir. Bu anıt, zamanla yalnızca bir anma yeri değil, politik tartışmaların, tarihsel yüzleşmenin ve toplumsal hafızanın da sahnesi oldu. Bazıları için o hâlâ kurtuluşun simgesiyken, bazıları için ise zorla dayatılmış bir ideolojinin izidir. Bu ikilik, anıtın etrafındaki atmosferi hep farklı duygularla doldurmuştur.
@@ -321,6 +378,10 @@ But the significance of the Soviet War Memorial goes beyond the past. Over time,
 And yet, everyone who passes by the memorial pauses for a moment. Some offer a prayer, others reflect silently, and some simply listen to the echo of history in the stones. Standing like a quiet resistance in the center of Budapest, this structure reminds us of the destruction of war—while softly whispering the value of peace.`,
     image:
       "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nq_MXCNjCYAblRl8IcpbUTyfdZG6Pyo3KhmhnFB22bk6jRuzXtxXIf2SXTv2P-oG9CVQBztaMLneWFC0HSYSCDgYsBIe3L5Ak3OWL6cjZohv1OE93zCRFHRBeRUpmICQwpVN6cr=w408-h544-k-no",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_015_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_015_en.mp3",
+    },
   },
   {
     id: "16",
@@ -338,6 +399,10 @@ The statue’s location adds another layer of symbolism. Szabadság Square repre
 Today, the Ronald Reagan Statue stands in Budapest not only as a memorial to an American president but also as a symbol of freedom, solidarity, and international support. It serves as a historical site and a powerful reminder of the value of liberty won against oppressive regimes.`,
     image:
       "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npz8_7sjEnNylcCrasCiBwugBjWzgWXgDcPvQ6y-J97CeZVg7ydbuPg3sk1QqX5G9FDXc3jTRqMDUzQQF3Ji3w_jyvGy-alkI8iKmeOrk3E3a8KgVHnM-enipYKkbzMG3CTqOdL1Q=w408-h510-k-no",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_016_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_016_en.mp3",
+    },
   },
 
   {
@@ -346,16 +411,20 @@ Today, the Ronald Reagan Statue stands in Budapest not only as a memorial to an 
     name_en: "Axe",
     latitude: 47.50503140617883,
     longitude: 19.04999312533616,
-    story_tr: `Budapeşte’nin ikon heykelleri arasında fark edilmeyip gizli kalabilen, ama anlamı büyük bir eser var: The Axe adlı bu küçük bronz heykel, Szabadság tér’de Parlamento binası yakınlarında yer alıyor. Ukraynalı-Macar heykeltıraş Mihály Kolodko tarafından tasarlanan bu eser, 2017 yılı civarında yerleştirildi ve günümüzde bu meydanın anlamını genişleten sürpriz bir sanat parçası haline geldi 
+    story_tr: `Budapeşte’nin ikon heykelleri arasında fark edilmeyip gizli kalabilen, ama anlamı büyük bir eser var: Balta adlı bu küçük bronz heykel, Szabadság tér’de Parlamento binası yakınlarında yer alıyor. Ukraynalı-Macar heykeltıraş Mihály Kolodko tarafından tasarlanan bu eser, 2017 yılı civarında yerleştirildi ve günümüzde bu meydanın anlamını genişleten sürpriz bir sanat parçası haline geldi 
 Heykel, Sovyet dönemine ait Ushanka adlı bir heykelin yıkılmasından sonra yerine konulmuştur. Kolodko, daha önce meydanda yer alan Ushanka heykelinin bir politikacı tarafından baltayla kırılıp Tuna Nehri’ne atılmasının ardından, meydanı terk edilen boş yastığın üzerine küçük bir balta yerleştirmiştir. Böylece, darbeyi yapan eylemin parçası değil, “darbeyi yapan araç” metaforu hâline gelmiştir 
 Heykel, yalnızca bir nesne yerleştirmesi değildir. Bu minik araç — sürdürülen ideolojik baskıya karşı simgesel bir tepki olarak — “zarafetine rağmen güçlü bir protesto” niteliği taşır. Baltayı küçük görünen bu heykel, meydandaki diğer devasa anıtlar arasında fark edilir olmayı reddeder; ama izleyene şunu söyler: "Tarihe yaptığın darbeler, sonunda kendi sembolünü yaratır."
-Kolodko heykellere izin almadan yerleştirdiği için birçok ilgi topladı. Bu örgütlü, yasal olmayan biçim bile bir anlam taşır: sanatçı bir düşüncenin, bir dönemi eleştiren sembolik bir eylemle ifade edilmesi gerektiğine inanır. Bu eser, yüzeysel değil — meydanın ruhuna ince bir mizah ve derinlik katar `,
-    story_en: `Hidden among the grand monuments of Liberty Square (Szabadság tér) in Budapest—a place often overlooked yet rich in symbolism—is a tiny bronze sculpture called The Axe by Ukrainian-Hungarian sculptor Mihály Kolodko, situated near the Hungarian Parliament 
+Kolodko heykellere izin almadan yerleştirdiği için birçok ilgi topladı. Bu örgütlü, yasal olmayan biçim bile bir anlam taşır: sanatçı bir düşüncenin, bir dönemi eleştiren sembolik bir eylemle ifade edilmesi gerektiğine inanır. Bu eser, yüzeysel değil — meydanın ruhuna ince bir mizah ve derinlik katar.`,
+    story_en: `Hidden among the grand monuments of Liberty Square in Budapest—a place often overlooked yet rich in symbolism—is a tiny bronze sculpture called The Axe by Ukrainian-Hungarian sculptor Mihály Kolodko, situated near the Hungarian Parliament 
 The Axe was placed in 2017 as a literal and symbolic response to Kolodko’s earlier guerrilla sculpture, Ushanka, which had been violently removed—chopped off with an actual axe by a political figure and thrown into the Danube. In its place, Kolodko subtly installed this small axe atop the now-empty cushion where the Ushanka had been, transforming the tool of destruction into a symbolic statement itself 
 Despite its modest size, the Axe carries a potent message: it is a gesture of quiet protest. It rejects subtlety and scale in favor of meaning. Among the imposing statues and memorials of the square, it stands not to dominate visually, but to provoke thought: “The tools we use to destroy history can themselves become symbols of resistance.”
-Kolodko’s uncommissioned, often secretive installations turned public spaces into unofficial galleries. His Axe is part of a broader critique—an act of art as civil commentary, rather than decoration. It weaves quiet humor, historical reckoning, and artistic defiance into the stone and bronze of Budapest’s most politicized square`,
+Kolodko’s uncommissioned, often secretive installations turned public spaces into unofficial galleries. His Axe is part of a broader critique—an act of art as civil commentary, rather than decoration. It weaves quiet humor, historical reckoning, and artistic defiance into the stone and bronze of Budapest’s most politicized square.`,
     image:
       "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr00H2Mys--SMzhw7HHDuQy8h6Ty3v4vs458JVehgjHfeQHFFOXmB3YKbvc5zIqTrNbQy73TYspRb-0KOed5LhbJ_tBzsGnrVxKS4RDs5MmQP51nmxk8kt8ukZ9nxG80O1y_JfYAQ=w408-h306-k-no",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_017_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_017_en.mp3",
+    },
   },
   {
     id: "18",
@@ -365,10 +434,15 @@ Kolodko’s uncommissioned, often secretive installations turned public spaces i
     longitude: 19.050148399660895,
     story_tr: `Budapeşte’nin Özgürlük Meydanı’nda, görenlerin çoğunun ilk bakışta fark edemeyeceği kadar küçük ama anlamı büyük bir heykel var: Kolodko’nun “Kurbağa”sı. Beton bir platformun kenarında yer alan bu minyatür heykel, çevredeki politik sembollerin ciddiyetiyle tam bir tezat oluşturur. Kurbağa heykeli, Kolodko’nun eserleri arasında en fazla yorumlananlardan biridir. Kimileri onu, meydandaki Sovyet Savaş Anıtı’nın karşısında küçük bir “barış” sembolü olarak görürken; kimileri ise Reagan heykelinin yanındaki bu kurbağayı, politikadaki sessiz ama etkili figürlerin temsili olarak değerlendirir.
 Sanatçı Kolodko, eserlerinde genellikle siyasi mesajlar verir, ancak bunu mizahi ve düşündürücü bir dille yapar. Kurbağa da bu yönüyle, izleyicilere meydandaki diğer devasa yapıları ve onların temsil ettiği tarihî olayları yeniden sorgulatır. Onun küçüklüğü, aslında bazen en büyük gücün sessizlikte ya da göz ardı edilen figürlerde olduğunu anlatır. Belki de Kolodko, bu kurbağa aracılığıyla, gerçek gücün büyüklükte değil; anlamda ve yerde saklı olduğunu hatırlatıyor bize.`,
-    story_en: `In Budapest’s Liberty Square (Szabadság tér), there stands a tiny yet symbolically rich statue that many passersby might overlook at first glance: Kolodko’s “Frog”. Placed on the edge of a concrete platform, this miniature sculpture sharply contrasts the seriousness of the political monuments that surround it. Among Kolodko’s creations, the Frog is one of the most interpreted. Some see it as a subtle symbol of peace facing the Soviet War Memorial, while others view its presence next to Ronald Reagan’s statue as a representation of silent but influential figures in politics.
-Artist Kolodko often embeds political commentary within his work, using humor and thought-provoking imagery. The Frog, in this sense, invites viewers to reconsider the massive monuments around it and the historical narratives they carry. Its small size suggests that true strength may lie not in grandeur, but in subtlety and symbolism. Perhaps through this tiny frog, Kolodko reminds us that power isn’t always loud—it can be quiet, and it can be hidden in the least expected places.`,
+    story_en: `In Budapest’s Liberty Square, there is a statue so small that most passersby might not even notice it at first glance, yet its meaning is profound: Kolodko’s *“Frog.”* Perched on the edge of a concrete platform, this miniature sculpture stands in stark contrast to the seriousness of the surrounding political monuments. Among Kolodko’s works, the Frog is one of the most widely interpreted. Some see it as a tiny symbol of “peace” across from the Soviet War Memorial; others interpret its presence near Reagan’s statue as a representation of the quiet but influential figures in politics.
+Kolodko often conveys political messages in his art, yet he does so with humor and thought-provoking subtlety. The Frog, in this sense, invites viewers to reconsider the massive structures in the square and the historical events they represent. Its smallness suggests that sometimes the greatest power lies in silence, or in figures overlooked by many. Perhaps through this frog, Kolodko reminds us that true power is not found in size, but in meaning and placement.
+`,
     image:
       "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nosYijgPTfTiTJ9oq5Q2x1QRDoDiovAoVHEq57roLq9MiY1FYfQDCAomUevhKRDOa5SasywUw2_E_ok5Gn67OGJ70MEXdaqjOKUROeMptJfnEV2tBkmIzsXSN7JpfCFBsar9A-B=w408-h376-k-no",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_018_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_018_en.mp3",
+    },
   },
   {
     id: "19",
@@ -376,18 +450,22 @@ Artist Kolodko often embeds political commentary within his work, using humor an
     name_en: "Memorial of the Revolutionaries of 1848",
     latitude: 47.503785785316026,
     longitude: 19.05001178528445,
-    story_tr: `Budapeşte’nin tarihi ve politik kalbi olan Özgürlük Meydanı (Szabadság tér)’nde, 1848–49 Macar Devrimi’nin ruhunu taşıyan önemli bir yapı yükselir: 1848 Devrim Şehitleri Anıtı. Meydanın canlı atmosferi içinde derin bir tarihî yankı uyandıran bu anıt, Macar halkının bağımsızlık ve demokrasi uğruna ödediği bedelin sessiz bekçisidir 
+    story_tr: `Budapeşte’nin tarihi ve politik kalbi olan Özgürlük Meydanı’nda, 1848–49 Macar Devrimi’nin ruhunu taşıyan önemli bir yapı yükselir: 1848 Devrim Şehitleri Anıtı. Meydanın canlı atmosferi içinde derin bir tarihî yankı uyandıran bu anıt, Macar halkının bağımsızlık ve demokrasi uğruna ödediği bedelin sessiz bekçisidir
 Bu devrim, 15 Mart 1848’de başlayan halk hareketiyle sembolleşir. Macar toplumunun özgürlük, milli kimlik ve temsil hakkı için verdiği bu mücadele, Kossuth Lajos gibi liderlerin önderliğinde kısa sürede uluslararası dikkat çekici bir başlangıç yaptı. Fakat devrim, Habsburg ve Rus güçlerinin müdahalesiyle bastırıldı. Yüreklerde saklanan direniş, ancak taş ve bronz formunda sonsuzlaştırıldı 
 Anıtın oldukça sade mimarisinin arkasında derin bir anlam yatar. Merkezde yer alan sütun ve kabartmalar, devrimcilerin cesareti, umutları ve fedakârlıklarıyla örülüdür. Her bir figür sanki günümüze seslenir: “Özgürlük hak ettiğimiz bir armağan değil, mücadeleyle kazanılır.” Her detayıyla hem tarihî bir ders hem de vicdanlara dokunan bir çağrı niteliğinde 
-Yapıldığı yerde, öncesinde bir hapishane binası (Újépület) vardı. 1849’da burada ilk Macar Başbakanı Batthyány Lajos da idam edilmişti. Yani anıt, sadece bir kutlama değil; aynı zamanda yapılan zulmün, alınan canların da hatırlayıcısıdır. Bu yüzden meydanın var oluşu bile bağımsızlık hikâyesinin taşıyıcısıdır 
+Yapıldığı yerde, öncesinde bir hapishane binası  vardı. 1849’da burada ilk Macar Başbakanı Batthyány Lajos da idam edilmişti. Yani anıt, sadece bir kutlama değil; aynı zamanda yapılan zulmün, alınan canların da hatırlayıcısıdır. Bu yüzden meydanın var oluşu bile bağımsızlık hikâyesinin taşıyıcısıdır 
 Gerçek anlamda bir meydan yapısı olarak anılmayı hak eden bu alan, çeşitli dönemlerde farklı politik mesajlara sahne oldu. Fakat 1848 Şehitleri Anıtı; hem başlangıcı hem de umutla sonu birleştiren bir semboldür. Ziyaretçiler, bronzun ve taşın arasında dolaşırken, bir ulusun sesini ve ruhunu hissetme fırsatı bulur.`,
-    story_en: `Set in the heart of Budapest’s Liberty Square (Szabadság tér), the Memorial of the Revolutionaries of 1848 stands as a solemn tribute to Hungary’s historic fight for freedom and self-determination. Amid the square’s dynamic atmosphere, this monument silently echoes the sacrifices made during Hungary’s quest for independence in 1848–49 
+    story_en: `Set in the heart of Budapest’s Liberty Square, the Memorial of the Revolutionaries of 1848 stands as a solemn tribute to Hungary’s historic fight for freedom and self-determination. Amid the square’s dynamic atmosphere, this monument silently echoes the sacrifices made during Hungary’s quest for independence in 1848–49 
 The revolution itself began on March 15, 1848, as citizens demanded civil liberties, national representation, and press freedom inspired by broader European movements. Led by figures like Lajos Kossuth, the uprising captured hearts and headlines—but ultimately ended under the weight of Austrian and Russian intervention. Yet the spirit endured—and was immortalized in bronze and stone 
 Though visually modest, the memorial’s symbolism runs deep. Its central column and sculpted reliefs evoke the courage, idealism, and sacrifice of the revolutionaries. Each figure seems to speak across time: “Freedom is not given—it is fought for.” The design invites reflection, serving both as a historic lesson and a moral call to conscience 
-The site itself once housed the Újépület prison, where Hungary’s first Prime Minister, Lajos Batthyány, was executed in 1849—tying the location directly to Hungary’s struggle and martyrdom. The square’s very layout and significance are rooted in that painful legacy 
+The site itself once housed the prison, where Hungary’s first Prime Minister, Lajos Batthyány, was executed in 1849—tying the location directly to Hungary’s struggle and martyrdom. The square’s very layout and significance are rooted in that painful legacy 
 Over the years, Liberty Square has hosted multiple political layers and contrasting narratives. Amid them all, the Memorial of the Revolutionaries of 1848 remains steadfast—uniting a nation's past and hope in a single symbol. As visitors wander between bricks and bronze, they encounter more than art—they meet the Hungarian soul in motion.`,
     image:
       "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrDCz49SIGShRuhUOx1K_9rehUnDcpJy6CHi9hTeBMDMo_Nj_CNOGdISRanlFC67KgNpaIksColXrL9GwikwJE7FN451ArkOJj2qHf9JuPxU54y3hEmVQmIokvgO-ZHaE7KiV-5=w408-h306-k-no",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_019_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_019_en.mp3",
+    },
   },
   {
     id: "20",
@@ -401,7 +479,7 @@ Heykelin ön yüzünde Bandholtz'un şu sözleri yer alır:
 “Ben sadece hükümetimin talimatlarını, anladığım şekliyle, Birleşik Devletler Ordusu'nun bir subayı ve centilmeni olarak yerine getirdim.”
 Bu sözler, onun dürüstlük ve onur anlayışını yansıtır. Heykel, Romanya'nın itirazları nedeniyle, Bandholtz'un elinde baston yerine kolları arkasında olacak şekilde yeniden tasarlanmıştır. Bugün, bu baston, Macar Ulusal Müzesi'nde sergilenmektedir.
 Heykel, 1949'da Komünist hükümet tarafından “restorasyon” bahanesiyle kaldırılmış, ancak 1989'da, Başkan George Herbert Walker Bush'un Budapeşte'yi ziyaretinden önce tekrar yerine konulmuştur. Bugün, Macar halkının özgürlük mücadelesinin ve ulusal değerlerin korunmasının simgesi olarak saygıyla anılmaktadır.`,
-    story_en: `In the corner of Szabadság tér (Liberty Square) in Budapest, in front of the United States Embassy, stands a statue of Harry Hill Bandholtz, an American general. This monument, created in 1936 by renowned Hungarian sculptor Miklós Ligeti, commemorates an event that left a deep mark in Hungarian history.
+    story_en: `In the corner of Liberty Square in Budapest, in front of the United States Embassy, stands a statue of Harry Hill Bandholtz, an American general. This monument, created in 1936 by renowned Hungarian sculptor Miklós Ligeti, commemorates an event that left a deep mark in Hungarian history.
 Harry Hill Bandholtz, after serving in the Philippines and during World War I, was assigned to Budapest in 1919 as part of the Inter-Allied Military Mission. His primary task was to oversee the withdrawal of Romanian troops from Hungary. However, on October 5, 1919, Romanian soldiers attempted to loot the Hungarian National Museum. Bandholtz, with only his riding crop, confronted the soldiers and prevented them from entering the museum. He sealed the doors and took the keys, ensuring the treasures remained protected. This act was hailed as a courageous defense of Hungarian heritage.
 The inscription on the statue reads:
 “I simply carried out the instructions of my Government, as I understood them, as an officer and a gentleman of the United States Army.”
@@ -409,6 +487,10 @@ This reflects his sense of duty and integrity. Due to Romanian objections, the s
 The statue was removed in 1949 by the Communist government under the pretext of restoration. It was later placed in the garden of the U.S. Ambassador's residence. In 1989, just before President George Herbert Walker Bush's visit to Budapest, the statue was returned to its original location in Liberty Square. Today, it stands as a symbol of freedom and the protection of national treasures.`,
     image:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Budapest_-_Harry_Hill_Bandholtz_szobor_%2838450334312%29.jpg/1200px-Budapest_-_Harry_Hill_Bandholtz_szobor_%2838450334312%29.jpg",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_020_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_020_en.mp3",
+    },
   },
   {
     id: "21",
@@ -426,6 +508,10 @@ A visitor today cannot help but reflect not only on the past but on the present 
 The Carl Lutz Memorial is not just a stop in Budapest; it is a lesson in humanity.`,
     image:
       "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npxYxdfpLVPg1ZupXNOYhLUXoeckm-yXH9uLUC6HgVn1RYwhx5-x2NNoMCn4GZXoPRGXwaA6gpA7DCsGGpJqgCmU7Tp2d_LcdQl42h32IfjZ9amqLLZw-lAbLWKjyfyDUm_H538=w408-h272-k-no",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_021_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_021_en.mp3",
+    },
   },
   {
     id: "22",
@@ -433,16 +519,20 @@ The Carl Lutz Memorial is not just a stop in Budapest; it is a lesson in humanit
     name_en: "Statue of George H. W. Bush",
     latitude: 47.504700114248536,
     longitude: 19.050749291412775,
-    story_tr: `1989 yılında, Soğuk Savaş’ın son yıllarında, Macaristan’ın kalbine gelen ilk Amerikan başkanı George H.W. Bush oldu. Onun Liberty Meydanı’ndaki heykeli, yalnızca bir liderin hatırası değil, özgürlüğün simgesidir. 
+    story_tr: `1989 yılında, Soğuk Savaş’ın son yıllarında, Macaristan’ın kalbine gelen ilk Amerikan başkanı George Herbert Walker Bush oldu. Onun Özgürlük Meydanı’ndaki heykeli, yalnızca bir liderin hatırası değil, özgürlüğün simgesidir. 
 Bush’un el salladığı heykelin önünde duran bir ziyaretçi, o dönemin atmosferini hayal eder: Demir Perde yıkılmak üzeredir, Macar halkı özgürlüğün eşiğinde nefesini tutmuştur. Bu heykel, o umut dolu günlerin bir yankısıdır. 
 Bugün buraya gelen turistler için heykelin anlamı büyüktür. Birçok kişi burada durup fotoğraf çeker, meydandaki banklara oturur ve kafelerden aldığı kahveyi yudumlarken geçmiş ile bugün arasında bir köprü kurar. 
 George Bush Heykeli, sadece bir anıt değil; özgürlüğün hatırlatıcısı, tarihin canlı bir tanığıdır.`,
-    story_en: `In 1989, during the final years of the Cold War, George H.W. Bush became the first American president to set foot in Hungary. His statue in Liberty Square stands not only as a remembrance of a leader but as a symbol of freedom itself. 
+    story_en: `In 1989, during the final years of the Cold War, George Herbert Walker Bush became the first American president to set foot in Hungary. His statue in Liberty Square stands not only as a remembrance of a leader but as a symbol of freedom itself. 
 Standing before the statue of Bush waving, a visitor can almost imagine the atmosphere of that time: the Iron Curtain on the verge of collapse, the Hungarian people holding their breath at the edge of freedom. The statue echoes the hope of those days. 
 For today’s tourists, the monument carries great meaning. Many stop here to take photos, sit on the benches of the square, and sip coffee from nearby cafés while reflecting on the bridge between past and present. 
 The George Bush Statue is not just a monument; it is a reminder of freedom, a living witness of history.`,
     image:
       "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npgg6zn_annvhn3PwuLjMK6yVxENzXMkSNBJdwwhkO8cHq80wEzfDNuAxU3wWCsXm7TpayBFdwQ9cC-DeBgZEgAehe2CS3QJDknD58G1E6pEcdOCn9YAFegk4VZtlPdzwLSOHw9=w408-h544-k-no",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_022_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_022_en.mp3",
+    },
   },
   {
     id: "23",
@@ -461,6 +551,10 @@ Created by sculptor Benedek Nagy and unveiled in November 2015, the statue stand
 Anna Kéthly was often referred to as the “Joan of Arc of Hungarian politics” for her moral clarity, fearless voice, and dedication to democratic ideals. A commemorative plaque at the statue’s base honors her promises and the sacrifices she made 
 Visitors who pass through this square don't just see a statue—they experience history, female leadership, and democratic aspiration. In its silence, the Anna Kéthly Statue speaks: “Let those who speak be remembered.”`,
     image: "",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_023_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_023_en.mp3",
+    },
   },
   {
     id: "24",
@@ -468,7 +562,7 @@ Visitors who pass through this square don't just see a statue—they experience 
     name_en: "Statue of Béla Kovács",
     latitude: 47.51161040207814,
     longitude: 19.04643438123593,
-    story_tr: `Budapeşte’nin en önemli alanlarından biri olan Kossuth Lajos Meydanı’nın güney tarafında, Parlamento binasının yakınında, sade ama etkili bir duruşla yer alan bu anıt, Kisgazdapárt’ın eski genel sekreteri Béla Kovács için yapılmıştır. Heykel, heykeltıraş Sándor Kligl tarafından 26 Şubat 2002’de açılmış ve kurşun kalem inceliğinde çizgilerle demokrat politikacıya saygı duruşunda bulunmuştur. Heykelde Kovács, bir korkuluğa yaslanmış şekilde betimlenmiş; altın harflerle adının altına 1908–1959 tarihleri ve “A szovjet hatóságok által ártatlanul elhurcolt államférfi” ifadesi yazılmıştır. Bu ifade, onun siyasi zulüm yüzünden yaşadığı haksız hapis ve sürgünü özetler.
+    story_tr: `Budapeşte’nin en önemli alanlarından biri olan Kossuth Lajos Meydanı’nın güney tarafında, Parlamento binasının yakınında, sade ama etkili bir duruşla yer alan bu anıt, Kisgazdapárt’ın eski genel sekreteri Béla Kovács için yapılmıştır. Heykel, heykeltıraş Sándor Kligl tarafından 26 Şubat 2002’de açılmış ve kurşun kalem inceliğinde çizgilerle demokrat politikacıya saygı duruşunda bulunmuştur. Heykelde Kovács, bir korkuluğa yaslanmış şekilde betimlenmiş; altın harflerle adının altına 1908–1959 tarihleri ve “Sovyet yetkilileri tarafından haksız yere sürgün edilen devlet adamı” ifadesi yazılmıştır. Bu ifade, onun siyasi zulüm yüzünden yaşadığı haksız hapis ve sürgünü özetler.
 Béla Kovács, II. Dünya Savaşı sonrası dönemde demokratik değerleri savunan önemli bir liderdi. 1947’de Sovyet otoriteler tarafından tutuklanarak SSCB’ye gönderildi ve uzun süre nerede tutulduğu bilinmedi. Ancak 1956 sonrası serbest bırakıldı ve Imre Nagy hükümetinde görev aldı. 2000 yılında ise Macar parlamentosu tarafından 25 Şubat, "Komünist diktatörlüklerin kurbanlarını anma günü" ilan edildi – bu tarih aynı zamanda Kovács’ın tutuklanma yıldönümüne denk gelir.
 Heykel, ziyaretçilere yalnızca bir figürü değil; bir demokrasi mücadelesinin sessiz tanığını sunar. Sade ama simgesel duruşu, Balaton utca köşesinde çiçeklerle çevrili sade çevresi, onun toplumdaki kırılgan ama kararlı mirasını anlamayı sağlar. İnsanlar bu heykeli gördüğünde sadece bir adamın değil, demokrasi uğruna yükselen bir halkın hikâyesini hisseder.
 `,
@@ -476,6 +570,10 @@ Heykel, ziyaretçilere yalnızca bir figürü değil; bir demokrasi mücadelesin
 Béla Kovács served as chief secretary of the Independent Smallholders’ Party and was arrested in February 1947 by Soviet authorities. He was deported to the USSR, held in unknown locations, and only released after the 1956 uprising. Having joined Imre Nagy’s government afterward, he remained a symbol of democratic resilience. Hungary later designated February 25 as the official Memorial Day for Victims of Communism, coinciding with the anniversary of his arrest.
 Despite its placement near dramatic national monuments, the statue's simplicity speaks volumes. Its position at the corner of Balaton Street, modest design, and restrained inscription all serve to honor Kovács’s legacy of integrity and democratic principle. Visitors who pause before the figure often feel not just a person’s history, but a chapter of national perseverance and hope.`,
     image: "",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_024_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_024_en.mp3",
+    },
   },
   {
     id: "25",
@@ -493,6 +591,10 @@ For visitors, one of the most unforgettable experiences is climbing up to the do
 St. Stephen’s Basilica is not only a place of worship but also a symbol at the very heart of Hungarian national identity.`,
     image:
       "https://www.interbustur.com/wp-content/uploads/2017/11/aziz-stefan-bazilikas%C4%B1.jpg",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_025_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_025_en.mp3",
+    },
   },
   {
     id: "26",
@@ -511,6 +613,10 @@ Over time, Buda Castle evolved into a cultural and artistic hub. Housing the Hun
 The surrounding courtyards, walkways, and stairways allow visitors to physically connect with the city’s history. Every stone serves as a reminder of wars and peace, victories and losses. At sunset, the castle’s silhouette glows golden over the river, revealing Budapest’s historical and aesthetic essence. Buda Castle not only offers a history lesson but also connects a nation to its past.
 With every step, the castle conveys this enduring message: "A nation that honors its past builds its future with confidence." Buda Castle is more than stone and brick; it is a living testament to centuries of history and the spirit of the Hungarian people.`,
     image: "https://yoldaolmak.com/wp-content/uploads/2022/10/Buda-kalesi.jpg",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_026_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_026_en.mp3",
+    },
   },
   {
     id: "27",
@@ -529,6 +635,10 @@ Following the war, he participated in negotiating the Treaty of Szatmár in 1711
 The Vajdahunyad Castle, where the statue is located, houses various architectural styles that reflect Hungary’s rich history. Here, Károlyi’s statue stands not only as a tribute to a nobleman but also as a symbol of the Hungarian people’s struggle for independence. Visitors pausing before this statue embark on a journey through the depths of Hungarian history.`,
     image:
       "https://lh3.googleusercontent.com/gps-cs-s/AC9h4noi_CRNejIVZcjUATUpy0awSIR7G_Pdw83p3gIklNb4lvEq_1a0XqCmHZ65DlpumO0Dq-1-wrpX44ff51Z9MNkEXl-OX4LmrbVBDcg0H1HrSY2PCMyLsXnSAs_k-DOfY89iOFwJ=w408-h306-k-no",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_027_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_027_en.mp3",
+    },
   },
   {
     id: "28",
@@ -546,6 +656,10 @@ Visitors respond in different ways. Children imagine him coming to life at night
 According to legend, Kolodko’s intention was to show that Budapest is not only a city of monumental grandeur but also one of delightful surprises. And indeed, it is. Especially at sunset, as you stroll along the Danube, finding this miniature feels like the city whispering a secret just for you. With the Parliament glowing in the background, pointing at the tiny silhouette of Dracula becomes one of those unforgettable moments that tie you forever to Budapest.`,
     image:
       "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqPH__04BHvJolmuIJTs5ABPXkHWNjGPnGalF1CmKK7HJSHCq87WaNfu8xqLmreS52_7Ngf6Wcak_JSD1bDmGm5EKvB49YIDhySTtCTyX7Rs4PmXOYXpYBPI13FCimIf5iiPHqY=w408-h305-k-no",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_028_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_028_en.mp3",
+    },
   },
   {
     id: "29",
@@ -557,12 +671,16 @@ According to legend, Kolodko’s intention was to show that Budapest is not only
 Kale, mimari stillerin bir araya geldiği eşsiz bir yapıdır. Romanesk, Gotik, Rönesans ve Barok üslupları bir arada görmek mümkündür. Bu yüzden burası, adeta “Macar mimarisinin açık hava müzesi” gibidir. 
 Bugün buraya gelen ziyaretçiler, gölde kayıkla gezebilir, köprülerin üzerinde fotoğraf çektirebilir ya da içerideki Tarım Müzesi’ni gezebilir. Kışın karla kaplandığında kale masal kitabından fırlamış gibi görünür; yazın ise parkın canlı ruhuyla birleşir. 
 Vajdahunyad Kalesi, Budapeşte’nin hem tarihini hem de hayallerini taşıyan büyülü bir mekândır.`,
-    story_en: `ising with fairytale charm in the middle of City Park, Vajdahunyad Castle is one of Budapest’s most romantic spots. Originally built in 1896 as a temporary structure for Hungary’s millennial celebrations, it became permanent thanks to the people’s love for it. 
+    story_en: `Rising with fairytale charm in the middle of City Park, Vajdahunyad Castle is one of Budapest’s most romantic spots. Originally built in 1896 as a temporary structure for Hungary’s millennial celebrations, it became permanent thanks to the people’s love for it. 
 The castle is a unique blend of architectural styles. Romanesque, Gothic, Renaissance, and Baroque all come together here, making it feel like an open-air museum of Hungarian architecture. 
 Today, visitors can row boats on the lake, take photos on its picturesque bridges, or explore the Agricultural Museum inside. In winter, when covered in snow, the castle looks like something out of a storybook; in summer, it merges with the lively spirit of the park. 
 Vajdahunyad Castle is a magical place that holds both the history and the dreams of Budapest.`,
     image:
       "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrw-e6pJ9J2k1GtLcv95m3B35JwO6sU_1U1hDWrUdiCKFsIQ2DvAIbKY8My3jqDjRFG9Au9eAMYfvUwDS6IV6kwfNBmcEtsus53KK5DmR-lXAe2CiSKjxKd_HVNHM31Q3G1V8U=w408-h544-k-no",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_029_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_029_en.mp3",
+    },
   },
   {
     id: "30",
@@ -580,23 +698,10 @@ Hunyadi is especially remembered for his victory at the 1456 Siege of Belgrade, 
 Today, the János Hunyadi Statue is not just a historical monument; it is a symbol of bravery, strategy, and patriotism, enriching the cultural fabric of Budapest. Every visitor who gazes upon this bronze and stone hero feels the story of the past and the pride of a nation come alive.`,
     image:
       "https://lh3.googleusercontent.com/gps-cs-s/AC9h4np2_3zbR6Q1dEQsqP3ZWtaJWNdvYhjX50WagPMtzXKFN-TBWe6CTP_XfdB12bW11woMh9vFNjDJeQGM0q4Y_DK0nC483mXpKU0T82aJ_a1pA1qairVnfL-i4ZCxYvvihg0iJXH-=w408-h544-k-no",
-  },
-  {
-    id: "31",
-    name_tr: "Zincirli Köprü",
-    name_en: "Chain Bridge",
-    latitude: 47.51459652003611,
-    longitude: 19.08295322909703,
-    story_tr: `Tuna Nehri’nin iki yakasını, Buda ile Peşte’yi birleştiren Zincirli Köprü, yalnızca bir mühendislik harikası değil; aynı zamanda Macaristan’ın modernleşme yolundaki ilk adımlarından biridir. 1849’da açıldığında, bu köprü bir ulusun gururu olmuştu. 
-Köprüye adını veren devasa zincirler ve girişlerindeki aslan heykelleri, ziyaretçilerin ilk dikkatini çeken detaylardır. Rivayete göre aslanların dilleri yapılmayı unutulmuştur; bu yüzden Budapeşte halkı heykeltıraşla dalga geçmiş, sanatçı ise gizli bir sır sakladığını söylemiştir. Bu anekdot, köprüye gelen turistlerin birbirine anlattığı eğlenceli bir hikâyedir. 
-Bugün Zincirli Köprü’den yürüyerek geçmek, Budapeşte deneyiminin vazgeçilmez bir parçasıdır. Gündüzleri şehrin hareketli hayatını izlerken, geceleri ışıklar altında Tuna’nın yansımasıyla büyüleyici bir manzara oluşur. Özellikle fotoğrafçılar için burası şehrin en güzel karelerini yakalayabilecekleri noktadır. 
-Zincirli Köprü, yalnızca iki kıyıyı değil, geçmiş ile bugünü de birbirine bağlar.`,
-    story_en: `The Chain Bridge, spanning the Danube and linking Buda with Pest, is not only an engineering marvel but also one of the first steps in Hungary’s road to modernization. When it opened in 1849, it was a source of national pride. 
-The massive chains that give the bridge its name and the lion statues guarding its entrances are the first details to catch visitors’ eyes. Legend has it that the lions were sculpted without tongues, and locals mocked the artist for his mistake. The sculptor, however, claimed there was a hidden secret in his work. This playful anecdote is still shared among tourists crossing the bridge. 
-Walking across the Chain Bridge today is an essential part of the Budapest experience. By day, you can watch the lively rhythm of the city; by night, the illuminated bridge reflects across the Danube, creating a magical view. For photographers, it is one of the best spots to capture the city’s beauty. 
-The Chain Bridge connects not only two riverbanks but also the past and the present.`,
-    image:
-      "https://lh3.googleusercontent.com/gps-cs-s/AC9h4np2_3zbR6Q1dEQsqP3ZWtaJWNdvYhjX50WagPMtzXKFN-TBWe6CTP_XfdB12bW11woMh9vFNjDJeQGM0q4Y_DK0nC483mXpKU0T82aJ_a1pA1qairVnfL-i4ZCxYvvihg0iJXH-=w408-h544-k-no",
+    audio: {
+      tr: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_030_tr.mp3",
+      en: "https://zmq6gvtxciw24ido.public.blob.vercel-storage.com/statue_030_en.mp3",
+    },
   },
 ];
 
