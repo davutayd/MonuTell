@@ -1,4 +1,3 @@
-// src/context/GlobalAudioContext.jsx
 import React, {
   createContext,
   useContext,
@@ -12,13 +11,12 @@ export const useGlobalAudio = () => useContext(GlobalAudioContext);
 
 export const GlobalAudioProvider = ({ children }) => {
   const audioRef = useRef(null);
-  const [currentTrack, setCurrentTrack] = useState(null); // { url, title, id }
+  const [currentTrack, setCurrentTrack] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [volume, setVolume] = useState(1);
 
-  // Cleanup on unmount
   useEffect(() => {
     return () => {
       try {
@@ -48,10 +46,8 @@ export const GlobalAudioProvider = ({ children }) => {
     };
   };
 
-  // create and start playing a new audio
   const _createAndPlay = (url, title, id) => {
     if (!url) return;
-    // cleanup old audio
     if (audioRef.current) {
       try {
         audioRef.current.pause();
@@ -65,16 +61,11 @@ export const GlobalAudioProvider = ({ children }) => {
     a.crossOrigin = "anonymous";
     a.volume = volume;
 
-    // set ref and states
     audioRef.current = a;
     setCurrentTrack({ url, title, id });
     setDuration(0);
     setCurrentTime(0);
-
-    // bind events
     bindAudioEvents(a);
-
-    // try play
     a.play()
       .then(() => setIsPlaying(true))
       .catch((err) => {
@@ -85,7 +76,6 @@ export const GlobalAudioProvider = ({ children }) => {
 
   const playAudio = (url, title = "", id = "") => {
     if (!url) return;
-    // if same track and paused -> resume
     if (currentTrack?.url === url && audioRef.current) {
       audioRef.current
         .play()

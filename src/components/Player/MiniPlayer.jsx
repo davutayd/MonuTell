@@ -1,23 +1,15 @@
-// src/components/Player/MiniPlayer.jsx (TAMAMEN GÜNCELLENMİŞ)
-
 import React from "react";
 import { useGlobalAudio } from "../../context/GlobalAudioContext";
 
-// 1. 'isPanelOpen' prop'unu al
 const MiniPlayer = ({ isPanelOpen }) => {
-  // 2. Context'ten DOĞRU değişken adlarını çek
   const { currentTrack, isPlaying, togglePlay } = useGlobalAudio();
 
-  // 3. Render mantığını güncelle:
-  //    Eğer çalan bir parça yoksa VEYA ana panel zaten açıksa,
-  //    bu mini oynatıcıyı GÖSTERME (null döndür).
   if (!currentTrack || isPanelOpen) {
     return null;
   }
 
-  // 4. onClick'i 'togglePlay' kullanacak şekilde düzelt
   const handleToggle = (e) => {
-    e.stopPropagation(); // Haritaya tıklamayı engelle
+    e.stopPropagation();
     togglePlay();
   };
 
@@ -35,7 +27,7 @@ const MiniPlayer = ({ isPanelOpen }) => {
         display: "flex",
         alignItems: "center",
         gap: "12px",
-        zIndex: 9999, // Yüksek z-index
+        zIndex: 9999,
         minWidth: "260px",
       }}
     >
@@ -49,12 +41,11 @@ const MiniPlayer = ({ isPanelOpen }) => {
           textOverflow: "ellipsis",
         }}
       >
-        {/* 5. 'currentAudio.title' yerine 'currentTrack.title' kullan */}
         {currentTrack.title}
       </strong>
 
       <button
-        onClick={handleToggle} // 6. 'togglePlay' kullan
+        onClick={handleToggle}
         style={{
           backgroundColor: "#4a6fa5",
           color: "#fff",
