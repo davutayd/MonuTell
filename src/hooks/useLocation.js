@@ -1,5 +1,3 @@
-// src/hooks/useLocation.js
-
 import { useState, useEffect, useCallback } from "react";
 
 export const useLocation = () => {
@@ -7,13 +5,11 @@ export const useLocation = () => {
   const [accuracy, setAccuracy] = useState(null);
   const [showBanner, setShowBanner] = useState(false);
 
-  // Safari'yi kontrol et
   const isSafari =
     typeof navigator !== "undefined" &&
     navigator.userAgent.toLowerCase().includes("safari") &&
     !navigator.userAgent.toLowerCase().includes("chrome");
 
-  // Konumu izlemeyi başlatan fonksiyon
   const startWatchingLocation = useCallback(() => {
     if (!navigator.geolocation) return;
 
@@ -29,7 +25,6 @@ export const useLocation = () => {
     return () => navigator.geolocation.clearWatch(watchId);
   }, []);
 
-  // Kullanıcı "İzin Ver" butonuna bastığındaki fonksiyon
   const handleAllowLocation = useCallback(() => {
     if (!navigator.geolocation) return;
 
@@ -38,34 +33,29 @@ export const useLocation = () => {
         setPosition([pos.coords.latitude, pos.coords.longitude]);
         setAccuracy(pos.coords.accuracy);
         setShowBanner(false);
-        startWatchingLocation(); // İzlemeyi başlat
+        startWatchingLocation();
       },
-      () => setShowBanner(true), // İzin alamazsa banner'ı göster
+      () => setShowBanner(true),
       { enableHighAccuracy: true, timeout: 20000 }
     );
   }, [startWatchingLocation]);
 
-  // Bileşen yüklendiğinde konumu almak için ilk deneme
   useEffect(() => {
-    // Safari'de, kullanıcı etkileşimi (buton tıklaması) olmadan
-    // konum istemek genellikle başarısız olur, bu yüzden banner göster.
     if (isSafari || !navigator.geolocation) {
       setShowBanner(true);
       return;
     }
 
-    // Diğer tarayıcılar için
     navigator.geolocation.getCurrentPosition(
       (pos) => {
         setPosition([pos.coords.latitude, pos.coords.longitude]);
         setAccuracy(pos.coords.accuracy);
-        startWatchingLocation(); // İlk konum başarılıysa izlemeye başla
+        startWatchingLocation();
       },
-      () => setShowBanner(true), // İlk deneme başarısızsa banner göster
+      () => setShowBanner(true),
       { enableHighAccuracy: true, timeout: 20000 }
     );
   }, [isSafari, startWatchingLocation]);
 
-  // Hook'un dış dünyaya sağladığı değerler
   return { position, accuracy, showBanner, handleAllowLocation };
 };

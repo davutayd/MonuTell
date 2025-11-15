@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Circle, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import monuments from "../../data/monuments";
+import { useLocation } from "../../hooks/useLocation";
 
 import GoToMyLocationButton from "./GoToMyLocationButton";
 import AllowLocationBanner from "./AllowLocationBanner";
@@ -35,63 +36,17 @@ const MapScreen = ({
   isPanelOpen = false,
   isMobile = false,
 }) => {
-  const [position, setPosition] = useState(null);
-  const [accuracy, setAccuracy] = useState(null);
-  const [showBanner, setShowBanner] = useState(false);
+  const { position, accuracy, showBanner, handleAllowLocation } = useLocation();
+
   const [shouldFly, setShouldFly] = useState(false);
-
-  const isSafari =
-    typeof navigator !== "undefined" &&
-    navigator.userAgent.toLowerCase().includes("safari") &&
-    !navigator.userAgent.toLowerCase().includes("chrome");
-
-  const startWatchingLocation = useCallback(() => {
-    if (!navigator.geolocation) return;
-
-    const watchId = navigator.geolocation.watchPosition(
-      (pos) => {
-        setPosition([pos.coords.latitude, pos.coords.longitude]);
-        setAccuracy(pos.coords.accuracy);
-      },
-      (err) => console.error("Konum hatası:", err),
-      { enableHighAccuracy: true, maximumAge: 10000, timeout: 20000 }
-    );
-
-    return () => navigator.geolocation.clearWatch(watchId);
-  }, []);
-
-  const handleAllowLocation = () => {
-    if (!navigator.geolocation) return;
-
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        setPosition([pos.coords.latitude, pos.coords.longitude]);
-        setAccuracy(pos.coords.accuracy);
-        setShowBanner(false);
-        setShouldFly(true);
-        startWatchingLocation();
-      },
-      () => setShowBanner(true),
-      { enableHighAccuracy: true, timeout: 20000 }
-    );
-  };
+  const isFirstLoad = useRef(true);
 
   useEffect(() => {
-    if (!isSafari && navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (pos) => {
-          setPosition([pos.coords.latitude, pos.coords.longitude]);
-          setAccuracy(pos.coords.accuracy);
-          setShouldFly(true);
-          startWatchingLocation();
-        },
-        () => setShowBanner(true),
-        { enableHighAccuracy: true, timeout: 20000 }
-      );
-    } else {
-      setShowBanner(true);
+    if (position && isFirstLoad.current) {
+      setShouldFly(true);
+      isFirstLoad.current = false;
     }
-  }, [isSafari, startWatchingLocation]);
+  }, [position]);
 
   const viewportHeight =
     typeof window !== "undefined" && window.visualViewport

@@ -6,7 +6,8 @@ const MonumentDetailScreen = ({ monument, language, setLanguage }) => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
   const [volume, setVolume] = useState(1);
-  const { playAudio } = useGlobalAudio();
+
+  const { playAudio, stopAudio } = useGlobalAudio();
 
   const langCode = language === "tr" ? "tr-TR" : "en-US";
   const title = language === "tr" ? monument.name_tr : monument.name_en;
@@ -16,6 +17,8 @@ const MonumentDetailScreen = ({ monument, language, setLanguage }) => {
     setLanguage(newLang);
     setCurrentCharIndex(0);
     setIsSpeaking(false);
+
+    stopAudio();
   };
 
   const renderStory = () => {
