@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MapScreen from "./components/Map/MapScreen";
 import MonumentDetailScreen from "./components/Detail/MonumentDetailScreen";
-
 import { useGlobalAudio } from "./context/GlobalAudioContext";
 import MiniPlayer from "./components/Player/MiniPlayer";
 
@@ -11,7 +10,14 @@ function AppContent() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-  const { stopAudio } = useGlobalAudio();
+  // 1. Context'ten 'isPlaying' ve 'pauseAudio'yu al
+  const {
+    currentTrack,
+    isPlaying,
+    stopAudio, // (Bunu dil değişimi için tutuyoruz)
+    pauseAudio,
+    playAudio,
+  } = useGlobalAudio();
 
   useEffect(() => {
     const handleResize = () => {
@@ -21,17 +27,74 @@ function AppContent() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // 2. GÜNCELLENMİŞ 'handleSelectMonument'
   const handleSelectMonument = (monument) => {
-    stopAudio();
+    // 1. SORUN ÇÖZÜMÜ:
+    // Eğer tıklanan heykel, zaten MiniPlayer'da çalan heykelse,
+    // Sadece paneli aç, sesi duraklatma.
+    if (currentTrack?.id === monument.id) {
+      setSelectedMonument(monument);
+      setIsPanelOpen(true);
+      return;
+    }
+
+    // Eğer tıklanan heykel, zaten açık olan paneldeki heykelse,
+    // Hiçbir şey yapma.
+    if (selectedMonument?.id === monument.id) {
+      setIsPanelOpen(true);
+      return;
+    }
+
+    // 2. SORUN ÇÖZÜMÜ (Başlangıç):
+    // Eğer bu koşullara takılmadıysak, YENİ bir heykel seçilmiştir.
+    // Çalan bir ses varsa, zamanı sıfırlamadan DURAKLAT.
+    if (isPlaying) {
+      pauseAudio();
+    }
+
+    // Yeni heykeli seç ve paneli aç.
     setSelectedMonument(monument);
     setIsPanelOpen(true);
   };
 
+  // 3. GÜNCELLENMİŞ 'handleClosePanel'
   const handleClosePanel = () => {
     setIsPanelOpen(false);
+
+    // 2. SORUN ÇÖZÜMÜ (Bitiş):
+    // Panel kapandığında, context'te "duraklatılmış" (ama sıfırlanmamış)
+    // bir parça var mı diye kontrol et.
+    // (currentTrack var AMA isPlaying false)
+    if (currentTrack && !isPlaying) {
+      // Önceki parçayı kaldığı yerden devam ettir (MiniPlayer'da görünecek)
+      playAudio(currentTrack.url, currentTrack.title, currentTrack.id);
+    }
+
+    // Animasyon için gecikme (Bu doğru)
     setTimeout(() => {
       setSelectedMonument(null);
     }, 300);
+  };
+
+  // ... (panelStyle stil nesnesi aynı)
+  const panelStyle = {
+    width: isMobile ? "100%" : isPanelOpen ? "420px" : "0px",
+    height: isMobile ? (isPanelOpen ? "60%" : "0px") : "100vh",
+    opacity: isPanelOpen ? 1 : 0,
+    pointerEvents: isPanelOpen ? "auto" : "none",
+    transition: "all 0.3s ease",
+    boxShadow: isPanelOpen
+      ? isMobile
+        ? "0px -2px 6px rgba(0,0,0,0.1)"
+        : "2px 0 6px rgba(0,0,0,0.1)"
+      : "none",
+    overflow: "hidden",
+    backgroundColor: "#f8f9fa",
+    position: isMobile ? "absolute" : "relative",
+    bottom: isMobile ? 0 : "auto",
+    zIndex: 999,
+    display: "flex",
+    flexDirection: "column",
   };
 
   return (
@@ -45,30 +108,7 @@ function AppContent() {
         position: "relative",
       }}
     >
-      <div
-        style={{
-          width: isMobile ? "100%" : isPanelOpen ? "420px" : "0px",
-          height: isMobile ? (isPanelOpen ? "60%" : "0px") : "100vh",
-          opacity: isPanelOpen ? 1 : 0,
-
-          // YENİ SATIR (ÇÖZÜM):
-          pointerEvents: isPanelOpen ? "auto" : "none",
-
-          transition: "all 0.3s ease",
-          boxShadow: isPanelOpen
-            ? isMobile
-              ? "0px -2px 6px rgba(0,0,0,0.1)"
-              : "2px 0 6px rgba(0,0,0,0.1)"
-            : "none",
-          overflow: "hidden",
-          backgroundColor: "#f8f9fa",
-          position: isMobile ? "absolute" : "relative",
-          bottom: isMobile ? 0 : "auto",
-          zIndex: 999,
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
+      <div style={panelStyle}>
         {isPanelOpen && (
           <button
             onClick={handleClosePanel}
