@@ -3,7 +3,6 @@ import { useGlobalAudio } from "../../context/GlobalAudioContext";
 
 const CustomProgressBar = ({ duration, currentTime, onChangeTime }) => {
   const progressBarRef = useRef(null);
-
   const percentage = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   const getNewTimeFromPosition = (clientX) => {
@@ -12,7 +11,6 @@ const CustomProgressBar = ({ duration, currentTime, onChangeTime }) => {
     const rect = bar.getBoundingClientRect();
     let relativeX = clientX - rect.left;
     relativeX = Math.max(0, Math.min(relativeX, rect.width));
-
     const clickPercentage = relativeX / rect.width;
     return Math.round(clickPercentage * duration);
   };
@@ -98,7 +96,6 @@ const AudioControls = ({
 
   useEffect(() => {
     setLocalCurrentTime(currentTime || 0);
-
     if (story) {
       const words = story.split(/\s+/);
       const totalWords = Math.max(1, words.length);
@@ -108,7 +105,6 @@ const AudioControls = ({
           : 0;
       setCurrentCharIndex(Math.min(totalWords - 1, Math.max(0, wordIndex)));
     }
-
     setIsSpeaking(Boolean(isPlaying));
   }, [currentTime, duration, story, isPlaying]);
 
@@ -126,7 +122,14 @@ const AudioControls = ({
       togglePlay();
       setIsSpeaking(!isPlaying);
     } else {
-      const title = monument?.name_tr || monument?.name_en || "MonuTell";
+      const isTurkish = langCode && langCode.toLowerCase().startsWith("tr");
+
+      const title =
+        (isTurkish ? monument?.name_tr : monument?.name_en) ||
+        monument?.name_en ||
+        monument?.name_tr ||
+        "MonuTell";
+
       playAudio(audioUrl, title, monument?.id || "");
       setIsSpeaking(true);
     }
