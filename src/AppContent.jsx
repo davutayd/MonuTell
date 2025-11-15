@@ -10,14 +10,11 @@ function AppContent() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-  // 1. Context'ten 'isPlaying' ve 'pauseAudio'yu al
-  const {
-    currentTrack,
-    isPlaying,
-    stopAudio, // (Bunu dil değişimi için tutuyoruz)
-    pauseAudio,
-    playAudio,
-  } = useGlobalAudio();
+  // 1. YENİ STATE: Sesin sistem tarafından mı (true) yoksa kullanıcı tarafından mı (false) duraklatıldığını takip et
+  const [pausedBySystem, setPausedBySystem] = useState(false);
+
+  const { currentTrack, isPlaying, stopAudio, pauseAudio, playAudio } =
+    useGlobalAudio();
 
   useEffect(() => {
     const handleResize = () => {
@@ -29,30 +26,26 @@ function AppContent() {
 
   // 2. GÜNCELLENMİŞ 'handleSelectMonument'
   const handleSelectMonument = (monument) => {
-    // 1. SORUN ÇÖZÜMÜ:
-    // Eğer tıklanan heykel, zaten MiniPlayer'da çalan heykelse,
-    // Sadece paneli aç, sesi duraklatma.
-    if (currentTrack?.id === monument.id) {
+    if (
+      currentTrack?.id === monument.id ||
+      selectedMonument?.id === monument.id
+    ) {
+      // Zaten seçili olan heykele tıklanırsa (veya panel zaten açıksa)
+      // Sadece paneli aç ve 'pausedBySystem' bayrağını temizle
+      setPausedBySystem(false);
       setSelectedMonument(monument);
       setIsPanelOpen(true);
       return;
     }
 
-    // Eğer tıklanan heykel, zaten açık olan paneldeki heykelse,
-    // Hiçbir şey yapma.
-    if (selectedMonument?.id === monument.id) {
-      setIsPanelOpen(true);
-      return;
-    }
-
-    // 2. SORUN ÇÖZÜMÜ (Başlangıç):
-    // Eğer bu koşullara takılmadıysak, YENİ bir heykel seçilmiştir.
-    // Çalan bir ses varsa, zamanı sıfırlamadan DURAKLAT.
+    // Yeni bir heykel seçildi:
     if (isPlaying) {
       pauseAudio();
+      setPausedBySystem(true); // Ses SİSTEM tarafından duraklatıldı
+    } else {
+      setPausedBySystem(false); // Ses zaten kullanıcı tarafından duraklatılmıştı
     }
 
-    // Yeni heykeli seç ve paneli aç.
     setSelectedMonument(monument);
     setIsPanelOpen(true);
   };
@@ -61,23 +54,22 @@ function AppContent() {
   const handleClosePanel = () => {
     setIsPanelOpen(false);
 
-    // 2. SORUN ÇÖZÜMÜ (Bitiş):
-    // Panel kapandığında, context'te "duraklatılmış" (ama sıfırlanmamış)
-    // bir parça var mı diye kontrol et.
-    // (currentTrack var AMA isPlaying false)
-    if (currentTrack && !isPlaying) {
-      // Önceki parçayı kaldığı yerden devam ettir (MiniPlayer'da görünecek)
+    // SORUN 1 ÇÖZÜMÜ:
+    // Sadece 'pausedBySystem' true ise (yani biz duraklattıysak) sesi devam ettir.
+    // Kullanıcı kendi durdurduysa (pausedBySystem: false) devam ETME.
+    if (currentTrack && !isPlaying && pausedBySystem) {
       playAudio(currentTrack.url, currentTrack.title, currentTrack.id);
     }
+    // Bayrağı her zaman temizle
+    setPausedBySystem(false);
 
-    // Animasyon için gecikme (Bu doğru)
     setTimeout(() => {
       setSelectedMonument(null);
     }, 300);
   };
 
-  // ... (panelStyle stil nesnesi aynı)
   const panelStyle = {
+    // ... (stil kodunuzda değişiklik yok)
     width: isMobile ? "100%" : isPanelOpen ? "420px" : "0px",
     height: isMobile ? (isPanelOpen ? "60%" : "0px") : "100vh",
     opacity: isPanelOpen ? 1 : 0,
@@ -128,7 +120,6 @@ function AppContent() {
             ✕
           </button>
         )}
-
         {selectedMonument && (
           <div
             className="side-panel-scroll"
@@ -144,6 +135,8 @@ function AppContent() {
               monument={selectedMonument}
               language={language}
               setLanguage={setLanguage}
+              // 4. YENİ PROP: 'setPausedBySystem' fonksiyonunu aşağıya ilet
+              setPausedBySystem={setPausedBySystem}
             />
           </div>
         )}

@@ -74,6 +74,7 @@ const AudioControls = ({
   volume,
   setVolume,
   langCode,
+  setPausedBySystem,
 }) => {
   const {
     currentTrack,
@@ -91,11 +92,16 @@ const AudioControls = ({
   const [localCurrentTime, setLocalCurrentTime] = useState(0);
 
   useEffect(() => {
+    if (currentTrack?.id !== monument?.id) {
+      setLocalDuration(0);
+      setLocalCurrentTime(0);
+      setCurrentCharIndex(0);
+      setIsSpeaking(false);
+      return;
+    }
     setLocalDuration(duration || 0);
-  }, [duration]);
-
-  useEffect(() => {
     setLocalCurrentTime(currentTime || 0);
+
     if (story) {
       const words = story.split(/\s+/);
       const totalWords = Math.max(1, words.length);
@@ -106,32 +112,40 @@ const AudioControls = ({
       setCurrentCharIndex(Math.min(totalWords - 1, Math.max(0, wordIndex)));
     }
     setIsSpeaking(Boolean(isPlaying));
-  }, [currentTime, duration, story, isPlaying]);
+  }, [
+    currentTime,
+    duration,
+    story,
+    isPlaying,
+    currentTrack,
+    monument,
+    setCurrentCharIndex,
+    setIsSpeaking,
+  ]);
 
   const audioKey =
     langCode && langCode.toLowerCase().startsWith("tr") ? "tr" : "en";
   const audioUrl = monument?.audio?.[audioKey];
 
   const handlePlayPause = async () => {
-    if (!audioUrl) {
-      console.warn("Audio URL yok:", monument?.id, audioKey);
-      return;
-    }
+    if (!audioUrl) return;
 
     if (currentTrack?.url === audioUrl) {
       togglePlay();
-      setIsSpeaking(!isPlaying);
+
+      if (isPlaying) {
+        setPausedBySystem(false);
+      }
     } else {
       const isTurkish = langCode && langCode.toLowerCase().startsWith("tr");
-
       const title =
         (isTurkish ? monument?.name_tr : monument?.name_en) ||
         monument?.name_en ||
         monument?.name_tr ||
         "MonuTell";
-
       playAudio(audioUrl, title, monument?.id || "");
-      setIsSpeaking(true);
+
+      setPausedBySystem(false);
     }
   };
 
@@ -139,6 +153,7 @@ const AudioControls = ({
     stopAudio();
     setIsSpeaking(false);
     setCurrentCharIndex(0);
+    setPausedBySystem(false);
   };
 
   const handleVolumeChange = (e) => {
@@ -148,6 +163,8 @@ const AudioControls = ({
   };
 
   const handleProgressBarChange = (newTime) => {
+    if (currentTrack?.id !== monument?.id) return;
+
     const seekTime = Math.min(
       Math.max(newTime, 0),
       Math.floor(localDuration || 0)

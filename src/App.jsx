@@ -1,8 +1,6 @@
-// src/App.jsx (GÜNCELLENMİŞ)
-
 import React from "react";
 import { GlobalAudioProvider } from "./context/GlobalAudioContext";
-import AppContent from "./AppContent"; // Yeni bileşeni import edin
+import AppContent from "./AppContent";
 
 function App() {
   return (

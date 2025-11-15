@@ -2,11 +2,17 @@ import React, { useEffect, useState } from "react";
 import AudioControls from "./AudioControls";
 import { useGlobalAudio } from "../../context/GlobalAudioContext";
 
-const MonumentDetailScreen = ({ monument, language, setLanguage }) => {
+const MonumentDetailScreen = ({
+  monument,
+  language,
+  setLanguage,
+  setPausedBySystem,
+}) => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
   const [volume, setVolume] = useState(1);
   const { stopAudio } = useGlobalAudio();
+
   const [imageLoadFailed, setImageLoadFailed] = useState(false);
 
   const langCode = language === "tr" ? "tr-TR" : "en-US";
@@ -22,6 +28,7 @@ const MonumentDetailScreen = ({ monument, language, setLanguage }) => {
     setCurrentCharIndex(0);
     setIsSpeaking(false);
     stopAudio();
+    setPausedBySystem(false);
   };
 
   const renderStory = () => {
@@ -147,6 +154,7 @@ const MonumentDetailScreen = ({ monument, language, setLanguage }) => {
           volume={volume}
           setVolume={setVolume}
           langCode={langCode}
+          setPausedBySystem={setPausedBySystem}
         />
 
         {renderStory()}
