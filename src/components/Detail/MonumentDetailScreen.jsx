@@ -6,18 +6,21 @@ const MonumentDetailScreen = ({ monument, language, setLanguage }) => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
   const [volume, setVolume] = useState(1);
-
-  const { playAudio, stopAudio } = useGlobalAudio();
+  const { stopAudio } = useGlobalAudio();
+  const [imageLoadFailed, setImageLoadFailed] = useState(false);
 
   const langCode = language === "tr" ? "tr-TR" : "en-US";
   const title = language === "tr" ? monument.name_tr : monument.name_en;
   const story = language === "tr" ? monument.story_tr : monument.story_en;
 
+  useEffect(() => {
+    setImageLoadFailed(false);
+  }, [monument]);
+
   const handleLanguageChange = (newLang) => {
     setLanguage(newLang);
     setCurrentCharIndex(0);
     setIsSpeaking(false);
-
     stopAudio();
   };
 
@@ -67,8 +70,8 @@ const MonumentDetailScreen = ({ monument, language, setLanguage }) => {
         fontFamily: "'Segoe UI', 'Roboto', sans-serif",
       }}
     >
-      <div style={{ padding: "16px", maxWidth: "500px" }}>
-        {monument.image && (
+      {monument.image && !imageLoadFailed && (
+        <div style={{ padding: "16px", maxWidth: "500px" }}>
           <img
             src={monument.image}
             alt={title}
@@ -80,9 +83,13 @@ const MonumentDetailScreen = ({ monument, language, setLanguage }) => {
               aspectRatio: "4/3",
             }}
             loading="lazy"
+            onError={() => {
+              console.warn("Resim yüklenemedi:", monument.image);
+              setImageLoadFailed(true);
+            }}
           />
-        )}
-      </div>
+        </div>
+      )}
 
       <div style={{ flex: 1, maxWidth: "800px", padding: "0 16px" }}>
         <div
