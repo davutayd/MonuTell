@@ -1,23 +1,25 @@
 import React, { useRef, useState, useEffect } from "react";
+import { useGlobalAudio } from "../../context/GlobalAudioContext";
 
-const CustomProgressBar = ({ length, currentIndex, onChange }) => {
+const CustomProgressBar = ({ duration, currentTime, onChangeTime }) => {
   const progressBarRef = useRef(null);
 
-  const getNewIndexFromPosition = (clientX) => {
-    const bar = progressBarRef.current;
-    if (!bar) return currentIndex;
+  const percentage = duration > 0 ? (currentTime / duration) * 100 : 0;
 
+  const getNewTimeFromPosition = (clientX) => {
+    const bar = progressBarRef.current;
+    if (!bar || !duration) return 0;
     const rect = bar.getBoundingClientRect();
     let relativeX = clientX - rect.left;
     relativeX = Math.max(0, Math.min(relativeX, rect.width));
-    const percentage = relativeX / rect.width;
 
-    return Math.round(percentage * (length - 1));
+    const clickPercentage = relativeX / rect.width;
+    return Math.round(clickPercentage * duration);
   };
 
   const handleClick = (e) => {
-    const newIndex = getNewIndexFromPosition(e.clientX);
-    onChange(newIndex);
+    const newTime = getNewTimeFromPosition(e.clientX);
+    onChangeTime(newTime);
   };
 
   return (
@@ -40,7 +42,7 @@ const CustomProgressBar = ({ length, currentIndex, onChange }) => {
           top: 0,
           left: 0,
           height: "100%",
-          width: `${(currentIndex / (length - 1)) * 100}%`,
+          width: `${percentage}%`,
           backgroundColor: "#4a6fa5",
           borderRadius: 4,
           transition: "width 0.2s ease",
@@ -50,7 +52,7 @@ const CustomProgressBar = ({ length, currentIndex, onChange }) => {
         style={{
           position: "absolute",
           top: "50%",
-          left: `${(currentIndex / (length - 1)) * 100}%`,
+          left: `${percentage}%`,
           transform: "translate(-50%, -50%)",
           width: 16,
           height: 16,
@@ -73,116 +75,83 @@ const AudioControls = ({
   setIsSpeaking,
   volume,
   setVolume,
-  voices,
   langCode,
 }) => {
-  const audioRef = useRef(null);
-  const [duration, setDuration] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
+  const {
+    currentTrack,
+    isPlaying,
+    duration,
+    currentTime,
+    playAudio,
+    togglePlay,
+    stopAudio,
+    seekTo,
+    changeVolume,
+  } = useGlobalAudio();
 
-  const audioKey = langCode.startsWith("tr") ? "tr" : "en";
-
-  useEffect(() => {
-    if (!monument?.audio) return;
-    const audioKey = langCode.startsWith("tr") ? "tr" : "en";
-    const url = monument.audio[audioKey];
-    if (!url) return;
-
-    const audio = new Audio(url);
-    audioRef.current = audio;
-    audio.volume = volume;
-
-    const words = story.split(/\s+/);
-    const totalWords = words.length;
-
-    const onTimeUpdate = () => {
-      setCurrentTime(audio.currentTime || 0);
-      if (!audio.duration) return;
-      const progress = audio.currentTime / audio.duration;
-      const wordIndex = Math.floor(progress * totalWords);
-      setCurrentCharIndex(wordIndex); // kelime bazlı
-    };
-
-    const onLoaded = () => setDuration(audio.duration || 0);
-    const onEnded = () => {
-      setIsSpeaking(false);
-      setCurrentTime(0);
-      setCurrentCharIndex(0);
-    };
-
-    audio.addEventListener("timeupdate", onTimeUpdate);
-    audio.addEventListener("loadedmetadata", onLoaded);
-    audio.addEventListener("ended", onEnded);
-
-    setIsSpeaking(false);
-    setCurrentTime(0);
-    setCurrentCharIndex(0);
-
-    try {
-      audio.load();
-    } catch {}
-
-    return () => {
-      audio.pause();
-      audio.removeEventListener("timeupdate", onTimeUpdate);
-      audio.removeEventListener("loadedmetadata", onLoaded);
-      audio.removeEventListener("ended", onEnded);
-    };
-  }, [monument, langCode, story]);
+  const [localDuration, setLocalDuration] = useState(0);
+  const [localCurrentTime, setLocalCurrentTime] = useState(0);
 
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.volume = typeof volume === "number" ? volume : 1;
+    setLocalDuration(duration || 0);
+  }, [duration]);
+
+  useEffect(() => {
+    setLocalCurrentTime(currentTime || 0);
+
+    if (story) {
+      const words = story.split(/\s+/);
+      const totalWords = Math.max(1, words.length);
+      const wordIndex =
+        localDuration > 0
+          ? Math.floor(((currentTime || 0) / localDuration) * totalWords)
+          : 0;
+      setCurrentCharIndex(Math.min(totalWords - 1, Math.max(0, wordIndex)));
     }
-  }, [volume]);
+
+    setIsSpeaking(Boolean(isPlaying));
+  }, [currentTime, duration, story, isPlaying]);
+
+  const audioKey =
+    langCode && langCode.toLowerCase().startsWith("tr") ? "tr" : "en";
+  const audioUrl = monument?.audio?.[audioKey];
 
   const handlePlayPause = async () => {
-    const audio = audioRef.current;
-    if (!audio || !audio.src) return;
-
-    if (!audio.paused) {
-      audio.pause();
-      setIsSpeaking(false);
+    if (!audioUrl) {
+      console.warn("Audio URL yok:", monument?.id, audioKey);
       return;
     }
 
-    try {
-      const playPromise = audio.play();
-      if (playPromise !== undefined) await playPromise;
+    if (currentTrack?.url === audioUrl) {
+      togglePlay();
+      setIsSpeaking(!isPlaying);
+    } else {
+      const title = monument?.name_tr || monument?.name_en || "MonuTell";
+      playAudio(audioUrl, title, monument?.id || "");
       setIsSpeaking(true);
-    } catch (err) {
-      console.error("Audio play error:", err);
     }
   };
 
   const handleStop = () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    audio.pause();
-    audio.currentTime = 0;
-    setCurrentTime(0);
+    stopAudio();
     setIsSpeaking(false);
+    setCurrentCharIndex(0);
   };
 
   const handleVolumeChange = (e) => {
     const newVol = parseFloat(e.target.value);
     setVolume(newVol);
-    if (audioRef.current) audioRef.current.volume = newVol;
+    changeVolume(newVol);
   };
 
-  const handleProgressBarChange = (newIndex) => {
-    if (!audioRef.current) return;
-    const seekTime = Math.min(Math.max(newIndex, 0), Math.floor(duration || 0));
-    audioRef.current.currentTime = seekTime;
-    setCurrentTime(seekTime);
-    if (!audioRef.current.paused) audioRef.current.play().catch(() => {});
+  const handleProgressBarChange = (newTime) => {
+    const seekTime = Math.min(
+      Math.max(newTime, 0),
+      Math.floor(localDuration || 0)
+    );
+    seekTo(seekTime);
+    setLocalCurrentTime(seekTime);
   };
-
-  const progressLength = Math.max(2, Math.ceil(duration || 2));
-  const progressIndex = Math.min(
-    Math.floor(currentTime || 0),
-    progressLength - 1
-  );
 
   return (
     <div
@@ -198,9 +167,9 @@ const AudioControls = ({
       }}
     >
       <CustomProgressBar
-        length={progressLength}
-        currentIndex={progressIndex}
-        onChange={handleProgressBarChange}
+        duration={localDuration}
+        currentTime={localCurrentTime}
+        onChangeTime={handleProgressBarChange}
       />
 
       <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
