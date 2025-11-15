@@ -1,32 +1,21 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import AudioControls from "./AudioControls";
+import { useGlobalAudio } from "../../context/GlobalAudioContext";
 
 const MonumentDetailScreen = ({ monument, language, setLanguage }) => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
   const [volume, setVolume] = useState(1);
-  const [voices, setVoices] = useState([]);
-
-  const synthRef = useRef(window.speechSynthesis);
+  const { playAudio } = useGlobalAudio();
 
   const langCode = language === "tr" ? "tr-TR" : "en-US";
   const title = language === "tr" ? monument.name_tr : monument.name_en;
   const story = language === "tr" ? monument.story_tr : monument.story_en;
 
-  useEffect(() => {
-    const loadVoices = () => setVoices(synthRef.current.getVoices());
-    synthRef.current.addEventListener("voiceschanged", loadVoices);
-    loadVoices();
-    return () => {
-      synthRef.current.removeEventListener("voiceschanged", loadVoices);
-    };
-  }, []);
-
   const handleLanguageChange = (newLang) => {
     setLanguage(newLang);
     setCurrentCharIndex(0);
     setIsSpeaking(false);
-    synthRef.current.cancel();
   };
 
   const renderStory = () => {
@@ -147,7 +136,6 @@ const MonumentDetailScreen = ({ monument, language, setLanguage }) => {
           setIsSpeaking={setIsSpeaking}
           volume={volume}
           setVolume={setVolume}
-          voices={voices}
           langCode={langCode}
         />
 
