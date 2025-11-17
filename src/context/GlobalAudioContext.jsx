@@ -6,6 +6,15 @@ import React, {
   useEffect,
 } from "react";
 
+const getInitialVolume = () => {
+  const savedVolume = localStorage.getItem("monutell_volume");
+  const volume = parseFloat(savedVolume);
+  if (!isNaN(volume) && volume >= 0 && volume <= 1) {
+    return volume;
+  }
+  return 1;
+};
+
 const GlobalAudioContext = createContext();
 export const useGlobalAudio = () => useContext(GlobalAudioContext);
 
@@ -15,7 +24,8 @@ export const GlobalAudioProvider = ({ children }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
-  const [volume, setVolume] = useState(1);
+
+  const [volume, setVolume] = useState(getInitialVolume());
 
   useEffect(() => {
     return () => {
@@ -76,7 +86,6 @@ export const GlobalAudioProvider = ({ children }) => {
 
   const playAudio = (url, title = "", id = "") => {
     if (!url) return;
-
     if (currentTrack?.url === url && audioRef.current && !isPlaying) {
       audioRef.current
         .play()
@@ -84,11 +93,9 @@ export const GlobalAudioProvider = ({ children }) => {
         .catch((e) => console.warn("resume failed", e));
       return;
     }
-
     if (currentTrack?.url === url && audioRef.current && isPlaying) {
       return;
     }
-
     _createAndPlay(url, title, id);
   };
 
@@ -126,11 +133,13 @@ export const GlobalAudioProvider = ({ children }) => {
     audioRef.current.currentTime = timeInSeconds;
     setCurrentTime(timeInSeconds);
   };
-
   const changeVolume = (v) => {
     const vol = Math.max(0, Math.min(1, v));
     setVolume(vol);
-    if (audioRef.current) audioRef.current.volume = vol;
+    if (audioRef.current) {
+      audioRef.current.volume = vol;
+    }
+    localStorage.setItem("monutell_volume", vol.toString());
   };
 
   return (
