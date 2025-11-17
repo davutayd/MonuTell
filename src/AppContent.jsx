@@ -3,12 +3,25 @@ import MapScreen from "./components/Map/MapScreen";
 import MonumentDetailScreen from "./components/Detail/MonumentDetailScreen";
 import { useGlobalAudio } from "./context/GlobalAudioContext";
 import MiniPlayer from "./components/Player/MiniPlayer";
-
 import styles from "./AppContent.module.css";
+
+const getInitialLanguage = () => {
+  const savedLang = localStorage.getItem("monutell_language");
+  if (savedLang === "tr" || savedLang === "en") {
+    return savedLang;
+  }
+  const browserLangCode = (navigator.language || navigator.userLanguage).split(
+    "-"
+  )[0];
+  if (browserLangCode === "tr") {
+    return "tr";
+  }
+  return "en";
+};
 
 function AppContent() {
   const [selectedMonument, setSelectedMonument] = useState(null);
-  const [language, setLanguage] = useState("tr");
+  const [language, setLanguage] = useState(getInitialLanguage());
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [pausedBySystem, setPausedBySystem] = useState(false);
@@ -16,13 +29,16 @@ function AppContent() {
   const { currentTrack, isPlaying, stopAudio, pauseAudio, playAudio } =
     useGlobalAudio();
   useEffect(() => {
+    localStorage.setItem("monutell_language", language);
+  }, [language]);
+
+  useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
   const handleSelectMonument = (monument) => {
     if (
       currentTrack?.id === monument.id ||
@@ -53,7 +69,6 @@ function AppContent() {
       setSelectedMonument(null);
     }, 300);
   };
-
   const appContainerDynamicStyle = {
     flexDirection: isMobile ? "column" : "row",
   };
@@ -80,7 +95,6 @@ function AppContent() {
   const scrollPanelDynamicStyle = {
     opacity: isPanelOpen ? 1 : 0,
   };
-
   return (
     <div className={styles.appContainer} style={appContainerDynamicStyle}>
       <div className={styles.detailPanel} style={panelDynamicStyle}>
