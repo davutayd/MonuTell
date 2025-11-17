@@ -75,6 +75,7 @@ const MapScreen = ({
           <>
             {showMarker ? (
               <>
+                <Marker position={position} icon={userLocationIcon} />
                 <UserPulse position={position} />
               </>
             ) : (
