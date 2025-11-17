@@ -36,6 +36,7 @@
 .mapContainer {
   flex-grow: 1;
   position: relative;
+  z-index: 500;
 }
 .scrollPanel::-webkit-scrollbar {
   width: 8px;
