@@ -75,14 +75,12 @@ const MapScreen = ({
           <>
             {showMarker ? (
               <>
-                <Marker position={position} icon={userLocationIcon} />
                 <UserPulse position={position} />
               </>
             ) : (
               <Circle
                 center={position}
                 radius={Math.min(accuracy || 1000, 1000)}
-                // 3. 'pathOptions' CSS olmadığı için inline kalır (bu normaldir)
                 pathOptions={{
                   color: "#2a7",
                   fillColor: "#2a7",
