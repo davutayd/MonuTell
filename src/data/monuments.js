@@ -1,17 +1,18 @@
 const monuments = [
   {
     id: "1",
+    category: "statue",
     name_tr: "Özgürlük Heykeli",
     name_en: "Statue of Liberty",
     latitude: 47.48672949699504,
     longitude: 19.048006005526332,
-    story_tr: `Budapeşte’nin siluetini taçlandıran Özgürlük Heykeli, Gellért Tepesi’nin zirvesinde tüm şehri kucaklar gibi yükselir. 1947’de dikilen bu heykel, başlangıçta savaşta hayatını kaybeden Sovyet askerlerini anmak için yapılmış olsa da, zamanla anlamı değişmiş ve Macar halkı için özgürlüğün sembolü haline gelmiştir. 
-Ellerinde palmiye yaprağı tutan kadın figürü, şehrin üzerinde bir bekçi gibi durur. Günümüzde burası hem turistlerin hem de yerel halkın uğrak noktasıdır. Tepeden Budapeşte’nin en geniş panoramasını izlemek mümkündür. 
-Özellikle akşamüstü, gün batımında buraya çıkan ziyaretçiler, altlarında parıldayan şehir ışıklarıyla büyülü bir manzaraya tanık olur. Özgürlük Heykeli’nin yanı başında durmak, sadece bir manzara değil; aynı zamanda bir duygudur: özgürlüğün değeri. 
+    story_tr: `Budapeşte’nin siluetini taçlandıran Özgürlük Heykeli, Gellért Tepesi’nin zirvesinde tüm şehri kucaklar gibi yükselir. 1947’de dikilen bu heykel, başlangıçta savaşta hayatını kaybeden Sovyet askerlerini anmak için yapılmış olsa da, zamanla anlamı değişmiş ve Macar halkı için özgürlüğün sembolü haline gelmiştir. 
+Ellerinde palmiye yaprağı tutan kadın figürü, şehrin üzerinde bir bekçi gibi durur. Günümüzde burası hem turistlerin hem de yerel halkın uğrak noktasıdır. Tepeden Budapeşte’nin en geniş panoramasını izlemek mümkündür. 
+Özellikle akşamüstü, gün batımında buraya çıkan ziyaretçiler, altlarında parıldayan şehir ışıklarıyla büyülü bir manzaraya tanık olur. Özgürlük Heykeli’nin yanı başında durmak, sadece bir manzara değil; aynı zamanda bir duygudur: özgürlüğün değeri. 
 Özgürlük Heykeli, Budapeşte’nin kalbine kazınmış en güçlü simgelerden biridir.`,
-    story_en: `Crowning the skyline of Budapest, the Liberty Statue rises above the city from the summit of Gellért Hill. Erected in 1947 to commemorate Soviet soldiers who died in World War II, its meaning has since transformed: today, it stands as a symbol of freedom for the Hungarian people. 
-The female figure holding a palm leaf watches over the city like a guardian. Today, both locals and tourists flock here to admire the most expansive panorama of Budapest. 
-At sunset, visitors witness a magical view as the city lights sparkle beneath them. Standing beside the Liberty Statue is not just about seeing a monument; it is about feeling the value of freedom itself. 
+    story_en: `Crowning the skyline of Budapest, the Liberty Statue rises above the city from the summit of Gellért Hill. Erected in 1947 to commemorate Soviet soldiers who died in World War II, its meaning has since transformed: today, it stands as a symbol of freedom for the Hungarian people. 
+The female figure holding a palm leaf watches over the city like a guardian. Today, both locals and tourists flock here to admire the most expansive panorama of Budapest. 
+At sunset, visitors witness a magical view as the city lights sparkle beneath them. Standing beside the Liberty Statue is not just about seeing a monument; it is about feeling the value of freedom itself. 
 The Liberty Statue remains one of the most powerful symbols etched into the heart of Budapest.`,
     image:
       "https://www.interbustur.com/wp-content/uploads/2017/11/budape%C5%9Fte-%C3%B6zg%C3%BCrl%C3%BCk-heykeli.jpg",
@@ -22,17 +23,18 @@ The Liberty Statue remains one of the most powerful symbols etched into the hear
   },
   {
     id: "2",
+    category: "landmark",
     name_tr: "Kahramanlar Meydanı",
     name_en: "Heroes' Square",
     latitude: 47.514996132847855,
     longitude: 19.077918156472098,
-    story_tr: `Budapeşte’nin en geniş ve en etkileyici meydanlarından biri olan Kahramanlar Meydanı, Macar ulusunun tarihini ve gururunu yansıtır. 1896’da Macaristan’ın 1000. yılı için inşa edilen meydanın ortasında, göğe yükselen bir sütunun tepesinde Başmelek Cebrail’in heykeli bulunur. 
-Meydanı çevreleyen heykeller, Macar tarihinin krallarını, prenslerini ve kahramanlarını temsil eder. Her biri farklı bir dönemin ruhunu taşır ve ziyaretçilere Macaristan’ın zengin geçmişini anlatır. 
-Bugün buraya gelen turistler için meydan, fotoğraf çekmek için vazgeçilmez bir noktadır. Aynı zamanda ulusal törenlerin ve kutlamaların da merkezidir. Genişliği, simgeleri ve ihtişamıyla insana derin bir etki bırakır. 
+    story_tr: `Budapeşte’nin en geniş ve en etkileyici meydanlarından biri olan Kahramanlar Meydanı, Macar ulusunun tarihini ve gururunu yansıtır. 1896’da Macaristan’ın 1000. yılı için inşa edilen meydanın ortasında, göğe yükselen bir sütunun tepesinde Başmelek Cebrail’in heykeli bulunur. 
+Meydanı çevreleyen heykeller, Macar tarihinin krallarını, prenslerini ve kahramanlarını temsil eder. Her biri farklı bir dönemin ruhunu taşır ve ziyaretçilere Macaristan’ın zengin geçmişini anlatır. 
+Bugün buraya gelen turistler için meydan, fotoğraf çekmek için vazgeçmez bir noktadır. Aynı zamanda ulusal törenlerin ve kutlamaların da merkezidir. Genişliği, simgeleri ve ihtişamıyla insana derin bir etki bırakır. 
 Kahramanlar Meydanı, yalnızca taş ve bronzdan ibaret bir alan değil; bir ulusun hikâyesini anlatan açık hava müzesidir.`,
-    story_en: `Heroes’ Square is one of Budapest’s grandest and most impressive public spaces, reflecting the history and pride of the Hungarian nation. Built in 1896 for Hungary’s millennial celebrations, its central column is crowned by a statue of Archangel Gabriel. 
-Surrounding the square are statues of kings, princes, and national heroes, each embodying the spirit of a different era in Hungary’s past. Together, they narrate the country’s rich and turbulent history. 
-For today’s visitors, the square is a must for photography, but also a central site for national ceremonies and celebrations. Its vastness, symbols, and grandeur leave a lasting impression. 
+    story_en: `Heroes’ Square is one of Budapest’s grandest and most impressive public spaces, reflecting the history and pride of the Hungarian nation. Built in 1896 for Hungary’s millennial celebrations, its central column is crowned by a statue of Archangel Gabriel. 
+Surrounding the square are statues of kings, princes, and national heroes, each embodying the spirit of a different era in Hungary’s past. Together, they narrate the country’s rich and turbulent history. 
+For today’s visitors, the square is a must for photography, but also a central site for national ceremonies and celebrations. Its vastness, symbols, and grandeur leave a lasting impression. 
 Heroes’ Square is not just stone and bronze; it is an open-air museum telling the story of a nation.`,
     image:
       "https://budappest.com/wp-content/uploads/2024/03/Heroes-Square-Budapest.jpg",
@@ -43,17 +45,18 @@ Heroes’ Square is not just stone and bronze; it is an open-air museum telling 
   },
   {
     id: "3",
+    category: "landmark",
     name_tr: "Balıkçılar Burcu",
     name_en: "Fisherman's Bastion",
     latitude: 47.50209168328553,
     longitude: 19.034723401780333,
-    story_tr: `Budapeşte’nin en çok ziyaret edilen noktalarından biri olan Balıkçılar Burcu, masal kitaplarından fırlamış gibi görünen yapısıyla herkesi büyüler. 19. yüzyılın sonunda inşa edilen bu teras, şehre hâkim yedi kulesiyle Macar kabilelerini simgeler. 
-Buraya gelen ziyaretçiler için en büyüleyici an, burçlardan Budapeşte manzarasına bakmaktır. Parlamento Binası, Tuna Köprüleri ve şehrin iki yakası, sanki bir tablo gibi gözlerinizin önüne serilir. Özellikle gün doğumunda veya gün batımında burası adeta büyülü bir atmosfer kazanır. 
-Balıkçılar Burcu’nun adı, Orta Çağ’da bu bölgenin savunmasından sorumlu olan balıkçı loncasından gelir. Bugün ise burası savunma değil, hayranlık uyandırma görevini üstlenir. İnsanlar burada fotoğraf çeker, kahve içer, sokak müzisyenlerinin melodileri eşliğinde zamanın nasıl geçtiğini unuturlar. 
+    story_tr: `Budapeşte’nin en çok ziyaret edilen noktalarından biri olan Balıkçılar Burcu, masal kitaplarından fırlamış gibi görünen yapısıyla herkesi büyüler. 19. yüzyılın sonunda inşa edilen bu teras, şehre hâkim yedi kulesiyle Macar kabilelerini simgeler. 
+Buraya gelen ziyaretçiler için en büyüleyici an, burçlardan Budapeşte manzarasına bakmaktır. Parlamento Binası, Tuna Köprüleri ve şehrin iki yakası, sanki bir tablo gibi gözlerinizin önüne serilir. Özellikle gün doğumunda veya gün batımında burası adeta büyülü bir atmosfer kazanır. 
+Balıkçılar Burcu’nun adı, Orta Çağ’da bu bölgenin savunmasından sorumlu olan balıkçı loncasından gelir. Bugün ise burası savunma değil, hayranlık uyandırma görevini üstlenir. İnsanlar burada fotoğraf çeker, kahve içer, sokak müzisyenlerinin melodileri eşliğinde zamanın nasıl geçtiğini unuturlar. 
 Balıkçılar Burcu, Budapeşte’yi ziyaret eden herkes için olmazsa olmaz bir duraktır; hem tarihle hem de masalsı güzellikle dolu.`,
-    story_en: `The Fisherman’s Bastion is one of Budapest’s most visited landmarks, enchanting all with its fairytale-like appearance. Built at the end of the 19th century, its seven towers symbolize the seven Magyar tribes that founded the nation. 
-For visitors, the most magical moment comes when gazing at Budapest from its terraces. The Parliament, the bridges of the Danube, and the two halves of the city unfold like a painting before your eyes. At sunrise or sunset, the Bastion glows with a dreamlike atmosphere. 
-Its name comes from the guild of fishermen who defended this part of the city walls in the Middle Ages. Today, instead of defense, it serves the purpose of awe. People take photos here, sip coffee, and lose track of time as street musicians play their melodies. 
+    story_en: `The Fisherman’s Bastion is one of Budapest’s most visited landmarks, enchanting all with its fairytale-like appearance. Built at the end of the 19th century, its seven towers symbolize the seven Magyar tribes that founded the nation. 
+For visitors, the most magical moment comes when gazing at Budapest from its terraces. The Parliament, the bridges of the Danube, and the two halves of the city unfold like a painting before your eyes. At sunrise or sunset, the Bastion glows with a dreamlike atmosphere. 
+Its name comes from the guild of fishermen who defended this part of the city walls in the Middle Ages. Today, instead of defense, it serves the purpose of awe. People take photos here, sip coffee, and lose track of time as street musicians play their melodies. 
 The Fisherman’s Bastion is a must-visit for anyone exploring Budapest, offering both history and fairytale beauty in one unforgettable spot.`,
     image:
       "https://justbudapest.com/wp-content/uploads/Fishermens-Bastion-Budapest-min.webp",
@@ -65,17 +68,18 @@ The Fisherman’s Bastion is a must-visit for anyone exploring Budapest, offerin
 
   {
     id: "4",
+    category: "landmark",
     name_tr: "Parlamento Binası",
     name_en: "Parliament Building",
     latitude: 47.50718542143702,
     longitude: 19.04561535289198,
-    story_tr: `Budapeşte’nin kalbinde, Tuna’nın kıyısında ihtişamla yükselen Parlamento Binası, yalnızca bir hükümet merkezi değil, aynı zamanda Macaristan’ın ruhunu yansıtan bir başyapıttır. 1902’de tamamlanan bu bina, Neo-Gotik mimarisi, zarif kuleleri ve devasa kubbesiyle görenleri büyüler. 
-Binanın her taşında tarih yatmaktadır. İçinde 691 oda, sonsuz gibi görünen koridorlar ve altın yaldızlarla süslü salonlar vardır. En kutsal köşesi ise Macaristan’ın en değerli hazinesi olan Kutsal Taç’ın sergilendiği bölümdür. 
-Bugün Parlamento’nun önünde durduğunuzda, sadece bir yapıya değil; aynı zamanda bir ulusun gururuna bakarsınız. Gündüzleri güneş ışığında parlayan beyaz taşlar, geceleri Tuna’ya yansıyan ışıklarla masalsı bir görüntüye dönüşür. Ziyaretçiler için en unutulmaz deneyimlerden biri, bu manzarayı gece tekne turunda seyretmektir. 
+    story_tr: `Budapeşte’nin kalbinde, Tuna’nın kıyısında ihtişamla yükselen Parlamento Binası, yalnızca bir hükümet merkezi değil, aynı zamanda Macaristan’ın ruhunu yansıtan bir başyapıttır. 1902’de tamamlanan bu bina, Neo-Gotik mimarisi, zarif kuleleri ve devasa kubbesiyle görenleri büyüler. 
+Binanın her taşında tarih yatmaktadır. İçinde 691 oda, sonsuz gibi görünen koridorlar ve altın yaldızlarla süslü salonlar vardır. En kutsal köşesi ise Macaristan’ın en değerli hazinesi olan Kutsal Taç’ın sergilendiği bölümdür. 
+Bugün Parlamento’nun önünde durduğunuzda, sadece bir yapıya değil; aynı zamanda bir ulusun gururuna bakarsınız. Gündüzleri güneş ışığında parlayan beyaz taşlar, geceleri Tuna’ya yansıyan ışıklarla masalsı bir görüntüye dönüşür. Ziyaretçiler için en unutulmaz deneyimlerden biri, bu manzarayı gece tekne turunda seyretmektir. 
 Parlamento Binası, Budapeşte’nin simgesi olmanın ötesinde, Macaristan’ın geçmişi ve geleceği arasında kurduğu köprüyle kalplerde yer etmiştir.`,
-    story_en: `Rising majestically on the banks of the Danube, the Parliament Building is not only the seat of government but also a masterpiece reflecting the soul of Hungary. Completed in 1902, its Neo-Gothic architecture, elegant spires, and massive dome captivate all who see it. 
-Every stone of the building holds history. Inside, there are 691 rooms, seemingly endless corridors, and halls adorned with gold leaf. Its most sacred chamber houses Hungary’s most treasured possession: the Holy Crown. 
-Standing before the Parliament today, you are gazing not merely at a building but at a nation’s pride. By day, its white stones shine in the sunlight; by night, its illumination shimmers across the Danube like a fairytale vision. For visitors, one of the most unforgettable experiences is seeing this sight from a river cruise at night. 
+    story_en: `Rising majestically on the banks of the Danube, the Parliament Building is not only the seat of government but also a masterpiece reflecting the soul of Hungary. Completed in 1902, its Neo-Gothic architecture, elegant spires, and massive dome captivate all who see it. 
+Every stone of the building holds history. Inside, there are 691 rooms, seemingly endless corridors, and halls adorned with gold leaf. Its most sacred chamber houses Hungary’s most treasured possession: the Holy Crown. 
+Standing before the Parliament today, you are gazing not merely at a building but at a nation’s pride. By day, its white stones shine in the sunlight; by night, its illumination shimmers across the Danube like a fairytale vision. For visitors, one of the most unforgettable experiences is seeing this sight from a river cruise at night. 
 The Parliament Building is more than a symbol of Budapest; it is a bridge between Hungary’s past and future, deeply etched into the heart of the nation.`,
     image:
       "https://www.budapest.org/en/wp-content/uploads/sites/101/parliament-budapest-hungary-hd.jpg",
@@ -86,24 +90,25 @@ The Parliament Building is more than a symbol of Budapest; it is a bridge betwee
   },
   {
     id: "5",
+    category: "landmark",
     name_tr: "Milenyum Anıtı",
     name_en: "Millennium Monument",
     latitude: 47.51519766812,
     longitude: 19.078153520293846,
     story_tr: `Budapeşte’nin kalbinde, geniş bir meydana açılan yolların tam merkezinde yükselir Milenyum Anıtı. Her sabah şehrin üstüne düşen ilk ışık huzmeleri, bu görkemli yapının sütunlarına vurur; ve her akşam, gün batımı anıtın siluetini altın gibi parlatır. Ama bu taş yapı yalnızca güzel bir mimari değildir. O, Macar halkının bin yıllık geçmişinin, umutlarının ve mücadelelerinin sessiz bir anlatıcısıdır.
-        Her şey 896 yılında başlamıştı. Tuna Nehri’nin bataklık kıyılarına yedi kabile ayak basmış, atalarının izlerini bu topraklara kazımaya karar vermişti. Başlarında Árpád adında kararlı bir lider vardı. Onun önderliğinde Macar halkı sadece bir yurt değil, bir kimlik inşa etti. Aradan tam bin yıl geçtiğinde, 1896 yılında, Macaristan bu büyük dönüm noktasını unutulmaz bir anıtla kutlamak istedi.
-        İşte o zaman Milenyum Anıtı’nın temelleri atıldı. Bu sadece bir kutlama değil, köklere dönüşün, kimliğe saygının ve bir ulusun belleğini koruma arzusunun heykelleşmiş haliydi. Merkezinde 36 metre yüksekliğinde bir sütun yükselir. Ve bu sütunun tepesinde kanatlarını gererek göğe uzanan Gabriel meleği yer alır. Efsaneye göre Gabriel, Árpád'a kutsal bir taç ve haç sunarak ona bu topraklarda hükmetme ilahi hakkını vermiştir. Bu taç, bugün bile Macaristan’ın egemenliğinin ve birliğinin simgesi sayılır.
-        Ancak Milenyum Anıtı yalnızca bir melek ya da sütundan ibaret değildir. Sütunun çevresinde dairesel bir düzende yerleştirilmiş heykeller, tarih boyunca Macar halkına yön vermiş isimleri temsil eder. Her biri ayrı bir hikâyeye sahiptir: savaşlar, ittifaklar, zaferler ve fedakârlıklar… Bu figürler, sadece taştan oyulmuş yüzler değil, ulusun hafızasında yer etmiş canlı karakterlerdir.
-        Anıtın hemen arkasında yer alan yarım daire biçimindeki kolonadlar ise bir tiyatro sahnesini andırır. Fakat burada sergilenen oyun, zamanın ta kendisidir. Her bir sütunun ardında duran figür, Macar tarihinin bir dönemini temsil eder. Askerler, krallar, bilginler… Hepsi, tarihin sahnesine bir kez çıkmış ve bu anıtta ölümsüzleşmiştir.
-        Milenyum Anıtı, sadece geçmişe bakan bir yapı değil, aynı zamanda geleceğe uzanan bir mesajdır. "Kim olduğumuzu bilmek için nereden geldiğimizi unutmamalıyız," dercesine, her gün binlerce insana tarihle yüzleşme imkânı sunar. Budapeşte’nin kalabalığı, turistlerin fotoğraf makineleri, öğrencilerin ödevleri, yaşlıların anıları... Hepsi bu anıtın çevresinde birikir.
-        Ve böylece Milenyum Anıtı, taş ve bronzun ötesine geçer. Bir ulusun ruhu olur. Bin yıllık bir hikâyeyi sessizce anlatmaya devam eder. Çünkü bazı öyküler kelimelerle değil, duruşla ve sabırla anlatılır. Milenyum Anıtı da işte tam olarak bunu yapar.`,
+        Her şey 896 yılında başlamıştı. Tuna Nehri’nin bataklık kıyılarına yedi kabile ayak basmış, atalarının izlerini bu topraklara kazımaya karar vermişti. Başlarında Árpád adında kararlı bir lider vardı. Onun önderliğinde Macar halkı sadece bir yurt değil, bir kimlik inşa etti. Aradan tam bin yıl geçtiğinde, 1896 yılında, Macaristan bu büyük dönüm noktasını unutulmaz bir anıtla kutlamak istedi.
+        İşte o zaman Milenyum Anıtı’nın temelleri atıldı. Bu sadece bir kutlama değil, köklere dönüşün, kimliğe saygının ve bir ulusun belleğini koruma arzusunun heykelleşmiş haliydi. Merkezinde 36 metre yüksekliğinde bir sütun yükselir. Ve bu sütunun tepesinde kanatlarını gererek göğe uzanan Gabriel meleği yer alır. Efsaneye göre Gabriel, Árpád'a kutsal bir taç ve haç sunarak ona bu topraklarda hükmetme ilahi hakkını vermiştir. Bu taç, bugün bile Macaristan’ın egemenliğinin ve birliğinin simgesi sayılır.
+        Ancak Milenyum Anıtı yalnızca bir melek ya da sütundan ibaret değildir. Sütunun çevresinde dairesel bir düzende yerleştirilmiş heykeller, tarih boyunca Macar halkına yön vermiş isimleri temsil eder. Her biri ayrı bir hikâyeye sahiptir: savaşlar, ittifaklar, zaferler ve fedakârlıklar… Bu figürler, sadece taştan oyulmuş yüzler değil, ulusun hafızasında yer etmiş canlı karakterlerdir.
+        Anıtın hemen arkasında yer alan yarım daire biçimindeki kolonadlar ise bir tiyatro sahnesini andırır. Fakat burada sergilenen oyun, zamanın ta kendisidir. Her bir sütunun ardında duran figür, Macar tarihinin bir dönemini temsil eder. Askerler, krallar, bilginler… Hepsi, tarihin sahnesine bir kez çıkmış ve bu anıtta ölümsüzleşmiştir.
+        Milenyum Anıtı, sadece geçmişe bakan bir yapı değil, aynı zamanda geleceğe uzanan bir mesajdır. "Kim olduğumuzu bilmek için nereden geldiğimizi unutmamalıyız," dercesine, her gün binlerce insana tarihle yüzleşme imkânı sunar. Budapeşte’nin kalabalığı, turistlerin fotoğraf makineleri, öğrencilerin ödevleri, yaşlıların anıları... Hepsi bu anıtın çevresinde birikir.
+        Ve böylece Milenyum Anıtı, taş ve bronzun ötesine geçer. Bir ulusun ruhu olur. Bin yıllık bir hikâyeyi sessizce anlatmaya devam eder. Çünkü bazı öyküler kelimelerle değil, duruşla ve sabırla anlatılır. Milenyum Anıtı da işte tam olarak bunu yapar.`,
     story_en: `In the heart of Budapest, where wide avenues converge into a grand square, the Millennium Monument rises with solemn grace. Every morning, the first rays of sunlight touch its towering columns, and each evening, the sunset casts a golden glow upon its silhouette. But this majestic structure is more than just an architectural wonder. It is the silent storyteller of the Hungarian people’s thousand-year journey—their hopes, their struggles, and their resilience.
-        It all began in the year 896. Seven tribes arrived on the marshy banks of the Danube River, determined to etch their legacy into this land. Leading them was a resolute figure named Árpád. Under his leadership, the Hungarian people did not merely find a homeland—they shaped an identity. A full millennium later, in 1896, Hungary chose to commemorate this pivotal milestone with a monument that would never fade from memory.
-        Thus, the foundations of the Millennium Monument were laid. It was more than a celebration—it was a sculpted return to roots, a tribute to identity, and a guardian of collective memory. At its center stands a 36-meter-high column, crowned by the archangel Gabriel, his wings outstretched toward the sky. Legend has it that Gabriel bestowed a sacred crown and cross upon Árpád, granting him divine right to rule this land. That very crown remains today a symbol of Hungarian sovereignty and unity.
-        Yet, the Millennium Monument is not just about an angel or a column. Surrounding the base in a semicircle are statues of historical figures who have guided the nation through time. Each carries its own tale—of battles, alliances, victories, and sacrifices. These are not mere stone faces, but characters carved into the soul of the nation.
-        Behind the central structure, the colonnades curve like a grand stage. But the play enacted here is not fiction—it is time itself. Behind each column stands a figure representing a distinct era of Hungarian history. Soldiers, kings, scholars… each took the stage of history once, and now stand immortalized in bronze and stone.
-        The Millennium Monument is not a relic that only looks to the past; it also speaks to the future. It whispers, “To know who we are, we must never forget where we came from.” Every day, it offers thousands the chance to confront history—amid tourists with cameras, students with assignments, elders with memories. All gather around this silent sentinel.
-        And so, the Millennium Monument transcends stone and bronze. It becomes the spirit of a nation. It continues to tell a thousand-year story without uttering a word. For some stories are not told with voices—but with presence, with patience. The Millennium Monument does exactly that. `,
+        It all began in the year 896. Seven tribes arrived on the marshy banks of the Danube River, determined to etch their legacy into this land. Leading them was a resolute figure named Árpád. Under his leadership, the Hungarian people did not merely find a homeland—they shaped an identity. A full millennium later, in 1896, Hungary chose to commemorate this pivotal milestone with a monument that would never fade from memory.
+        Thus, the foundations of the Millennium Monument were laid. It was more than a celebration—it was a sculpted return to roots, a tribute to identity, and a guardian of collective memory. At its center stands a 36-meter-high column, crowned by the archangel Gabriel, his wings outstretched toward the sky. Legend has it that Gabriel bestowed a sacred crown and cross upon Árpád, granting him divine right to rule this land. That very crown remains today a symbol of Hungarian sovereignty and unity.
+        Yet, the Millennium Monument is not just about an angel or a column. Surrounding the base in a semicircle are statues of historical figures who have guided the nation through time. Each carries its own tale—of battles, alliances, victories, and sacrifices. These are not mere stone faces, but characters carved into the soul of the nation.
+        Behind the central structure, the colonnades curve like a grand stage. But the play enacted here is not fiction—it is time itself. Behind each column stands a figure representing a distinct era of Hungarian history. Soldiers, kings, scholars… each took the stage of history once, and now stand immortalized in bronze and stone.
+        The Millennium Monument is not a relic that only looks to the past; it also speaks to the future. It whispers, “To know who we are, we must never forget where we came from.” Every day, it offers thousands the chance to confront history—amid tourists with cameras, students with assignments, elders with memories. All gather around this silent sentinel.
+        And so, the Millennium Monument transcends stone and bronze. It becomes the spirit of a nation. It continues to tell a thousand-year story without uttering a word. For some stories are not told with voices—but with presence, with patience. The Millennium Monument does exactly that. `,
     image:
       "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2a/e7/c5/77/beautiful-monument.jpg?w=1200&h=-1&s=1",
     audio: {
@@ -113,24 +118,25 @@ The Parliament Building is more than a symbol of Budapest; it is a bridge betwee
   },
   {
     id: "6",
+    category: "statue",
     name_tr: "Árpád ve Macar Kabile Reisleri",
     name_en: "Árpád and Magyar Chieftains",
     latitude: 47.51509497067999,
     longitude: 19.078310723769867,
     story_tr: `Budapeşte’deki Kahramanlar Meydanı'nda yükselen anıt, sadece taş ve tunçtan bir yapı değildir; aynı zamanda Macar ulusunun doğuşunu anlatan sessiz bir destandır. Bu devasa yapının ön cephesinde, 9. yüzyılın sonlarında Karpat Havzası’na gelen yedi Macar kabilesinin liderleri yer alır: Árpád, Előd, Ond, Kond, Tas, Huba ve Töhötöm. Her biri, Macar halkının tarihindeki özgün karakterleri ve katkılarıyla ölümsüzleşmiştir.
-        Bu yedi lider, yurt arayışı içinde, Tuna'nın ötesine geçerek bereketli topraklara ulaşmayı hedefleyen bir halkın öncüleriydi. En önde, tüm kabilelerin üzerinde birleştiği lider Árpád yer alır. Cesareti, karizması ve ileri görüşlülüğü sayesinde Macar kabilelerini bir araya getirmiş, onları tek bir millet çatısı altında toplamıştır. Rivayete göre, Karpatlar’a ilk ayak bastığında, atından inerek mızrağını toprağa saplamış ve "Bu topraklar bizim kaderimizdir" demiştir.
-        Árpád’ın hemen arkasında yer alan Előd, bilgeliği ve yaşlılığıyla kabilelerin akıl danıştığı bir figürdü. Savaşta değil, barışta büyüktü. Ardından gelen Ond, askeri strateji ve savunma planlarında ustaydı. O, düşmanı önce düşüncesiyle yıkan bir komutandı.
-        Kond, soğukkanlı ve cesurdu. Tehlike anında hep en önde olur, halkını korumak için tereddüt etmeden savaşırdı. Onunla birlikte gelen Tas, sert mizacı ve disipliniyle tanınırdı. Askerî düzenin sağlanmasında büyük rol oynamıştı.
-        Huba, genç yaşına rağmen büyük bir savaşçı ruhuna sahipti. Savaştaki cesareti halk arasında efsane hâline gelmişti. Onun ardından gelen Töhötöm, manevi liderdi. Kehanetlere ve eski geleneklere bağlılığıyla, halkın ruhani dengesini sağlamıştı.
-        Bu yedi liderin önderliğinde Macar halkı, Karpatlar'ı aşıp yeni bir vatan kurdu. Her biri farklı meziyetlere sahipti ama onları birleştiren şey, halklarını geleceğe taşımak için duydukları inanç ve sorumluluktu.
-        Kahramanlar Meydanı'ndaki bu heykeller sadece tarihi figürleri değil, aynı zamanda bir ulusun doğuşunu, mücadele ruhunu ve ortak hafızasını simgeler. Her ziyaretçi, bu yedi figüre bakarken, Macar halkının toprağa, kimliğe ve birliğe giden yolculuğunu hisseder.`,
+        Bu yedi lider, yurt arayışı içinde, Tuna'nın ötesine geçerek bereketli topraklara ulaşmayı hedefleyen bir halkın öncüleriydi. En önde, tüm kabilelerin üzerinde birleştiği lider Árpád yer alır. Cesareti, karizması ve ileri görüşlülüğü sayesinde Macar kabilelerini bir araya getirmiş, onları tek bir millet çatısı altında toplamıştır. Rivayete göre, Karpatlar’a ilk ayak bastığında, atından inerek mızrağını toprağa saplamış ve "Bu topraklar bizim kaderimizdir" demiştir.
+        Árpád’ın hemen arkasında yer alan Előd, bilgeliği ve yaşlılığıyla kabilelerin akıl danıştığı bir figürdü. Savaşta değil, barışta büyüktü. Ardından gelen Ond, askeri strateji ve savunma planlarında ustaydı. O, düşmanı önce düşüncesiyle yıkan bir komutandı.
+        Kond, soğukkanlı ve cesurdu. Tehlike anında hep en önde olur, halkını korumak için tereddüt etmeden savaşırdı. Onunla birlikte gelen Tas, sert mizacı ve disipliniyle tanınırdı. Askerî düzenin sağlanmasında büyük rol oynamıştı.
+        Huba, genç yaşına rağmen büyük bir savaşçı ruhuna sahipti. Savaştaki cesareti halk arasında efsane hâline gelmişti. Onun ardından gelen Töhötöm, manevi liderdi. Kehanetlere ve eski geleneklere bağlılığıyla, halkın ruhani dengesini sağlamıştı.
+        Bu yedi liderin önderliğinde Macar halkı, Karpatlar'ı aşıp yeni bir vatan kurdu. Her biri farklı meziyetlere sahipti ama onları birleştiren şey, halklarını geleceğe taşımak için duydukları inanç ve sorumluluktu.
+        Kahramanlar Meydanı'ndaki bu heykeller sadece tarihi figürleri değil, aynı zamanda bir ulusun doğuşunu, mücadele ruhunu ve ortak hafızasını simgeler. Her ziyaretçi, bu yedi figüre bakarken, Macar halkının toprağa, kimliğe ve birliğe giden yolculuğunu hisseder.`,
     story_en: `The monument at Heroes' Square in Budapest is not merely stone and bronze—it is a silent epic telling the story of the Hungarian nation’s birth. At the front of the majestic structure stand the seven leaders of the Magyar tribes who entered the Carpathian Basin in the late 9th century: Árpád, Előd, Ond, Kond, Tas, Huba, and Töhötöm. Each of them lives on through their unique character and lasting impact on Hungarian history.
-      These seven leaders guided a migrating people in search of a homeland, crossing rivers and mountains to reach fertile lands beyond the Danube. At the front rides Árpád, the paramount leader under whom the tribes united. With bravery, charisma, and vision, he formed the foundation of a nation. Legend says that upon entering the Carpathians, he dismounted his horse and thrust his spear into the earth, declaring: “This land is our destiny.”
-      Behind Árpád stands Előd, the elder and the wise—trusted for counsel more than sword. He symbolized peace and experience. Following him is Ond, a master of military strategy, whose defense plans often saved lives before a single weapon was drawn.
-      Next is Kond, calm and courageous. He never hesitated to face danger and protect his people with unwavering strength. Tas, known for his strict nature and discipline, helped shape the military structure of the early Magyars.
-      Huba, though younger than most, was a fierce and fearless warrior. Tales of his valor on the battlefield became legend among the people. Finally, Töhötöm, the spiritual guide, kept alive the sacred traditions and visions of the ancestors. He ensured that their journey was not only physical but also guided by belief and prophecy.
-      Under the guidance of these seven chieftains, the Magyars crossed into the Carpathian Basin and established their new homeland. Though different in nature, what united them was a shared duty—to lead their people into a future, to give them land, identity, and hope.
-      The statues at Heroes’ Square are not just monuments to individuals—they are symbols of the spirit of a people: their courage, unity, and enduring will to survive. For every visitor, they stand as eternal reminders of Hungary’s origins.
+      These seven leaders guided a migrating people in search of a homeland, crossing rivers and mountains to reach fertile lands beyond the Danube. At the front rides Árpád, the paramount leader under whom the tribes united. With bravery, charisma, and vision, he formed the foundation of a nation. Legend says that upon entering the Carpathians, he dismounted his horse and thrust his spear into the earth, declaring: “This land is our destiny.”
+      Behind Árpád stands Előd, the elder and the wise—trusted for counsel more than sword. He symbolized peace and experience. Following him is Ond, a master of military strategy, whose defense plans often saved lives before a single weapon was drawn.
+      Next is Kond, calm and courageous. He never hesitated to face danger and protect his people with unwavering strength. Tas, known for his strict nature and discipline, helped shape the military structure of the early Magyars.
+      Huba, though younger than most, was a fierce and fearless warrior. Tales of his valor on the battlefield became legend among the people. Finally, Töhötöm, the spiritual guide, kept alive the sacred traditions and visions of the ancestors. He ensured that their journey was not only physical but also guided by belief and prophecy.
+      Under the guidance of these seven chieftains, the Magyars crossed into the Carpathian Basin and established their new homeland. Though different in nature, what united them was a shared duty—to lead their people into a future, to give them land, identity, and hope.
+      The statues at Heroes’ Square are not just monuments to individuals—they are symbols of the spirit of a people: their courage, unity, and enduring will to survive. For every visitor, they stand as eternal reminders of Hungary’s origins.
 `,
     image:
       "https://media.istockphoto.com/id/992465762/tr/foto%C4%9Fraf/macar-kabile-kabile-reisi-arpad-kahramanlar-meydan%C4%B1-budape%C5%9Fteheykeli.jpg?s=170667a&w=0&k=20&c=GVJ51RazlA5-Cl4TPQdJCaObMLPpvmWG215V_W5DJJM= ",
@@ -141,31 +147,32 @@ The Parliament Building is more than a symbol of Budapest; it is a bridge betwee
   },
   {
     id: "7",
+    category: "statue",
     name_tr: "Sol Kolonad Heykelleri",
     name_en: "Left Colonnade Statues",
     latitude: 47.51545061124976,
     longitude: 19.078170405360037,
     story_tr: `
-    Budapeşte’nin kalbinde yükselen Kahramanlar Meydanı, sadece heykellerle dolu bir alan değil; Macar milletinin bin yılı aşan tarihinin taşlara kazındığı bir hafıza sahnesidir. Bu meydanın sol tarafındaki kolonad, tarihin içinden gelen yedi büyük kralın sessiz ama güçlü anlatımıyla karşımıza çıkar. Her bir figür, Macar ulusunun kaderinde iz bırakmış bir dönemi temsil eder.
-    İlk sırada Aziz István, yani Saint Stephen yer alır. 1000 yılında taç giyen bu lider, Macaristan’ın ilk kralı olmanın ötesinde, ulusun kurucusudur. Pagan inançları geride bırakıp Hristiyanlığı resmi din olarak kabul ettirdi. Kiliseler kurdu, batı tipi bir devlet yapısı oluşturdu. Onun liderliğinde Macaristan, Avrupa’nın meşru krallıkları arasında yerini aldı.
-    İkinci sırada I. László ya da Saint Ladislaus vardır. Dürüstlüğü, cesareti ve adaletiyle halkın gönlünde taht kurmuş bu kral, savaş meydanlarında kahramanca çarpışmış, kanunlarıyla ülkesine düzen getirmiştir. Onun adı, yüzyıllar boyunca bir efsane olarak anlatılmıştır.
-    Üçüncü heykel, bilge kral Könyves Kálmán'a, yani Coloman the Book-Lover’a aittir. Eğitimli ve ilerici bir hükümdar olan Coloman, çağının çok ötesinde düşüncelere sahipti. "Cadılar yoktur" diyerek kadınların yakılmasını yasakladı. Akıl, hukuk ve insan onuru onun yönetiminde en yüksek değeri gördü.
-    Dördüncü sırada yer alan II. András, ya da Andrew II, 1222 yılında yayımladığı Altın Boğa Fermanı ile tanınır. Bu belge, soylulara haklar tanımış ve anayasal yönetimin temelini atmıştır. Gücü paylaşmayı bilen bir lider olarak, halkın ve aristokrasinin dengesini sağlamaya çalışmıştır.
-    Beşinci heykel, IV. Béla'ya, yani Béla IV’e aittir. Moğol istilasından sonra ülkesini yeniden ayağa kaldıran kral olarak “İkinci Kurucu” unvanını almıştır. Yıkılmış şehirleri onardı, kaleler inşa ettirdi, halkına yeniden umut aşıladı.
-    Altıncı figür, I. Károly Róbert, yani Charles I of Anjou'dur. Ekonomik reformlarıyla ülkeyi refaha kavuşturmuş, güçlü bir merkezî yönetim kurmuştur. Ticaret yollarını canlandırmış, para sistemini istikrarlı hale getirmiştir.
-    Son olarak, yedinci heykel I. Lajos, yani Louis the Great’e aittir. Hem Macaristan hem Polonya’nın kralı olan Lajos, fetihleri, diplomatik hamleleri ve kültürel desteğiyle çağının önde gelen liderlerinden biri olmuştur. Halkı ona yalnızca bir kral değil, gerçek bir “Büyük” olarak bakmıştır.
-    Bu heykeller, yalnızca geçmişin izlerini taşımıyor; aynı zamanda bir halkın karakterini, inancını ve yeniden ayağa kalkma gücünü temsil ediyor. Her biri, taşın ötesinde birer hikâye anlatıyor. Ve eğer dikkatle dinlerseniz, bu sessiz figürlerin arasında Macaristan’ın ruhu yankılanır.
-    `,
+    Budapeşte’nin kalbinde yükselen Kahramanlar Meydanı, sadece heykellerle dolu bir alan değil; Macar milletinin bin yılı aşan tarihinin taşlara kazındığı bir hafıza sahnesidir. Bu meydanın sol tarafındaki kolonad, tarihin içinden gelen yedi büyük kralın sessiz ama güçlü anlatımıyla karşımıza çıkar. Her bir figür, Macar ulusunun kaderinde iz bırakmış bir dönemi temsil eder.
+    İlk sırada Aziz István, yani Saint Stephen yer alır. 1000 yılında taç giyen bu lider, Macaristan’ın ilk kralı olmanın ötesinde, ulusun kurucusudur. Pagan inançları geride bırakıp Hristiyanlığı resmi din olarak kabul ettirdi. Kiliseler kurdu, batı tipi bir devlet yapısı oluşturdu. Onun liderliğinde Macaristan, Avrupa’nın meşru krallıkları arasında yerini aldı.
+    İkinci sırada I. László ya da Saint Ladislaus vardır. Dürüstlüğü, cesareti ve adaletiyle halkın gönlünde taht kurmuş bu kral, savaş meydanlarında kahramanca çarpışmış, kanunlarıyla ülkesine düzen getirmiştir. Onun adı, yüzyıllar boyunca bir efsane olarak anlatılmıştır.
+    Üçüncü heykel, bilge kral Könyves Kálmán'a, yani Coloman the Book-Lover’a aittir. Eğitimli ve ilerici bir hükümdar olan Coloman, çağının çok ötesinde düşüncelere sahipti. "Cadılar yoktur" diyerek kadınların yakılmasını yasakladı. Akıl, hukuk ve insan onuru onun yönetiminde en yüksek değeri gördü.
+    Dördüncü sırada yer alan II. András, ya da Andrew II, 1222 yılında yayımladığı Altın Boğa Fermanı ile tanınır. Bu belge, soylulara haklar tanımış ve anayasal yönetimin temelini atmıştır. Gücü paylaşmayı bilen bir lider olarak, halkın ve aristokrasinin dengesini sağlamaya çalışmıştır.
+    Beşinci heykel, IV. Béla'ya, yani Béla IV’e aittir. Moğol istilasından sonra ülkesini yeniden ayağa kaldıran kral olarak “İkinci Kurucu” unvanını almıştır. Yıkılmış şehirleri onardı, kaleler inşa ettirdi, halkına yeniden umut aşıladı.
+    Altıncı figür, I. Károly Róbert, yani Charles I of Anjou'dur. Ekonomik reformlarıyla ülkeyi refaha kavuşturmuş, güçlü bir merkezî yönetim kurmuştur. Ticaret yollarını canlandırmış, para sistemini istikrarlı hale getirmiştir.
+    Son olarak, yedinci heykel I. Lajos, yani Louis the Great’e aittir. Hem Macaristan hem Polonya’nın kralı olan Lajos, fetihleri, diplomatik hamleleri ve kültürel desteğiyle çağının önde gelen liderlerinden biri olmuştur. Halkı ona yalnızca bir kral değil, gerçek bir “Büyük” olarak bakmıştır.
+    Bu heykeller, yalnızca geçmişin izlerini taşımıyor; aynı zamanda bir halkın karakterini, inancını ve yeniden ayağa kalkma gücünü temsil ediyor. Her biri, taşın ötesinde birer hikâye anlatıyor. Ve eğer dikkatle dinlerseniz, bu sessiz figürlerin arasında Macaristan’ın ruhu yankılanır.
+    `,
     story_en: `In the heart of Budapest rises Heroes' Square — not merely a plaza of statues, but a stage of memory where the thousand-year-old story of the Hungarian nation is carved into stone. The left colonnade tells the tale of seven great kings who shaped the destiny of a people. Each figure represents an era, a challenge, and a triumph.
-    First stands Saint Stephen, crowned in the year 1000 — not only the first king of Hungary, but its founder. He left behind pagan traditions and embraced Christianity, building churches and a western-style state. Under his guidance, Hungary took its place among the recognized kingdoms of Europe.
-    Next is Saint Ladislaus, remembered for his integrity, bravery, and justice. A heroic figure on the battlefield and a just ruler in court, his legend has lived on for centuries.
-    The third statue honors Coloman the Book-Lover — a wise and educated king far ahead of his time. He famously declared, “witches do not exist,” outlawing witch burnings. Under his rule, reason, law, and human dignity flourished.
-    Fourth comes Andrew II, best known for the Golden Bull of 1222 — a document that granted rights to the nobility and laid the foundation for constitutional governance. He was a ruler who understood the power of balance and compromise.
-    The fifth statue belongs to Béla IV — the “second founder” of Hungary. After the Mongol invasion left the land in ruins, he rebuilt cities, constructed fortresses, and restored hope to a shattered nation.
-    The sixth figure is Charles I of Anjou, who brought prosperity through economic reforms and reestablished centralized royal power. He revitalized trade and introduced stable monetary systems.
-    And finally, Louis the Great — king of both Hungary and Poland. Known for his military campaigns, diplomatic skill, and cultural influence, he became one of the most prominent monarchs of his era. To his people, he was not just a ruler, but a true Great.
-    These statues are not just echoes of the past — they represent the spirit, resilience, and belief of a people. Each tells a story beyond stone. And if you listen closely, you might just hear the heartbeat of Hungary within them.
-    `,
+    First stands Saint Stephen, crowned in the year 1000 — not only the first king of Hungary, but its founder. He left behind pagan traditions and embraced Christianity, building churches and a western-style state. Under his guidance, Hungary took its place among the recognized kingdoms of Europe.
+    Next is Saint Ladislaus, remembered for his integrity, bravery, and justice. A heroic figure on the battlefield and a just ruler in court, his legend has lived on for centuries.
+    The third statue honors Coloman the Book-Lover — a wise and educated king far ahead of his time. He famously declared, “witches do not exist,” outlawing witch burnings. Under his rule, reason, law, and human dignity flourished.
+    Fourth comes Andrew II, best known for the Golden Bull of 1222 — a document that granted rights to the nobility and laid the foundation for constitutional governance. He was a ruler who understood the power of balance and compromise.
+    The fifth statue belongs to Béla IV — the “second founder” of Hungary. After the Mongol invasion left the land in ruins, he rebuilt cities, constructed fortresses, and restored hope to a shattered nation.
+    The sixth figure is Charles I of Anjou, who brought prosperity through economic reforms and reestablished centralized royal power. He revitalized trade and introduced stable monetary systems.
+    And finally, Louis the Great — king of both Hungary and Poland. Known for his military campaigns, diplomatic skill, and cultural influence, he became one of the most prominent monarchs of his era. To his people, he was not just a ruler, but a true Great.
+    These statues are not just echoes of the past — they represent the spirit, resilience, and belief of a people. Each tells a story beyond stone. And if you listen closely, you might just hear the heartbeat of Hungary within them.
+    `,
 
     image:
       "https://c8.alamy.com/comp/MJRN2J/statues-of-seven-kings-of-hungary-stand-in-the-left-colonnade-of-the-millennium-monument-in-heroess-square-budapest-MJRN2J.jpg",
@@ -176,32 +183,33 @@ The Parliament Building is more than a symbol of Budapest; it is a bridge betwee
   },
   {
     id: "8",
+    category: "statue",
     name_tr: "Sağ Kolonad Heykelleri",
     name_en: "Right Colonnade Statues",
     latitude: 47.51512924555951,
     longitude: 19.078617466296183,
     story_tr: `Kahramanlar Meydanı’ndaki sağ kolonad, tarihsel sürecin biraz daha sonraki yüzlerine dönük bir ayna tutar. Bu tarafta artık sadece krallar değil, aynı zamanda reformcular, özgürlük savaşçıları ve çağını aşan yöneticiler yer alır. Bu figürler, Macar halkının modern kimliğe doğru yürüyüşünün kilometre taşlarını temsil eder.
-    İlk sırada Hunyadi János yer alır. Osmanlılara karşı savaşan bu efsanevi komutan, 1456’daki Belgrad Kuşatması sırasında kazandığı zaferle hem Macaristan’ı hem de Avrupa’yı büyük bir tehditten korumuştur. Onun liderliğiyle doğu sınırları savunulmuş, halkın özgüveni güçlenmiştir.
-    İkinci heykel, onun oğlu Hunyadi Mátyás’a, yani Matthias Corvinus’a aittir. Rönesans ruhunu Macaristan’a taşıyan bu kral, sadece güçlü bir asker değil, aynı zamanda sanatın ve bilimin koruyucusuydu. Siyah Ordu adlı profesyonel askerî gücü kurdu ve Budin’i dönemin kültür merkezlerinden biri haline getirdi.
-    Üçüncü sırada yer alan Bocskai István, Habsburg baskılarına karşı ayaklanan bir soyluydu. 1604’te başlayan isyanı başarıyla yürüttü ve Viyana Barışı ile Protestanların din özgürlüğünü garanti altına aldı. Özgürlük tutkusu onu bir halk kahramanına dönüştürdü.
-    Dördüncü heykel, Bethlen Gábor’a aittir. Transilvanya Prensi olarak, 17. yüzyılda bölgeyi hem ekonomik hem de kültürel olarak güçlendirdi. Avrupa siyasetinde önemli bir figür olan Bethlen, eğitim ve din özgürlüğünü destekleyerek ülkesini ileri taşıdı.
-    Beşinci sıradaki figür Thököly Imre’dir. Osmanlılar ile iş birliği yaparak Habsburglara karşı isyan etmiş, Protestan halkın haklarını savunmuştur. Her ne kadar başarısı sınırlı olsa da, o dönemin dinî ve siyasi mücadelelerinin simge isimlerinden biri olmuştur.
-    Altıncı heykel, belki de en güçlü mesajı taşıyan figürdür: II. Rákóczi Ferenc. 1703’te başlayan bağımsızlık savaşının lideri olarak, Macar halkını özgürlük için bir araya getirdi. Her ne kadar zafer elde edememiş olsa da, onun idealleri ve kararlılığı halkın gönlünde kalıcı bir yer edindi.
-    Son olarak yedinci figür, 19. yüzyılın büyük devlet adamı Kossuth Lajos’tur. 1848–49 devriminde cumhuriyetin savunucusu olarak öne çıktı. Parlamento kürsüsünden yaptığı ateşli konuşmaları, özgürlük arzusunu ateşlemişti. Macar anayasacılığı ve halk iradesi adına verdiği mücadele, bugün hâlâ yankı bulur.
-    Sağ kolonadın bu yedi figürü, artık yalnızca birer kral değil; düşünce adamları, askerî liderler, halk önderleridir. Onların ortak noktası, özgürlük için verilen mücadele ve bir ulusun onurunu koruma kararlılığıdır.
-    Ve bu taş siluetler, meydandan geçen her adımda bizlere şunu hatırlatır: Bir milletin gerçek kahramanları, yalnızca tahtta oturanlar değil; halkının sesini duyan, adaleti savunan ve özgürlük uğruna mücadele edenlerdir.
-    `,
+    İlk sırada Hunyadi János yer alır. Osmanlılara karşı savaşan bu efsanevi komutan, 1456’daki Belgrad Kuşatması sırasında kazandığı zaferle hem Macaristan’ı hem de Avrupa’yı büyük bir tehditten korumuştur. Onun liderliğiyle doğu sınırları savunulmuş, halkın özgüveni güçlenmiştir.
+    İkinci heykel, onun oğlu Hunyadi Mátyás’a, yani Matthias Corvinus’a aittir. Rönesans ruhunu Macaristan’a taşıyan bu kral, sadece güçlü bir asker değil, aynı zamanda sanatın ve bilimin koruyucusuydu. Siyah Ordu adlı profesyonel askerî gücü kurdu ve Budin’i dönemin kültür merkezlerinden biri haline getirdi.
+    Üçüncü sırada yer alan Bocskai István, Habsburg baskılarına karşı ayaklanan bir soyluydu. 1604’te başlayan isyanı başarıyla yürüttü ve Viyana Barışı ile Protestanların din özgürlüğünü garanti altına aldı. Özgürlük tutkusu onu bir halk kahramanına dönüştürdü.
+    Dördüncü heykel, Bethlen Gábor’a aittir. Transilvanya Prensi olarak, 17. yüzyılda bölgeyi hem ekonomik hem de kültürel olarak güçlendirdi. Avrupa siyasetinde önemli bir figür olan Bethlen, eğitim ve din özgürlüğünü destekleyerek ülkesini ileri taşıdı.
+    Beşinci sıradaki figür Thököly Imre’dir. Osmanlılar ile iş birliği yaparak Habsburglara karşı isyan etmiş, Protestan halkın haklarını savunmuştur. Her ne kadar başarısı sınırlı olsa da, o dönemin dinî ve siyasi mücadelelerinin simge isimlerinden biri olmuştur.
+    Altıncı heykel, belki de en güçlü mesajı taşıyan figürdür: II. Rákóczi Ferenc. 1703’te başlayan bağımsızlık savaşının lideri olarak, Macar halkını özgürlük için bir araya getirdi. Her ne kadar zafer elde edememiş olsa da, onun idealleri ve kararlılığı halkın gönlünde kalıcı bir yer edindi.
+    Son olarak yedinci figür, 19. yüzyılın büyük devlet adamı Kossuth Lajos’tur. 1848–49 devriminde cumhuriyetin savunucusu olarak öne çıktı. Parlamento kürsüsünden yaptığı ateşli konuşmaları, özgürlük arzusunu ateşlemişti. Macar anayasacılığı ve halk iradesi adına verdiği mücadele, bugün hâlâ yankı bulur.
+    Sağ kolonadın bu yedi figürü, artık yalnızca birer kral değil; düşünce adamları, askerî liderler, halk önderleridir. Onların ortak noktası, özgürlük için verilen mücadele ve bir ulusun onurunu koruma kararlılığıdır.
+    Ve bu taş siluetler, meydandan geçen her adımda bizlere şunu hatırlatır: Bir milletin gerçek kahramanları, yalnızca tahtta oturanlar değil; halkının sesini duyan, adaleti savunan ve özgürlük uğruna mücadele edenlerdir.
+    `,
     story_en: `The right colonnade of Heroes' Square shifts the focus to a later era in Hungarian history — no longer only kings, but reformers, freedom fighters, and visionary leaders. These figures mark Hungary’s march toward modern identity.
-    First stands John Hunyadi, the legendary general who led Hungary against the advancing Ottoman Empire. His victory at the 1456 Siege of Belgrade protected not only Hungary but all of Europe. His leadership fortified the eastern defenses and revived the spirit of his people.
-    The second figure is his son, Matthias Corvinus, who brought the spirit of the Renaissance to Hungary. A military genius and a patron of arts and sciences, he created the famous Black Army and turned Buda into a cultural capital.
-    Third comes István Bocskai, a nobleman who led a successful uprising against Habsburg oppression. His revolt culminated in the Peace of Vienna, securing religious freedom for Protestants. His legacy is one of courage and unwavering dedication to liberty.
-    The fourth statue is of Gabriel Bethlen, Prince of Transylvania, who in the 17th century brought prosperity to the region. As a key player in European politics, he promoted education and religious tolerance, guiding his principality into a golden era.
-    Fifth is Imre Thököly, who allied with the Ottomans in rebellion against Habsburg rule. Though his victories were limited, he remains a symbol of the era’s religious and political struggles, defending the rights of Protestant Hungarians.
-    The sixth statue depicts Francis II Rákóczi, leader of the 1703–1711 War of Independence. Though he was ultimately defeated, his ideals and determination continue to inspire generations. He remains a national hero and a symbol of resistance.
-    The final statue is Lajos Kossuth, the voice of the 1848–49 revolution. A fierce advocate of republicanism, his speeches stirred a nation’s desire for liberty. His fight for constitutional governance and people’s sovereignty still echoes in Hungary today.
-    These seven figures of the right colonnade are not just monarchs — they are thinkers, commanders, and people’s leaders. What unites them is their shared devotion to liberty and unwavering defense of national dignity.
-    These silent stone silhouettes remind every visitor: the true heroes of a nation are not just those who wear a crown — but those who hear the voice of the people, uphold justice, and fight for freedom.
-    `,
+    First stands John Hunyadi, the legendary general who led Hungary against the advancing Ottoman Empire. His victory at the 1456 Siege of Belgrade protected not only Hungary but all of Europe. His leadership fortified the eastern defenses and revived the spirit of his people.
+    The second figure is his son, Matthias Corvinus, who brought the spirit of the Renaissance to Hungary. A military genius and a patron of arts and sciences, he created the famous Black Army and turned Buda into a cultural capital.
+    Third comes István Bocskai, a nobleman who led a successful uprising against Habsburg oppression. His revolt culminated in the Peace of Vienna, securing religious freedom for Protestants. His legacy is one of courage and unwavering dedication to liberty.
+    The fourth statue is of Gabriel Bethlen, Prince of Transylvania, who in the 17th century brought prosperity to the region. As a key player in European politics, he promoted education and religious tolerance, guiding his principality into a golden era.
+    Fifth is Imre Thököly, who allied with the Ottomans in rebellion against Habsburg rule. Though his victories were limited, he remains a symbol of the era’s religious and political struggles, defending the rights of Protestant Hungarians.
+    The sixth statue depicts Francis II Rákóczi, leader of the 1703–1711 War of Independence. Though he was ultimately defeated, his ideals and determination continue to inspire generations. He remains a national hero and a symbol of resistance.
+    The final statue is Lajos Kossuth, the voice of the 1848–49 revolution. A fierce advocate of republicanism, his speeches stirred a nation’s desire for liberty. His fight for constitutional governance and people’s sovereignty still echoes in Hungary today.
+    These seven figures of the right colonnade are not just monarchs — they are thinkers, commanders, and people’s leaders. What unites them is their shared devotion to liberty and unwavering defense of national dignity.
+    These silent stone silhouettes remind every visitor: the true heroes of a nation are not just those who wear a crown — but those who hear the voice of the people, uphold justice, and fight for freedom.
+    `,
     image:
       "https://yoldaolmak.com/wp-content/uploads/2022/11/Kahramanlar-Meydani-Budapeste.jpg",
     audio: {
@@ -212,17 +220,18 @@ The Parliament Building is more than a symbol of Budapest; it is a bridge betwee
 
   {
     id: "9",
+    category: "statue",
     name_tr: "Szent Imre Heykeli",
     name_en: "Statue of Szent Imre",
     latitude: 47.47759250179005,
     longitude: 19.047755431886333,
-    story_tr: `Macaristan’ın Hristiyan kimliğini şekillendiren en önemli figürlerden biri olan Prens Szent Imre, genç yaşında erdemi ve dindarlığıyla anılmıştır. Buda’nın sessiz sokaklarında yükselen heykeli, ziyaretçilerine huzur verir. 
-Efsaneye göre Szent Imre, hayatı boyunca saf kalmaya yemin etmiştir. Bu nedenle yalnızca bir prens değil, ruhani bir rehber olarak da görülmüştür. Heykelin yanında durduğunuzda, bu sadelik ve dinginlik adeta havaya sinmiştir. 
-Bugün buraya gelen ziyaretçiler için burası yalnızca bir tarihî nokta değil; sessizlik ve içsel yolculuğun durağıdır. Çevredeki kiliseler ve manastırlarla birlikte bu alan, adeta bir “sessizlik rotası” oluşturur. Günün telaşından uzaklaşıp birkaç dakika burada durmak, insanın hem geçmişle hem de kendi iç dünyasıyla bağ kurmasını sağlar. 
+    story_tr: `Macaristan’ın Hristiyan kimliğini şekillendiren en önemli figürlerden biri olan Prens Szent Imre, genç yaşında erdemi ve dindarlığıyla anılmıştır. Buda’nın sessiz sokaklarında yükselen heykeli, ziyaretçilerine huzur verir. 
+Efsaneye göre Szent Imre, hayatı boyunca saf kalmaya yemin etmiştir. Bu nedenle yalnızca bir prens değil, ruhani bir rehber olarak da görülmüştür. Heykelin yanında durduğunuzda, bu sadelik ve dinginlik adeta havaya sinmiştir. 
+Bugün buraya gelen ziyaretçiler için burası yalnızca bir tarihî nokta değil; sessizlik ve içsel yolculuğun durağıdır. Çevredeki kiliseler ve manastırlarla birlikte bu alan, adeta bir “sessizlik rotası” oluşturur. Günün telaşından uzaklaşıp birkaç dakika burada durmak, insanın hem geçmişle hem de kendi iç dünyasıyla bağ kurmasını sağlar. 
 Szent Imre Heykeli, ruhun dinlenme noktasıdır.`,
-    story_en: `Prince Saint Emeric, one of the key figures in shaping Hungary’s Christian identity, was remembered for his virtue and devotion at a young age. His statue rises in the quiet streets of Buda, offering peace to those who stand before it. 
-According to legend, Saint Emeric vowed to remain pure throughout his life. For this, he was regarded not only as a prince but also as a spiritual guide. Standing by the statue, one can feel this simplicity and serenity lingering in the air. 
-For today’s visitors, this is not merely a historical spot but a place of silence and inner reflection. Together with the surrounding churches and monasteries, the statue forms part of a “path of silence.” Taking a few moments here allows one to connect both with history and with their own inner world. 
+    story_en: `Prince Saint Emeric, one of the key figures in shaping Hungary’s Christian identity, was remembered for his virtue and devotion at a young age. His statue rises in the quiet streets of Buda, offering peace to those who stand before it. 
+According to legend, Saint Emeric vowed to remain pure throughout his life. For this, he was regarded not only as a prince but also as a spiritual guide. Standing by the statue, one can feel this simplicity and serenity lingering in the air. 
+For today’s visitors, this is not merely a historical spot but a place of silence and inner reflection. Together with the surrounding churches and monasteries, the statue forms part of a “path of silence.” Taking a few moments here allows one to connect both with history and with their own inner world. 
 The Saint Emeric Statue is a resting place for the soul.” Saint Emeric lives not only in history books but also in the spirit of every new day.`,
     image:
       "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrXdBe7dF1C1cj7hpuhJKwf0SGErs0ZPWevzA94d_3vivchNlKEuQFdZ2cOtdpKkFPh6WIRxIoApUZv6S0NP4BAUy8LzSdKsfxHUPAtlulwL7n3Yqkq9f8Bb0UY2HhB4PnnYEc=w408-h306-k-no",
@@ -233,21 +242,22 @@ The Saint Emeric Statue is a resting place for the soul.” Saint Emeric lives n
   },
   {
     id: "10",
+    category: "statue",
     name_tr: "Kossuth Lajos Heykeli",
     name_en: "Statue of Lajos Kossuth",
     latitude: 47.50823479757028,
     longitude: 19.047187076276863,
     story_tr: `Budapeşte’de Parlamento’nun önünde dimdik duran Kossuth Lajos Heykeli, sadece bronz bir figür değil; bir ulusun bağımsızlık hayalini, halkın sesiyle bir araya getiren dev bir yankıdır.
-      Kossuth, 19. yüzyıl Macar tarihinin en etkileyici figürlerinden biriydi. 1848-49 Devrimi’nin lideri olarak halkı özgürlüğe, eşitliğe ve kendi kaderini tayin etme hakkına çağırdı. Onun sesi, sadece meclis kürsülerinde değil, sokaklarda, meydanlarda ve halkın yüreğinde yankılandı.
-      Bir politikacı olmanın ötesinde, Kossuth bir halk önderiydi. Cesur konuşmalarıyla, Macaristan’ın bağımsızlık ateşini yakan isim oldu. Onun için cumhuriyet, sadece bir yönetim biçimi değil; halkın iradesini temsil eden bir değerdi.
-      Heykelin duruşu bile anlam taşır: Sağ eli ileri doğru uzanmış, sanki hâlâ konuşuyor, hâlâ halkına yol gösteriyor gibidir. Ve gerçekten de öyledir. Çünkü Kossuth’un mesajı zamana karşı dirençlidir: “Özgürlük, ancak onun için ayağa kalkanlarla mümkündür.”
-      Bu heykel, her gün önünden geçen binlerce kişiye sessiz ama güçlü bir hatırlatma yapar. Bir ulusun kaderi, suskun kalmayan yüreklerde yazılır. Ve Kossuth’un yürekten yükselen sesi, hâlâ Macar halkının belleğinde yaşamaktadır.`,
+      Kossuth, 19. yüzyıl Macar tarihinin en etkileyici figürlerinden biriydi. 1848-49 Devrimi’nin lideri olarak halkı özgürlüğe, eşitliğe ve kendi kaderini tayin etme hakkına çağırdı. Onun sesi, sadece meclis kürsülerinde değil, sokaklarda, meydanlarda ve halkın yüreğinde yankılandı.
+      Bir politikacı olmanın ötesinde, Kossuth bir halk önderiydi. Cesur konuşmalarıyla, Macaristan’ın bağımsızlık ateşini yakan isim oldu. Onun için cumhuriyet, sadece bir yönetim biçimi değil; halkın iradesini temsil eden bir değerdi.
+      Heykelin duruşu bile anlam taşır: Sağ eli ileri doğru uzanmış, sanki hâlâ konuşuyor, hâlâ halkına yol gösteriyor gibidir. Ve gerçekten de öyledir. Çünkü Kossuth’un mesajı zamana karşı dirençlidir: “Özgürlük, ancak onun için ayağa kalkanlarla mümkündür.”
+      Bu heykel, her gün önünden geçen binlerce kişiye sessiz ama güçlü bir hatırlatma yapar. Bir ulusun kaderi, suskun kalmayan yüreklerde yazılır. Ve Kossuth’un yürekten yükselen sesi, hâlâ Macar halkının belleğinde yaşamaktadır.`,
     story_en: `Standing proudly before the Hungarian Parliament, the Statue of Lajos Kossuth is more than bronze and stone — it is the echo of a nation’s dream for freedom, voiced by the people and led by one man’s unwavering spirit.
-      Lajos Kossuth was one of the most powerful figures in 19th-century Hungarian history. As the leader of the 1848–49 Revolution, he called the people to fight for liberty, equality, and the right to shape their own destiny. His voice rang not only in the halls of Parliament but also in the streets, squares, and hearts of the Hungarian people.
-      More than a politician, Kossuth was a true people's leader. Through his fiery speeches, he ignited the flame of Hungarian independence. To him, the republic was not merely a system of governance — it was the embodiment of the people's will.
-      Even the statue’s posture speaks volumes: his right arm stretched forward, as if still addressing the crowd, still showing the way. And in many ways, he is. Because Kossuth’s message resists time: “Freedom can only be earned by those brave enough to rise for it.”
-      This statue offers a quiet but powerful reminder to every passerby: the fate of a nation is written in the hearts that refuse to remain silent. And the voice of Kossuth, born from the heart of the people, still lives on in the memory of Hungary.
-      `,
+      Lajos Kossuth was one of the most powerful figures in 19th-century Hungarian history. As the leader of the 1848–49 Revolution, he called the people to fight for liberty, equality, and the right to shape their own destiny. His voice rang not only in the halls of Parliament but also in the streets, squares, and hearts of the Hungarian people.
+      More than a politician, Kossuth was a true people's leader. Through his fiery speeches, he ignited the flame of Hungarian independence. To him, the republic was not merely a system of governance — it was the embodiment of the people's will.
+      Even the statue’s posture speaks volumes: his right arm stretched forward, as if still addressing the crowd, still showing the way. And in many ways, he is. Because Kossuth’s message resists time: “Freedom can only be earned by those brave enough to rise for it.”
+      This statue offers a quiet but powerful reminder to every passerby: the fate of a nation is written in the hearts that refuse to remain silent. And the voice of Kossuth, born from the heart of the people, still lives on in the memory of Hungary.
+      `,
     image:
       "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nr6dzccWPbFEtBrAK_Oofr9mFrQzT4EGbMPoGizqQ4RQ6Leoc1xr4fcs1gPrZjwQyd1ylgR-lK_oPfGVVE75UyyAJnvyIWvbaoZNfiWFrtJXeq8UosJ90ofX4m9IHcLp3cjJV2J=w408-h306-k-no",
     audio: {
@@ -257,32 +267,33 @@ The Saint Emeric Statue is a resting place for the soul.” Saint Emeric lives n
   },
   {
     id: "11",
+    category: "statue",
     name_tr: "II. Rákóczi Ferenc Heykeli",
     name_en: "Statue of Francis II Rákóczi",
     latitude: 47.50632361183706,
     longitude: 19.04708324510489,
     story_tr: `Parlamento’nun önünde atının üstünde dimdik duran bir figür var. Sessiz ama sarsıcı. O, II. Rákóczi Ferenc.
-      Bir halkın zincirlerini kırmak için başlattığı büyük bir mücadelenin adı.
-      Rákóczi, Macaristan’ın 18. yüzyıldaki bağımsızlık savaşının lideriydi. 1703 yılında, halkının özgürlüğü için silaha sarıldı. O dönem, Macarlar için karanlık bir zamandı. Habsburg baskısı, inanç özgürlüğünün kısıtlanması ve halkın sesi olmadan alınan kararlar… İşte Rákóczi, bu sessizliğe karşı çıkan o güçlü sesti.
-      O sadece bir komutan değildi. Aynı zamanda halkıyla yürüyen, acılarıyla yüzleşen, onların geleceği için mücadele eden bir liderdi.
-      Yol boyunca birçok zorluk yaşadı. Zafer elde edemedi belki, ama cesareti, kararlılığı ve idealleri, Macar milletinin kalbine kök saldı.
-      Bu heykel, yalnızca bir adamı değil; bir ideali, bir inancı, bir halkın uyanışını temsil ediyor.
-      Ve atının üstündeki Rákóczi, hâlâ sanki şöyle diyor:
-      “Bağımsızlık, uğruna savaşanlar oldukça asla ölmez.”
-      Önünden her geçen, bu mesajı duyabilir aslında.
-      Bu sadece geçmişin bir yansıması değil…
-      Bu, bugün hâlâ özgürlük ve adalet için mücadele eden herkesin hikayesidir.`,
+      Bir halkın zincirlerini kırmak için başlattığı büyük bir mücadelenin adı.
+      Rákóczi, Macaristan’ın 18. yüzyıldaki bağımsızlık savaşının lideriydi. 1703 yılında, halkının özgürlüğü için silaha sarıldı. O dönem, Macarlar için karanlık bir zamandı. Habsburg baskısı, inanç özgürlüğünün kısıtlanması ve halkın sesi olmadan alınan kararlar… İşte Rákóczi, bu sessizliğe karşı çıkan o güçlü sesti.
+      O sadece bir komutan değildi. Aynı zamanda halkıyla yürüyen, acılarıyla yüzleşen, onların geleceği için mücadele eden bir liderdi.
+      Yol boyunca birçok zorluk yaşadı. Zafer elde edemedi belki, ama cesareti, kararlılığı ve idealleri, Macar milletinin kalbine kök saldı.
+      Bu heykel, yalnızca bir adamı değil; bir ideali, bir inancı, bir halkın uyanışını temsil ediyor.
+      Ve atının üstündeki Rákóczi, hâlâ sanki şöyle diyor:
+      “Bağımsızlık, uğruna savaşanlar oldukça asla ölmez.”
+      Önünden her geçen, bu mesajı duyabilir aslında.
+      Bu sadece geçmişin bir yansıması değil…
+      Bu, bugün hâlâ özgürlük ve adalet için mücadele eden herkesin hikayesidir.`,
     story_en: `In front of the Parliament, mounted on his horse, stands a powerful figure. Silent, yet unshakable.
-      He is Francis II Rákóczi — the name behind one of Hungary’s most stirring fights for freedom.
-      In the early 1700s, Rákóczi led a national uprising against the Habsburgs. It was a dark time for the Hungarian people. Foreign rule, religious oppression, and decisions made without the voice of the nation. Rákóczi became the voice that broke the silence.
-      But he was more than a military commander. He walked with his people. He shared their pain. He fought for their right to live with dignity.
-      Though the war for independence ultimately ended in defeat, his courage and ideals took root in the heart of the nation.
-      This statue doesn’t just represent a man — it represents a belief, a cause, a people rising.
-      And from atop his horse, Rákóczi seems to whisper:
-      "Independence never dies — as long as someone dares to fight for it."
-      Anyone passing by can feel that message.
-      Because this is more than just a monument to the past —
-      It’s the living story of all who still fight for freedom and justice today.`,
+      He is Francis II Rákóczi — the name behind one of Hungary’s most stirring fights for freedom.
+      In the early 1700s, Rákóczi led a national uprising against the Habsburgs. It was a dark time for the Hungarian people. Foreign rule, religious oppression, and decisions made without the voice of the nation. Rákóczi became the voice that broke the silence.
+      But he was more than a military commander. He walked with his people. He shared their pain. He fought for their right to live with dignity.
+      Though the war for independence ultimately ended in defeat, his courage and ideals took root in the heart of the nation.
+      This statue doesn’t just represent a man — it represents a belief, a cause, a people rising.
+      And from atop his horse, Rákóczi seems to whisper:
+      "Independence never dies — as long as someone dares to fight for it."
+      Anyone passing by can feel that message.
+      Because this is more than just a monument to the past —
+      It’s the living story of all who still fight for freedom and justice today.`,
     image:
       "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqKGaQ1CrSEYM1oZ_ToHaExsDIyiC2a9xUaQ4H6HYyK5DtC18fNSY7caCfr0lllkJu0HjkYx4VUg4iHOpYS3vlwvXnEYjoD6pZM3SQzMdTlY_zfkaierX9Ikx0TkJJCaCqB4o1j=w408-h544-k-no",
     audio: {
@@ -292,17 +303,18 @@ The Saint Emeric Statue is a resting place for the soul.” Saint Emeric lives n
   },
   {
     id: "12",
+    category: "statue",
     name_tr: "Alpár Ignác Heykeli",
     name_en: "Statue of Ignác Alpár",
     latitude: 47.51618820717966,
     longitude: 19.081373085851393,
     story_tr: `Budapeşte’nin huzur dolu Şehir Parkı içinde, ünlü Vajdahunyad Kalesi’nin hemen yakınında, kent mimarisine adını yazdırmış büyük bir ustanın heykeli yükselir: Alpár Ignác. Onu bir taş figür olarak görmek kolay olsa da; gerçekten durduğu yer ona yakışır hâlde—çünkü hem fizikî konumu hem de sembolik anlamı ile Budapeşte’nin çeşm-i bâlidir.
-İgnác Alpár, 19. yüzyılın sonu ile 20. yüzyılın başlarında Macaristan’ın ulusal mimarisine yön veren mimarlardan biriydi. Kendisi önce taş ustası olarak işe başlamış, Berlin’de eğitim aldıktan sonra tekrar Budapeşte'ye dönmüş ve Alajos Hauszmann ile Imre Steindl gibi dönemin önemli mimarlarının yanında çalışmıştır; ardından kendi ofisini kurarak Kale Vajdahunyad başta olmak üzere birçok kamu projesini tasarlamıştır 
-Heykel, Ede Telcs tarafından yapılmış bronz bir portre heykelidir. Alpár, taş ustası ruhuyla hayranlık uyandıran bir mimar olarak, geleneksel ortaçağ üstatlarının cübbeleri içinde betimlenmiştir. Heykelin önünde durduğunuzda ister istemez sanatın hangi temeller üzerine inşa edildiğini hissedersiniz 
+İgnác Alpár, 19. yüzyılın sonu ile 20. yüzyılın başlarında Macaristan’ın ulusal mimarisine yön veren mimarlardan biriydi. Kendisi önce taş ustası olarak işe başlamış, Berlin’de eğitim aldıktan sonra tekrar Budapeşte'ye dönmüş ve Alajos Hauszmann ile Imre Steindl gibi dönemin önemli mimarlarının yanında çalışmıştır; ardından kendi ofisini kurarak Kale Vajdahunyad başta olmak üzere birçok kamu projesini tasarlamıştır 
+Heykel, Ede Telcs tarafından yapılmış bronz bir portre heykelidir. Alpár, taş ustası ruhuyla hayranlık uyandıran bir mimar olarak, geleneksel ortaçağ üstatlarının cübbeleri içinde betimlenmiştir. Heykelin önünde durduğunuzda ister istemez sanatın hangi temeller üzerine inşa edildiğini hissedersiniz 
 Burada yazan çizgiler, yüzündeki kararlılık ve duruşundaki sükûnet; onun yalnızca bir mimar olmadığını; aynı zamanda Macar mimarlık geleneğini yeniden inşa eden bir düşünür olduğunu anlatır. Belirlenen bu konumda heykelin kalesine ve çevreye bakışı; geçmişin izlerini geleceğe taşıyan bir ışık gibidir.
 Alpár Ignác Heykeli, Budapeşte’ye gelen herkese sadece bir mimarlık tarihi dersinden çok daha fazlasını sunar. Çünkü bu heykel; bir milletin mimari kimliğinin nasıl şekillendiğini aktaran, taş ve bronzdan bir yolculuktur. Her adımınızda onun fısıltısını duyarsınız: “İlham aldığın toprakları inşa et; çünkü sanat, zamanla değil, ruhla yaşar.”`,
     story_en: `Nestled within Budapest’s tranquil City Park , just steps from the architectural marvel of Vajdahunyad Castle, stands the statue of Ignác Alpár—a master architect whose vision shaped the face of Hungarian design. Though he is captured in bronze, his legacy looms as grand as any skyline.
-Ignác Alpár began as a stonemason before studying in Berlin. Upon returning to Budapest, he worked with notable architects such as Alajos Hauszmann and Imre Steindl, later founding his own practice. His most celebrated work, Vajdahunyad Castle, was created for the Millennial Exhibition of 1896, blending architectural styles from Hungary’s medieval to baroque periods 
+Ignác Alpár began as a stonemason before studying in Berlin. Upon returning to Budapest, he worked with notable architects such as Alajos Hauszmann and Imre Steindl, later founding his own practice. His most celebrated work, Vajdahunyad Castle, was created for the Millennial Exhibition of 1896, blending architectural styles from Hungary’s medieval to baroque periods 
 The bronze statue, crafted by Ede Telcs, portrays Alpár in the robes of a master architect, replete with the dignity of a medieval chalmers. His expression and calm poise speak not only of a creator but of a thinker who rebuilt architectural tradition in stone and mortar .
 Positioned overlooking his masterpiece, the castle, the statue’s gaze is almost poetic—a silent messenger bridging past and present. He stands as both steward and storyteller of Hungarian architecture, casting a long shadow of inspiration for every visitor.
 For those who stumble upon it, the statue provides more than a lesson in architectural history—it offers a journey through a nation’s evolving identity in form and style. In its silence lies a whisper: “Build upon the land that inspires you—art lives not by time, but by spirit.”`,
@@ -315,6 +327,7 @@ For those who stumble upon it, the statue provides more than a lesson in archite
   },
   {
     id: "13",
+    category: "statue",
     name_tr: "Gyula Andrássy Heykeli",
     name_en: "Statue of Gyula Andrássy",
     latitude: 47.505527134740866,
@@ -340,18 +353,19 @@ Every day, as thousands pass by the Parliament, their glances are met by the qui
   },
   {
     id: "14",
+    category: "statue",
     name_tr: "Attila József Heykeli",
     name_en: "Statue of Attila József",
     latitude: 47.50505525231418,
     longitude: 19.04497430565491,
-    story_tr: `Tuna kıyısında oturmuş, düşüncelere dalmış bir figür görürsünüz: Macaristan’ın en büyük şairlerinden biri olan Attila József. Onun heykeli, yalnızca bir sanatçının anısını değil, aynı zamanda bir milletin ruhunu da taşır. 
-1905’te doğan Attila József, kısa ama yoğun hayatında şiirleriyle Macar edebiyatında unutulmaz bir iz bırakmıştır. Toplumsal adaleti, insanın yalnızlığını ve varoluş sancılarını dile getirmiştir. Heykeli, sanki Tuna kıyısında oturup kendi dizelerini mırıldanıyormuş gibi tasarlanmıştır. Yanına oturan ziyaretçiler, bu büyük şairle sessiz bir sohbet ediyormuş hissine kapılır. 
-Bugün buraya gelenler, sadece bir heykel görmez; aynı zamanda bir atmosfer yaşar. Tuna’nın serin esintisi, arka plandaki Parlamento Binası’nın ihtişamı ve heykelin dinginliği birleşir. Pek çok ziyaretçi burada durup kendi düşüncelerine dalar, tıpkı József’in şiirlerindeki gibi. 
+    story_tr: `Tuna kıyısında oturmuş, düşüncelere dalmış bir figür görürsünüz: Macaristan’ın en büyük şairlerinden biri olan Attila József. Onun heykeli, yalnızca bir sanatçının anısını değil, aynı zamanda bir milletin ruhunu da taşır. 
+1905’te doğan Attila József, kısa ama yoğun hayatında şiirleriyle Macar edebiyatında unutulmaz bir iz bırakmıştır. Toplumsal adaleti, insanın yalnızlığını ve varoluş sancılarını dile getirmiştir. Heykeli, sanki Tuna kıyısında oturup kendi dizelerini mırıldanıyormuş gibi tasarlanmıştır. Yanına oturan ziyaretçiler, bu büyük şairle sessiz bir sohbet ediyormuş hissine kapılır. 
+Bugün buraya gelenler, sadece bir heykel görmez; aynı zamanda bir atmosfer yaşar. Tuna’nın serin esintisi, arka plandaki Parlamento Binası’nın ihtişamı ve heykelin dinginliği birleşir. Pek çok ziyaretçi burada durup kendi düşüncelerine dalar, tıpkı József’in şiirlerindeki gibi. 
 Attila József Heykeli, Budapeşte’de edebiyat ile şehrin manzarasının buluştuğu en özel noktalardan biridir.
 `,
-    story_en: `By the banks of the Danube sits a contemplative figure: Attila József, one of Hungary’s greatest poets. His statue carries not only the memory of an artist but also the spirit of a nation. 
-Born in 1905, Attila József lived a short but intense life, leaving an indelible mark on Hungarian literature. His poems gave voice to social justice, human solitude, and existential struggles. The statue is designed as if he is quietly reciting his verses by the riverside. Visitors who sit next to him feel as if they are sharing a silent conversation with the poet. 
-Those who come here today experience more than just a monument; they step into an atmosphere. The cool breeze of the Danube, the grandeur of the Parliament in the background, and the stillness of the statue all merge into a poetic moment. Many visitors find themselves lost in thought here, just as József often was in his verses. 
+    story_en: `By the banks of the Danube sits a contemplative figure: Attila József, one of Hungary’s greatest poets. His statue carries not only the memory of an artist but also the spirit of a nation. 
+Born in 1905, Attila József lived a short but intense life, leaving an indelible mark on Hungarian literature. His poems gave voice to social justice, human solitude, and existential struggles. The statue is designed as if he is quietly reciting his verses by the riverside. Visitors who sit next to him feel as if they are sharing a silent conversation with the poet. 
+Those who come here today experience more than just a monument; they step into an atmosphere. The cool breeze of the Danube, the grandeur of the Parliament in the background, and the stillness of the statue all merge into a poetic moment. Many visitors find themselves lost in thought here, just as József often was in his verses. 
 The Attila József Statue is one of Budapest’s most special spots where literature meets landscape.`,
     image:
       "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2d/29/fe/8e/caption.jpg?w=1200&h=-1&s=1",
@@ -362,6 +376,7 @@ The Attila József Statue is one of Budapest’s most special spots where litera
   },
   {
     id: "15",
+    category: "landmark",
     name_tr: "Sovyet Savaş Anıtı",
     name_en: "Soviet War Memorial",
     latitude: 47.50459120837618,
@@ -385,6 +400,7 @@ And yet, everyone who passes by the memorial pauses for a moment. Some offer a p
   },
   {
     id: "16",
+    category: "statue",
     name_tr: "Ronald Reagan Heykeli",
     name_en: "Statue of Ronald Reagan",
     latitude: 47.50483947307247,
@@ -407,16 +423,17 @@ Today, the Ronald Reagan Statue stands in Budapest not only as a memorial to an 
 
   {
     id: "17",
+    category: "statue",
     name_tr: "Balta",
     name_en: "Axe",
     latitude: 47.50503140617883,
     longitude: 19.04999312533616,
-    story_tr: `Budapeşte’nin ikon heykelleri arasında fark edilmeyip gizli kalabilen, ama anlamı büyük bir eser var: Balta adlı bu küçük bronz heykel, Szabadság tér’de Parlamento binası yakınlarında yer alıyor. Ukraynalı-Macar heykeltıraş Mihály Kolodko tarafından tasarlanan bu eser, 2017 yılı civarında yerleştirildi ve günümüzde bu meydanın anlamını genişleten sürpriz bir sanat parçası haline geldi 
-Heykel, Sovyet dönemine ait Ushanka adlı bir heykelin yıkılmasından sonra yerine konulmuştur. Kolodko, daha önce meydanda yer alan Ushanka heykelinin bir politikacı tarafından baltayla kırılıp Tuna Nehri’ne atılmasının ardından, meydanı terk edilen boş yastığın üzerine küçük bir balta yerleştirmiştir. Böylece, darbeyi yapan eylemin parçası değil, “darbeyi yapan araç” metaforu hâline gelmiştir 
+    story_tr: `Budapeşte’nin ikon heykelleri arasında fark edilmeyip gizli kalabilen, ama anlamı büyük bir eser var: Balta adlı bu küçük bronz heykel, Szabadság tér’de Parlamento binası yakınlarında yer alıyor. Ukraynalı-Macar heykeltıraş Mihály Kolodko tarafından tasarlanan bu eser, 2017 yılı civarında yerleştirildi ve günümüzde bu meydanın anlamını genişleten sürpriz bir sanat parçası haline geldi 
+Heykel, Sovyet dönemine ait Ushanka adlı bir heykelin yıkılmasından sonra yerine konulmuştur. Kolodko, daha önce meydanda yer alan Ushanka heykelinin bir politikacı tarafından baltayla kırılıp Tuna Nehri’ne atılmasının ardından, meydanı terk edilen boş yastığın üzerine küçük bir balta yerleştirmiştir. Böylece, darbeyi yapan eylemin parçası değil, “darbeyi yapan araç” metaforu hâline gelmiştir 
 Heykel, yalnızca bir nesne yerleştirmesi değildir. Bu minik araç — sürdürülen ideolojik baskıya karşı simgesel bir tepki olarak — “zarafetine rağmen güçlü bir protesto” niteliği taşır. Baltayı küçük görünen bu heykel, meydandaki diğer devasa anıtlar arasında fark edilir olmayı reddeder; ama izleyene şunu söyler: "Tarihe yaptığın darbeler, sonunda kendi sembolünü yaratır."
 Kolodko heykellere izin almadan yerleştirdiği için birçok ilgi topladı. Bu örgütlü, yasal olmayan biçim bile bir anlam taşır: sanatçı bir düşüncenin, bir dönemi eleştiren sembolik bir eylemle ifade edilmesi gerektiğine inanır. Bu eser, yüzeysel değil — meydanın ruhuna ince bir mizah ve derinlik katar.`,
-    story_en: `Hidden among the grand monuments of Liberty Square in Budapest—a place often overlooked yet rich in symbolism—is a tiny bronze sculpture called The Axe by Ukrainian-Hungarian sculptor Mihály Kolodko, situated near the Hungarian Parliament 
-The Axe was placed in 2017 as a literal and symbolic response to Kolodko’s earlier guerrilla sculpture, Ushanka, which had been violently removed—chopped off with an actual axe by a political figure and thrown into the Danube. In its place, Kolodko subtly installed this small axe atop the now-empty cushion where the Ushanka had been, transforming the tool of destruction into a symbolic statement itself 
+    story_en: `Hidden among the grand monuments of Liberty Square in Budapest—a place often overlooked yet rich in symbolism—is a tiny bronze sculpture called The Axe by Ukrainian-Hungarian sculptor Mihály Kolodko, situated near the Hungarian Parliament 
+The Axe was placed in 2017 as a literal and symbolic response to Kolodko’s earlier guerrilla sculpture, Ushanka, which had been violently removed—chopped off with an actual axe by a political figure and thrown into the Danube. In its place, Kolodko subtly installed this small axe atop the now-empty cushion where the Ushanka had been, transforming the tool of destruction into a symbolic statement itself 
 Despite its modest size, the Axe carries a potent message: it is a gesture of quiet protest. It rejects subtlety and scale in favor of meaning. Among the imposing statues and memorials of the square, it stands not to dominate visually, but to provoke thought: “The tools we use to destroy history can themselves become symbols of resistance.”
 Kolodko’s uncommissioned, often secretive installations turned public spaces into unofficial galleries. His Axe is part of a broader critique—an act of art as civil commentary, rather than decoration. It weaves quiet humor, historical reckoning, and artistic defiance into the stone and bronze of Budapest’s most politicized square.`,
     image:
@@ -428,6 +445,7 @@ Kolodko’s uncommissioned, often secretive installations turned public spaces i
   },
   {
     id: "18",
+    category: "statue",
     name_tr: "Kurbağa Heykeli",
     name_en: "The Frog Statue",
     latitude: 47.503868704156766,
@@ -446,20 +464,21 @@ Kolodko often conveys political messages in his art, yet he does so with humor a
   },
   {
     id: "19",
+    category: "landmark",
     name_tr: "1848 Devrim Şehitleri Anıtı ",
     name_en: "Memorial of the Revolutionaries of 1848",
     latitude: 47.503785785316026,
     longitude: 19.05001178528445,
     story_tr: `Budapeşte’nin tarihi ve politik kalbi olan Özgürlük Meydanı’nda, 1848–49 Macar Devrimi’nin ruhunu taşıyan önemli bir yapı yükselir: 1848 Devrim Şehitleri Anıtı. Meydanın canlı atmosferi içinde derin bir tarihî yankı uyandıran bu anıt, Macar halkının bağımsızlık ve demokrasi uğruna ödediği bedelin sessiz bekçisidir
-Bu devrim, 15 Mart 1848’de başlayan halk hareketiyle sembolleşir. Macar toplumunun özgürlük, milli kimlik ve temsil hakkı için verdiği bu mücadele, Kossuth Lajos gibi liderlerin önderliğinde kısa sürede uluslararası dikkat çekici bir başlangıç yaptı. Fakat devrim, Habsburg ve Rus güçlerinin müdahalesiyle bastırıldı. Yüreklerde saklanan direniş, ancak taş ve bronz formunda sonsuzlaştırıldı 
+Bu devrim, 15 Mart 1848’de başlayan halk hareketiyle sembolleşir. Macar toplumunun özgürlük, milli kimlik ve temsil hakkı için verdiği bu mücadele, Kossuth Lajos gibi liderlerin önderliğinde kısa sürede uluslararası dikkat çekici bir başlangıç yaptı. Fakat devrim, Habsburg ve Rus güçlerinin müdahalesiyle bastırıldı. Yüreklerde saklanan direniş, ancak taş ve bronz formunda sonsuzlaştırıldı 
 Anıtın oldukça sade mimarisinin arkasında derin bir anlam yatar. Merkezde yer alan sütun ve kabartmalar, devrimcilerin cesareti, umutları ve fedakârlıklarıyla örülüdür. Her bir figür sanki günümüze seslenir: “Özgürlük hak ettiğimiz bir armağan değil, mücadeleyle kazanılır.” Her detayıyla hem tarihî bir ders hem de vicdanlara dokunan bir çağrı niteliğinde 
-Yapıldığı yerde, öncesinde bir hapishane binası  vardı. 1849’da burada ilk Macar Başbakanı Batthyány Lajos da idam edilmişti. Yani anıt, sadece bir kutlama değil; aynı zamanda yapılan zulmün, alınan canların da hatırlayıcısıdır. Bu yüzden meydanın var oluşu bile bağımsızlık hikâyesinin taşıyıcısıdır 
+Yapıldığı yerde, öncesinde bir hapishane binası  vardı. 1849’da burada ilk Macar Başbakanı Batthyány Lajos da idam edilmişti. Yani anıt, sadece bir kutlama değil; aynı zamanda yapılan zulmün, alınan canların da hatırlayıcısıdır. Bu yüzden meydanın var oluşu bile bağımsızlık hikâyesinin taşıyıcısıdır 
 Gerçek anlamda bir meydan yapısı olarak anılmayı hak eden bu alan, çeşitli dönemlerde farklı politik mesajlara sahne oldu. Fakat 1848 Şehitleri Anıtı; hem başlangıcı hem de umutla sonu birleştiren bir semboldür. Ziyaretçiler, bronzun ve taşın arasında dolaşırken, bir ulusun sesini ve ruhunu hissetme fırsatı bulur.`,
-    story_en: `Set in the heart of Budapest’s Liberty Square, the Memorial of the Revolutionaries of 1848 stands as a solemn tribute to Hungary’s historic fight for freedom and self-determination. Amid the square’s dynamic atmosphere, this monument silently echoes the sacrifices made during Hungary’s quest for independence in 1848–49 
-The revolution itself began on March 15, 1848, as citizens demanded civil liberties, national representation, and press freedom inspired by broader European movements. Led by figures like Lajos Kossuth, the uprising captured hearts and headlines—but ultimately ended under the weight of Austrian and Russian intervention. Yet the spirit endured—and was immortalized in bronze and stone 
-Though visually modest, the memorial’s symbolism runs deep. Its central column and sculpted reliefs evoke the courage, idealism, and sacrifice of the revolutionaries. Each figure seems to speak across time: “Freedom is not given—it is fought for.” The design invites reflection, serving both as a historic lesson and a moral call to conscience 
-The site itself once housed the prison, where Hungary’s first Prime Minister, Lajos Batthyány, was executed in 1849—tying the location directly to Hungary’s struggle and martyrdom. The square’s very layout and significance are rooted in that painful legacy 
-Over the years, Liberty Square has hosted multiple political layers and contrasting narratives. Amid them all, the Memorial of the Revolutionaries of 1848 remains steadfast—uniting a nation's past and hope in a single symbol. As visitors wander between bricks and bronze, they encounter more than art—they meet the Hungarian soul in motion.`,
+    story_en: `Set in the heart of Budapest’s Liberty Square, the Memorial of the Revolutionaries of 1848 stands as a solemn tribute to Hungary’s historic fight for freedom and self-determination. Amid the square’s dynamic atmosphere, this monument silently echoes the sacrifices made during Hungary’s quest for independence in 1848–49 
+The revolution itself began on March 15, 1848, as citizens demanded civil liberties, national representation, and press freedom inspired by broader European movements. Led by figures like Lajos Kossuth, the uprising captured hearts and headlines—but ultimately ended under the weight of Austrian and Russian intervention. Yet the spirit endured—and was immortalized in bronze and stone 
+Though visually modest, the memorial’s symbolism runs deep. Its central column and sculpted reliefs evoke the courage, idealism, and sacrifice of the revolutionaries. Each figure seems to speak across time: “Freedom is not given—it is fought for.” The design invites reflection, serving both as a historic lesson and a moral call to conscience 
+The site itself once housed the prison, where Hungary’s first Prime Minister, Lajos Batthyány, was executed in 1849—tying the location directly to Hungary’s struggle and martyrdom. The square’s very layout and significance are rooted in that painful legacy 
+Over the years, Liberty Square has hosted multiple political layers and contrasting narratives. Amid them all, the Memorial of the Revolutionaries of 1848 remains steadfast—uniting a nation's past and hope in a single symbol. As visitors wander between bricks and bronze, they encounter more than art—they meet the Hungarian soul in motion.`,
     image:
       "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrDCz49SIGShRuhUOx1K_9rehUnDcpJy6CHi9hTeBMDMo_Nj_CNOGdISRanlFC67KgNpaIksColXrL9GwikwJE7FN451ArkOJj2qHf9JuPxU54y3hEmVQmIokvgO-ZHaE7KiV-5=w408-h306-k-no",
     audio: {
@@ -469,11 +488,12 @@ Over the years, Liberty Square has hosted multiple political layers and contrast
   },
   {
     id: "20",
+    category: "statue",
     name_tr: "Harry Hill Bandholtz Heykeli",
     name_en: "Statue of Harry Hill Bandholtz ",
     latitude: 47.50388636015359,
     longitude: 19.05097939209399,
-    story_tr: `Budapeşte’nin  Özgürlük Meydanı köşesinde, Amerika Birleşik Devletleri'nin Macaristan'daki büyükelçiliği önünde, Harry Hill Bandholtz adlı Amerikalı bir generalin heykeli yer alır. 1936 yılında ünlü Macar heykeltıraş Miklós Ligeti tarafından yapılan bu anıt, Macar halkının hafızasında derin izler bırakmış bir olayı simgeler.
+    story_tr: `Budapeşte’nin  Özgürlük Meydanı köşesinde, Amerika Birleşik Devletleri'nin Macaristan'daki büyükelçiliği önünde, Harry Hill Bandholtz adlı Amerikalı bir generalin heykeli yer alır. 1936 yılında ünlü Macar heykeltıraş Miklós Ligeti tarafından yapılan bu anıt, Macar halkının hafızasında derin izler bırakmış bir olayı simgeler.
 Harry Hill Bandholtz, Birinci Dünya Savaşı sonrasında, 1919 yılında Macaristan’a gelen Müttefik Askeri Misyonunun bir parçası olarak Budapeşte’ye gönderildi. Görevi, Romanya'nın Macaristan'dan çekilmesini denetlemekti. Ancak, 5 Ekim 1919'da, Romanya'nın işgalindeki Macar Ulusal Müzesi'ni yağmalamak isteyen Romanya askerleriyle karşılaştı. Bandholtz, sadece bastonunu kullanarak, askerleri müzeden uzaklaştırmayı başardı ve müzenin kapılarını mühürleyerek anahtarları teslim aldı. Bu olay, Macar halkı tarafından büyük bir kahramanlık olarak kabul edildi.
 Heykelin ön yüzünde Bandholtz'un şu sözleri yer alır:
 “Ben sadece hükümetimin talimatlarını, anladığım şekliyle, Birleşik Devletler Ordusu'nun bir subayı ve centilmeni olarak yerine getirdim.”
@@ -494,17 +514,18 @@ The statue was removed in 1949 by the Communist government under the pretext of 
   },
   {
     id: "21",
+    category: "landmark",
     name_tr: "Carl Lutz Anıt Taşı",
     name_en: "Carl Lutz Memorial Stone",
     latitude: 47.50446632460046,
     longitude: 19.0510060623991,
-    story_tr: `II. Dünya Savaşı’nın en karanlık günlerinde Budapeşte’de bir adam sessiz kahramanlıklarıyla binlerce hayat kurtardı: İsviçreli diplomat Carl Lutz. Onun anısına dikilen bu anıt, yalnızca bir heykel değil, insanlık onurunun simgesidir. 
-Ziyaretçiler buraya geldiklerinde genellikle sessizce birkaç dakika geçirir. Kimi zaman çiçekler bırakılır, kimi zaman mumlar yakılır. Rehberler, Lutz’un insana dokunan sözünü hatırlatır: “Bir insanı kurtaran, tüm insanlığı kurtarmış gibidir.” Bu söz, anıtın önünde yankılanır gibi olur. 
-Bugün buraya gelen bir ziyaretçi, yalnızca geçmişi değil bugünü de düşünür. Cesaretin, vicdanın ve insanlığın her çağda ne kadar değerli olduğunu hatırlatan bu yer, sessizliğiyle bile güçlü bir mesaj taşır. Hemen yakındaki Tuna kıyısına yürüyüp “Ayakkabılar” Anıtı’nı görmek, bu duygusal yolculuğu daha da derinleştirir. 
+    story_tr: `II. Dünya Savaşı’nın en karanlık günlerinde Budapeşte’de bir adam sessiz kahramanlıklarıyla binlerce hayat kurtardı: İsviçreli diplomat Carl Lutz. Onun anısına dikilen bu anıt, yalnızca bir heykel değil, insanlık onurunun simgesidir. 
+Ziyaretçiler buraya geldiklerinde genellikle sessizce birkaç dakika geçirir. Kimi zaman çiçekler bırakılır, kimi zaman mumlar yakılır. Rehberler, Lutz’un insana dokunan sözünü hatırlatır: “Bir insanı kurtaran, tüm insanlığı kurtarmış gibidir.” Bu söz, anıtın önünde yankılanır gibi olur. 
+Bugün buraya gelen bir ziyaretçi, yalnızca geçmişi değil bugünü de düşünür. Cesaretin, vicdanın ve insanlığın her çağda ne kadar değerli olduğunu hatırlatan bu yer, sessizliğiyle bile güçlü bir mesaj taşır. Hemen yakındaki Tuna kıyısına yürüyüp “Ayakkabılar” Anıtı’nı görmek, bu duygusal yolculuğu daha da derinleştirir. 
 Carl Lutz Anıtı, Budapeşte’de sadece bir durak değil; insanlık dersidir.`,
-    story_en: `During the darkest days of World War II in Budapest, one man’s quiet heroism saved thousands of lives: the Swiss diplomat Carl Lutz. The memorial dedicated to him is not just a statue, but a symbol of human dignity. 
-Visitors who come here often spend a few moments in silence. Flowers are laid, candles are lit. Guides recall Lutz’s moving words: “Whoever saves one life, saves the world entire.” Standing before the monument, it feels as if those words still echo in the air. 
-A visitor today cannot help but reflect not only on the past but on the present as well. This place reminds us that courage, conscience, and humanity are virtues needed in every era. A short walk from here to the Danube promenade and the “Shoes on the Danube Bank” memorial deepens the emotional journey. 
+    story_en: `During the darkest days of World War II in Budapest, one man’s quiet heroism saved thousands of lives: the Swiss diplomat Carl Lutz. The memorial dedicated to him is not just a statue, but a symbol of human dignity. 
+Visitors who come here often spend a few moments in silence. Flowers are laid, candles are lit. Guides recall Lutz’s moving words: “Whoever saves one life, saves the world entire.” Standing before the monument, it feels as if those words still echo in the air. 
+A visitor today cannot help but reflect not only on the past but on the present as well. This place reminds us that courage, conscience, and humanity are virtues needed in every era. A short walk from here to the Danube promenade and the “Shoes on the Danube Bank” memorial deepens the emotional journey. 
 The Carl Lutz Memorial is not just a stop in Budapest; it is a lesson in humanity.`,
     image:
       "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npxYxdfpLVPg1ZupXNOYhLUXoeckm-yXH9uLUC6HgVn1RYwhx5-x2NNoMCn4GZXoPRGXwaA6gpA7DCsGGpJqgCmU7Tp2d_LcdQl42h32IfjZ9amqLLZw-lAbLWKjyfyDUm_H538=w408-h272-k-no",
@@ -515,17 +536,18 @@ The Carl Lutz Memorial is not just a stop in Budapest; it is a lesson in humanit
   },
   {
     id: "22",
-    name_tr: "George H. W. Bush Heykeli",
+    category: "statue",
+    name_tr: "George H. W. Bush Heykeli",
     name_en: "Statue of George H. W. Bush",
     latitude: 47.504700114248536,
     longitude: 19.050749291412775,
-    story_tr: `1989 yılında, Soğuk Savaş’ın son yıllarında, Macaristan’ın kalbine gelen ilk Amerikan başkanı George Herbert Walker Bush oldu. Onun Özgürlük Meydanı’ndaki heykeli, yalnızca bir liderin hatırası değil, özgürlüğün simgesidir. 
-Bush’un el salladığı heykelin önünde duran bir ziyaretçi, o dönemin atmosferini hayal eder: Demir Perde yıkılmak üzeredir, Macar halkı özgürlüğün eşiğinde nefesini tutmuştur. Bu heykel, o umut dolu günlerin bir yankısıdır. 
-Bugün buraya gelen turistler için heykelin anlamı büyüktür. Birçok kişi burada durup fotoğraf çeker, meydandaki banklara oturur ve kafelerden aldığı kahveyi yudumlarken geçmiş ile bugün arasında bir köprü kurar. 
+    story_tr: `1989 yılında, Soğuk Savaş’ın son yıllarında, Macaristan’ın kalbine gelen ilk Amerikan başkanı George Herbert Walker Bush oldu. Onun Özgürlük Meydanı’ndaki heykeli, yalnızca bir liderin hatırası değil, özgürlüğün simgesidir. 
+Bush’un el salladığı heykelin önünde duran bir ziyaretçi, o dönemin atmosferini hayal eder: Demir Perde yıkılmak üzeredir, Macar halkı özgürlüğün eşiğinde nefesini tutmuştur. Bu heykel, o umut dolu günlerin bir yankısıdır.s 
+Bugün buraya gelen turistler için heykelin anlamı büyüktür. Birçok kişi burada durup fotoğraf çeker, meydandaki banklara oturur ve kafelerden aldığı kahveyi yudumlarken geçmiş ile bugün arasında bir köprü kurar. 
 George Bush Heykeli, sadece bir anıt değil; özgürlüğün hatırlatıcısı, tarihin canlı bir tanığıdır.`,
-    story_en: `In 1989, during the final years of the Cold War, George Herbert Walker Bush became the first American president to set foot in Hungary. His statue in Liberty Square stands not only as a remembrance of a leader but as a symbol of freedom itself. 
-Standing before the statue of Bush waving, a visitor can almost imagine the atmosphere of that time: the Iron Curtain on the verge of collapse, the Hungarian people holding their breath at the edge of freedom. The statue echoes the hope of those days. 
-For today’s tourists, the monument carries great meaning. Many stop here to take photos, sit on the benches of the square, and sip coffee from nearby cafés while reflecting on the bridge between past and present. 
+    story_en: `In 1989, during the final years of the Cold War, George Herbert Walker Bush became the first American president to set foot in Hungary. His statue in Liberty Square stands not only as a remembrance of a leader but as a symbol of freedom itself. 
+Standing before the statue of Bush waving, a visitor can almost imagine the atmosphere of that time: the Iron Curtain on the verge of collapse, the Hungarian people holding their breath at the edge of freedom. The statue echoes the hope of those days. 
+For today’s tourists, the monument carries great meaning. Many stop here to take photos, sit on the benches of the square, and sip coffee from nearby cafés while reflecting on the bridge between past and present. 
 The George Bush Statue is not just a monument; it is a reminder of freedom, a living witness of history.`,
     image:
       "https://lh3.googleusercontent.com/gps-cs-s/AC9h4npgg6zn_annvhn3PwuLjMK6yVxENzXMkSNBJdwwhkO8cHq80wEzfDNuAxU3wWCsXm7TpayBFdwQ9cC-DeBgZEgAehe2CS3QJDknD58G1E6pEcdOCn9YAFegk4VZtlPdzwLSOHw9=w408-h544-k-no",
@@ -536,6 +558,7 @@ The George Bush Statue is not just a monument; it is a reminder of freedom, a li
   },
   {
     id: "23",
+    category: "statue",
     name_tr: "Anna Kéthly Heykeli",
     name_en: "Statue of Anna Kéthly",
     latitude: 47.510162680181445,
@@ -558,6 +581,7 @@ Visitors who pass through this square don't just see a statue—they experience 
   },
   {
     id: "24",
+    category: "statue",
     name_tr: "Béla Kovács Heykeli",
     name_en: "Statue of Béla Kovács",
     latitude: 47.51161040207814,
@@ -577,17 +601,18 @@ Despite its placement near dramatic national monuments, the statue's simplicity 
   },
   {
     id: "25",
+    category: "church",
     name_tr: "Aziz Stefan Bazilikası",
     name_en: "St. Stephen’s Basilica",
     latitude: 47.500766998746485,
     longitude: 19.054396398397174,
-    story_tr: `Budapeşte’nin göğe yükselen en ihtişamlı yapılarından biri olan Aziz István Bazilikası, Macaristan’ın ilk kralı ve Hristiyanlığın koruyucusu Aziz István’a adanmıştır. 1905’te tamamlanan bu bazilika, Neo-Klasik mimarisi, devasa kubbesi ve ince işçilikli vitraylarıyla göz kamaştırır. 
-Bazilikanın en kutsal hazinesi, Aziz István’ın mumyalanmış sağ elidir. “Szent Jobb” adı verilen bu kutsal emanet, halk arasında büyük bir saygıyla anılır. Her yıl 20 Ağustos’ta yapılan törenlerde binlerce kişi bazilikayı ziyaret eder. 
-Ziyaretçiler için en unutulmaz deneyimlerden biri ise kubbeye çıkmaktır. Şehrin panoramik manzarası ayaklarınızın altında açılır; Parlamento’dan Tuna Köprüleri’ne kadar her şey gözlerinizin önüne serilir. Güneş batarken bu manzarayı izlemek, ömrünüz boyunca unutamayacağınız bir anıdır. 
+    story_tr: `Budapeşte’nin göğe yükselen en ihtişamlı yapılarından biri olan Aziz István Bazilikası, Macaristan’ın ilk kralı ve Hristiyanlığın koruyucusu Aziz István’a adanmıştır. 1905’te tamamlanan bu bazilika, Neo-Klasik mimarisi, devasa kubbesi ve ince işçilikli vitraylarıyla göz kamaştırır. 
+Bazilikanın en kutsal hazinesi, Aziz István’ın mumyalanmış sağ elidir. “Szent Jobb” adı verilen bu kutsal emanet, halk arasında büyük bir saygıyla anılır. Her yıl 20 Ağustos’ta yapılan törenlerde binlerce kişi bazilikayı ziyaret eder. 
+Ziyaretçiler için en unutulmaz deneyimlerden biri ise kubbeye çıkmaktır. Şehrin panoramik manzarası ayaklarınızın altında açılır; Parlamento’dan Tuna Köprüleri’ne kadar her şey gözlerinizin önüne serilir. Güneş batarken bu manzarayı izlemek, ömrünüz boyunca unutamayacağınız bir anıdır. 
 Aziz István Bazilikası, yalnızca dini bir yapı değil; Macar ulusal kimliğinin kalbinde yer alan bir simgedir.`,
-    story_en: `One of the most magnificent structures in Budapest, St. Stephen’s Basilica is dedicated to Hungary’s first king and protector of Christianity, St. Stephen. Completed in 1905, its Neo-Classical design, massive dome, and intricate stained glass windows dazzle all who visit. 
-The basilica’s most sacred treasure is the mummified right hand of St. Stephen himself. Known as the “Szent Jobb,” this relic is deeply revered, and every August 20, thousands of people gather here during the national celebrations. 
-For visitors, one of the most unforgettable experiences is climbing up to the dome. From here, panoramic views of the city stretch out at your feet: from the Parliament to the Danube bridges, the whole of Budapest lies before you. At sunset, the sight is nothing short of breathtaking. 
+    story_en: `One of the most magnificent structures in Budapest, St. Stephen’s Basilica is dedicated to Hungary’s first king and protector of Christianity, St. Stephen. Completed in 1905, its Neo-Classical design, massive dome, and intricate stained glass windows dazzle all who visit. 
+The basilica’s most sacred treasure is the mummified right hand of St. Stephen himself. Known as the “Szent Jobb,” this relic is deeply revered, and every August 20, thousands of people gather here during the national celebrations. 
+For visitors, one of the most unforgettable experiences is climbing up to the dome. From here, panoramic views of the city stretch out at your feet: from the Parliament to the Danube bridges, the whole of Budapest lies before you. At sunset, the sight is nothing short of breathtaking. 
 St. Stephen’s Basilica is not only a place of worship but also a symbol at the very heart of Hungarian national identity.`,
     image:
       "https://www.interbustur.com/wp-content/uploads/2017/11/aziz-stefan-bazilikas%C4%B1.jpg",
@@ -598,6 +623,7 @@ St. Stephen’s Basilica is not only a place of worship but also a symbol at the
   },
   {
     id: "26",
+    category: "castle",
     name_tr: "Buda Kalesi",
     name_en: "Buda Castle",
     latitude: 47.49600986564456,
@@ -607,7 +633,7 @@ Buda Kalesi, Gotik, Barok ve Rönesans etkilerini bir araya getiren mimarisiyle 
 Zaman içinde kale, sadece bir kraliyet merkezi değil; kültürel ve sanatsal bir mekân haline gelmiştir. İçinde barındırdığı Macar Ulusal Galerisi, Budapeşte Tarih Müzesi ve geçici sergilerle, ziyaretçilere tarihî bir yolculuk sunar. Ziyaretçiler, kaleye adım attıkları anda hem 13. yüzyıldan günümüze uzanan bir tarih zincirine tanık olur hem de Tuna Nehri’nin ve Budapeşte’nin muhteşem panoramik manzarasını seyreder. Kale, taş ve duvarlarıyla bir zaman kapsülü gibi geçmişi bugüne taşır.
 Buda Kalesi’nin çevresindeki avlular, yürüyüş yolları ve merdivenler, ziyaretçilere şehrin tarihine dokunma hissi verir. Her taş, savaşların ve barışın, zaferlerin ve kayıpların bir hatırlatıcısıdır. Özellikle gün batımında kalenin silueti, nehrin üzerinde altın bir ışıkla yansır ve Budapeşte’nin tarihî ve estetik ruhunu gözler önüne serer. Buda Kalesi, ziyaretçilerine sadece bir tarih dersi sunmakla kalmaz; aynı zamanda bir ulusun geçmişiyle bağ kurmasını sağlar.
 Her adımda hissedilen bu tarih, kale boyunca dolaşan insanlara şu mesajı verir: “Geçmişini onurlandıran bir ulus, geleceğini güvenle inşa eder.” Buda Kalesi, sadece taş ve tuğladan ibaret bir yapı değildir; binlerce yıllık hikâyeyi sessizce anlatan, Macar halkının ruhunu yansıtan bir simgedir.`,
-    story_en: `Rising majestically above Budapest, overlooking the Danube River, Buda Castle is more than just a structure; it is a living symbol of Hungarian history, culture, and royal grandeur. Originally built in the 13th century, the castle served as the residence and administrative center for Hungarian kings. Over the centuries, it has been shaped by Ottoman occupations, Habsburg rule, wars, and successive reconstructions. Every stone of the castle carries the traces of the past, reflecting the resilience, creativity, and identity of the Hungarian people 
+    story_en: `Rising majestically above Budapest, overlooking the Danube River, Buda Castle is more than just a structure; it is a living symbol of Hungarian history, culture, and royal grandeur. Originally built in the 13th century, the castle served as the residence and administrative center for Hungarian kings. Over the centuries, it has been shaped by Ottoman occupations, Habsburg rule, wars, and successive reconstructions. Every stone of the castle carries the traces of the past, reflecting the resilience, creativity, and identity of the Hungarian people 
 The castle’s architecture is a stunning blend of Gothic, Baroque, and Renaissance styles. The complex includes royal palaces, towers, expansive courtyards, and fortified walls. Each building not only served a defensive purpose but also symbolized royal power and aesthetic vision. Throughout history, the castle has witnessed the triumphs, struggles, and social changes of the Hungarian nation, standing as a silent observer to centuries of history.
 Over time, Buda Castle evolved into a cultural and artistic hub. Housing the Hungarian National Gallery, the Budapest History Museum, and temporary exhibitions, it offers visitors a journey through time. Stepping into the castle, visitors witness a historical continuum stretching from the 13th century to the present, while enjoying breathtaking panoramic views of the Danube and Budapest. The castle acts as a time capsule, bringing the past to life for all who enter.
 The surrounding courtyards, walkways, and stairways allow visitors to physically connect with the city’s history. Every stone serves as a reminder of wars and peace, victories and losses. At sunset, the castle’s silhouette glows golden over the river, revealing Budapest’s historical and aesthetic essence. Buda Castle not only offers a history lesson but also connects a nation to its past.
@@ -620,6 +646,7 @@ With every step, the castle conveys this enduring message: "A nation that honors
   },
   {
     id: "27",
+    category: "statue",
     name_tr: "Sándor Károlyi de Nagykároly Heykeli",
     name_en: "Statue of Sándor Károlyi de Nagykároly",
     latitude: 47.515320776559946,
@@ -642,6 +669,7 @@ The Vajdahunyad Castle, where the statue is located, houses various architectura
   },
   {
     id: "28",
+    category: "statue",
     name_tr: "Mini Dracula Heykeli",
     name_en: "Mini Dracula Statue",
     latitude: 47.51469454206161,
@@ -663,17 +691,18 @@ According to legend, Kolodko’s intention was to show that Budapest is not only
   },
   {
     id: "29",
+    category: "castle",
     name_tr: "Vajdahunyad Kalesi",
     name_en: "Vajdahunyad Castle",
     latitude: 47.51489974817524,
     longitude: 19.083050510280167,
-    story_tr: `Şehir Parkı’nın ortasında masalsı bir atmosferle yükselen Vajdahunyad Kalesi, Budapeşte’nin en romantik köşelerinden biridir. 1896’da Macaristan’ın 1000. yılı kutlamaları için geçici olarak inşa edilmiş, ancak halkın sevgisiyle kalıcı hale getirilmiştir. 
-Kale, mimari stillerin bir araya geldiği eşsiz bir yapıdır. Romanesk, Gotik, Rönesans ve Barok üslupları bir arada görmek mümkündür. Bu yüzden burası, adeta “Macar mimarisinin açık hava müzesi” gibidir. 
-Bugün buraya gelen ziyaretçiler, gölde kayıkla gezebilir, köprülerin üzerinde fotoğraf çektirebilir ya da içerideki Tarım Müzesi’ni gezebilir. Kışın karla kaplandığında kale masal kitabından fırlamış gibi görünür; yazın ise parkın canlı ruhuyla birleşir. 
+    story_tr: `Şehir Parkı’nın ortasında masalsı bir atmosferle yükselen Vajdahunyad Kalesi, Budapeşte’nin en romantik köşelerinden biridir. 1896’da Macaristan’ın 1000. yılı kutlamaları için geçici olarak inşa edilmiş, ancak halkın sevgisiyle kalıcı hale getirilmiştir. 
+Kale, mimari stillerin bir araya geldiği eşsiz bir yapıdır. Romanesk, Gotik, Rönesans ve Barok üslupları bir arada görmek mümkündür. Bu yüzden burası, adeta “Macar mimarisinin açık hava müzesi” gibidir. 
+Bugün buraya gelen ziyaretçiler, gölde kayıkla gezebilir, köprülerin üzerinde fotoğraf çektirebilir ya da içerideki Tarım Müzesi’ni gezebilir. Kışın karla kaplandığında kale masal kitabından fırlamış gibi görünür; yazın ise parkın canlı ruhuyla birleşir. 
 Vajdahunyad Kalesi, Budapeşte’nin hem tarihini hem de hayallerini taşıyan büyülü bir mekândır.`,
-    story_en: `Rising with fairytale charm in the middle of City Park, Vajdahunyad Castle is one of Budapest’s most romantic spots. Originally built in 1896 as a temporary structure for Hungary’s millennial celebrations, it became permanent thanks to the people’s love for it. 
-The castle is a unique blend of architectural styles. Romanesque, Gothic, Renaissance, and Baroque all come together here, making it feel like an open-air museum of Hungarian architecture. 
-Today, visitors can row boats on the lake, take photos on its picturesque bridges, or explore the Agricultural Museum inside. In winter, when covered in snow, the castle looks like something out of a storybook; in summer, it merges with the lively spirit of the park. 
+    story_en: `Rising with fairytale charm in the middle of City Park, Vajdahunyad Castle is one of Budapest’s most romantic spots. Originally built in 1896 as a temporary structure for Hungary’s millennial celebrations, it became permanent thanks to the people’s love for it. 
+The castle is a unique blend of architectural styles. Romanesque, Gothic, Renaissance, and Baroque all come together here, making it feel like an open-air museum of Hungarian architecture. 
+Today, visitors can row boats on the lake, take photos on its picturesque bridges, or explore the Agricultural Museum inside. In winter, when covered in snow, the castle looks like something out of a storybook; in summer, it merges with the lively spirit of the park.
 Vajdahunyad Castle is a magical place that holds both the history and the dreams of Budapest.`,
     image:
       "https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrw-e6pJ9J2k1GtLcv95m3B35JwO6sU_1U1hDWrUdiCKFsIQ2DvAIbKY8My3jqDjRFG9Au9eAMYfvUwDS6IV6kwfNBmcEtsus53KK5DmR-lXAe2CiSKjxKd_HVNHM31Q3G1V8U=w408-h544-k-no",
@@ -684,6 +713,7 @@ Vajdahunyad Castle is a magical place that holds both the history and the dreams
   },
   {
     id: "30",
+    category: "statue",
     name_tr: "János Hunyadi Heykeli",
     name_en: "Statue of Janos Hunyadi",
     latitude: 47.51459652003611,

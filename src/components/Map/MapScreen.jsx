@@ -28,6 +28,56 @@ const userLocationIcon = new L.Icon({
   popupAnchor: [0, -30],
 });
 
+const commonShadowUrl =
+  "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png";
+
+const statueIcon = new L.Icon({
+  iconUrl:
+    "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png",
+  shadowUrl: commonShadowUrl,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41],
+});
+
+const castleIcon = new L.Icon({
+  iconUrl:
+    "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png",
+  shadowUrl: commonShadowUrl,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41],
+});
+
+const churchIcon = new L.Icon({
+  iconUrl:
+    "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png",
+  shadowUrl: commonShadowUrl,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41],
+});
+
+const landmarkIcon = new L.Icon.Default();
+
+const getIconForCategory = (category) => {
+  switch (category) {
+    case "statue":
+      return statueIcon;
+    case "castle":
+      return castleIcon;
+    case "church":
+      return churchIcon;
+    case "landmark":
+      return landmarkIcon;
+    default:
+      return landmarkIcon;
+  }
+};
+
 const defaultCenter = [47.4979, 19.0402];
 
 const MapScreen = ({
@@ -100,6 +150,7 @@ const MapScreen = ({
             key={monument.id}
             position={[monument.latitude, monument.longitude]}
             eventHandlers={{ click: () => onSelectMonument(monument) }}
+            icon={getIconForCategory(monument.category)}
           >
             <Popup>
               {language === "tr" ? monument.name_tr : monument.name_en}
