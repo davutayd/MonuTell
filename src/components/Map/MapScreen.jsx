@@ -3,14 +3,15 @@ import { MapContainer, TileLayer, Marker, Circle, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import monuments from "../../data/monuments";
-import { useLocation } from "../../hooks/useLocation";
 
+import { useLocation } from "../../hooks/useLocation";
 import GoToMyLocationButton from "./GoToMyLocationButton";
 import AllowLocationBanner from "./AllowLocationBanner";
 import UserPulse from "./UserPulse";
 import LocationHandler from "./LocationHandler";
 
-// Leaflet default marker fix
+import styles from "./MapScreen.module.css";
+
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl:
@@ -37,7 +38,6 @@ const MapScreen = ({
   isMobile = false,
 }) => {
   const { position, accuracy, showBanner, handleAllowLocation } = useLocation();
-
   const [shouldFly, setShouldFly] = useState(false);
   const isFirstLoad = useRef(true);
 
@@ -57,13 +57,14 @@ const MapScreen = ({
   const showMarker = accuracy != null && accuracy <= 100;
 
   return (
-    <div style={{ width: "100%", height: "100vh", position: "relative" }}>
+    // 2. 'style' yerine 'className' kullan
+    <div className={styles.mapWrapper}>
       {showBanner && <AllowLocationBanner onAllow={handleAllowLocation} />}
 
       <MapContainer
         center={position || defaultCenter}
         zoom={12}
-        style={{ height: "100%", width: "100%" }}
+        className={styles.mapContainer} // 'style' yerine 'className'
       >
         <TileLayer
           attribution='&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -81,6 +82,7 @@ const MapScreen = ({
               <Circle
                 center={position}
                 radius={Math.min(accuracy || 1000, 1000)}
+                // 3. 'pathOptions' CSS olmadığı için inline kalır (bu normaldir)
                 pathOptions={{
                   color: "#2a7",
                   fillColor: "#2a7",

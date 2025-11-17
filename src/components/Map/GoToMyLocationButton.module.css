@@ -1,0 +1,13 @@
+.locationButton {
+  position: fixed;
+  padding: 14px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}

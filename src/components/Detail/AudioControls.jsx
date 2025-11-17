@@ -1,68 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useGlobalAudio } from "../../context/GlobalAudioContext";
-
-const CustomProgressBar = ({ duration, currentTime, onChangeTime }) => {
-  const progressBarRef = useRef(null);
-  const percentage = duration > 0 ? (currentTime / duration) * 100 : 0;
-
-  const getNewTimeFromPosition = (clientX) => {
-    const bar = progressBarRef.current;
-    if (!bar || !duration) return 0;
-    const rect = bar.getBoundingClientRect();
-    let relativeX = clientX - rect.left;
-    relativeX = Math.max(0, Math.min(relativeX, rect.width));
-    const clickPercentage = relativeX / rect.width;
-    return Math.round(clickPercentage * duration);
-  };
-
-  const handleClick = (e) => {
-    const newTime = getNewTimeFromPosition(e.clientX);
-    onChangeTime(newTime);
-  };
-
-  return (
-    <div
-      ref={progressBarRef}
-      onClick={handleClick}
-      style={{
-        position: "relative",
-        height: 8,
-        backgroundColor: "#e0e0e0",
-        borderRadius: 4,
-        cursor: "pointer",
-        margin: "0 16px",
-        flexGrow: 1,
-      }}
-    >
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          height: "100%",
-          width: `${percentage}%`,
-          backgroundColor: "#4a6fa5",
-          borderRadius: 4,
-          transition: "width 0.2s ease",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: `${percentage}%`,
-          transform: "translate(-50%, -50%)",
-          width: 16,
-          height: 16,
-          backgroundColor: "#4a6fa5",
-          borderRadius: "50%",
-          cursor: "grab",
-          boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
-        }}
-      />
-    </div>
-  );
-};
+import CustomProgressBar from "./CustomProgressBar";
+import styles from "./AudioControls.module.css";
 
 const AudioControls = ({
   monument,
@@ -101,7 +40,6 @@ const AudioControls = ({
     }
     setLocalDuration(duration || 0);
     setLocalCurrentTime(currentTime || 0);
-
     if (story) {
       const words = story.split(/\s+/);
       const totalWords = Math.max(1, words.length);
@@ -129,10 +67,8 @@ const AudioControls = ({
 
   const handlePlayPause = async () => {
     if (!audioUrl) return;
-
     if (currentTrack?.url === audioUrl) {
       togglePlay();
-
       if (isPlaying) {
         setPausedBySystem(false);
       }
@@ -144,7 +80,6 @@ const AudioControls = ({
         monument?.name_tr ||
         "MonuTell";
       playAudio(audioUrl, title, monument?.id || "");
-
       setPausedBySystem(false);
     }
   };
@@ -164,7 +99,6 @@ const AudioControls = ({
 
   const handleProgressBarChange = (newTime) => {
     if (currentTrack?.id !== monument?.id) return;
-
     const seekTime = Math.min(
       Math.max(newTime, 0),
       Math.floor(localDuration || 0)
@@ -174,49 +108,18 @@ const AudioControls = ({
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "12px",
-        marginBottom: 24,
-        backgroundColor: "#fff",
-        padding: "16px",
-        borderRadius: "12px",
-        boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
-      }}
-    >
+    <div className={styles.controlsContainer}>
       <CustomProgressBar
         duration={localDuration}
         currentTime={localCurrentTime}
         onChangeTime={handleProgressBarChange}
       />
 
-      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-        <button
-          onClick={handlePlayPause}
-          style={{
-            backgroundColor: "#4a6fa5",
-            border: "none",
-            padding: "8px 12px",
-            borderRadius: "8px",
-            color: "#fff",
-            cursor: "pointer",
-          }}
-        >
+      <div className={styles.buttonsContainer}>
+        <button onClick={handlePlayPause} className={styles.controlButton}>
           {!isSpeaking ? "▶️" : "⏸️"}
         </button>
-        <button
-          onClick={handleStop}
-          style={{
-            backgroundColor: "#4a6fa5",
-            border: "none",
-            padding: "8px 12px",
-            borderRadius: "8px",
-            color: "#fff",
-            cursor: "pointer",
-          }}
-        >
+        <button onClick={handleStop} className={styles.controlButton}>
           ⏹️
         </button>
         <input
@@ -226,7 +129,7 @@ const AudioControls = ({
           step="0.01"
           value={volume}
           onChange={handleVolumeChange}
-          style={{ width: 100, cursor: "pointer" }}
+          className={styles.volumeSlider}
         />
         <span>{Math.round((volume || 0) * 100)}%</span>
       </div>

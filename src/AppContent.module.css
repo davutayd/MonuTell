@@ -1,0 +1,56 @@
+.appContainer {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+}
+
+.detailPanel {
+  transition: all 0.3s ease;
+  overflow: hidden;
+  background-color: #f8f9fa;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+}
+
+.closeButton {
+  position: absolute;
+  background: #4a7e5e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.scrollPanel {
+  padding: 20px;
+  transition: opacity 0.3s ease;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.mapContainer {
+  flex-grow: 1;
+  position: relative;
+}
+.scrollPanel::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollPanel::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.scrollPanel::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+.scrollPanel::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}

@@ -1,0 +1,31 @@
+.progressBar {
+  position: relative;
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0 16px;
+  flex-grow: 1;
+}
+
+.progressFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #4a6fa5;
+  border-radius: 4px;
+  transition: width 0.2s ease;
+}
+
+.progressHandle {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  background-color: #4a6fa5;
+  border-radius: 50%;
+  cursor: grab;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

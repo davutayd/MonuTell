@@ -1,6 +1,7 @@
 import React from "react";
 import { useMap } from "react-leaflet";
 import { MdMyLocation } from "react-icons/md";
+import styles from "./GoToMyLocationButton.module.css";
 
 const GoToMyLocationButton = ({ position, panelHeight, isMobile }) => {
   const map = useMap();
@@ -9,24 +10,17 @@ const GoToMyLocationButton = ({ position, panelHeight, isMobile }) => {
     if (position) map.flyTo(position, 16, { duration: 1.2 });
   };
 
-  const style = {
-    position: "fixed",
+  const dynamicStyles = {
     bottom: isMobile ? panelHeight + 10 : 20,
     right: 10,
-    padding: "14px",
-    background: "white",
-    border: "none",
-    borderRadius: "50%",
-    cursor: "pointer",
-    zIndex: 9999,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
   };
 
   return (
-    <button onClick={handleClick} style={style}>
+    <button
+      onClick={handleClick}
+      className={styles.locationButton}
+      style={dynamicStyles}
+    >
       <MdMyLocation size={28} color="#333" />
     </button>
   );
