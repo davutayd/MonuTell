@@ -7,7 +7,6 @@ import monuments from "../../data/monuments";
 import { useLocation } from "../../hooks/useLocation";
 import GoToMyLocationButton from "./GoToMyLocationButton";
 import AllowLocationBanner from "./AllowLocationBanner";
-import UserPulse from "./UserPulse";
 import LocationHandler from "./LocationHandler";
 
 import styles from "./MapScreen.module.css";
@@ -57,14 +56,13 @@ const MapScreen = ({
   const showMarker = accuracy != null && accuracy <= 100;
 
   return (
-    // 2. 'style' yerine 'className' kullan
     <div className={styles.mapWrapper}>
       {showBanner && <AllowLocationBanner onAllow={handleAllowLocation} />}
 
       <MapContainer
         center={position || defaultCenter}
         zoom={12}
-        className={styles.mapContainer} // 'style' yerine 'className'
+        className={styles.mapContainer}
       >
         <TileLayer
           attribution='&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a>'
