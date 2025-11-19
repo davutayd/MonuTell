@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Circle, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-import monuments from "../../data/monuments";
 
+import { useMonuments } from "../../hooks/useMonuments";
 import { useLocation } from "../../hooks/useLocation";
+
 import GoToMyLocationButton from "./GoToMyLocationButton";
 import AllowLocationBanner from "./AllowLocationBanner";
 import LocationHandler from "./LocationHandler";
@@ -86,6 +87,8 @@ const MapScreen = ({
   isPanelOpen = false,
   isMobile = false,
 }) => {
+  const { monuments, loading, error } = useMonuments();
+
   const { position, accuracy, showBanner, handleAllowLocation } = useLocation();
   const [shouldFly, setShouldFly] = useState(false);
   const isFirstLoad = useRef(true);
@@ -104,6 +107,37 @@ const MapScreen = ({
 
   const panelHeight = isMobile ? (isPanelOpen ? viewportHeight * 0.6 : 0) : 0;
   const showMarker = accuracy != null && accuracy <= 100;
+
+  if (loading) {
+    return (
+      <div
+        className={styles.mapWrapper}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          background: "#f0f0f0",
+        }}
+      >
+        <p>Budapeşte yükleniyor...</p>
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div
+        className={styles.mapWrapper}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          color: "red",
+        }}
+      >
+        <p>Bağlantı hatası. Lütfen sayfayı yenileyin.</p>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.mapWrapper}>
@@ -144,7 +178,6 @@ const MapScreen = ({
           shouldFly={shouldFly}
           setShouldFly={setShouldFly}
         />
-
         {monuments.map((monument) => (
           <Marker
             key={monument.id}
