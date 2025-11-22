@@ -2,7 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Circle, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
-
+import { renderToStaticMarkup } from "react-dom/server";
+import {
+  FaChurch,
+  FaMonument,
+  FaChessRook,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 import { useMonuments } from "../../hooks/useMonuments";
 import { useLocation } from "../../hooks/useLocation";
 
@@ -22,60 +28,72 @@ L.Icon.Default.mergeOptions({
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
-const userLocationIcon = new L.Icon({
-  iconUrl: "https://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png",
-  iconSize: [30, 30],
-  iconAnchor: [15, 30],
-  popupAnchor: [0, -30],
+const userLocationIcon = L.divIcon({
+  className: "",
+  html: `
+    <div class="${styles.userMarkerContainer}">
+      <div class="${styles.userPulse}"></div>
+      <div class="${styles.userDot}"></div>
+    </div>
+  `,
+  iconSize: [40, 40],
+  iconAnchor: [20, 20],
+  popupAnchor: [0, -20],
 });
+const createCustomIcon = (IconComponent, color) => {
+  const iconHtml = renderToStaticMarkup(
+    <div
+      style={{
+        backgroundColor: color,
+        width: "36px",
+        height: "36px",
+        borderRadius: "50%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        border: "2px solid white",
+        boxShadow: "0 3px 8px rgba(0,0,0,0.4)",
+        position: "relative",
+        color: "white",
+        fontSize: "18px",
+      }}
+    >
+      <IconComponent />
+      <div
+        style={{
+          position: "absolute",
+          bottom: "-6px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "0",
+          height: "0",
+          borderLeft: "6px solid transparent",
+          borderRight: "6px solid transparent",
+          borderTop: `8px solid ${color}`,
+        }}
+      ></div>
+    </div>
+  );
 
-const commonShadowUrl =
-  "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png";
-
-const statueIcon = new L.Icon({
-  iconUrl:
-    "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png",
-  shadowUrl: commonShadowUrl,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41],
-});
-
-const castleIcon = new L.Icon({
-  iconUrl:
-    "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png",
-  shadowUrl: commonShadowUrl,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41],
-});
-
-const churchIcon = new L.Icon({
-  iconUrl:
-    "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png",
-  shadowUrl: commonShadowUrl,
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41],
-});
-
-const landmarkIcon = new L.Icon.Default();
+  return L.divIcon({
+    html: iconHtml,
+    className: "",
+    iconSize: [36, 42],
+    iconAnchor: [18, 42],
+    popupAnchor: [0, -42],
+  });
+};
 
 const getIconForCategory = (category) => {
   switch (category) {
     case "statue":
-      return statueIcon;
+      return createCustomIcon(FaMonument, "#D4AF37");
     case "castle":
-      return castleIcon;
+      return createCustomIcon(FaChessRook, "#E63946");
     case "church":
-      return churchIcon;
-    case "landmark":
-      return landmarkIcon;
+      return createCustomIcon(FaChurch, "#2A9D8F");
     default:
-      return landmarkIcon;
+      return createCustomIcon(FaMapMarkerAlt, "#457B9D");
   }
 };
 
@@ -109,32 +127,46 @@ const MapScreen = ({
   const showMarker = accuracy != null && accuracy <= 100;
 
   if (loading) {
+    const loadingText =
+      language === "tr"
+        ? "Budapeşte Rehberi Hazırlanıyor..."
+        : "Preparing Budapest Guide...";
+
     return (
-      <div
-        className={styles.mapWrapper}
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          background: "#f0f0f0",
-        }}
-      >
-        <p>Budapeşte yükleniyor...</p>
+      <div className={styles.loadingContainer}>
+        <div className={styles.spinner}></div>
+        <div className={styles.loadingText}>{loadingText}</div>
       </div>
     );
   }
   if (error) {
+    const texts = {
+      tr: {
+        title: "Bir Hata Oluştu",
+        message:
+          "Veriler yüklenemedi. Lütfen internet bağlantınızı kontrol edin.",
+        button: "Tekrar Dene",
+      },
+      en: {
+        title: "Something Went Wrong",
+        message: "Could not load data. Please check your internet connection.",
+        button: "Try Again",
+      },
+    };
+
+    const content = language === "tr" ? texts.tr : texts.en;
+
     return (
-      <div
-        className={styles.mapWrapper}
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          color: "red",
-        }}
-      >
-        <p>Bağlantı hatası. Lütfen sayfayı yenileyin.</p>
+      <div className={styles.errorContainer}>
+        <div className={styles.errorIcon}>⚠️</div>
+        <div className={styles.errorTitle}>{content.title}</div>
+        <div className={styles.errorMessage}>{content.message}</div>
+        <button
+          className={styles.retryButton}
+          onClick={() => window.location.reload()}
+        >
+          {content.button}
+        </button>
       </div>
     );
   }
