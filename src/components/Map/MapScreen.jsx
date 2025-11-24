@@ -3,12 +3,18 @@ import { MapContainer, TileLayer, Marker, Circle, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { renderToStaticMarkup } from "react-dom/server";
+
 import {
   FaChurch,
-  FaMonument,
   FaChessRook,
   FaMapMarkerAlt,
+  FaLandmark,
+  FaArchway,
+  FaPlaceOfWorship,
 } from "react-icons/fa";
+
+import { GiStoneBust } from "react-icons/gi";
+
 import { useMonuments } from "../../hooks/useMonuments";
 import { useLocation } from "../../hooks/useLocation";
 
@@ -40,13 +46,14 @@ const userLocationIcon = L.divIcon({
   iconAnchor: [20, 20],
   popupAnchor: [0, -20],
 });
+
 const createCustomIcon = (IconComponent, color) => {
   const iconHtml = renderToStaticMarkup(
     <div
       style={{
         backgroundColor: color,
-        width: "36px",
-        height: "36px",
+        width: "40px",
+        height: "40px",
         borderRadius: "50%",
         display: "flex",
         alignItems: "center",
@@ -55,7 +62,7 @@ const createCustomIcon = (IconComponent, color) => {
         boxShadow: "0 3px 8px rgba(0,0,0,0.4)",
         position: "relative",
         color: "white",
-        fontSize: "18px",
+        fontSize: "25px",
       }}
     >
       <IconComponent />
@@ -85,13 +92,27 @@ const createCustomIcon = (IconComponent, color) => {
 };
 
 const getIconForCategory = (category) => {
-  switch (category) {
+  const cat = category ? category.toLowerCase() : "landmark";
+
+  switch (cat) {
     case "statue":
-      return createCustomIcon(FaMonument, "#D4AF37");
+    case "monument":
+      return createCustomIcon(GiStoneBust, "#D4AF37");
+
     case "castle":
       return createCustomIcon(FaChessRook, "#E63946");
+
     case "church":
-      return createCustomIcon(FaChurch, "#2A9D8F");
+    case "religious":
+      return createCustomIcon(FaPlaceOfWorship, "#2A9D8F");
+
+    case "museum":
+      return createCustomIcon(FaLandmark, "#7209B7");
+
+    case "bridge":
+      return createCustomIcon(FaArchway, "#4361EE");
+
+    case "landmark":
     default:
       return createCustomIcon(FaMapMarkerAlt, "#457B9D");
   }
@@ -106,7 +127,6 @@ const MapScreen = ({
   isMobile = false,
 }) => {
   const { monuments, loading, error } = useMonuments();
-
   const { position, accuracy, showBanner, handleAllowLocation } = useLocation();
   const [shouldFly, setShouldFly] = useState(false);
   const isFirstLoad = useRef(true);
@@ -139,6 +159,7 @@ const MapScreen = ({
       </div>
     );
   }
+
   if (error) {
     const texts = {
       tr: {
@@ -153,7 +174,6 @@ const MapScreen = ({
         button: "Try Again",
       },
     };
-
     const content = language === "tr" ? texts.tr : texts.en;
 
     return (
@@ -177,7 +197,7 @@ const MapScreen = ({
 
       <MapContainer
         center={position || defaultCenter}
-        zoom={12}
+        zoom={13}
         className={styles.mapContainer}
       >
         <TileLayer
@@ -188,9 +208,7 @@ const MapScreen = ({
         {position && (
           <>
             {showMarker ? (
-              <>
-                <Marker position={position} icon={userLocationIcon} />
-              </>
+              <Marker position={position} icon={userLocationIcon} />
             ) : (
               <Circle
                 center={position}
@@ -210,6 +228,7 @@ const MapScreen = ({
           shouldFly={shouldFly}
           setShouldFly={setShouldFly}
         />
+
         {monuments.map((monument) => (
           <Marker
             key={monument.id}
@@ -228,6 +247,44 @@ const MapScreen = ({
           panelHeight={panelHeight}
           isMobile={isMobile}
         />
+
+        <div className={styles.legendContainer}>
+          <div className={styles.legendItem}>
+            <span
+              className={styles.dot}
+              style={{ background: "#D4AF37" }}
+            ></span>
+            <span>{language === "tr" ? "Heykel" : "Statue"}</span>
+          </div>
+          <div className={styles.legendItem}>
+            <span
+              className={styles.dot}
+              style={{ background: "#E63946" }}
+            ></span>
+            <span>{language === "tr" ? "Kale" : "Castle"}</span>
+          </div>
+          <div className={styles.legendItem}>
+            <span
+              className={styles.dot}
+              style={{ background: "#7209B7" }}
+            ></span>
+            <span>{language === "tr" ? "Müze" : "Museum"}</span>
+          </div>
+          <div className={styles.legendItem}>
+            <span
+              className={styles.dot}
+              style={{ background: "#2A9D8F" }}
+            ></span>
+            <span>{language === "tr" ? "Dini" : "Religious"}</span>
+          </div>
+          <div className={styles.legendItem}>
+            <span
+              className={styles.dot}
+              style={{ background: "#4361EE" }}
+            ></span>
+            <span>{language === "tr" ? "Köprü" : "Bridge"}</span>
+          </div>
+        </div>
       </MapContainer>
     </div>
   );
