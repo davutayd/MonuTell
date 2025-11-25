@@ -81,14 +81,14 @@ const MonumentDetailScreen = ({
       <div className={styles.contentWrapper}>
         <div className={styles.languageSelector}>
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg"
+            src="src/assets/flags/Flag_of_Turkey.svg"
             alt="Türkçe"
             className={styles.flagImage}
             style={trFlagStyle}
             onClick={() => handleLanguageChange("tr")}
           />
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Flag_of_the_United_States.svg"
+            src="src/assets/flags/Flag_of_the_United_States.svg"
             alt="English"
             className={styles.flagImage}
             style={enFlagStyle}
