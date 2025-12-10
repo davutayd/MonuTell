@@ -25,6 +25,7 @@ import { useLocation } from "../../hooks/useLocation";
 import GoToMyLocationButton from "./GoToMyLocationButton";
 import AllowLocationBanner from "./AllowLocationBanner";
 import LocationHandler from "./LocationHandler";
+import SearchBar from "./SearchBar";
 import styles from "./MapScreen.module.css";
 
 delete L.Icon.Default.prototype._getIconUrl;
@@ -130,6 +131,15 @@ const getIconForCategory = (category, zoom) => {
 
 const defaultCenter = [47.4979, 19.0402];
 
+const FlyToHandler = ({ target }) => {
+  const map = useMap();
+  useEffect(() => {
+    if (target) {
+      map.flyTo(target, 18, { animate: true, duration: 1.5 });
+    }
+  }, [target, map]);
+  return null;
+};
 const VisibleMarkers = ({ monuments, onSelectMonument, language, setZoom }) => {
   const map = useMap();
   const [visibleMonuments, setVisibleMonuments] = useState([]);
@@ -188,6 +198,7 @@ const MapScreen = ({
   const [shouldFly, setShouldFly] = useState(false);
   const isFirstLoad = useRef(true);
   const [zoomLevel, setZoomLevel] = useState(14);
+  const [flyToPosition, setFlyToPosition] = useState(null);
 
   useEffect(() => {
     if (position && isFirstLoad.current) {
@@ -195,6 +206,11 @@ const MapScreen = ({
       isFirstLoad.current = false;
     }
   }, [position]);
+
+  const handleSearchResult = (monument) => {
+    setFlyToPosition([monument.latitude, monument.longitude]);
+    onSelectMonument(monument);
+  };
 
   const viewportHeight =
     typeof window !== "undefined" && window.visualViewport
@@ -251,7 +267,13 @@ const MapScreen = ({
   return (
     <div className={styles.mapWrapper}>
       {showBanner && <AllowLocationBanner onAllow={handleAllowLocation} />}
-
+      <SearchBar
+        monuments={monuments}
+        onSelectResult={handleSearchResult}
+        hasBanner={showBanner}
+        isMobile={isMobile}
+        language={language}
+      />
       <MapContainer
         center={position || defaultCenter}
         zoom={14}
@@ -265,7 +287,7 @@ const MapScreen = ({
           attribution="&copy; CARTO"
           url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
         />
-
+        <FlyToHandler target={flyToPosition} />
         {position && (
           <>
             {showMarker ? (
