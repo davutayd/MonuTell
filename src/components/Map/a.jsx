@@ -1,5 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import { MapContainer, TileLayer, Marker, Circle, useMap } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Circle,
+  Popup,
+  useMap,
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -39,7 +46,7 @@ const userLocationIcon = L.divIcon({
   popupAnchor: [0, -20],
 });
 
-const createCustomIcon = (IconComponent, color, zoom, isSelected) => {
+const createCustomIcon = (IconComponent, color, zoom) => {
   let size = 36;
   let fontSize = 22;
   let showIcon = true;
@@ -55,11 +62,8 @@ const createCustomIcon = (IconComponent, color, zoom, isSelected) => {
     fontSize = 28;
   }
 
-  const containerClass = isSelected ? styles.selectedMarkerBorder : "";
-
   const iconHtml = renderToStaticMarkup(
     <div
-      className={containerClass}
       style={{
         backgroundColor: color,
         width: `${size}px`,
@@ -68,7 +72,8 @@ const createCustomIcon = (IconComponent, color, zoom, isSelected) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        boxShadow: zoom < 14 ? "none" : "0 3px 8px rgba(0,0,0,0.4)",
+        border: zoom < 14 ? `2px solid white` : `3px solid white`,
+        boxShadow: zoom < 14 ? "none" : "0 2px 4px rgba(0,0,0,0.3)",
         position: "relative",
         color: "white",
         fontSize: `${fontSize}px`,
@@ -103,24 +108,24 @@ const createCustomIcon = (IconComponent, color, zoom, isSelected) => {
   });
 };
 
-const getIconForCategory = (category, zoom, isSelected) => {
+const getIconForCategory = (category, zoom) => {
   const cat = category ? category.toLowerCase() : "landmark";
   const z = zoom || 14;
   switch (cat) {
     case "statue":
     case "monument":
-      return createCustomIcon(GiStoneBust, "#D4AF37", z, isSelected);
+      return createCustomIcon(GiStoneBust, "#D4AF37", z);
     case "castle":
-      return createCustomIcon(FaChessRook, "#E63946", z, isSelected);
+      return createCustomIcon(FaChessRook, "#E63946", z);
     case "church":
     case "religious":
-      return createCustomIcon(FaPlaceOfWorship, "#2A9D8F", z, isSelected);
+      return createCustomIcon(FaPlaceOfWorship, "#2A9D8F", z);
     case "museum":
-      return createCustomIcon(FaLandmark, "#7209B7", z, isSelected);
+      return createCustomIcon(FaLandmark, "#7209B7", z);
     case "bridge":
-      return createCustomIcon(FaArchway, "#4361EE", z, isSelected);
+      return createCustomIcon(FaArchway, "#4361EE", z);
     default:
-      return createCustomIcon(FaStar, "#457B9D", z, isSelected);
+      return createCustomIcon(FaStar, "#457B9D", z);
   }
 };
 
@@ -135,13 +140,7 @@ const FlyToHandler = ({ target }) => {
   }, [target, map]);
   return null;
 };
-
-const VisibleMarkers = ({
-  monuments,
-  onSelectMonument,
-  setZoom,
-  selectedId,
-}) => {
+const VisibleMarkers = ({ monuments, onSelectMonument, language, setZoom }) => {
   const map = useMap();
   const [visibleMonuments, setVisibleMonuments] = useState([]);
   const [currentZoom, setCurrentZoom] = useState(14);
@@ -159,11 +158,13 @@ const VisibleMarkers = ({
         if (!m.latitude || !m.longitude) return false;
         return bounds.contains([m.latitude, m.longitude]);
       });
+
       setVisibleMonuments(visible);
     };
 
     map.on("moveend", updateVisible);
     map.on("zoomend", updateVisible);
+
     updateVisible();
 
     return () => {
@@ -174,22 +175,14 @@ const VisibleMarkers = ({
 
   return (
     <>
-      {visibleMonuments.map((monument) => {
-        const isSelected = monument.id === selectedId;
-        return (
-          <Marker
-            key={monument.id}
-            position={[monument.latitude, monument.longitude]}
-            eventHandlers={{ click: () => onSelectMonument(monument) }}
-            icon={getIconForCategory(
-              monument.category,
-              currentZoom,
-              isSelected
-            )}
-            zIndexOffset={isSelected ? 1000 : 0}
-          ></Marker>
-        );
-      })}
+      {visibleMonuments.map((monument) => (
+        <Marker
+          key={monument.id}
+          position={[monument.latitude, monument.longitude]}
+          eventHandlers={{ click: () => onSelectMonument(monument) }}
+          icon={getIconForCategory(monument.category, currentZoom)}
+        ></Marker>
+      ))}
     </>
   );
 };
@@ -206,7 +199,6 @@ const MapScreen = ({
   const isFirstLoad = useRef(true);
   const [zoomLevel, setZoomLevel] = useState(14);
   const [flyToPosition, setFlyToPosition] = useState(null);
-  const [selectedId, setSelectedId] = useState(null);
 
   useEffect(() => {
     if (position && isFirstLoad.current) {
@@ -215,14 +207,8 @@ const MapScreen = ({
     }
   }, [position]);
 
-  const handleSearchSelect = (monument) => {
-    setSelectedId(monument.id);
+  const handleSearchResult = (monument) => {
     setFlyToPosition([monument.latitude, monument.longitude]);
-    onSelectMonument(monument);
-  };
-
-  const handleManualSelect = (monument) => {
-    setSelectedId(monument.id);
     onSelectMonument(monument);
   };
 
@@ -281,22 +267,19 @@ const MapScreen = ({
   return (
     <div className={styles.mapWrapper}>
       {showBanner && <AllowLocationBanner onAllow={handleAllowLocation} />}
-
       <SearchBar
         monuments={monuments}
-        onSelectResult={handleSearchSelect}
+        onSelectResult={handleSearchResult}
         hasBanner={showBanner}
         isMobile={isMobile}
         language={language}
       />
-
       <MapContainer
         center={position || defaultCenter}
         zoom={14}
         className={styles.mapContainer}
         maxZoom={22}
         preferCanvas={true}
-        zoomControl={false}
       >
         <TileLayer
           maxZoom={22}
@@ -304,9 +287,7 @@ const MapScreen = ({
           attribution="&copy; CARTO"
           url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
         />
-
         <FlyToHandler target={flyToPosition} />
-
         {position && (
           <>
             {showMarker ? (
@@ -333,10 +314,9 @@ const MapScreen = ({
 
         <VisibleMarkers
           monuments={monuments}
-          onSelectMonument={handleManualSelect}
+          onSelectMonument={onSelectMonument}
           language={language}
           setZoom={setZoomLevel}
-          selectedId={selectedId}
         />
 
         <GoToMyLocationButton
