@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import styles from "./SearchBar.module.css";
 
-// --- TÜM İKONLAR TEK ÇATIDA (Hata riskini sıfırlar) ---
 import {
   FaSearch,
-  FaTimes, // <-- Bunu kullanacağız, en garantisi bu.
+  FaTimes,
   FaMapMarkerAlt,
   FaChessRook,
   FaLandmark,
@@ -119,14 +118,13 @@ const SearchBar = ({
             className={styles.clearButton}
             type="button"
           >
-            {/* 🔥 HARİCİ İKON YOK - DOĞRUDAN HTML SVG ÇİZİMİ 🔥 */}
             <svg
               width="14"
               height="14"
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              style={{ display: "block" }} // Görünürlüğü zorla
+              style={{ display: "block" }}
             >
               <path
                 d="M18 6L6 18M6 6L18 18"
@@ -165,7 +163,36 @@ const SearchBar = ({
                   <div className={styles.resultName}>
                     {language === "tr" ? item.name_tr : item.name_en}
                   </div>
-                  <div className={styles.resultSub}>{style.label}</div>
+
+                  <div
+                    className={styles.resultSub}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <span style={{ whiteSpace: "nowrap" }}>{style.label}</span>
+
+                    {item.address && (
+                      <>
+                        <span style={{ margin: "0 6px", color: "#ccc" }}>
+                          |
+                        </span>
+                        <span
+                          style={{
+                            overflow: "hidden",
+                            textOverflow: "ellipsis",
+                            whiteSpace: "nowrap",
+                            color: "#888",
+                            flex: 1,
+                          }}
+                        >
+                          {item.address}
+                        </span>
+                      </>
+                    )}
+                  </div>
                 </div>
               </div>
             );

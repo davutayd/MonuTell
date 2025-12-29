@@ -13,7 +13,8 @@ export default async function handler(request, response) {
       longitude: row.longitude,
       story_tr: row.story_tr,
       story_en: row.story_en,
-      image: row.image,
+      address: row.address,
+      image: row.image_url,
       audio: {
         tr: row.audio_tr,
         en: row.audio_en,

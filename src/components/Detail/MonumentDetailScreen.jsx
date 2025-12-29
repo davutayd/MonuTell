@@ -97,7 +97,24 @@ const MonumentDetailScreen = ({
         </div>
 
         <h1 className={styles.monumentTitle}>{title}</h1>
-
+        {monument.address && (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "6px",
+              color: "#666",
+              fontSize: "0.9rem",
+              marginTop: "4px",
+              marginBottom: "16px",
+              fontWeight: "500",
+              textAlign: "center",
+            }}
+          >
+            <span>{monument.address}</span>
+          </div>
+        )}
         <AudioControls
           monument={monument}
           story={story}
