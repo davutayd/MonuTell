@@ -9,15 +9,18 @@ export default async function handler(request, response) {
       category: row.category,
       name_tr: row.name_tr,
       name_en: row.name_en,
+      name_hu: row.name_hu,
       latitude: row.latitude,
       longitude: row.longitude,
       story_tr: row.story_tr,
       story_en: row.story_en,
+      story_hu: row.story_hu,
       address: row.address,
       image: row.image_url,
       audio: {
         tr: row.audio_tr,
         en: row.audio_en,
+        hu: row.audio_hu,
       },
     }));
     response.setHeader("Cache-Control", "no-store");

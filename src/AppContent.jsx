@@ -7,15 +7,17 @@ import styles from "./AppContent.module.css";
 
 const getInitialLanguage = () => {
   const savedLang = localStorage.getItem("monutell_language");
-  if (savedLang === "tr" || savedLang === "en") {
+  if (savedLang === "tr" || savedLang === "en" || savedLang === "hu") {
     return savedLang;
   }
+
   const browserLangCode = (navigator.language || navigator.userLanguage).split(
     "-"
   )[0];
-  if (browserLangCode === "tr") {
-    return "tr";
-  }
+
+  if (browserLangCode === "tr") return "tr";
+  if (browserLangCode === "hu") return "hu";
+
   return "en";
 };
 
@@ -28,6 +30,7 @@ function AppContent() {
 
   const { currentTrack, isPlaying, stopAudio, pauseAudio, playAudio } =
     useGlobalAudio();
+
   useEffect(() => {
     localStorage.setItem("monutell_language", language);
   }, [language]);
@@ -39,6 +42,7 @@ function AppContent() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
   const handleSelectMonument = (monument) => {
     if (
       currentTrack?.id === monument.id ||
@@ -69,6 +73,7 @@ function AppContent() {
       setSelectedMonument(null);
     }, 300);
   };
+
   const appContainerDynamicStyle = {
     flexDirection: isMobile ? "column" : "row",
   };
@@ -95,6 +100,7 @@ function AppContent() {
   const scrollPanelDynamicStyle = {
     opacity: isPanelOpen ? 1 : 0,
   };
+
   return (
     <div className={styles.appContainer} style={appContainerDynamicStyle}>
       <div className={styles.detailPanel} style={panelDynamicStyle}>

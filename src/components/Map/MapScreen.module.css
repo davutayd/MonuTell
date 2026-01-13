@@ -188,10 +188,9 @@
   }
 }
 .selectedMarkerBorder {
-  border: 4px solid #ff5733 !important; /* Belirgin bir turuncu/kırmızı */
-  box-shadow: 0 0 15px rgba(255, 87, 51, 0.7) !important; /* Hafif, sabit bir parıltı */
-  z-index: 1000 !important; /* Diğerlerinin üstünde dursun */
-  transition: all 0.2s ease-in-out; /* Renk değişimi yumuşak olsun */
-  /* Seçili olanın boyutunu çok az büyüterek vurguyu artıralım (Opsiyonel) */
+  border: 4px solid #ff5733 !important;
+  box-shadow: 0 0 15px rgba(255, 87, 51, 0.7) !important;
+  z-index: 1000 !important;
+  transition: all 0.2s ease-in-out;
   transform: scale(1.1);
 }

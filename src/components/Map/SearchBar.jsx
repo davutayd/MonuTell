@@ -26,44 +26,48 @@ const SearchBar = ({
 
   const getCategoryStyle = (cat) => {
     const category = cat ? cat.toLowerCase() : "landmark";
+
+    const isTr = language === "tr";
+    const isHu = language === "hu";
+
     switch (category) {
       case "statue":
       case "monument":
         return {
           icon: <GiStoneBust />,
           color: "#D4AF37",
-          label: language === "tr" ? "Heykel" : "Statue",
+          label: isTr ? "Heykel" : isHu ? "Szobor" : "Statue",
         };
       case "castle":
         return {
           icon: <FaChessRook />,
           color: "#E63946",
-          label: language === "tr" ? "Kale" : "Castle",
+          label: isTr ? "Kale" : isHu ? "Vár" : "Castle",
         };
       case "museum":
         return {
           icon: <FaLandmark />,
           color: "#7209B7",
-          label: language === "tr" ? "Müze" : "Museum",
+          label: isTr ? "Müze" : isHu ? "Múzeum" : "Museum",
         };
       case "church":
       case "religious":
         return {
           icon: <FaPlaceOfWorship />,
           color: "#2A9D8F",
-          label: language === "tr" ? "İbadethane" : "Religious",
+          label: isTr ? "İbadethane" : isHu ? "Templom" : "Religious",
         };
       case "bridge":
         return {
           icon: <FaArchway />,
           color: "#4361EE",
-          label: language === "tr" ? "Köprü" : "Bridge",
+          label: isTr ? "Köprü" : isHu ? "Híd" : "Bridge",
         };
       default:
         return {
           icon: <FaStar />,
           color: "#457B9D",
-          label: language === "tr" ? "Turistik" : "Landmark",
+          label: isTr ? "Turistik" : isHu ? "Látnivaló" : "Landmark",
         };
     }
   };
@@ -73,12 +77,17 @@ const SearchBar = ({
     setQuery(text);
 
     if (text.length > 1) {
-      const searchLower = text.toLocaleLowerCase("tr");
+      const searchLower = text.toLocaleLowerCase(
+        language === "tr" ? "tr" : "en"
+      );
+
       const filtered = monuments.filter(
         (m) =>
-          m.name_tr.toLocaleLowerCase("tr").includes(searchLower) ||
-          m.name_en.toLowerCase().includes(searchLower)
+          m.name_tr?.toLocaleLowerCase("tr").includes(searchLower) ||
+          m.name_en?.toLowerCase().includes(searchLower) ||
+          m.name_hu?.toLowerCase().includes(searchLower)
       );
+
       setResults(filtered.slice(0, 10));
       setIsActive(true);
     } else {
@@ -98,15 +107,25 @@ const SearchBar = ({
     ${hasBanner ? styles.withBanner : styles.noBanner}
   `;
 
+  const getDisplayName = (item) => {
+    if (language === "tr") return item.name_tr;
+    if (language === "hu") return item.name_hu;
+    return item.name_en;
+  };
+
+  const getPlaceholder = () => {
+    if (language === "tr") return "Budapeşte'de ara...";
+    if (language === "hu") return "Keresés Budapesten...";
+    return "Search in Budapest...";
+  };
+
   return (
     <div className={containerClass}>
       <div className={styles.inputWrapper}>
         <FaSearch className={styles.searchIcon} />
         <input
           type="text"
-          placeholder={
-            language === "tr" ? "Budapeşte'de ara..." : "Search in Budapest..."
-          }
+          placeholder={getPlaceholder()}
           className={styles.searchInput}
           value={query}
           onChange={handleSearch}
@@ -149,7 +168,7 @@ const SearchBar = ({
                 onClick={() => {
                   onSelectResult(item);
                   setIsActive(false);
-                  setQuery(language === "tr" ? item.name_tr : item.name_en);
+                  setQuery(getDisplayName(item));
                 }}
               >
                 <div
@@ -161,7 +180,7 @@ const SearchBar = ({
 
                 <div className={styles.resultText}>
                   <div className={styles.resultName}>
-                    {language === "tr" ? item.name_tr : item.name_en}
+                    {getDisplayName(item)}
                   </div>
 
                   <div

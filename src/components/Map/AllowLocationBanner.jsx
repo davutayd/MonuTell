@@ -6,21 +6,25 @@ const translations = {
     tr: "📍 Konum izni gerekiyor. Başlatmak için tıkla.",
     en: "📍 Location permission is required. Click to start.",
     de: "📍 Standortberechtigung erforderlich. Zum Starten klicken.",
+    hu: "📍 Helyhozzáférés szükséges. Kattints az indításhoz.",
   },
   buttonText: {
     tr: "Konumumu Göster",
     en: "Show My Location",
     de: "Meinen Standort anzeigen",
+    hu: "Helyzetem mutatása",
   },
 };
 
-const AllowLocationBanner = ({ onAllow }) => {
-  const browserLang = navigator.language || navigator.userLanguage;
-  const langKey = browserLang.split("-")[0];
-  const bannerText =
-    translations.bannerText[langKey] || translations.bannerText.en;
-  const buttonText =
-    translations.buttonText[langKey] || translations.buttonText.en;
+const AllowLocationBanner = ({ onAllow, language }) => {
+  const browserLang = (navigator.language || navigator.userLanguage).split(
+    "-"
+  )[0];
+  const activeLang = language || browserLang;
+  const langKey = translations.bannerText[activeLang] ? activeLang : "en";
+
+  const bannerText = translations.bannerText[langKey];
+  const buttonText = translations.buttonText[langKey];
 
   return (
     <div className={styles.locationBanner}>

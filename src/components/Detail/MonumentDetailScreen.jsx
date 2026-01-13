@@ -15,9 +15,24 @@ const MonumentDetailScreen = ({
   const { stopAudio } = useGlobalAudio();
   const [imageLoadFailed, setImageLoadFailed] = useState(false);
 
-  const langCode = language === "tr" ? "tr-TR" : "en-US";
-  const title = language === "tr" ? monument.name_tr : monument.name_en;
-  const story = language === "tr" ? monument.story_tr : monument.story_en;
+  const langCode =
+    language === "tr" ? "tr-TR" : language === "hu" ? "hu-HU" : "en-US";
+
+  const title =
+    language === "tr"
+      ? monument.name_tr
+      : language === "hu"
+      ? monument.name_hu
+      : monument.name_en;
+
+  const story =
+    language === "tr"
+      ? monument.story_tr
+      : language === "hu"
+      ? monument.story_hu
+      : monument.story_en;
+
+  const displayImage = monument.image_url || monument.image;
 
   useEffect(() => {
     setImageLoadFailed(false);
@@ -32,6 +47,8 @@ const MonumentDetailScreen = ({
   };
 
   const renderStory = () => {
+    if (!story) return null;
+
     const words = story.split(/\s+/);
     return (
       <div className={styles.storyContainer}>
@@ -51,27 +68,24 @@ const MonumentDetailScreen = ({
     );
   };
 
-  const trFlagStyle = {
-    opacity: language === "tr" ? 1 : 0.6,
-    boxShadow: language === "tr" ? "0 0 0 2px #4a6fa5" : "none",
-  };
-
-  const enFlagStyle = {
-    opacity: language === "en" ? 1 : 0.6,
-    boxShadow: language === "en" ? "0 0 0 2px #4a6fa5" : "none",
-  };
+  const getFlagStyle = (targetLang) => ({
+    opacity: language === targetLang ? 1 : 0.6,
+    boxShadow: language === targetLang ? "0 0 0 2px #4a6fa5" : "none",
+    cursor: "pointer",
+    transition: "all 0.2s ease",
+  });
 
   return (
     <div className={styles.screenContainer}>
-      {monument.image && !imageLoadFailed && (
+      {displayImage && !imageLoadFailed && (
         <div className={styles.imageWrapper}>
           <img
-            src={monument.image}
+            src={displayImage}
             alt={title}
             className={styles.monumentImage}
             loading="lazy"
             onError={() => {
-              console.warn("Resim yüklenemedi:", monument.image);
+              console.warn("Resim yüklenemedi:", displayImage);
               setImageLoadFailed(true);
             }}
           />
@@ -84,15 +98,22 @@ const MonumentDetailScreen = ({
             src="/flags/tr.svg"
             alt="Türkçe"
             className={styles.flagImage}
-            style={trFlagStyle}
+            style={getFlagStyle("tr")}
             onClick={() => handleLanguageChange("tr")}
           />
           <img
             src="/flags/en.svg"
             alt="English"
             className={styles.flagImage}
-            style={enFlagStyle}
+            style={getFlagStyle("en")}
             onClick={() => handleLanguageChange("en")}
+          />
+          <img
+            src="/flags/hu.svg"
+            alt="Hungarian"
+            className={styles.flagImage}
+            style={getFlagStyle("hu")}
+            onClick={() => handleLanguageChange("hu")}
           />
         </div>
 
@@ -115,6 +136,7 @@ const MonumentDetailScreen = ({
             <span>{monument.address}</span>
           </div>
         )}
+
         <AudioControls
           monument={monument}
           story={story}

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useGlobalAudio } from "../../context/GlobalAudioContext";
 import CustomProgressBar from "./CustomProgressBar";
 import styles from "./AudioControls.module.css";
@@ -61,25 +61,52 @@ const AudioControls = ({
     setIsSpeaking,
   ]);
 
-  const audioKey =
-    langCode && langCode.toLowerCase().startsWith("tr") ? "tr" : "en";
-  const audioUrl = monument?.audio?.[audioKey];
+  // --- 🛠️ DÜZELTME: HİBRİT SES SEÇİCİ (Hem Eski Hem Yeni Veriyi Destekler) ---
+
+  const isTurkish = langCode && langCode.toLowerCase().startsWith("tr");
+  const isHungarian = langCode && langCode.toLowerCase().startsWith("hu");
+
+  let audioUrl = null;
+  let trackTitle = "";
+
+  // 1. Önce Düz Sütunları Dene (Yeni Sistem: audio_tr, audio_hu...)
+  if (isTurkish) {
+    audioUrl = monument?.audio_tr;
+    trackTitle = monument?.name_tr;
+  } else if (isHungarian) {
+    audioUrl = monument?.audio_hu;
+    trackTitle = monument?.name_hu;
+  } else {
+    audioUrl = monument?.audio_en;
+    trackTitle = monument?.name_en;
+  }
+
+  // 2. Eğer Bulamazsa İç İçe Objeyi Dene (Eski Sistem: audio.tr, audio.en...)
+  // API'den gelen verinin yapısı farklıysa bu yakalayacaktır.
+  if (!audioUrl && monument?.audio) {
+    if (isTurkish) audioUrl = monument.audio.tr || monument.audio["tr-TR"];
+    else if (isHungarian)
+      audioUrl = monument.audio.hu || monument.audio["hu-HU"];
+    else audioUrl = monument.audio.en || monument.audio["en-US"];
+  }
+
+  // Debug için: Konsola yazdırıp kontrol edebilirsin (F12)
+  // console.log("Seçilen Dil:", langCode, "Bulunan URL:", audioUrl);
 
   const handlePlayPause = async () => {
-    if (!audioUrl) return;
+    if (!audioUrl) {
+      console.warn("❌ Ses dosyası bulunamadı. Dil:", langCode);
+      // İstersen burada kullanıcıya "Ses yok" uyarısı (alert/toast) gösterebilirsin
+      return;
+    }
+
     if (currentTrack?.url === audioUrl) {
       togglePlay();
       if (isPlaying) {
         setPausedBySystem(false);
       }
     } else {
-      const isTurkish = langCode && langCode.toLowerCase().startsWith("tr");
-      const title =
-        (isTurkish ? monument?.name_tr : monument?.name_en) ||
-        monument?.name_en ||
-        monument?.name_tr ||
-        "MonuTell";
-      playAudio(audioUrl, title, monument?.id || "");
+      playAudio(audioUrl, trackTitle || "MonuTell Story", monument?.id || "");
       setPausedBySystem(false);
     }
   };
@@ -116,7 +143,11 @@ const AudioControls = ({
       />
 
       <div className={styles.buttonsContainer}>
-        <button onClick={handlePlayPause} className={styles.controlButton}>
+        <button
+          onClick={handlePlayPause}
+          className={styles.controlButton}
+          style={{ cursor: "pointer" }}
+        >
           {!isSpeaking ? "▶️" : "⏸️"}
         </button>
         <button onClick={handleStop} className={styles.controlButton}>
@@ -131,7 +162,9 @@ const AudioControls = ({
           onChange={handleVolumeChange}
           className={styles.volumeSlider}
         />
-        <span>{Math.round((volume || 0) * 100)}%</span>
+        <span style={{ fontSize: "12px", minWidth: "35px" }}>
+          {Math.round((volume || 0) * 100)}%
+        </span>
       </div>
     </div>
   );
