@@ -129,6 +129,8 @@ function AppContent() {
         <MapScreen
           language={language}
           onSelectMonument={handleSelectMonument}
+          setLanguage={setLanguage}
+          onClosePanel={handleClosePanel}
           isPanelOpen={isPanelOpen}
           isMobile={isMobile}
         />

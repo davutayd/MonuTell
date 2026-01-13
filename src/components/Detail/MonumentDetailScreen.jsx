@@ -93,30 +93,6 @@ const MonumentDetailScreen = ({
       )}
 
       <div className={styles.contentWrapper}>
-        <div className={styles.languageSelector}>
-          <img
-            src="/flags/tr.svg"
-            alt="Türkçe"
-            className={styles.flagImage}
-            style={getFlagStyle("tr")}
-            onClick={() => handleLanguageChange("tr")}
-          />
-          <img
-            src="/flags/en.svg"
-            alt="English"
-            className={styles.flagImage}
-            style={getFlagStyle("en")}
-            onClick={() => handleLanguageChange("en")}
-          />
-          <img
-            src="/flags/hu.svg"
-            alt="Hungarian"
-            className={styles.flagImage}
-            style={getFlagStyle("hu")}
-            onClick={() => handleLanguageChange("hu")}
-          />
-        </div>
-
         <h1 className={styles.monumentTitle}>{title}</h1>
         {monument.address && (
           <div

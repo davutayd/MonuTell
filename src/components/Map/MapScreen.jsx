@@ -10,6 +10,7 @@ import {
   FaArchway,
   FaPlaceOfWorship,
   FaStar,
+  FaCog,
 } from "react-icons/fa";
 import { GiStoneBust } from "react-icons/gi";
 
@@ -20,6 +21,8 @@ import AllowLocationBanner from "./AllowLocationBanner";
 import LocationHandler from "./LocationHandler";
 import SearchBar from "./SearchBar";
 import styles from "./MapScreen.module.css";
+import SettingsModal from "./SettingsModal";
+import settingsStyles from "./SettingsModal.module.css";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -199,6 +202,8 @@ const MapScreen = ({
   onSelectMonument = () => {},
   isPanelOpen = false,
   isMobile = false,
+  setLanguage,
+  onClosePanel,
 }) => {
   const { monuments, loading, error } = useMonuments();
   const { position, accuracy, showBanner, handleAllowLocation } = useLocation();
@@ -207,6 +212,7 @@ const MapScreen = ({
   const [zoomLevel, setZoomLevel] = useState(14);
   const [flyToPosition, setFlyToPosition] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
   useEffect(() => {
     if (position && isFirstLoad.current) {
@@ -225,7 +231,12 @@ const MapScreen = ({
     setSelectedId(monument.id);
     onSelectMonument(monument);
   };
-
+  const handleOpenSettings = () => {
+    if (isPanelOpen && onClosePanel) {
+      onClosePanel();
+    }
+    setIsSettingsOpen(true);
+  };
   const viewportHeight =
     typeof window !== "undefined" && window.visualViewport
       ? window.visualViewport.height
@@ -237,6 +248,8 @@ const MapScreen = ({
     const loadingText =
       language === "tr"
         ? "Budapeşte Rehberi Hazırlanıyor..."
+        : language === "hu"
+        ? "Budapest Útikalauz Készül..."
         : "Preparing Budapest Guide...";
 
     return (
@@ -255,13 +268,19 @@ const MapScreen = ({
           "Veriler yüklenemedi. Lütfen internet bağlantınızı kontrol edin.",
         button: "Tekrar Dene",
       },
+      hu: {
+        title: "Hiba történt",
+        message:
+          "Nem sikerült betölteni az adatokat. Kérjük, ellenőrizze az internetkapcsolatot.",
+        button: "Próbáld újra",
+      },
       en: {
         title: "Something Went Wrong",
         message: "Could not load data. Please check your internet connection.",
         button: "Try Again",
       },
     };
-    const content = language === "tr" ? texts.tr : texts.en;
+    const content = texts[language] || texts.en;
 
     return (
       <div className={styles.errorContainer}>
@@ -278,9 +297,16 @@ const MapScreen = ({
     );
   }
 
+  const settingsButtonBottom = isMobile ? panelHeight + 80 : 90;
+
   return (
     <div className={styles.mapWrapper}>
-      {showBanner && <AllowLocationBanner onAllow={handleAllowLocation} />}
+      {showBanner && (
+        <AllowLocationBanner
+          onAllow={handleAllowLocation}
+          language={language}
+        />
+      )}
 
       <SearchBar
         monuments={monuments}
@@ -345,44 +371,96 @@ const MapScreen = ({
           isMobile={isMobile}
         />
 
+        <button
+          className={settingsStyles.settingsButton}
+          onClick={handleOpenSettings}
+          aria-label="Settings"
+          style={{
+            pointerEvents: "auto",
+            position: "absolute",
+            right: "10px",
+            bottom: `${settingsButtonBottom}px`,
+            transition: "bottom 0.3s ease-in-out",
+            zIndex: 1000,
+          }}
+        >
+          <FaCog size={28} color="#333" />
+        </button>
+
         <div className={styles.legendContainer}>
           <div className={styles.legendItem}>
             <span
               className={styles.dot}
               style={{ background: "#D4AF37" }}
             ></span>
-            <span>{language === "tr" ? "Anıt/Heykel" : "Monument"}</span>
+            <span>
+              {language === "tr"
+                ? "Anıt/Heykel"
+                : language === "hu"
+                ? "Szobor"
+                : "Monument"}
+            </span>
           </div>
           <div className={styles.legendItem}>
             <span
               className={styles.dot}
               style={{ background: "#E63946" }}
             ></span>
-            <span>{language === "tr" ? "Kale" : "Castle"}</span>
+            <span>
+              {language === "tr"
+                ? "Kale"
+                : language === "hu"
+                ? "Vár"
+                : "Castle"}
+            </span>
           </div>
           <div className={styles.legendItem}>
             <span
               className={styles.dot}
               style={{ background: "#7209B7" }}
             ></span>
-            <span>{language === "tr" ? "Müze" : "Museum"}</span>
+            <span>
+              {language === "tr"
+                ? "Müze"
+                : language === "hu"
+                ? "Múzeum"
+                : "Museum"}
+            </span>
           </div>
           <div className={styles.legendItem}>
             <span
               className={styles.dot}
               style={{ background: "#457B9D" }}
             ></span>
-            <span>{language === "tr" ? "Simgesel Yapı" : "Landmark"}</span>
+            <span>
+              {language === "tr"
+                ? "Simgesel Yapı"
+                : language === "hu"
+                ? "Látnivaló"
+                : "Landmark"}
+            </span>
           </div>
           <div className={styles.legendItem}>
             <span
               className={styles.dot}
               style={{ background: "#4361EE" }}
             ></span>
-            <span>{language === "tr" ? "Köprü" : "Bridge"}</span>
+            <span>
+              {language === "tr"
+                ? "Köprü"
+                : language === "hu"
+                ? "Híd"
+                : "Bridge"}
+            </span>
           </div>
         </div>
       </MapContainer>
+      <SettingsModal
+        isOpen={isSettingsOpen}
+        onClose={() => setIsSettingsOpen(false)}
+        currentLang={language}
+        setLanguage={setLanguage}
+      />
     </div>
   );
 };
