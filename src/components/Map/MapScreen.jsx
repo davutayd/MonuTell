@@ -297,7 +297,11 @@ const MapScreen = ({
     );
   }
 
-  const settingsButtonBottom = isMobile ? panelHeight + 80 : 90;
+  const settingsButtonBottom = isMobile
+    ? isPanelOpen
+      ? 220
+      : 90 // Panel açıksa 220px yukarı çık (Peek üstü), kapalıysa 90px
+    : 90;
 
   return (
     <div className={styles.mapWrapper}>
