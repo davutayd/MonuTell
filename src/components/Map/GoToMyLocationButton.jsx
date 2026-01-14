@@ -11,8 +11,8 @@ const GoToMyLocationButton = ({ position, panelHeight, isMobile }) => {
   };
 
   const dynamicStyles = {
-    bottom: isMobile ? panelHeight + 20 : 20,
-    right: 10,
+    bottom: `calc(${isMobile ? panelHeight + 20 : 20}px + env(safe-area-inset-bottom, 0px))`,
+    right: "calc(10px + env(safe-area-inset-right, 0px))",
     transition: "bottom 0.3s ease-in-out",
   };
 

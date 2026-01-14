@@ -408,8 +408,8 @@ const MapScreen = ({
           style={{
             pointerEvents: "auto",
             position: "absolute",
-            right: "10px",
-            bottom: `${buttonBottom}px`,
+            right: "calc(10px + env(safe-area-inset-right, 0px))",
+            bottom: `calc(${buttonBottom}px + env(safe-area-inset-bottom, 0px))`,
             transition: "bottom 0.3s ease-in-out",
             zIndex: 1000,
           }}
@@ -490,7 +490,7 @@ const MapScreen = ({
         onClick={handleOpenSuggestPlace}
         aria-label="Suggest Place"
         style={{
-          bottom: isMobile ? panelHeight + 20 : 20,
+          bottom: `calc(${isMobile ? panelHeight + 20 : 20}px + env(safe-area-inset-bottom, 0px))`,
         }}
       >
         <FaPlus size={20} color="#fff" />

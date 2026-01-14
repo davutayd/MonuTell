@@ -11,10 +11,10 @@
 }
 
 .noBanner {
-  top: 20px;
+  top: calc(20px + env(safe-area-inset-top, 0px));
 }
 .withBanner {
-  top: 80px;
+  top: calc(80px + env(safe-area-inset-top, 0px));
 }
 
 .inputWrapper {
@@ -156,6 +156,6 @@
   }
 
   .withBanner {
-    top: 130px;
+    top: calc(130px + env(safe-area-inset-top, 0px));
   }
 }
