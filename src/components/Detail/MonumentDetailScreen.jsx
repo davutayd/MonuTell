@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AudioControls from "./AudioControls";
+import AddPhotoModal from "./AddPhotoModal";
 import { useGlobalAudio } from "../../context/GlobalAudioContext";
 import styles from "./MonumentDetailScreen.module.css";
 
@@ -14,6 +15,7 @@ const MonumentDetailScreen = ({
   const [volume, setVolume] = useState(1);
   const { stopAudio } = useGlobalAudio();
   const [imageLoadFailed, setImageLoadFailed] = useState(false);
+  const [isAddPhotoOpen, setIsAddPhotoOpen] = useState(false);
 
   const langCode =
     language === "tr" ? "tr-TR" : language === "hu" ? "hu-HU" : "en-US";
@@ -33,6 +35,14 @@ const MonumentDetailScreen = ({
       : monument.story_en;
 
   const displayImage = monument.image_url || monument.image;
+  const hasNoImage = !displayImage || imageLoadFailed;
+
+  const addPhotoText =
+    language === "tr"
+      ? "📷 Fotoğraf Ekle"
+      : language === "hu"
+      ? "📷 Fénykép Hozzáadása"
+      : "📷 Add Photo";
 
   useEffect(() => {
     setImageLoadFailed(false);
@@ -92,6 +102,17 @@ const MonumentDetailScreen = ({
         </div>
       )}
 
+      {hasNoImage && (
+        <div className={styles.noImageContainer}>
+          <button
+            className={styles.addPhotoButton}
+            onClick={() => setIsAddPhotoOpen(true)}
+          >
+            {addPhotoText}
+          </button>
+        </div>
+      )}
+
       <div className={styles.contentWrapper}>
         <h1 className={styles.monumentTitle}>{title}</h1>
         {monument.address && (
@@ -128,8 +149,17 @@ const MonumentDetailScreen = ({
 
         {renderStory()}
       </div>
+
+      <AddPhotoModal
+        isOpen={isAddPhotoOpen}
+        onClose={() => setIsAddPhotoOpen(false)}
+        monumentId={monument.id}
+        monumentName={title}
+        language={language}
+      />
     </div>
   );
 };
 
 export default MonumentDetailScreen;
+

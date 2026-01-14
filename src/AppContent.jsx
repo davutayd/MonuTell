@@ -181,6 +181,7 @@ function AppContent() {
           onClosePanel={handleClosePanel}
           isPanelOpen={isPanelOpen}
           isMobile={isMobile}
+          mobilePanelSize={mobilePanelSize}
           panelHeight={
             isMobile && isPanelOpen
               ? mobilePanelSize === "peek"

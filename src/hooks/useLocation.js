@@ -5,10 +5,13 @@ export const useLocation = () => {
   const [accuracy, setAccuracy] = useState(null);
   const [showBanner, setShowBanner] = useState(false);
 
-  const isSafari =
+  // Detect Mobile Safari specifically (iOS Safari only, not desktop Safari or Chrome/Android)
+  const isMobileSafari =
     typeof navigator !== "undefined" &&
-    navigator.userAgent.toLowerCase().includes("safari") &&
-    !navigator.userAgent.toLowerCase().includes("chrome");
+    /iPhone|iPad|iPod/.test(navigator.userAgent) &&
+    navigator.userAgent.includes("Safari") &&
+    !navigator.userAgent.includes("CriOS") && // Not Chrome on iOS
+    !navigator.userAgent.includes("FxiOS"); // Not Firefox on iOS
 
   const startWatchingLocation = useCallback(() => {
     if (!navigator.geolocation) return;
@@ -41,7 +44,7 @@ export const useLocation = () => {
   }, [startWatchingLocation]);
 
   useEffect(() => {
-    if (isSafari || !navigator.geolocation) {
+    if (isMobileSafari || !navigator.geolocation) {
       setShowBanner(true);
       return;
     }
@@ -55,7 +58,7 @@ export const useLocation = () => {
       () => setShowBanner(true),
       { enableHighAccuracy: true, timeout: 20000 }
     );
-  }, [isSafari, startWatchingLocation]);
+  }, [isMobileSafari, startWatchingLocation]);
 
   return { position, accuracy, showBanner, handleAllowLocation };
 };

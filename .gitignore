@@ -35,3 +35,7 @@ Thumbs.db
 .vercel
 .vercel
 .env*.local
+
+monutell-factory
+.env*.local
+.vercel

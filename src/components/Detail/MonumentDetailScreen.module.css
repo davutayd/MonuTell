@@ -76,3 +76,34 @@
   padding: 2px 0;
   border-radius: 3px;
 }
+
+.noImageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 16px;
+  background: linear-gradient(135deg, #f5f7fa, #e8ecf1);
+  border-radius: 12px;
+  margin: 16px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.addPhotoButton {
+  padding: 14px 24px;
+  border: 2px dashed #4a6fa5;
+  background: rgba(74, 111, 165, 0.1);
+  border-radius: 12px;
+  color: #4a6fa5;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.addPhotoButton:hover {
+  background: rgba(74, 111, 165, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 111, 165, 0.2);
+}
+

@@ -11,6 +11,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --app-height: 100vh;
 }
 
 a {
@@ -29,11 +30,16 @@ body {
   overflow-x: hidden;
   width: 100%;
   height: 100%;
+  height: var(--app-height);
   box-sizing: border-box;
   font-family: "Segoe UI", "Roboto", sans-serif;
   background-color: #f8f9fa;
 }
-
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  body {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
 h1 {
   font-size: 3.2em;
   line-height: 1.1;

@@ -194,3 +194,59 @@
   transition: all 0.2s ease-in-out;
   transform: scale(1.1);
 }
+
+.legendContainer {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  background: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 500;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: #555;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.suggestPlaceButton {
+  position: absolute;
+  left: 10px;
+  padding: 14px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #2a9d8f, #45b7aa);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.suggestPlaceButton:hover {
+  background: linear-gradient(135deg, #238579, #3aa89b);
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(42, 157, 143, 0.5);
+}
+
+.suggestPlaceButton:active {
+  transform: scale(0.95);
+}

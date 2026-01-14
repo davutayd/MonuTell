@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vercel/blob": "^2.0.0",
     "@vercel/postgres": "^0.10.0",
+    "formidable": "^3.5.4",
     "framer-motion": "^12.26.2",
     "leaflet": "^1.9.4",
     "react": "^19.1.0",

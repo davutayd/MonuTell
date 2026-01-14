@@ -20,9 +20,11 @@ import GoToMyLocationButton from "./GoToMyLocationButton";
 import AllowLocationBanner from "./AllowLocationBanner";
 import LocationHandler from "./LocationHandler";
 import SearchBar from "./SearchBar";
+import SuggestPlaceModal from "./SuggestPlaceModal";
 import styles from "./MapScreen.module.css";
 import SettingsModal from "./SettingsModal";
 import settingsStyles from "./SettingsModal.module.css";
+import { FaPlus } from "react-icons/fa";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -139,6 +141,21 @@ const FlyToHandler = ({ target }) => {
   return null;
 };
 
+// Component to track map center position - defined outside MapScreen to prevent re-creation
+const MapCenterTracker = ({ onCenterChange }) => {
+  const map = useMap();
+  useEffect(() => {
+    const updateCenter = () => {
+      const center = map.getCenter();
+      onCenterChange({ lat: center.lat, lng: center.lng });
+    };
+    map.on("moveend", updateCenter);
+    updateCenter();
+    return () => map.off("moveend", updateCenter);
+  }, [map, onCenterChange]);
+  return null;
+};
+
 const VisibleMarkers = ({
   monuments,
   onSelectMonument,
@@ -204,6 +221,7 @@ const MapScreen = ({
   isMobile = false,
   setLanguage,
   onClosePanel,
+  panelHeight = 0,
 }) => {
   const { monuments, loading, error } = useMonuments();
   const { position, accuracy, showBanner, handleAllowLocation } = useLocation();
@@ -213,6 +231,8 @@ const MapScreen = ({
   const [flyToPosition, setFlyToPosition] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isSuggestPlaceOpen, setIsSuggestPlaceOpen] = useState(false);
+  const [mapCenter, setMapCenter] = useState(null);
 
   useEffect(() => {
     if (position && isFirstLoad.current) {
@@ -237,11 +257,19 @@ const MapScreen = ({
     }
     setIsSettingsOpen(true);
   };
-  const viewportHeight =
-    typeof window !== "undefined" && window.visualViewport
-      ? window.visualViewport.height
-      : window.innerHeight;
-  const panelHeight = isMobile ? (isPanelOpen ? viewportHeight * 0.6 : 0) : 0;
+
+  const handleOpenSuggestPlace = () => {
+    if (isPanelOpen && onClosePanel) {
+      onClosePanel();
+    }
+    setIsSuggestPlaceOpen(true);
+  };
+
+  // Stable callback for map center updates
+  const handleMapCenterChange = React.useCallback((center) => {
+    setMapCenter(center);
+  }, []);
+
   const showMarker = accuracy != null && accuracy <= 100;
 
   if (loading) {
@@ -297,11 +325,7 @@ const MapScreen = ({
     );
   }
 
-  const settingsButtonBottom = isMobile
-    ? isPanelOpen
-      ? 220
-      : 90 // Panel açıksa 220px yukarı çık (Peek üstü), kapalıysa 90px
-    : 90;
+  const buttonBottom = isMobile ? (isPanelOpen ? panelHeight + 80 : 80) : 90;
 
   return (
     <div className={styles.mapWrapper}>
@@ -336,6 +360,8 @@ const MapScreen = ({
         />
 
         <FlyToHandler target={flyToPosition} />
+
+        <MapCenterTracker onCenterChange={handleMapCenterChange} />
 
         {position && (
           <>
@@ -383,7 +409,7 @@ const MapScreen = ({
             pointerEvents: "auto",
             position: "absolute",
             right: "10px",
-            bottom: `${settingsButtonBottom}px`,
+            bottom: `${buttonBottom}px`,
             transition: "bottom 0.3s ease-in-out",
             zIndex: 1000,
           }}
@@ -459,11 +485,27 @@ const MapScreen = ({
           </div>
         </div>
       </MapContainer>
+      <button
+        className={styles.suggestPlaceButton}
+        onClick={handleOpenSuggestPlace}
+        aria-label="Suggest Place"
+        style={{
+          bottom: isMobile ? panelHeight + 20 : 20,
+        }}
+      >
+        <FaPlus size={20} color="#fff" />
+      </button>
       <SettingsModal
         isOpen={isSettingsOpen}
         onClose={() => setIsSettingsOpen(false)}
         currentLang={language}
         setLanguage={setLanguage}
+      />
+      <SuggestPlaceModal
+        isOpen={isSuggestPlaceOpen}
+        onClose={() => setIsSuggestPlaceOpen(false)}
+        language={language}
+        mapCenter={mapCenter}
       />
     </div>
   );
