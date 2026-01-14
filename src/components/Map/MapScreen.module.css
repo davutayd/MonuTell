@@ -222,7 +222,6 @@
   z-index: 500;
   flex-wrap: wrap;
   justify-content: center;
-  /* Prevent overflow on smaller screens */
   max-width: calc(100vw - 20px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
 }
 
@@ -240,10 +239,8 @@
   border-radius: 50%;
 }
 
-/* ===== Suggest Place Button - Safe Area Aware ===== */
 .suggestPlaceButton {
   position: absolute;
-  /* Account for safe area on left (notch in landscape) */
   left: calc(10px + env(safe-area-inset-left, 0px));
   padding: 14px;
   border-radius: 50%;
@@ -268,10 +265,8 @@
   transform: scale(0.95);
 }
 
-/* ===== Landscape Mode Adjustments ===== */
 @media (orientation: landscape) and (max-height: 500px) {
   .locationBanner {
-    /* Smaller banner in landscape */
     padding: 10px 16px;
     width: 60%;
     max-width: 400px;
@@ -283,7 +278,6 @@
   }
   
   .legendContainer {
-    /* Move legend to side in landscape to save vertical space */
     bottom: auto;
     top: 50%;
     right: calc(10px + env(safe-area-inset-right, 0px));
@@ -305,7 +299,6 @@
   }
 }
 
-/* ===== Extra Small Landscape (Very Small Height) ===== */
 @media (orientation: landscape) and (max-height: 400px) {
   .locationBanner {
     padding: 8px 12px;
