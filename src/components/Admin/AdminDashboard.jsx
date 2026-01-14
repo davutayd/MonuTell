@@ -162,42 +162,45 @@ const AdminDashboard = () => {
         </button>
       </div>
 
-      {loading && (
-        <div className={styles.loadingContainer}>
-          <div className={styles.spinner}></div>
-          <p>Loading submissions...</p>
-        </div>
-      )}
+      {/* Scrollable content area */}
+      <div className={styles.contentArea}>
+        {loading && (
+          <div className={styles.loadingContainer}>
+            <div className={styles.spinner}></div>
+            <p>Loading submissions...</p>
+          </div>
+        )}
 
-      {error && (
-        <div className={styles.errorContainer}>
-          <p>Error: {error}</p>
-          <button onClick={fetchSubmissions} className={styles.retryButton}>
-            Retry
-          </button>
-        </div>
-      )}
+        {error && (
+          <div className={styles.errorContainer}>
+            <p>Error: {error}</p>
+            <button onClick={fetchSubmissions} className={styles.retryButton}>
+              Retry
+            </button>
+          </div>
+        )}
 
-      {!loading && !error && submissions.length === 0 && (
-        <div className={styles.emptyState}>
-          <span className={styles.emptyIcon}>📭</span>
-          <p>No {statusFilter} submissions found</p>
-        </div>
-      )}
+        {!loading && !error && submissions.length === 0 && (
+          <div className={styles.emptyState}>
+            <span className={styles.emptyIcon}>📭</span>
+            <p>No {statusFilter} submissions found</p>
+          </div>
+        )}
 
-      {!loading && !error && submissions.length > 0 && (
-        <div className={styles.submissionsList}>
-          {submissions.map((submission) => (
-            <SubmissionCard
-              key={submission.id}
-              submission={submission}
-              onApprove={handleApprove}
-              onReject={handleReject}
-              showActions={statusFilter === "pending"}
-            />
-          ))}
-        </div>
-      )}
+        {!loading && !error && submissions.length > 0 && (
+          <div className={styles.submissionsList}>
+            {submissions.map((submission) => (
+              <SubmissionCard
+                key={submission.id}
+                submission={submission}
+                onApprove={handleApprove}
+                onReject={handleReject}
+                showActions={statusFilter === "pending"}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

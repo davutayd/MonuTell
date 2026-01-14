@@ -222,6 +222,7 @@ const MapScreen = ({
   setLanguage,
   onClosePanel,
   panelHeight = 0,
+  mobilePanelSize = "peek",
 }) => {
   const { monuments, loading, error } = useMonuments();
   const { position, accuracy, showBanner, handleAllowLocation } = useLocation();
@@ -327,6 +328,12 @@ const MapScreen = ({
 
   const buttonBottom = isMobile ? (isPanelOpen ? panelHeight + 80 : 80) : 90;
 
+  // Hide floating buttons when panel is expanded (not peek mode) on mobile
+  const shouldHideButtons = isMobile && isPanelOpen && mobilePanelSize !== "peek";
+  const buttonVisibilityStyle = shouldHideButtons
+    ? { opacity: 0, pointerEvents: "none" }
+    : { opacity: 1, pointerEvents: "auto" };
+
   return (
     <div className={styles.mapWrapper}>
       {showBanner && (
@@ -399,6 +406,7 @@ const MapScreen = ({
           position={position}
           panelHeight={panelHeight}
           isMobile={isMobile}
+          shouldHide={shouldHideButtons}
         />
 
         <button
@@ -406,18 +414,18 @@ const MapScreen = ({
           onClick={handleOpenSettings}
           aria-label="Settings"
           style={{
-            pointerEvents: "auto",
+            ...buttonVisibilityStyle,
             position: "absolute",
             right: "calc(10px + env(safe-area-inset-right, 0px))",
             bottom: `calc(${buttonBottom}px + env(safe-area-inset-bottom, 0px))`,
-            transition: "bottom 0.3s ease-in-out",
+            transition: "all 0.3s ease-in-out",
             zIndex: 1000,
           }}
         >
           <FaCog size={28} color="#333" />
         </button>
 
-        <div className={styles.legendContainer}>
+        <div className={styles.legendContainer} style={buttonVisibilityStyle}>
           <div className={styles.legendItem}>
             <span
               className={styles.dot}
@@ -490,7 +498,9 @@ const MapScreen = ({
         onClick={handleOpenSuggestPlace}
         aria-label="Suggest Place"
         style={{
+          ...buttonVisibilityStyle,
           bottom: `calc(${isMobile ? panelHeight + 20 : 20}px + env(safe-area-inset-bottom, 0px))`,
+          transition: "all 0.3s ease-in-out",
         }}
       >
         <FaPlus size={20} color="#fff" />

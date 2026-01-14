@@ -1,7 +1,13 @@
 .container {
-  min-height: 100vh;
+  /* Dynamic viewport height with fallback for iOS Safari */
+  height: 100vh;
+  height: 100dvh;
   background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
   font-family: "Segoe UI", "Roboto", sans-serif;
+  /* Flexbox layout for proper scroll containment */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 /* Login Styles */
@@ -85,8 +91,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px 24px;
+  padding-top: calc(20px + env(safe-area-inset-top, 0px));
   background: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
 }
 
 .title {
@@ -116,6 +124,17 @@
   background: white;
   border-bottom: 1px solid #e8e8e8;
   flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+/* Main scrollable content area */
+.contentArea {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  /* iOS safe area at bottom */
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 .filterButton {
@@ -147,6 +166,7 @@
   justify-content: center;
   padding: 60px 20px;
   color: #666;
+  flex: 1;
 }
 
 .spinner {
@@ -168,6 +188,7 @@
   text-align: center;
   padding: 40px 20px;
   color: #e63946;
+  flex: 1;
 }
 
 .retryButton {
@@ -184,6 +205,7 @@
   text-align: center;
   padding: 60px 20px;
   color: #888;
+  flex: 1;
 }
 
 .emptyIcon {
@@ -192,12 +214,17 @@
   margin-bottom: 16px;
 }
 
+/* Submissions grid */
 .submissionsList {
   padding: 24px;
+  /* Extra padding at bottom for clearance */
+  padding-bottom: 80px;
   display: grid;
   gap: 16px;
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
