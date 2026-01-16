@@ -107,3 +107,78 @@
   box-shadow: 0 4px 12px rgba(74, 111, 165, 0.2);
 }
 
+.addressRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 4px;
+  margin-bottom: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.actionButtonsRow {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 24px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.actionButton:hover {
+  background: #f5f8fc;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.actionButton svg {
+  font-size: 1.1rem;
+}
+
+.likeActive {
+  background: #fff0f0;
+  border-color: #e63946;
+  color: #e63946;
+}
+
+.likeActive:hover {
+  background: #ffe5e7;
+}
+
+.likeActive svg {
+  color: #e63946;
+}
+
+.visitedActive {
+  background: #e8f5e9;
+  border-color: #2a9d8f;
+  color: #2a9d8f;
+}
+
+.visitedActive:hover {
+  background: #d4edda;
+}
+
+.visitedActive svg {
+  color: #2a9d8f;
+}
+
+

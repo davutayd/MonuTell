@@ -44,7 +44,7 @@ const userLocationIcon = L.divIcon({
   popupAnchor: [0, -20],
 });
 
-const createCustomIcon = (IconComponent, color, zoom, isSelected) => {
+const createCustomIcon = (IconComponent, color, zoom, isSelected, isVisited = false) => {
   let size = 36;
   let fontSize = 22;
   let showIcon = true;
@@ -61,6 +61,9 @@ const createCustomIcon = (IconComponent, color, zoom, isSelected) => {
   }
 
   const containerClass = isSelected ? styles.selectedMarkerBorder : "";
+  
+  // Calculate badge size based on marker size
+  const badgeSize = Math.max(12, size * 0.4);
 
   const iconHtml = renderToStaticMarkup(
     <div
@@ -80,7 +83,10 @@ const createCustomIcon = (IconComponent, color, zoom, isSelected) => {
         paddingTop: "2px",
       }}
     >
+      {/* Category icon - always shown */}
       {showIcon && <IconComponent />}
+      
+      {/* Pointer triangle at bottom */}
       {showIcon && (
         <div
           style={{
@@ -96,6 +102,39 @@ const createCustomIcon = (IconComponent, color, zoom, isSelected) => {
           }}
         ></div>
       )}
+      
+      {/* Visited badge - green checkmark at bottom-right */}
+      {showIcon && isVisited && (
+        <div
+          style={{
+            position: "absolute",
+            bottom: "-2px",
+            right: "-4px",
+            width: `${badgeSize}px`,
+            height: `${badgeSize}px`,
+            backgroundColor: "#22c55e",
+            borderRadius: "50%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            border: "2px solid white",
+            boxShadow: "0 1px 3px rgba(0,0,0,0.3)",
+          }}
+        >
+          <svg
+            width={badgeSize * 0.6}
+            height={badgeSize * 0.6}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="white"
+            strokeWidth="4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+      )}
     </div>
   );
 
@@ -108,24 +147,24 @@ const createCustomIcon = (IconComponent, color, zoom, isSelected) => {
   });
 };
 
-const getIconForCategory = (category, zoom, isSelected) => {
+const getIconForCategory = (category, zoom, isSelected, isVisited = false) => {
   const cat = category ? category.toLowerCase() : "landmark";
   const z = zoom || 14;
   switch (cat) {
     case "statue":
     case "monument":
-      return createCustomIcon(GiStoneBust, "#D4AF37", z, isSelected);
+      return createCustomIcon(GiStoneBust, "#D4AF37", z, isSelected, isVisited);
     case "castle":
-      return createCustomIcon(FaChessRook, "#E63946", z, isSelected);
+      return createCustomIcon(FaChessRook, "#E63946", z, isSelected, isVisited);
     case "church":
     case "religious":
-      return createCustomIcon(FaPlaceOfWorship, "#2A9D8F", z, isSelected);
+      return createCustomIcon(FaPlaceOfWorship, "#2A9D8F", z, isSelected, isVisited);
     case "museum":
-      return createCustomIcon(FaLandmark, "#7209B7", z, isSelected);
+      return createCustomIcon(FaLandmark, "#7209B7", z, isSelected, isVisited);
     case "bridge":
-      return createCustomIcon(FaArchway, "#4361EE", z, isSelected);
+      return createCustomIcon(FaArchway, "#4361EE", z, isSelected, isVisited);
     default:
-      return createCustomIcon(FaStar, "#457B9D", z, isSelected);
+      return createCustomIcon(FaStar, "#457B9D", z, isSelected, isVisited);
   }
 };
 
@@ -161,6 +200,7 @@ const VisibleMarkers = ({
   onSelectMonument,
   setZoom,
   selectedId,
+  visitedIds = [],
 }) => {
   const map = useMap();
   const [visibleMonuments, setVisibleMonuments] = useState([]);
@@ -196,6 +236,7 @@ const VisibleMarkers = ({
     <>
       {visibleMonuments.map((monument) => {
         const isSelected = monument.id === selectedId;
+        const isVisited = visitedIds.includes(monument.id);
         return (
           <Marker
             key={monument.id}
@@ -204,7 +245,8 @@ const VisibleMarkers = ({
             icon={getIconForCategory(
               monument.category,
               currentZoom,
-              isSelected
+              isSelected,
+              isVisited
             )}
             zIndexOffset={isSelected ? 1000 : 0}
           ></Marker>
@@ -223,6 +265,7 @@ const MapScreen = ({
   onClosePanel,
   panelHeight = 0,
   mobilePanelSize = "peek",
+  visitedIds = [],
 }) => {
   const { monuments, loading, error } = useMonuments();
   const { position, accuracy, showBanner, handleAllowLocation } = useLocation();
@@ -400,6 +443,7 @@ const MapScreen = ({
           language={language}
           setZoom={setZoomLevel}
           selectedId={selectedId}
+          visitedIds={visitedIds}
         />
 
         <GoToMyLocationButton

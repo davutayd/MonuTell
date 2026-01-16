@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2000;
+  z-index: 9999;
   padding: 20px;
   backdrop-filter: blur(4px);
   overflow-y: auto;
@@ -25,6 +25,23 @@
   animation: slideUp 0.3s ease-out;
   max-height: 90vh;
   overflow-y: auto;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 600px) {
+  .overlay {
+    padding: 16px;
+    align-items: flex-start;
+  }
+  
+  .modal {
+    width: calc(100% - 32px);
+    max-width: none;
+    max-height: calc(100vh - 32px);
+    padding: 20px 16px;
+    margin: 16px auto;
+    border-radius: 12px;
+  }
 }
 
 @keyframes slideUp {

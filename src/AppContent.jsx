@@ -18,6 +18,16 @@ const getInitialLanguage = () => {
   return "en";
 };
 
+// Helper to get visited IDs from localStorage
+const getStoredVisitedIds = () => {
+  try {
+    const stored = localStorage.getItem("visitedMonumentIds");
+    return stored ? JSON.parse(stored) : [];
+  } catch {
+    return [];
+  }
+};
+
 function AppContent() {
   const [selectedMonument, setSelectedMonument] = useState(null);
   const [language, setLanguage] = useState(getInitialLanguage());
@@ -27,8 +37,22 @@ function AppContent() {
 
   const [mobilePanelSize, setMobilePanelSize] = useState("peek");
 
+  // Central visited state - "Lift State Up" pattern
+  const [visitedIds, setVisitedIds] = useState(getStoredVisitedIds);
+
   const { currentTrack, isPlaying, stopAudio, pauseAudio, playAudio } =
     useGlobalAudio();
+
+  // Toggle visited status and sync with localStorage
+  const toggleVisited = (id) => {
+    setVisitedIds((prev) => {
+      const newIds = prev.includes(id)
+        ? prev.filter((visitedId) => visitedId !== id)
+        : [...prev, id];
+      localStorage.setItem("visitedMonumentIds", JSON.stringify(newIds));
+      return newIds;
+    });
+  };
 
   useEffect(() => {
     localStorage.setItem("monutell_language", language);
@@ -168,6 +192,8 @@ function AppContent() {
               language={language}
               setLanguage={setLanguage}
               setPausedBySystem={setPausedBySystem}
+              visitedIds={visitedIds}
+              toggleVisited={toggleVisited}
             />
           </div>
         )}
@@ -189,6 +215,7 @@ function AppContent() {
                 : window.innerHeight * 0.55
               : 0
           }
+          visitedIds={visitedIds}
         />
       </div>
 

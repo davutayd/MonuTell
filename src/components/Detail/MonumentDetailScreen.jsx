@@ -1,14 +1,40 @@
 import React, { useEffect, useState } from "react";
+import { FaHeart, FaRegHeart, FaCheck } from "react-icons/fa";
+import { FiCircle } from "react-icons/fi";
 import AudioControls from "./AudioControls";
 import AddPhotoModal from "./AddPhotoModal";
 import { useGlobalAudio } from "../../context/GlobalAudioContext";
 import styles from "./MonumentDetailScreen.module.css";
+
+// LocalStorage helper functions for Like (visited is now lifted to parent)
+const getStoredLikedIds = () => {
+  try {
+    const stored = localStorage.getItem("likedMonumentIds");
+    return stored ? JSON.parse(stored) : [];
+  } catch {
+    return [];
+  }
+};
+
+const toggleLikeInStorage = (id) => {
+  const ids = getStoredLikedIds();
+  const index = ids.indexOf(id);
+  if (index > -1) {
+    ids.splice(index, 1);
+  } else {
+    ids.push(id);
+  }
+  localStorage.setItem("likedMonumentIds", JSON.stringify(ids));
+  return ids;
+};
 
 const MonumentDetailScreen = ({
   monument,
   language,
   setLanguage,
   setPausedBySystem,
+  visitedIds = [],
+  toggleVisited,
 }) => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
@@ -16,6 +42,12 @@ const MonumentDetailScreen = ({
   const { stopAudio } = useGlobalAudio();
   const [imageLoadFailed, setImageLoadFailed] = useState(false);
   const [isAddPhotoOpen, setIsAddPhotoOpen] = useState(false);
+  
+  // Like state (local) - Visited is now from props
+  const [isLiked, setIsLiked] = useState(false);
+  
+  // Derive visited status from props
+  const isVisited = visitedIds.includes(monument?.id);
 
   const langCode =
     language === "tr" ? "tr-TR" : language === "hu" ? "hu-HU" : "en-US";
@@ -44,9 +76,32 @@ const MonumentDetailScreen = ({
       ? "📷 Fénykép Hozzáadása"
       : "📷 Add Photo";
 
+  // Button labels
+  const likeLabel = language === "tr" ? "Beğen" : language === "hu" ? "Kedvelés" : "Like";
+  const visitedLabel = language === "tr" ? "Ziyaret Ettim" : language === "hu" ? "Meglátogattam" : "Visited";
+
+  // Load initial like state from localStorage
+  useEffect(() => {
+    if (monument?.id) {
+      const likedIds = getStoredLikedIds();
+      setIsLiked(likedIds.includes(monument.id));
+    }
+  }, [monument?.id]);
+
   useEffect(() => {
     setImageLoadFailed(false);
   }, [monument]);
+
+  const handleToggleLike = () => {
+    if (!monument?.id) return;
+    toggleLikeInStorage(monument.id);
+    setIsLiked(!isLiked);
+  };
+
+  const handleToggleVisited = () => {
+    if (!monument?.id || !toggleVisited) return;
+    toggleVisited(monument.id);
+  };
 
   const handleLanguageChange = (newLang) => {
     setLanguage(newLang);
@@ -87,6 +142,18 @@ const MonumentDetailScreen = ({
 
   return (
     <div className={styles.screenContainer}>
+      {/* TITLE FIRST */}
+      <div className={styles.contentWrapper}>
+        <h1 className={styles.monumentTitle}>{title}</h1>
+        
+        {monument.address && (
+          <div className={styles.addressRow}>
+            <span>{monument.address}</span>
+          </div>
+        )}
+      </div>
+
+      {/* IMAGE SECTION */}
       {displayImage && !imageLoadFailed && (
         <div className={styles.imageWrapper}>
           <img
@@ -113,26 +180,27 @@ const MonumentDetailScreen = ({
         </div>
       )}
 
+      {/* ACTION BUTTONS & CONTROLS */}
       <div className={styles.contentWrapper}>
-        <h1 className={styles.monumentTitle}>{title}</h1>
-        {monument.address && (
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "6px",
-              color: "#666",
-              fontSize: "0.9rem",
-              marginTop: "4px",
-              marginBottom: "16px",
-              fontWeight: "500",
-              textAlign: "center",
-            }}
+        {/* Like & Visited Buttons */}
+        <div className={styles.actionButtonsRow}>
+          <button
+            className={`${styles.actionButton} ${isLiked ? styles.likeActive : ""}`}
+            onClick={handleToggleLike}
+            aria-label={likeLabel}
           >
-            <span>{monument.address}</span>
-          </div>
-        )}
+            {isLiked ? <FaHeart /> : <FaRegHeart />}
+            <span>{likeLabel}</span>
+          </button>
+          <button
+            className={`${styles.actionButton} ${isVisited ? styles.visitedActive : ""}`}
+            onClick={handleToggleVisited}
+            aria-label={visitedLabel}
+          >
+            {isVisited ? <FaCheck /> : <FiCircle />}
+            <span>{visitedLabel}</span>
+          </button>
+        </div>
 
         <AudioControls
           monument={monument}
