@@ -181,4 +181,11 @@
   color: #2a9d8f;
 }
 
-
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .monumentTitle {
+    font-size: 1.6rem;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+}
