@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import MapScreen from "./components/Map/MapScreen";
 import MonumentDetailScreen from "./components/Detail/MonumentDetailScreen";
 import { useGlobalAudio } from "./context/GlobalAudioContext";
+import { useMonuments } from "./hooks/useMonuments";
 import MiniPlayer from "./components/Player/MiniPlayer";
 import styles from "./AppContent.module.css";
 
@@ -18,7 +19,6 @@ const getInitialLanguage = () => {
   return "en";
 };
 
-// Helper to get visited IDs from localStorage
 const getStoredVisitedIds = () => {
   try {
     const stored = localStorage.getItem("visitedMonumentIds");
@@ -37,13 +37,20 @@ function AppContent() {
 
   const [mobilePanelSize, setMobilePanelSize] = useState("peek");
 
-  // Central visited state - "Lift State Up" pattern
   const [visitedIds, setVisitedIds] = useState(getStoredVisitedIds);
+
+  const [legendHeight, setLegendHeight] = useState(0);
+
+  const [flyToMonumentId, setFlyToMonumentId] = useState(null);
+  const [flyToTrigger, setFlyToTrigger] = useState(0);
+
+  const prevLanguageRef = useRef(language);
 
   const { currentTrack, isPlaying, stopAudio, pauseAudio, playAudio } =
     useGlobalAudio();
+  
+  const { monuments } = useMonuments();
 
-  // Toggle visited status and sync with localStorage
   const toggleVisited = (id) => {
     setVisitedIds((prev) => {
       const newIds = prev.includes(id)
@@ -56,7 +63,12 @@ function AppContent() {
 
   useEffect(() => {
     localStorage.setItem("monutell_language", language);
-  }, [language]);
+    
+    if (prevLanguageRef.current !== language) {
+      stopAudio();
+      prevLanguageRef.current = language;
+    }
+  }, [language, stopAudio]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -66,7 +78,7 @@ function AppContent() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleSelectMonument = (monument) => {
+  const handleSelectMonument = (monument, shouldZoom = false) => {
     if (selectedMonument?.id === monument.id) {
       if (isMobile) {
         setMobilePanelSize((prev) => (prev === "peek" ? "medium" : "peek"));
@@ -89,6 +101,11 @@ function AppContent() {
     setSelectedMonument(monument);
     setMobilePanelSize("peek");
     setIsPanelOpen(true);
+    
+    if (shouldZoom) {
+      setFlyToMonumentId(monument.id);
+      setFlyToTrigger(prev => prev + 1);
+    }
   };
 
   const handleClosePanel = () => {
@@ -97,9 +114,26 @@ function AppContent() {
       playAudio(currentTrack.url, currentTrack.title, currentTrack.id);
     }
     setPausedBySystem(false);
-    setTimeout(() => {
-      setSelectedMonument(null);
-    }, 300);
+    
+    if (currentTrack && currentTrack.id && monuments) {
+      const playingMonument = monuments.find(m => m.id === currentTrack.id);
+      if (playingMonument) {
+        setSelectedMonument(playingMonument);
+        return; 
+      }
+    }
+    setSelectedMonument(null);
+  };
+
+  const handleMiniPlayerFocus = () => {
+    if (currentTrack?.id) {
+      setFlyToMonumentId(currentTrack.id);
+      setFlyToTrigger(prev => prev + 1);
+    }
+  };
+
+  const handleLegendToggle = (height) => {
+    setLegendHeight(height);
   };
 
   const appContainerDynamicStyle = {
@@ -216,10 +250,19 @@ function AppContent() {
               : 0
           }
           visitedIds={visitedIds}
+          onLegendToggle={handleLegendToggle}
+          flyToMonumentId={flyToMonumentId}
+          flyToTrigger={flyToTrigger}
+          selectedMonumentId={selectedMonument?.id}
         />
       </div>
 
-      <MiniPlayer isPanelOpen={isPanelOpen} />
+      <MiniPlayer
+        isPanelOpen={isPanelOpen}
+        onFocus={handleMiniPlayerFocus}
+        legendHeight={legendHeight}
+        language={language}
+      />
     </div>
   );
 }

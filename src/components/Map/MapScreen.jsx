@@ -10,7 +10,9 @@ import {
   FaArchway,
   FaPlaceOfWorship,
   FaStar,
-  FaCog,
+  FaGlobe,
+  FaChevronUp,
+  FaChevronDown,
 } from "react-icons/fa";
 import { GiStoneBust } from "react-icons/gi";
 
@@ -266,6 +268,10 @@ const MapScreen = ({
   panelHeight = 0,
   mobilePanelSize = "peek",
   visitedIds = [],
+  onLegendToggle,
+  flyToMonumentId,
+  flyToTrigger,
+  selectedMonumentId, // New prop to sync selection from parent
 }) => {
   const { monuments, loading, error } = useMonuments();
   const { position, accuracy, showBanner, handleAllowLocation } = useLocation();
@@ -277,6 +283,36 @@ const MapScreen = ({
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isSuggestPlaceOpen, setIsSuggestPlaceOpen] = useState(false);
   const [mapCenter, setMapCenter] = useState(null);
+  const [isLegendOpen, setIsLegendOpen] = useState(false);
+
+  // CRITICAL: Sync local selectedId with parent's selectedMonumentId
+  // This ensures the map marker highlight follows parent state changes (e.g., on panel close)
+  useEffect(() => {
+    setSelectedId(selectedMonumentId || null);
+  }, [selectedMonumentId]);
+
+  // Fly to monument when triggered - ONLY depends on flyToTrigger to prevent re-render loops
+  // flyToMonumentId provides the data, flyToTrigger controls WHEN to act
+  useEffect(() => {
+    if (flyToTrigger > 0 && flyToMonumentId && monuments) {
+      const monument = monuments.find(m => m.id === flyToMonumentId);
+      if (monument) {
+        setFlyToPosition([monument.latitude, monument.longitude]);
+        setSelectedId(monument.id);
+        onSelectMonument(monument); // Open detail panel
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [flyToTrigger]); // CRITICAL: Only trigger on flyToTrigger changes, NOT on data changes
+
+  // Notify parent of legend state for MiniPlayer positioning
+  const handleLegendToggle = () => {
+    const newState = !isLegendOpen;
+    setIsLegendOpen(newState);
+    if (onLegendToggle) {
+      onLegendToggle(newState ? 60 : 0); // 60px is approx legend height
+    }
+  };
 
   useEffect(() => {
     if (position && isFirstLoad.current) {
@@ -288,12 +324,12 @@ const MapScreen = ({
   const handleSearchSelect = (monument) => {
     setSelectedId(monument.id);
     setFlyToPosition([monument.latitude, monument.longitude]);
-    onSelectMonument(monument);
+    onSelectMonument(monument, true); // shouldZoom=true for search results
   };
 
   const handleManualSelect = (monument) => {
     setSelectedId(monument.id);
-    onSelectMonument(monument);
+    onSelectMonument(monument, false); // shouldZoom=false for marker clicks (browsing mode)
   };
   const handleOpenSettings = () => {
     if (isPanelOpen && onClosePanel) {
@@ -398,9 +434,14 @@ const MapScreen = ({
         center={position || defaultCenter}
         zoom={14}
         className={styles.mapContainer}
+        minZoom={3}
         maxZoom={22}
         preferCanvas={true}
         zoomControl={false}
+        maxBounds={[[-85, -180], [85, 180]]}
+        maxBoundsViscosity={1.0}
+        bounceAtZoomLimits={true}
+        worldCopyJump={true}
       >
         <TileLayer
           maxZoom={22}
@@ -456,7 +497,7 @@ const MapScreen = ({
         <button
           className={settingsStyles.settingsButton}
           onClick={handleOpenSettings}
-          aria-label="Settings"
+          aria-label="Language Settings"
           style={{
             ...buttonVisibilityStyle,
             position: "absolute",
@@ -466,76 +507,49 @@ const MapScreen = ({
             zIndex: 1000,
           }}
         >
-          <FaCog size={28} color="#333" />
+          <FaGlobe size={28} color="#4a6fa5" />
         </button>
 
-        <div className={styles.legendContainer} style={buttonVisibilityStyle}>
-          <div className={styles.legendItem}>
-            <span
-              className={styles.dot}
-              style={{ background: "#D4AF37" }}
-            ></span>
-            <span>
-              {language === "tr"
-                ? "Anıt/Heykel"
-                : language === "hu"
-                ? "Szobor"
-                : "Monument"}
-            </span>
-          </div>
-          <div className={styles.legendItem}>
-            <span
-              className={styles.dot}
-              style={{ background: "#E63946" }}
-            ></span>
-            <span>
-              {language === "tr"
-                ? "Kale"
-                : language === "hu"
-                ? "Vár"
-                : "Castle"}
-            </span>
-          </div>
-          <div className={styles.legendItem}>
-            <span
-              className={styles.dot}
-              style={{ background: "#7209B7" }}
-            ></span>
-            <span>
-              {language === "tr"
-                ? "Müze"
-                : language === "hu"
-                ? "Múzeum"
-                : "Museum"}
-            </span>
-          </div>
-          <div className={styles.legendItem}>
-            <span
-              className={styles.dot}
-              style={{ background: "#457B9D" }}
-            ></span>
-            <span>
-              {language === "tr"
-                ? "Simgesel Yapı"
-                : language === "hu"
-                ? "Látnivaló"
-                : "Landmark"}
-            </span>
-          </div>
-          <div className={styles.legendItem}>
-            <span
-              className={styles.dot}
-              style={{ background: "#4361EE" }}
-            ></span>
-            <span>
-              {language === "tr"
-                ? "Köprü"
-                : language === "hu"
-                ? "Híd"
-                : "Bridge"}
-            </span>
+        {/* Collapsible Legend */}
+        <div className={styles.legendWrapper} style={buttonVisibilityStyle}>
+          <button
+            className={styles.legendToggleButton}
+            onClick={handleLegendToggle}
+            aria-label={isLegendOpen ? "Hide legend" : "Show legend"}
+          >
+            {isLegendOpen ? <FaChevronDown size={14} /> : <FaChevronUp size={14} />}
+          </button>
+          <div className={`${styles.legendContainer} ${isLegendOpen ? styles.legendOpen : styles.legendClosed}`}>
+            <div className={styles.legendItem}>
+              <span className={styles.dot} style={{ background: "#D4AF37" }}></span>
+              <span>{language === "tr" ? "Anıt/Heykel" : language === "hu" ? "Szobor" : "Monument"}</span>
+            </div>
+            <div className={styles.legendItem}>
+              <span className={styles.dot} style={{ background: "#E63946" }}></span>
+              <span>{language === "tr" ? "Kale" : language === "hu" ? "Vár" : "Castle"}</span>
+            </div>
+            <div className={styles.legendItem}>
+              <span className={styles.dot} style={{ background: "#7209B7" }}></span>
+              <span>{language === "tr" ? "Müze" : language === "hu" ? "Múzeum" : "Museum"}</span>
+            </div>
+            <div className={styles.legendItem}>
+              <span className={styles.dot} style={{ background: "#457B9D" }}></span>
+              <span>{language === "tr" ? "Simgesel Yapı" : language === "hu" ? "Látnivaló" : "Landmark"}</span>
+            </div>
+            <div className={styles.legendItem}>
+              <span className={styles.dot} style={{ background: "#4361EE" }}></span>
+              <span>{language === "tr" ? "Köprü" : language === "hu" ? "Híd" : "Bridge"}</span>
+            </div>
           </div>
         </div>
+
+        <a
+          href="https://www.linkedin.com/in/davut-aydemir/"
+          className={styles.brandingFooter}
+          style={buttonVisibilityStyle}
+        >
+          Made by Davut Aydemir
+        </a>
       </MapContainer>
       <button
         className={styles.suggestPlaceButton}

@@ -10,8 +10,11 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  z-index: 9999;
+  z-index: 10000; 
   min-width: 260px;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: bottom 0.3s ease-in-out;
 }
 
 .trackTitle {
@@ -47,5 +50,11 @@
   .toggleButton {
     padding: 5px 10px;
     font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .playerContainer {
+    bottom: 20px;
   }
 }

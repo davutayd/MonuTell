@@ -43,10 +43,8 @@ const AudioControls = ({
     if (story) {
       const words = story.split(/\s+/);
       const totalWords = Math.max(1, words.length);
-      const wordIndex =
-        localDuration > 0
-          ? Math.floor(((currentTime || 0) / localDuration) * totalWords)
-          : 0;
+      const timeRatio = localDuration > 0 ? ((currentTime || 0) / localDuration) * 0.95 : 0;
+      const wordIndex = Math.floor(timeRatio * totalWords);
       setCurrentCharIndex(Math.min(totalWords - 1, Math.max(0, wordIndex)));
     }
     setIsSpeaking(Boolean(isPlaying));
