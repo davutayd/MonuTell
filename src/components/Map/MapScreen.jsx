@@ -85,10 +85,8 @@ const createCustomIcon = (IconComponent, color, zoom, isSelected, isVisited = fa
         paddingTop: "2px",
       }}
     >
-      {/* Category icon - always shown */}
       {showIcon && <IconComponent />}
       
-      {/* Pointer triangle at bottom */}
       {showIcon && (
         <div
           style={{
@@ -105,7 +103,6 @@ const createCustomIcon = (IconComponent, color, zoom, isSelected, isVisited = fa
         ></div>
       )}
       
-      {/* Visited badge - green checkmark at bottom-right */}
       {showIcon && isVisited && (
         <div
           style={{
@@ -182,7 +179,6 @@ const FlyToHandler = ({ target }) => {
   return null;
 };
 
-// Component to track map center position - defined outside MapScreen to prevent re-creation
 const MapCenterTracker = ({ onCenterChange }) => {
   const map = useMap();
   useEffect(() => {
@@ -271,7 +267,7 @@ const MapScreen = ({
   onLegendToggle,
   flyToMonumentId,
   flyToTrigger,
-  selectedMonumentId, // New prop to sync selection from parent
+  selectedMonumentId,
 }) => {
   const { monuments, loading, error } = useMonuments();
   const { position, accuracy, showBanner, handleAllowLocation } = useLocation();
@@ -285,32 +281,28 @@ const MapScreen = ({
   const [mapCenter, setMapCenter] = useState(null);
   const [isLegendOpen, setIsLegendOpen] = useState(false);
 
-  // CRITICAL: Sync local selectedId with parent's selectedMonumentId
-  // This ensures the map marker highlight follows parent state changes (e.g., on panel close)
+
   useEffect(() => {
     setSelectedId(selectedMonumentId || null);
   }, [selectedMonumentId]);
 
-  // Fly to monument when triggered - ONLY depends on flyToTrigger to prevent re-render loops
-  // flyToMonumentId provides the data, flyToTrigger controls WHEN to act
+
   useEffect(() => {
     if (flyToTrigger > 0 && flyToMonumentId && monuments) {
       const monument = monuments.find(m => m.id === flyToMonumentId);
       if (monument) {
         setFlyToPosition([monument.latitude, monument.longitude]);
         setSelectedId(monument.id);
-        onSelectMonument(monument); // Open detail panel
+        onSelectMonument(monument); 
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [flyToTrigger]); // CRITICAL: Only trigger on flyToTrigger changes, NOT on data changes
+  }, [flyToTrigger]); 
 
-  // Notify parent of legend state for MiniPlayer positioning
   const handleLegendToggle = () => {
     const newState = !isLegendOpen;
     setIsLegendOpen(newState);
     if (onLegendToggle) {
-      onLegendToggle(newState ? 60 : 0); // 60px is approx legend height
+      onLegendToggle(newState ? 60 : 0); 
     }
   };
 
@@ -324,12 +316,12 @@ const MapScreen = ({
   const handleSearchSelect = (monument) => {
     setSelectedId(monument.id);
     setFlyToPosition([monument.latitude, monument.longitude]);
-    onSelectMonument(monument, true); // shouldZoom=true for search results
+    onSelectMonument(monument, true); 
   };
 
   const handleManualSelect = (monument) => {
     setSelectedId(monument.id);
-    onSelectMonument(monument, false); // shouldZoom=false for marker clicks (browsing mode)
+    onSelectMonument(monument, false); 
   };
   const handleOpenSettings = () => {
     if (isPanelOpen && onClosePanel) {
@@ -345,7 +337,6 @@ const MapScreen = ({
     setIsSuggestPlaceOpen(true);
   };
 
-  // Stable callback for map center updates
   const handleMapCenterChange = React.useCallback((center) => {
     setMapCenter(center);
   }, []);
@@ -407,7 +398,6 @@ const MapScreen = ({
 
   const buttonBottom = isMobile ? (isPanelOpen ? panelHeight + 80 : 80) : 90;
 
-  // Hide floating buttons when panel is expanded (not peek mode) on mobile
   const shouldHideButtons = isMobile && isPanelOpen && mobilePanelSize !== "peek";
   const buttonVisibilityStyle = shouldHideButtons
     ? { opacity: 0, pointerEvents: "none" }
@@ -510,7 +500,6 @@ const MapScreen = ({
           <FaGlobe size={28} color="#4a6fa5" />
         </button>
 
-        {/* Collapsible Legend */}
         <div className={styles.legendWrapper} style={buttonVisibilityStyle}>
           <button
             className={styles.legendToggleButton}
