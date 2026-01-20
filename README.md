@@ -7,7 +7,7 @@
 ![Postgres](https://img.shields.io/badge/Database-Neon_Serverless-00E599?logo=postgresql&logoColor=white)
 ![AI](https://img.shields.io/badge/AI-Google_Gemini-4285F4?logo=google&logoColor=white)
 
-> **Live Demo:** [https://monutell.vercel.app](https://monutell.vercel.app)  
+> **Live Demo:** [https://monu-tell.vercel.app](https://monu-tell.vercel.app)  
 > _Note: Designed as a Mobile PWA. For the best experience, open on a mobile device._
 
 ---
@@ -26,7 +26,7 @@ Modern tourism has a paradox: We travel to see the world, but we spend most of o
 
 |                             Interactive Map & Audio Player                             |                            Real-Time "Karaoke" Sync                            |
 | :------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------: |
-|                <img src="./assets/monutell_iphone.jpeg" width="300" />                 |              <img src="./assets/VideoProject.gif" width="300" />               |
+|                <img src="./assets/monutell_iphone.jpeg" width="300" />                 |              <img src="./assets/VideoProject7.mp4" width="300" />              |
 | **Interactive Map:** Built with Leaflet & React 19. Tracks user location in real-time. | **Audio Sync:** Custom logic highlights text as the audio plays (0ms latency). |
 
 ### 🛠️ The "Kitchen": Admin & Content Pipeline
