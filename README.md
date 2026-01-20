@@ -8,39 +8,42 @@
 ![AI](https://img.shields.io/badge/AI-Google_Gemini-4285F4?logo=google&logoColor=white)
 
 > **Live Demo:** [https://monu-tell.vercel.app](https://monu-tell.vercel.app)  
-> _Note: Designed as a Mobile PWA. For the best experience, open on a mobile device._
+> _Note: This is a Progressive Web App (PWA) designed for travelers. For the best experience, open on a mobile device._
 
 ---
 
 ## 📖 The Problem: "Screen Fatigue" in Travel
 
-Modern tourism has a paradox: We travel to see the world, but we spend most of our time staring at screens reading Wikipedia articles or following maps.
+Modern tourism has a paradox: We travel to see the world, but we spend most of your time staring at screens reading Wikipedia articles or following maps.
 
-**MonuTell** solves this by providing an "eyes-up" experience. It uses Geolocation to detect landmarks in Budapest and narrates their stories via high-quality AI-generated audio, allowing users to immerse themselves in the environment.
+**MonuTell** solves this by providing an "eyes-up" experience. It uses **Geolocation** to detect landmarks in Budapest and narrates their stories via high-quality AI-generated audio, allowing users to immerse themselves in the environment while walking.
 
 ---
 
-## 📸 Screenshots & Features
+## 📸 Project Showcase
 
-### 📱 The Mobile Experience
+### 📱 The User Experience (Mobile PWA)
 
-|                             Interactive Map & Audio Player                             |                            Real-Time "Karaoke" Sync                            |
-| :------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------: |
-|                <img src="./assets/monutell_iphone.jpeg" width="300" />                 |              <img src="./assets/VideoProject7.mp4" width="300" />              |
-| **Interactive Map:** Built with Leaflet & React 19. Tracks user location in real-time. | **Audio Sync:** Custom logic highlights text as the audio plays (0ms latency). |
+The app is designed with a "Mobile First" approach, featuring a clean interactive map and an audio player that syncs with the user's walk.
 
-### 🛠️ The "Kitchen": Admin & Content Pipeline
+<img src="./assets/monutell_iphone.jpeg" width="300" alt="Mobile App Interface" />
 
-|                                  Admin Dashboard                                   |                             Terminal Automation Tool                              |
-| :--------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------: |
-|               <img src="./assets/monutell_admin.png" width="400" />                |             <img src="./assets/otomation_monutell.png" width="400" />             |
-| **Crowdsourcing:** Users suggest places, Admins approve/reject via this dashboard. | **Automation:** My custom Node.js CLI generates content using Gemini & Azure TTS. |
+_Features: Real-time GPS tracking, Interactive Leaflet Map, Azure Neural TTS Audio._
+
+### 🛠️ The "Kitchen": Admin & Automation
+
+Behind the scenes, the system is powered by a custom Admin Dashboard and an AI Content Pipeline.
+
+|                       Admin Dashboard (Crowdsourcing)                        |                            Internal CLI Tool (Automation)                            |
+| :--------------------------------------------------------------------------: | :----------------------------------------------------------------------------------: |
+| <img src="./assets/monutell_admin.png" width="400" alt="Admin Dashboard" />  |       <img src="./assets/otomation_monutell.png" width="400" alt="CLI Tool" />       |
+| **Management:** Secure dashboard to approve or reject user-submitted places. | **Pipeline:** Custom Node.js CLI script that generates content using Gemini & Azure. |
 
 ---
 
 ## 🏗️ System Architecture
 
-This project is not just a UI; it's a full-stack system with a custom automated content pipeline.
+This project operates on a "Headless" content generation model. The content is pre-generated via a Node.js pipeline and served via a serverless React app.
 
 ```mermaid
 graph TD
@@ -48,7 +51,7 @@ graph TD
         Node(🚀 Node.js CLI) -->|1. Prompt| Gemini(✨ Google Gemini)
         Gemini -->|2. Story Text| Azure(🗣️ Azure Neural TTS)
         Azure -->|3. Audio File| Blob(☁️ Vercel Blob)
-        Node -->|4. Save Data & Links| DB[(🛢️ Neon Postgres)]
+        Node -->|4. Save Content & Links| DB[(🛢️ Neon Postgres)]
     end
 
     subgraph User_App [Phase 2: React Client]
