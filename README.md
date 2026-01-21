@@ -1,6 +1,6 @@
 # 🏛️ MonuTell – AI-Powered Interactive Audio Guide
 
-![License](https://img.shields.io/badge/License-MIT-blue.svg)
+![License](https://img.shields.io/badge/License-GPLv3-blue.svg)
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-18-339933?logo=nodedotjs&logoColor=white)
@@ -14,7 +14,7 @@
 
 ## 📖 The Problem: "Screen Fatigue" in Travel
 
-Modern tourism has a paradox: We travel to see the world, but we spend most of your time staring at screens reading Wikipedia articles or following maps.
+Modern tourism has a paradox: We travel to see the world, but we spend most of our time staring at screens reading Wikipedia articles or following maps.
 
 **MonuTell** solves this by providing an "eyes-up" experience. It uses **Geolocation** to detect landmarks in Budapest and narrates their stories via high-quality AI-generated audio, allowing users to immerse themselves in the environment while walking.
 
@@ -34,21 +34,21 @@ _Features: Real-time GPS tracking, Interactive Leaflet Map, Azure Neural TTS Aud
 
 Behind the scenes, the system is powered by a custom Admin Dashboard and an AI Content Pipeline.
 
-|                       Admin Dashboard (Crowdsourcing)                        |                            Internal CLI Tool (Automation)                            |
-| :--------------------------------------------------------------------------: | :----------------------------------------------------------------------------------: |
-| <img src="./assets/monutell_admin.png" width="400" alt="Admin Dashboard" />  |       <img src="./assets/otomation_monutell.png" width="400" alt="CLI Tool" />       |
+|                      Admin Dashboard (Crowdsourcing)                       |                       Internal CLI Tool (Automation)                       |
+| :------------------------------------------------------------------------: | :------------------------------------------------------------------------: |
+| <img src="./assets/monutell_admin.png" width="400" alt="Admin Dashboard" /> | <img src="./assets/otomation_monutell.png" width="400" alt="CLI Tool" /> |
 | **Management:** Secure dashboard to approve or reject user-submitted places. | **Pipeline:** Custom Node.js CLI script that generates content using Gemini & Azure. |
 
 ---
 
 ## 🏗️ System Architecture
 
-This project operates on a "Headless" content generation model. The content is pre-generated via a Node.js pipeline and served via a serverless React app.
+This project operates on a "Headless" content generation model. The content is pre-generated via a custom **Node.js Automation Engine** ([`scripts/architect-engine.js`](./scripts/architect-engine.js)) and served via a serverless React app.
 
 ```mermaid
 graph TD
     subgraph Automation_Pipeline [Phase 1: Content Factory]
-        Node(🚀 Node.js CLI) -->|1. Prompt| Gemini(✨ Google Gemini)
+        Node(🚀 Architect Engine) -->|1. Prompt| Gemini(✨ Google Gemini)
         Gemini -->|2. Story Text| Azure(🗣️ Azure Neural TTS)
         Azure -->|3. Audio File| Blob(☁️ Vercel Blob)
         Node -->|4. Save Content & Links| DB[(🛢️ Neon Postgres)]
@@ -59,4 +59,3 @@ graph TD
         API <-->|Query| DB
         Client <-->|6. Stream Audio| Blob
     end
-```
