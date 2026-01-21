@@ -1,32 +1,41 @@
 import { sql } from "@vercel/postgres";
+import crypto from "crypto";
 
-// Simple admin authentication check
 function checkAdminAuth(request, response) {
   const adminPassword = process.env.ADMIN_PASSWORD;
-  
-  // Debug: log environment variable status
-  console.log("ADMIN_PASSWORD present:", !!adminPassword);
-  console.log("All env vars:", Object.keys(process.env).filter(k => k.includes('POSTGRES') || k.includes('ADMIN')));
 
   if (!adminPassword) {
-    console.error("ADMIN_PASSWORD not configured in environment");
-    response.status(500).json({ error: "Admin authentication not configured" });
+    console.error(
+      "CONFIGURATION ERROR: ADMIN_PASSWORD is missing in environment variables.",
+    );
+    response.status(500).json({ error: "Server configuration error" });
     return false;
   }
 
-  // Check for password in Authorization header (Bearer token) or query param
   const authHeader = request.headers.authorization;
-  const queryPassword = request.query?.password;
-
   let providedPassword = null;
 
   if (authHeader && authHeader.startsWith("Bearer ")) {
     providedPassword = authHeader.substring(7);
-  } else if (queryPassword) {
-    providedPassword = queryPassword;
   }
 
-  if (providedPassword !== adminPassword) {
+  if (!providedPassword) {
+    response.status(401).json({ error: "Unauthorized: No token provided" });
+    return false;
+  }
+
+  try {
+    const bufferProvided = Buffer.from(providedPassword);
+    const bufferAdmin = Buffer.from(adminPassword);
+
+    if (
+      bufferProvided.length !== bufferAdmin.length ||
+      !crypto.timingSafeEqual(bufferProvided, bufferAdmin)
+    ) {
+      response.status(401).json({ error: "Unauthorized: Invalid token" });
+      return false;
+    }
+  } catch (error) {
     response.status(401).json({ error: "Unauthorized" });
     return false;
   }
@@ -35,24 +44,22 @@ function checkAdminAuth(request, response) {
 }
 
 export default async function handler(request, response) {
-  // Only allow GET
   if (request.method !== "GET") {
     return response.status(405).json({ error: "Method not allowed" });
   }
 
-  // Check admin authentication
   if (!checkAdminAuth(request, response)) {
     return;
   }
 
   try {
-    // Get status filter from query params (default: pending)
     const status = request.query?.status || "pending";
 
-    // Validate status
-    if (!["pending", "approved", "rejected", "all"].includes(status)) {
+    const validStatuses = ["pending", "approved", "rejected", "all"];
+    if (!validStatuses.includes(status)) {
       return response.status(400).json({
-        error: "Invalid status. Must be 'pending', 'approved', 'rejected', or 'all'",
+        error:
+          "Invalid status. Must be 'pending', 'approved', 'rejected', or 'all'",
       });
     }
 
@@ -96,9 +103,9 @@ export default async function handler(request, response) {
       count: result.rows.length,
     });
   } catch (error) {
-    console.error("Error fetching submissions:", error);
+    console.error("Database Error:", error.message);
     return response.status(500).json({
-      error: "Failed to fetch submissions: " + error.message,
+      error: "Failed to fetch submissions",
     });
   }
 }
