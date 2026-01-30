@@ -16,6 +16,7 @@
     "@vercel/postgres": "^0.10.0",
     "formidable": "^3.5.4",
     "leaflet": "^1.9.4",
+    "lucide-react": "^0.563.0",
     "microsoft-cognitiveservices-speech-sdk": "^1.47.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

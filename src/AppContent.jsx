@@ -4,6 +4,7 @@ import MonumentDetailScreen from "./components/Detail/MonumentDetailScreen";
 import { useGlobalAudio } from "./context/GlobalAudioContext";
 import { useMonuments } from "./hooks/useMonuments";
 import MiniPlayer from "./components/Player/MiniPlayer";
+import HeritageLandingPage from "./components/Landing/HeritageLandingPage";
 import styles from "./AppContent.module.css";
 
 const getInitialLanguage = () => {
@@ -12,7 +13,7 @@ const getInitialLanguage = () => {
     return savedLang;
   }
   const browserLangCode = (navigator.language || navigator.userLanguage).split(
-    "-"
+    "-",
   )[0];
   if (browserLangCode === "tr") return "tr";
   if (browserLangCode === "hu") return "hu";
@@ -29,6 +30,7 @@ const getStoredVisitedIds = () => {
 };
 
 function AppContent() {
+  const [showApp, setShowApp] = useState(false);
   const [selectedMonument, setSelectedMonument] = useState(null);
   const [language, setLanguage] = useState(getInitialLanguage());
   const [isPanelOpen, setIsPanelOpen] = useState(false);
@@ -48,7 +50,7 @@ function AppContent() {
 
   const { currentTrack, isPlaying, stopAudio, pauseAudio, playAudio } =
     useGlobalAudio();
-  
+
   const { monuments } = useMonuments();
 
   const toggleVisited = (id) => {
@@ -63,7 +65,7 @@ function AppContent() {
 
   useEffect(() => {
     localStorage.setItem("monutell_language", language);
-    
+
     if (prevLanguageRef.current !== language) {
       stopAudio();
       prevLanguageRef.current = language;
@@ -101,10 +103,10 @@ function AppContent() {
     setSelectedMonument(monument);
     setMobilePanelSize("peek");
     setIsPanelOpen(true);
-    
+
     if (shouldZoom) {
       setFlyToMonumentId(monument.id);
-      setFlyToTrigger(prev => prev + 1);
+      setFlyToTrigger((prev) => prev + 1);
     }
   };
 
@@ -114,12 +116,12 @@ function AppContent() {
       playAudio(currentTrack.url, currentTrack.title, currentTrack.id);
     }
     setPausedBySystem(false);
-    
+
     if (currentTrack && currentTrack.id && monuments) {
-      const playingMonument = monuments.find(m => m.id === currentTrack.id);
+      const playingMonument = monuments.find((m) => m.id === currentTrack.id);
       if (playingMonument) {
         setSelectedMonument(playingMonument);
-        return; 
+        return;
       }
     }
     setSelectedMonument(null);
@@ -128,7 +130,7 @@ function AppContent() {
   const handleMiniPlayerFocus = () => {
     if (currentTrack?.id) {
       setFlyToMonumentId(currentTrack.id);
-      setFlyToTrigger(prev => prev + 1);
+      setFlyToTrigger((prev) => prev + 1);
     }
   };
 
@@ -175,95 +177,104 @@ function AppContent() {
   };
 
   return (
-    <div className={styles.appContainer} style={appContainerDynamicStyle}>
-      <div className={styles.detailPanel} style={panelDynamicStyle}>
-        {isMobile && isPanelOpen && (
-          <div
-            onClick={() =>
-              setMobilePanelSize((prev) =>
-                prev === "peek" ? "medium" : "peek"
-              )
-            }
-            style={{
-              width: "100%",
-              height: "30px",
-              position: "absolute",
-              top: 0,
-              left: 0,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              cursor: "pointer",
-              zIndex: 40,
-              background: "#fff",
-            }}
-          >
-            <div
-              style={{
-                width: "40px",
-                height: "5px",
-                borderRadius: "10px",
-                backgroundColor: "#e0e0e0",
-              }}
-            ></div>
+    <>
+      {!showApp ? (
+        <HeritageLandingPage onLaunchApp={() => setShowApp(true)} />
+      ) : (
+        <div className={styles.appContainer} style={appContainerDynamicStyle}>
+          <div className={styles.detailPanel} style={panelDynamicStyle}>
+            {isMobile && isPanelOpen && (
+              <div
+                onClick={() =>
+                  setMobilePanelSize((prev) =>
+                    prev === "peek" ? "medium" : "peek",
+                  )
+                }
+                style={{
+                  width: "100%",
+                  height: "30px",
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  cursor: "pointer",
+                  zIndex: 40,
+                  background: "#fff",
+                }}
+              >
+                <div
+                  style={{
+                    width: "40px",
+                    height: "5px",
+                    borderRadius: "10px",
+                    backgroundColor: "#e0e0e0",
+                  }}
+                ></div>
+              </div>
+            )}
+
+            {isPanelOpen && (
+              <button
+                onClick={handleClosePanel}
+                className={styles.closeButton}
+                style={closeButtonDynamicStyle}
+              >
+                ✕
+              </button>
+            )}
+
+            {selectedMonument && (
+              <div
+                className={styles.scrollPanel}
+                style={scrollPanelDynamicStyle}
+              >
+                <MonumentDetailScreen
+                  monument={selectedMonument}
+                  language={language}
+                  setLanguage={setLanguage}
+                  setPausedBySystem={setPausedBySystem}
+                  visitedIds={visitedIds}
+                  toggleVisited={toggleVisited}
+                />
+              </div>
+            )}
           </div>
-        )}
 
-        {isPanelOpen && (
-          <button
-            onClick={handleClosePanel}
-            className={styles.closeButton}
-            style={closeButtonDynamicStyle}
-          >
-            ✕
-          </button>
-        )}
-
-        {selectedMonument && (
-          <div className={styles.scrollPanel} style={scrollPanelDynamicStyle}>
-            <MonumentDetailScreen
-              monument={selectedMonument}
+          <div className={styles.mapContainer}>
+            <MapScreen
               language={language}
+              onSelectMonument={handleSelectMonument}
               setLanguage={setLanguage}
-              setPausedBySystem={setPausedBySystem}
+              onClosePanel={handleClosePanel}
+              isPanelOpen={isPanelOpen}
+              isMobile={isMobile}
+              mobilePanelSize={mobilePanelSize}
+              panelHeight={
+                isMobile && isPanelOpen
+                  ? mobilePanelSize === "peek"
+                    ? 170
+                    : window.innerHeight * 0.55
+                  : 0
+              }
               visitedIds={visitedIds}
-              toggleVisited={toggleVisited}
+              onLegendToggle={handleLegendToggle}
+              flyToMonumentId={flyToMonumentId}
+              flyToTrigger={flyToTrigger}
+              selectedMonumentId={selectedMonument?.id}
             />
           </div>
-        )}
-      </div>
 
-      <div className={styles.mapContainer}>
-        <MapScreen
-          language={language}
-          onSelectMonument={handleSelectMonument}
-          setLanguage={setLanguage}
-          onClosePanel={handleClosePanel}
-          isPanelOpen={isPanelOpen}
-          isMobile={isMobile}
-          mobilePanelSize={mobilePanelSize}
-          panelHeight={
-            isMobile && isPanelOpen
-              ? mobilePanelSize === "peek"
-                ? 170
-                : window.innerHeight * 0.55
-              : 0
-          }
-          visitedIds={visitedIds}
-          onLegendToggle={handleLegendToggle}
-          flyToMonumentId={flyToMonumentId}
-          flyToTrigger={flyToTrigger}
-          selectedMonumentId={selectedMonument?.id}
-        />
-      </div>
-
-      <MiniPlayer
-        isPanelOpen={isPanelOpen}
-        onFocus={handleMiniPlayerFocus}
-        legendHeight={legendHeight}
-        language={language}
-      />
-    </div>
+          <MiniPlayer
+            isPanelOpen={isPanelOpen}
+            onFocus={handleMiniPlayerFocus}
+            legendHeight={legendHeight}
+            language={language}
+          />
+        </div>
+      )}
+    </>
   );
 }
 
