@@ -7,7 +7,7 @@
 ![Postgres](https://img.shields.io/badge/Database-Neon_Serverless-00E599?logo=postgresql&logoColor=white)
 ![AI](https://img.shields.io/badge/AI-Google_Gemini-4285F4?logo=google&logoColor=white)
 
-> **Live Demo:** [https://monu-tell.vercel.app](https://monu-tell.vercel.app)  
+> **Live Demo:** [https://www.monutell.app/](https://www.monutell.app/)  
 > _Note: This is a Progressive Web App (PWA) designed for travelers. For the best experience, open on a mobile device._
 
 ---
