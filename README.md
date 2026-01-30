@@ -7,7 +7,7 @@
 ![Postgres](https://img.shields.io/badge/Database-Neon_Serverless-00E599?logo=postgresql&logoColor=white)
 ![AI](https://img.shields.io/badge/AI-Google_Gemini-4285F4?logo=google&logoColor=white)
 
-> **Live Demo:** [https://monu-tell.vercel.app](https://monu-tell.vercel.app)  
+> **Live Demo:** [https://www.monutell.app/](https://www.monutell.app/)  
 > _Note: This is a Progressive Web App (PWA) designed for travelers. For the best experience, open on a mobile device._
 
 ---
@@ -26,7 +26,7 @@ Modern tourism has a paradox: We travel to see the world, but we spend most of o
 
 The app is designed with a "Mobile First" approach, featuring a clean interactive map and an audio player that syncs with the user's walk.
 
-<img src="./assets/monutell_iphone.jpeg" width="300" alt="Mobile App Interface" />
+<img src="/assets/monutell_iphone.jpeg" width="300" alt="Mobile App Interface" />
 
 _Features: Real-time GPS tracking, Interactive Leaflet Map, Azure Neural TTS Audio._
 
@@ -34,9 +34,9 @@ _Features: Real-time GPS tracking, Interactive Leaflet Map, Azure Neural TTS Aud
 
 Behind the scenes, the system is powered by a custom Admin Dashboard and an AI Content Pipeline.
 
-|                      Admin Dashboard (Crowdsourcing)                       |                       Internal CLI Tool (Automation)                       |
-| :------------------------------------------------------------------------: | :------------------------------------------------------------------------: |
-| <img src="./assets/monutell_admin.png" width="400" alt="Admin Dashboard" /> | <img src="./assets/otomation_monutell.png" width="400" alt="CLI Tool" /> |
+|                       Admin Dashboard (Crowdsourcing)                        |                            Internal CLI Tool (Automation)                            |
+| :--------------------------------------------------------------------------: | :----------------------------------------------------------------------------------: |
+|  <img src="/assets/monutell_admin.png" width="400" alt="Admin Dashboard" />  |       <img src="/assets/otomation_monutell.png" width="400" alt="CLI Tool" />        |
 | **Management:** Secure dashboard to approve or reject user-submitted places. | **Pipeline:** Custom Node.js CLI script that generates content using Gemini & Azure. |
 
 ---
@@ -59,3 +59,4 @@ graph TD
         API <-->|Query| DB
         Client <-->|6. Stream Audio| Blob
     end
+```
